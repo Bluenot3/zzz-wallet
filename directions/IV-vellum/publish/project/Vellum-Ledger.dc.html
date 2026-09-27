@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — Ledger</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DCBF;color:#2B2118;font-family:'Alegreya Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#243F9A;text-decoration:none}a:hover{color:#15296B}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid #243F9A;outline-offset:3px}
+.vl-serif{font-family:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif}
+.vl-sc{font-family:'Alegreya SC',Alegreya,Georgia,serif;letter-spacing:.09em}
+.vl-script{font-family:'Pinyon Script','Snell Roundhand',cursive}
+.vl-onum{font-variant-numeric:oldstyle-nums proportional-nums}
+.vl-tnum{font-variant-numeric:lining-nums tabular-nums}
+.vl-vellum{background-color:#EFE3C8;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-rubric{color:#A3321F}
+.vl-hit{position:relative}
+.vl-hit::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+.vl-glass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.16) 55%,rgba(255,255,255,.26) 100%);-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:blur(2px) saturate(165%) brightness(1.04);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.34),inset 0 -12px 20px -12px rgba(120,86,36,.28),0 14px 30px -14px rgba(64,42,14,.45),0 2px 5px rgba(64,42,14,.16)}
+.vl-glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(90% 60% at 22% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),radial-gradient(60% 50% at 88% 110%,rgba(255,255,255,.4),rgba(255,255,255,0) 60%);mix-blend-mode:soft-light}
+.vl-glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from 210deg,rgba(255,255,255,.9),rgba(255,210,170,.5) 12%,rgba(255,255,255,.1) 30%,rgba(150,190,255,.45) 50%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.9));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.vl-refract-dock{-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:url(#vl-dockref) blur(.5px) saturate(175%) brightness(1.05)}
+.vl-refract-sheet{-webkit-backdrop-filter:blur(10px) saturate(165%) brightness(1.05);backdrop-filter:url(#vl-sheetref) blur(8px) saturate(175%) brightness(1.06)}
+.vl-sheet{background-color:#F6EEDC;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-lift{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 22px 44px -22px rgba(70,45,15,.55),0 3px 8px rgba(70,45,15,.16)}
+.vl-wax{background:radial-gradient(circle at 36% 30%,#7C93F0 0%,#3553C4 26%,#1E3290 58%,#121E5C 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,20,.5),0 3px 8px rgba(20,30,90,.35)}
+.vl-gold{background-image:linear-gradient(100deg,#8C6418 0%,#E9C46A 22%,#FFF1C4 36%,#C8962F 52%,#F3D48A 70%,#8C6418 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:vl-gilt 7s ease-in-out infinite}
+@keyframes vl-gilt{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.vl-ink{animation:vl-ink 1.6s cubic-bezier(.3,.1,.1,1) both}
+@keyframes vl-ink{from{clip-path:inset(0 100% 0 0);filter:blur(1.2px);opacity:.4}60%{filter:blur(.3px);opacity:1}to{clip-path:inset(0 -2% 0 0);filter:blur(0);opacity:1}}
+.vl-rise{animation:vl-rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.vl-draw{animation:vl-draw 2.2s cubic-bezier(.45,0,.2,1) both}
+@keyframes vl-draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.vl-spin{animation:vl-spin 120s linear infinite}
+@keyframes vl-spin{to{transform:rotate(360deg)}}
+.vl-tile{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.vl-tile:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.vl-gold,.vl-spin{animation:none!important}.vl-ink,.vl-rise,.vl-draw{animation-duration:.01s!important;animation-delay:0s!important}}
+.vl-page{position:absolute;left:0;top:0;width:370px;height:688px;transform-origin:0 50%;transition:transform 1.25s cubic-bezier(.62,.04,.26,1);transform-style:preserve-3d}
+.vl-face{position:absolute;inset:0;border-radius:2px 5px 5px 2px;-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden}
+.vl-verso{transform:rotateY(180deg)}
+.vl-fold{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,15,.28),rgba(60,40,15,0) 9%,rgba(60,40,15,0) 88%,rgba(60,40,15,.1));}
+.vl-turnshade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(40,25,8,0) 0%,rgba(40,25,8,.35) 100%);transition:opacity 1.25s ease}
+.vl-quill{stroke-dasharray:900;stroke-dashoffset:900;animation:vl-quillk 2.6s cubic-bezier(.45,0,.25,1) .5s forwards}
+@keyframes vl-quillk{to{stroke-dashoffset:0}}
+.vl-blot{animation:vl-blotk .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes vl-blotk{from{transform:scale(0)}to{transform:scale(1)}}
+.vl-row{transition:background .2s ease}
+.vl-row:hover{background:rgba(43,33,24,.04)}
+.vl-ribbon{position:relative;width:44px;height:58px;display:flex;align-items:flex-start;justify-content:center;padding-top:9px;box-sizing:border-box;clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+</style>
+</helmet>
+<div class="vl-vellum" style="position: relative; width: 402px; height: 874px; overflow: hidden; color: #2B2118">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="vl-mark" viewBox="0 0 100 86"><path fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<linearGradient id="vl-g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE6A8"></stop><stop offset=".35" stop-color="#D9AC4B"></stop><stop offset=".6" stop-color="#F6DC92"></stop><stop offset="1" stop-color="#8C6418"></stop></linearGradient>
+<linearGradient id="vl-g-lapis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B78E0"></stop><stop offset="1" stop-color="#1B2F7E"></stop></linearGradient>
+<linearGradient id="vl-g-verm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4704F"></stop><stop offset="1" stop-color="#9C2E1B"></stop></linearGradient>
+<linearGradient id="vl-g-tyr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B062A6"></stop><stop offset="1" stop-color="#55204F"></stop></linearGradient>
+<pattern id="vl-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke="#2B2118" stroke-opacity=".35" stroke-width=".7"></path></pattern>
+<filter id="vl-deckle" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-leaf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .6  0 0 0 .55 0" result="c"></feColorMatrix><feComposite in="c" in2="SourceAlpha" operator="in" result="ci"></feComposite><feBlend in="SourceGraphic" in2="ci" mode="overlay"></feBlend></filter>
+<filter id="vl-dockref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/79507f2c8dd1f668719259c7c9f25dc9" x="0" y="0" width="370" height="60" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-sheetref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/d3895c9c6ef566779d2f82c607c0e2ba" x="0" y="0" width="370" height="430" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+</defs>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 45%, rgba(255,250,236,.3) 0%, rgba(255,250,236,0) 45%, rgba(126,86,34,.2) 88%, rgba(96,62,20,.34) 100%)"></div>
+
+<header class="vl-rise" style="position: absolute; left: 16px; right: 16px; top: 54px; height: 48px; display: flex; align-items: center; gap: 12px">
+<a href="Vellum-Vault.dc.html" aria-label="Back to the Folio" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg></a>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1"><h1 class="vl-serif" style="margin: 0; font-size: 26px; font-style: italic; font-weight: 500; line-height: 1">The Ledger</h1><span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">Book of accounts · Folio IV</span></div>
+</header>
+
+<nav aria-label="Month" style="position: absolute; right: 26px; top: 102px; z-index: 5; display: flex; gap: 6px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.on}}" class="vl-ribbon" style="background: {{t.bg}}; transform: translateY({{t.dy}}px); box-shadow: inset 0 1px 0 rgba(255,255,255,.25)">
+<span class="vl-sc" style="font-size: 10px; font-weight: 700; color: #F6EEDC">{{t.label}}</span>
+</button>
+</sc-for>
+</nav>
+
+<div aria-hidden="true" style="position: absolute; left: 20px; top: 122px; width: 370px; height: 688px; border-radius: 2px 6px 6px 2px; background: #E2D2AE; box-shadow: 2px 2px 0 #D8C59D, 4px 4px 0 #CFBB90, 6px 6px 0 #C6B084, 0 26px 50px -20px rgba(70,45,15,.6)"></div>
+
+<section aria-label="{{ariaPage}}" style="position: absolute; left: 16px; top: 118px; width: 370px; height: 688px; perspective: 1800px">
+<sc-for list="{{pages}}" as="p" hint-placeholder-count="2">
+<div class="vl-page" style="transform: rotateY({{p.rot}}deg); z-index: {{p.z}}">
+<div class="vl-face vl-sheet" style="box-shadow: inset 0 0 0 .5px rgba(43,33,24,.25)">
+<div class="vl-fold"></div>
+<div aria-hidden="true" style="position: absolute; left: 44px; top: 0; bottom: 0; width: 1px; background: rgba(163,50,31,.45)"></div>
+<div aria-hidden="true" style="position: absolute; left: 47px; top: 0; bottom: 0; width: 1px; background: rgba(163,50,31,.25)"></div>
+
+<div style="position: absolute; left: 58px; top: 22px; right: 22px; display: flex; align-items: flex-end; gap: 6px">
+<span class="vl-serif vl-gold" style="font-size: 54px; font-weight: 600; line-height: .8">{{p.initial}}</span>
+<span style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1"><span class="vl-serif" style="font-size: 25px; font-style: italic; font-weight: 500; line-height: 1">{{p.rest}}</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">{{p.sub}} · net <span class="vl-tnum" style="font-family: 'Alegreya Sans', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0; color: {{p.netInk}}">{{p.net}}</span></span></span>
+</div>
+
+<div style="position: absolute; left: 22px; top: 82px; width: 326px; height: 170px" onPointerDown="{{p.down}}" onPointerMove="{{p.move}}" onPointerUp="{{p.up}}" onPointerCancel="{{p.up}}">
+<svg width="326" height="170" viewBox="0 0 326 170" role="img" aria-label="{{p.chartLabel}}" style="position: absolute; left: 0; top: 0; overflow: visible">
+<defs><linearGradient id="vl-wash-{{p.id}}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8962F" stop-opacity=".30"></stop><stop offset="1" stop-color="#C8962F" stop-opacity="0"></stop></linearGradient></defs>
+<g stroke="#2B2118" stroke-opacity=".12" stroke-width=".7"><path d="M0 20H326M0 50H326M0 80H326M0 110H326M0 140H326"></path></g>
+<path d="{{p.area}}" fill="url(#vl-wash-{{p.id}})" class="vl-rise" style="animation-delay: 1.4s"></path>
+<path d="{{p.line}}" fill="none" stroke="#2B2118" stroke-opacity=".28" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" class="vl-quill" transform="translate(.6 .8)"></path>
+<path d="{{p.line}}" fill="none" stroke="#2B2118" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="vl-quill"></path>
+<sc-for list="{{p.blots}}" as="b" hint-placeholder-count="3">
+<g class="vl-blot" style="transform-box: fill-box; transform-origin: center; animation-delay: {{b.delay}}"><circle cx="{{b.x}}" cy="{{b.y}}" r="4.4" fill="{{b.halo}}"></circle><circle cx="{{b.x}}" cy="{{b.y}}" r="2.4" fill="{{b.ink}}"></circle></g>
+</sc-for>
+<sc-for list="{{p.notes}}" as="n" hint-placeholder-count="2">
+<text x="{{n.x}}" y="{{n.y}}" text-anchor="{{n.anchor}}" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12" fill="{{n.ink}}">{{n.text}}</text>
+</sc-for>
+<g font-family="Cormorant Garamond, serif" font-size="12" fill="#6E5A42" text-anchor="middle" style="font-variant-numeric: oldstyle-nums"><text x="0" y="166">1</text><text x="75" y="166">8</text><text x="150" y="166">15</text><text x="226" y="166">22</text><text x="316" y="166">{{p.lastDay}}</text></g>
+</svg>
+<sc-if value="{{p.active}}" hint-placeholder-val="{{true}}">
+<div aria-hidden="true" style="position: absolute; left: {{p.lx}}px; top: 0; width: 1px; height: 150px; background: linear-gradient(180deg, rgba(36,63,154,0), rgba(36,63,154,.45), rgba(36,63,154,0))"></div>
+<div aria-hidden="true" style="position: absolute; left: {{p.lensL}}px; top: {{p.lensT}}px; width: 66px; height: 66px; border-radius: 50%; background: radial-gradient(circle, rgba(70,45,15,.28), rgba(70,45,15,0) 68%); transform: translate(6px, 9px)"></div>
+<div aria-hidden="true" style="position: absolute; left: {{p.lensL}}px; top: {{p.lensT}}px; width: 66px; height: 66px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 .7px rgba(43,33,24,.4), inset 0 0 0 1px rgba(255,255,255,.9), inset 0 -5px 8px rgba(120,86,36,.25)">
+<div class="vl-sheet" style="position: absolute; left: 0; top: 0; width: 326px; height: 170px; background-color: #EADCBE; transform-origin: 0 0; transform: {{p.lensXf}}">
+<svg width="326" height="170" viewBox="0 0 326 170" style="position: absolute; left: 0; top: 0; overflow: visible">
+<g stroke="#2B2118" stroke-opacity=".12" stroke-width=".7"><path d="M0 20H326M0 50H326M0 80H326M0 110H326M0 140H326"></path></g>
+<path d="{{p.area}}" fill="#C8962F" fill-opacity=".14"></path>
+<path d="{{p.line}}" fill="none" stroke="#2B2118" stroke-opacity=".28" stroke-width="3.2" stroke-linecap="round" transform="translate(.6 .8)"></path>
+<path d="{{p.line}}" fill="none" stroke="#2B2118" stroke-width="1.5" stroke-linecap="round"></path>
+<sc-for list="{{p.blots}}" as="b" hint-placeholder-count="3"><circle cx="{{b.x}}" cy="{{b.y}}" r="4.4" fill="{{b.halo}}"></circle><circle cx="{{b.x}}" cy="{{b.y}}" r="2.4" fill="{{b.ink}}"></circle></sc-for>
+<circle cx="{{p.px}}" cy="{{p.py}}" r="2.6" fill="#F6EEDC" stroke="#243F9A" stroke-width="1.2"></circle>
+</svg>
+</div>
+<div style="position: absolute; left: 12%; top: 7%; width: 42%; height: 20%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.7), rgba(255,255,255,0) 72%); transform: rotate(-28deg)"></div>
+</div>
+<div class="vl-glass" role="status" style="position: absolute; left: {{p.tagL}}px; top: {{p.tagT}}px; height: 28px; padding: 0 11px; border-radius: 14px; display: flex; align-items: center; gap: 7px; white-space: nowrap; pointer-events: none">
+<span class="vl-sc" style="font-size: 9.5px; font-weight: 700; color: #6E5A42">{{p.tagDay}}</span><span class="vl-serif vl-onum" style="font-size: 15px; font-weight: 600">{{p.tagVal}}</span>
+</div>
+</sc-if>
+</div>
+
+<div class="vl-sc" style="position: absolute; left: 58px; right: 22px; top: 270px; display: grid; grid-template-columns: 30px 1fr 64px 64px; gap: 6px; font-size: 8.5px; color: #6E5A42; padding-bottom: 5px; border-bottom: 1px solid rgba(43,33,24,.35)"><span>Day</span><span>Particulars</span><span style="text-align: right">Debit</span><span style="text-align: right">Credit</span></div>
+<ul style="position: absolute; left: 58px; right: 22px; top: 292px; margin: 0; padding: 0; list-style: none">
+<sc-for list="{{p.rows}}" as="r" hint-placeholder-count="6">
+<li class="vl-row vl-rise" style="height: 38px; display: grid; grid-template-columns: 30px 1fr 64px 64px; gap: 6px; align-items: center; border-bottom: 1px solid rgba(43,33,24,.1); animation-delay: {{r.delay}}">
+<span class="vl-serif vl-onum" style="font-size: 16px; color: #5E4B36">{{r.day}}</span>
+<span style="display: flex; flex-direction: column; gap: 0; min-width: 0"><span class="vl-serif" style="font-size: 15px; font-style: italic; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.what}}</span><span class="vl-tnum" style="font-size: 9.5px; color: #7A6650">bal. {{r.bal}}</span></span>
+<span class="vl-tnum" style="font-size: 12.5px; font-weight: 700; color: #A3321F; text-align: right">{{r.debit}}</span>
+<span class="vl-tnum" style="font-size: 12.5px; font-weight: 700; color: #243F9A; text-align: right">{{r.credit}}</span>
+</li>
+</sc-for>
+</ul>
+
+<div style="position: absolute; left: 58px; right: 22px; top: {{p.footT}}px; display: flex; align-items: baseline; justify-content: space-between">
+<span class="vl-serif" style="font-size: 15px; font-style: italic; color: #5E4B36">{{p.footLabel}}</span>
+<span class="vl-serif vl-onum" style="font-size: 20px; font-weight: 600; padding-bottom: 2px; border-bottom: 3px double rgba(43,33,24,.7)">{{p.foot}}</span>
+</div>
+<div class="vl-sc" style="position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font-size: 9px; color: #7A6650">— folio {{p.folio}} —</div>
+<div class="vl-turnshade" style="opacity: {{p.shade}}"></div>
+</div>
+<div class="vl-face vl-verso vl-sheet" aria-hidden="true"><div style="position: absolute; inset: 0; background: linear-gradient(270deg, rgba(60,40,15,.25), rgba(60,40,15,0) 12%)"></div></div>
+</div>
+</sc-for>
+</section>
+
+<p class="vl-rise" style="position: absolute; left: 16px; right: 16px; top: 820px; margin: 0; text-align: center; font-size: 11.5px; font-style: italic; color: #6E5A42; animation-delay: 1.8s">Drag along the ink to read any day · tap a ribbon to turn the page</p>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"month":{"editor":"enum","options":["Sep","Aug"],"default":"Sep","section":"Prototype"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const month = st.month || this.props.month || 'Sep';
+    const W = 326, H = 150, VMIN = 230000, VMAX = 256000;
+    const DATA = {
+      Sep: { days: 30, last: 26, open: 245028.12, name: 'September', sub: 'mmxxvi · 26 days', folio: 'ix', ev: [['03', 'Arsenal receipts', 'c', 8400], ['08', 'Compute & models', 'd', 4120], ['12', 'Pioneer Fund grant', 'd', 12500], ['15', 'Arsenal receipts', 'c', 9120], ['19', 'Reserve yield', 'c', 52], ['22', 'Qubit agents', 'c', 3380], ['24', 'Compute & models', 'd', 2210], ['26', 'Arsenal receipts', 'c', 1240]] },
+      Aug: { days: 31, last: 31, open: 236067.12, name: 'August', sub: 'mmxxvi · closed', folio: 'viii', ev: [['02', 'Arsenal receipts', 'c', 9340], ['09', 'Reserve yield', 'c', 61], ['14', 'Pioneer Fund grant', 'd', 12500], ['21', 'Arsenal receipts', 'c', 11800], ['27', 'Compute & models', 'd', 3950], ['29', 'Qubit agents', 'c', 4210]] }
+    };
+    const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const short = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (!this._h) {
+      this._h = { pick: {}, drag: {} };
+      ['Sep', 'Aug'].forEach((m) => {
+        this._h.pick[m] = () => this.setState({ month: m });
+        const setDay = (e) => {
+          const r = e.currentTarget.getBoundingClientRect(), D = DATA[m];
+          const x = (e.clientX - r.left) * 326 / r.width;
+          const d = Math.max(1, Math.min(D.last, Math.round(x / 326 * (D.days - 1)) + 1));
+          const k = m + 'Day'; if (!this.state || this.state[k] !== d) this.setState({ [k]: d });
+        };
+        this._h.drag[m] = {
+          down: (e) => { this._dragging = m; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} setDay(e); },
+          move: (e) => { if (this._dragging === m) setDay(e); },
+          up: () => { this._dragging = null; }
+        };
+      });
+    }
+    const build = (m, idx) => {
+      const D = DATA[m];
+      const daily = []; let b = D.open;
+      for (let d = 1; d <= D.last; d++) { D.ev.forEach((e) => { if (Number(e[0]) === d) b += e[2] === 'c' ? e[3] : -e[3]; }); daily.push(b); }
+      const X = (d) => (d - 1) / (D.days - 1) * W, Y = (v) => 10 + (1 - (v - VMIN) / (VMAX - VMIN)) * (H - 20);
+      const pts = daily.map((v, i) => [X(i + 1), Y(v)]);
+      let line = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+        const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        line += 'C' + c1[0].toFixed(1) + ' ' + c1[1].toFixed(1) + ' ' + c2[0].toFixed(1) + ' ' + c2[1].toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+      }
+      const area = line + 'L' + pts[pts.length - 1][0].toFixed(1) + ' ' + H + 'L0 ' + H + 'Z';
+      const blots = D.ev.map((e, i) => { const d = Number(e[0]); return { x: X(d).toFixed(1), y: Y(daily[d - 1]).toFixed(1), ink: e[2] === 'c' ? '#243F9A' : '#A3321F', halo: e[2] === 'c' ? 'rgba(36,63,154,.18)' : 'rgba(163,50,31,.18)', delay: (1.2 + i * 0.18).toFixed(2) + 's' }; });
+      const big = D.ev.slice().sort((a, c) => c[3] - a[3]).slice(0, 2);
+      const notes = big.map((e) => { const d = Number(e[0]), x = X(d), y = Y(daily[d - 1]); return { x: (x + (x > 240 ? -8 : 8)).toFixed(1), y: (y + (e[2] === 'd' ? 16 : -9)).toFixed(1), anchor: x > 240 ? 'end' : 'start', text: e[1].replace(' receipts', '').replace(' grant', '') + (e[2] === 'c' ? ' +' : ' −') + (e[3] / 1000).toFixed(1) + 'k', ink: e[2] === 'c' ? '#243F9A' : '#A3321F' }; });
+      const day = (st[m + 'Day']) || (m === 'Sep' ? 15 : 14);
+      const px = X(day), py = Y(daily[day - 1]), ML = 2.2, LS = 66;
+      let bal = D.open; D.ev.forEach((e) => { bal += e[2] === 'c' ? e[3] : -e[3]; });
+      const rows = []; let rb = bal;
+      D.ev.slice().reverse().forEach((e, i) => { rows.push({ day: e[0], what: e[1], debit: e[2] === 'd' ? short(e[3]) : '', credit: e[2] === 'c' ? short(e[3]) : '', bal: short(rb), delay: (0.5 + i * 0.07).toFixed(2) + 's' }); rb -= e[2] === 'c' ? e[3] : -e[3]; });
+      const net = bal - D.open, on = month === m;
+      const rot = m === 'Sep' ? (month === 'Sep' ? 0 : -178) : 0;
+      return {
+        id: m, active: on, rot: rot, z: m === 'Sep' ? 2 : 1, shade: m === 'Sep' && month !== 'Sep' ? 1 : 0,
+        initial: D.name[0], rest: D.name.slice(1), sub: D.sub, folio: D.folio, lastDay: String(D.days),
+        net: (net >= 0 ? '+' : '−') + '$' + Math.abs(net).toLocaleString('en-US', { maximumFractionDigits: 0 }), netInk: net >= 0 ? '#243F9A' : '#A3321F',
+        line: line, area: area, blots: blots, notes: notes, rows: rows,
+        chartLabel: 'Daily balance for ' + D.name + ', from ' + money(D.open) + ' to ' + money(bal),
+        down: this._h.drag[m].down, move: this._h.drag[m].move, up: this._h.drag[m].up,
+        lx: px.toFixed(1), px: px.toFixed(1), py: py.toFixed(1),
+        lensL: (px - LS / 2).toFixed(1), lensT: (py - LS / 2).toFixed(1),
+        lensXf: 'translate(' + (LS / 2 - px * ML).toFixed(1) + 'px,' + (LS / 2 - py * ML).toFixed(1) + 'px) scale(' + ML + ')',
+        tagL: Math.max(-4, Math.min(W - 150, px - 75)).toFixed(1), tagT: (py - LS / 2 - 36 < -30 ? py + LS / 2 + 6 : py - LS / 2 - 34).toFixed(1),
+        tagDay: D.name.slice(0, 3) + ' ' + day, tagVal: money(daily[day - 1]),
+        footT: 292 + rows.length * 38 + 16, footLabel: m === 'Sep' ? 'Carried forward' : 'Closed & carried',
+        foot: money(bal)
+      };
+    };
+    const pages = [build('Aug', 0), build('Sep', 1)];
+    return {
+      pages: pages,
+      ariaPage: (month === 'Sep' ? 'September' : 'August') + ' ledger page',
+      tabs: ['Aug', 'Sep'].map((m) => ({ label: m, on: month === m, pick: this._h.pick[m], bg: month === m ? 'linear-gradient(180deg, #B8402A, #8E2A18)' : 'linear-gradient(180deg, #3A56C0, #1F3490)', dy: month === m ? 6 : 0 }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Alegreya+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;width:402px;height:520px;background:#EFE3C8 url(/_blob/VL_TILE);background-size:256px;font-family:'Alegreya Sans';color:#2B2118}
+.t{position:absolute;left:20px;top:40px;font:300 54px 'Cormorant Garamond'}
+.lines{position:absolute;left:20px;top:120px;width:360px;font-size:14px;line-height:1.5}
+.dock{position:absolute;left:16px;top:300px;width:370px;height:60px;border-radius:30px;
+ background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,.10));
+ backdrop-filter:blur(2px) saturate(160%);
+ box-shadow:inset 0 1.5px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.3),0 10px 30px -10px rgba(60,40,15,.35)}
+.dock.r{backdrop-filter:url(#glass) blur(.6px) saturate(170%)}
+.lens{position:absolute;left:150px;top:380px;width:110px;height:110px;border-radius:50%;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 12px 24px -8px rgba(60,40,15,.45)}
+.inner{position:absolute;left:0;top:0;width:402px;height:520px;transform-origin:0 0;filter:url(#lensf)}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<filter id="glass" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feImage href="/_blob/VL_DOCKMAP" x="0" y="0" width="370" height="60" preserveAspectRatio="none" result="map"/>
+<feDisplacementMap in="SourceGraphic" in2="map" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+<filter id="lensf" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feImage href="/_blob/VL_LENS" x="0" y="0" width="110" height="110" preserveAspectRatio="none" result="map"/>
+<feDisplacementMap in="SourceGraphic" in2="map" scale="40" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs></svg>
+<div class="t">$248,390.12</div>
+<div class="lines">Pay to the order of Pioneer Fund the sum of twenty-five thousand dollars, drawn upon Operating on the ZEN rail. ZEN TREASURY · FOLIO IV · VERIFIED RESERVE · ZEN TREASURY · FOLIO IV</div>
+<div style="position:absolute;left:20px;top:250px;font-size:5px;letter-spacing:.1em">ZEN TREASURY · FOLIO IV · VERIFIED RESERVE · 248,390.12 · ZEN TREASURY · FOLIO IV · VERIFIED RESERVE</div>
+<div style="position:absolute;left:0;top:290px;width:402px;font:300 40px 'Cormorant Garamond';text-align:center">Folio · Ledger · Seal</div>
+<div style="position:absolute;left:0;top:280px;width:402px;height:100px;background:repeating-linear-gradient(90deg,#2B2118 0 2px,transparent 2px 14px),repeating-linear-gradient(0deg,#243F9A 0 1px,transparent 1px 12px)"></div><div class="dock r"></div>
+<div class="lens"><div class="inner" id="in"></div></div>
+<script>
+// lens: copy body texts into inner, magnified around point
+var cx=205, cy=250, M=2.0;
+var inner=document.getElementById('in');
+inner.innerHTML='<div style="position:absolute;left:0;top:0;width:402px;height:520px;background:repeating-linear-gradient(90deg,#2B2118 0 1px,transparent 1px 8px),repeating-linear-gradient(0deg,#243F9A 0 1px,transparent 1px 8px)"></div>';['.t','.lines'].forEach(function(s){ inner.appendChild(document.querySelector(s).cloneNode(true)); });
+var mt=document.querySelectorAll('div')[2]; inner.appendChild(mt.cloneNode(true));
+inner.style.background='#EFE3C8 url(/_blob/VL_TILE)'; inner.style.backgroundSize='256px';
+inner.style.transform='translate('+(55-cx*M)+'px,'+(55-cy*M)+'px) scale('+M+')';
+// set feImage position in inner's local coords (filter region = inner box, in user space of element box)
+var fi=document.querySelector('#lensf feImage'); fi.setAttribute('x', cx-55/M); fi.setAttribute('y', cy-55/M); fi.setAttribute('width',110/M); fi.setAttribute('height',110/M);
+</script>
+</body></html>

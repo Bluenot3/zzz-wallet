@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — Scriptorium</title>
+<script src="./support.js"></script>
+<script src="/_blob/5a6980f863bb52cba929728181058d4c"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;family=Bodoni+Moda:opsz,wght@6..96,500&amp;family=Cinzel:wght@600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DCBF;color:#2B2118;font-family:'Alegreya Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#243F9A;text-decoration:none}a:hover{color:#15296B}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid #243F9A;outline-offset:3px}
+.vl-serif{font-family:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif}
+.vl-sc{font-family:'Alegreya SC',Alegreya,Georgia,serif;letter-spacing:.09em}
+.vl-script{font-family:'Pinyon Script','Snell Roundhand',cursive}
+.vl-onum{font-variant-numeric:oldstyle-nums proportional-nums}
+.vl-tnum{font-variant-numeric:lining-nums tabular-nums}
+.vl-vellum{background-color:#EFE3C8;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-rubric{color:#A3321F}
+.vl-hit{position:relative}
+.vl-hit::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+.vl-glass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.16) 55%,rgba(255,255,255,.26) 100%);-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:blur(2px) saturate(165%) brightness(1.04);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.34),inset 0 -12px 20px -12px rgba(120,86,36,.28),0 14px 30px -14px rgba(64,42,14,.45),0 2px 5px rgba(64,42,14,.16)}
+.vl-glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(90% 60% at 22% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),radial-gradient(60% 50% at 88% 110%,rgba(255,255,255,.4),rgba(255,255,255,0) 60%);mix-blend-mode:soft-light}
+.vl-glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from 210deg,rgba(255,255,255,.9),rgba(255,210,170,.5) 12%,rgba(255,255,255,.1) 30%,rgba(150,190,255,.45) 50%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.9));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.vl-refract-dock{-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:url(#vl-dockref) blur(.5px) saturate(175%) brightness(1.05)}
+.vl-refract-sheet{-webkit-backdrop-filter:blur(10px) saturate(165%) brightness(1.05);backdrop-filter:url(#vl-sheetref) blur(8px) saturate(175%) brightness(1.06)}
+.vl-sheet{background-color:#F6EEDC;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-lift{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 22px 44px -22px rgba(70,45,15,.55),0 3px 8px rgba(70,45,15,.16)}
+.vl-wax{background:radial-gradient(circle at 36% 30%,#7C93F0 0%,#3553C4 26%,#1E3290 58%,#121E5C 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,20,.5),0 3px 8px rgba(20,30,90,.35)}
+.vl-gold{background-image:linear-gradient(100deg,#8C6418 0%,#E9C46A 22%,#FFF1C4 36%,#C8962F 52%,#F3D48A 70%,#8C6418 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:vl-gilt 7s ease-in-out infinite}
+@keyframes vl-gilt{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.vl-ink{animation:vl-ink 1.6s cubic-bezier(.3,.1,.1,1) both}
+@keyframes vl-ink{from{clip-path:inset(0 100% 0 0);filter:blur(1.2px);opacity:.4}60%{filter:blur(.3px);opacity:1}to{clip-path:inset(0 -2% 0 0);filter:blur(0);opacity:1}}
+.vl-rise{animation:vl-rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.vl-draw{animation:vl-draw 2.2s cubic-bezier(.45,0,.2,1) both}
+@keyframes vl-draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.vl-spin{animation:vl-spin 120s linear infinite}
+@keyframes vl-spin{to{transform:rotate(360deg)}}
+.vl-tile{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.vl-tile:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.vl-gold,.vl-spin{animation:none!important}.vl-ink,.vl-rise,.vl-draw{animation-duration:.01s!important;animation-delay:0s!important}}
+.vl-desk{background-color:#111728;background-image:url(/_blob/4b60ed0b9bf559693f1bdcbd393a65cd);background-size:256px 256px}
+.vl-quill{stroke-dasharray:900;stroke-dashoffset:900;animation:vl-quillk 2.6s cubic-bezier(.45,0,.25,1) .8s forwards}
+@keyframes vl-quillk{to{stroke-dashoffset:0}}
+.vl-leader{flex-grow:1;height:1px;margin:0 6px;align-self:flex-end;margin-bottom:5px;background-image:radial-gradient(circle,rgba(43,33,24,.5) .7px,transparent .8px);background-size:4px 2px;background-repeat:repeat-x}
+.vl-dglass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 1px rgba(255,255,255,.12),0 18px 40px -18px rgba(0,0,0,.8)}
+.vl-blob{transform-box:fill-box;transform-origin:center}
+.vl-lam{position:absolute;inset:0;pointer-events:none;border-radius:4px;background:linear-gradient(115deg,rgba(255,255,255,0) 20%,rgba(255,120,190,.30) 32%,rgba(255,220,120,.32) 38%,rgba(120,255,190,.30) 44%,rgba(110,170,255,.34) 50%,rgba(200,130,255,.30) 56%,rgba(255,255,255,0) 68%);background-size:300% 100%;mix-blend-mode:color-dodge;animation:vl-lam 2.2s cubic-bezier(.5,0,.3,1) .6s both}
+@keyframes vl-lam{0%{background-position:130% 0;opacity:1}85%{opacity:1}100%{background-position:-40% 0;opacity:0}}
+.vl-press{animation:vl-press .7s cubic-bezier(.3,1.6,.5,1) .45s both}
+@keyframes vl-press{0%{transform:scale(1.35);opacity:0}60%{opacity:1}100%{transform:scale(1);opacity:1}}
+.vl-themea{height:36px;padding:0 13px;border-radius:18px;display:flex;align-items:center;color:#E9DCBF;transition:background .2s ease}
+.vl-themea:hover{background:rgba(255,255,255,.1)}
+</style>
+</helmet>
+<div class="vl-desk" style="position: relative; width: 1440px; height: 900px; overflow: hidden; color: #2B2118">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="vl-mark" viewBox="0 0 100 86"><path fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<linearGradient id="vl-g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE6A8"></stop><stop offset=".35" stop-color="#D9AC4B"></stop><stop offset=".6" stop-color="#F6DC92"></stop><stop offset="1" stop-color="#8C6418"></stop></linearGradient>
+<linearGradient id="vl-g-lapis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B78E0"></stop><stop offset="1" stop-color="#1B2F7E"></stop></linearGradient>
+<linearGradient id="vl-g-verm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4704F"></stop><stop offset="1" stop-color="#9C2E1B"></stop></linearGradient>
+<linearGradient id="vl-g-tyr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B062A6"></stop><stop offset="1" stop-color="#55204F"></stop></linearGradient>
+<pattern id="vl-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke="#2B2118" stroke-opacity=".35" stroke-width=".7"></path></pattern>
+<filter id="vl-deckle" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-leaf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .6  0 0 0 .55 0" result="c"></feColorMatrix><feComposite in="c" in2="SourceAlpha" operator="in" result="ci"></feComposite><feBlend in="SourceGraphic" in2="ci" mode="overlay"></feBlend></filter>
+<filter id="vl-dockref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/79507f2c8dd1f668719259c7c9f25dc9" x="0" y="0" width="370" height="60" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-sheetref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/d3895c9c6ef566779d2f82c607c0e2ba" x="0" y="0" width="370" height="430" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+</defs>
+</svg>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="vl-goo" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceGraphic" stdDeviation="4.4" result="b"></feGaussianBlur>
+<feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo"></feColorMatrix>
+<feGaussianBlur in="goo" stdDeviation="2.3" result="h"></feGaussianBlur>
+<feSpecularLighting in="h" surfaceScale="6" specularConstant="1.25" specularExponent="24" lighting-color="#FFFFFF" result="s"><fePointLight x="20" y="0" z="100"></fePointLight></feSpecularLighting>
+<feComposite in="s" in2="goo" operator="in" result="si"></feComposite>
+<feDiffuseLighting in="h" surfaceScale="6" diffuseConstant="1" lighting-color="#FFFFFF" result="d"><feDistantLight azimuth="235" elevation="48"></feDistantLight></feDiffuseLighting>
+<feComposite in="goo" in2="d" operator="arithmetic" k1="1.15" k2="0" k3="0" k4="0" result="lit"></feComposite>
+<feComposite in="si" in2="lit" operator="arithmetic" k1="0" k2=".9" k3="1" k4="0"></feComposite>
+</filter>
+</defs></svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 70% at 38% 45%, rgba(255,214,150,.20) 0%, rgba(255,214,150,.06) 45%, rgba(0,0,0,0) 70%), radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%)"></div>
+
+<header class="vl-dglass vl-rise" style="position: absolute; left: 24px; top: 18px; width: 1392px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 14px; padding: 0 10px 0 10px; box-sizing: border-box; z-index: 4">
+<span style="position: relative; width: 42px; height: 42px; flex-shrink: 0"><img src="/_blob/2b699be3f6dd9289d8ab46ed291d2bc3" alt="" style="position: absolute; inset: 0; width: 42px; height: 42px; opacity: {{holoPoster}}"><canvas ref="{{capRef}}" aria-hidden="true" style="position: absolute; inset: 0; width: 42px; height: 42px; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas></span>
+<span style="display: flex; flex-direction: column; gap: 1px"><span class="vl-serif" style="font-size: 21px; font-style: italic; font-weight: 500; line-height: 1; color: #F2E6CB">The Scriptorium</span><span class="vl-sc" style="font-size: 9px; color: #D9C49B">ZEN Treasury · Folio IV</span></span>
+<label style="margin-left: 120px; width: 400px; height: 42px; padding: 0 14px; box-sizing: border-box; border-radius: 21px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.07); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12)">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9C49B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C12 5 7 10 5 17l-1 4 4-1c7-2 11-8 12-17z"></path><path d="M5 17c3-1 6-4 8-8"></path></svg>
+<input type="search" placeholder="Ask the Scribe to write a writ…" aria-label="Ask the Scribe" style="flex-grow: 1; min-width: 0; height: 38px; border: 0; outline: none; background: transparent; font: inherit; font-size: 14px; color: #F2E6CB">
+</label>
+<nav aria-label="Theme" style="margin-left: auto; height: 44px; padding: 4px; box-sizing: border-box; border-radius: 22px; display: flex; align-items: center; gap: 2px; background: rgba(0,0,0,.2); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1)">
+<a href="#vellum" aria-current="true" class="vl-themea vl-hit" style="background: linear-gradient(180deg, #F6EEDC, #E4D3AE); color: #2B2118; box-shadow: inset 0 1px 0 rgba(255,255,255,.8)"><span class="vl-serif" style="font-size: 17px; font-style: italic; font-weight: 600">Vellum</span></a>
+<a href="Zenith-Desktop.dc.html" class="vl-themea vl-hit"><span style="font-size: 11.5px; font-weight: 500; letter-spacing: .28em">ZENITH</span></a>
+<a href="Sovereign-Desktop.dc.html" class="vl-themea vl-hit"><span style="font-family: 'Bodoni Moda', Didot, Georgia, serif; font-size: 14px; font-weight: 500">Sovereign</span></a>
+<a href="Desktop.dc.html" class="vl-themea vl-hit"><span style="font-family: Cinzel, Georgia, serif; font-size: 11.5px; font-weight: 600; letter-spacing: .08em">TREASURY</span></a>
+</nav>
+<a href="#keeper" aria-label="Profile — Alex Leschik" class="vl-wax" style="width: 42px; height: 42px; border-radius: 21px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><span class="vl-sc" style="font-size: 12px; font-weight: 700; color: #F3D48A">AL</span></a>
+</header>
+
+<div aria-hidden="true" style="position: absolute; left: 78px; top: 106px; width: 976px; height: 772px; border-radius: 10px; background: #5A3D1E; box-shadow: 0 40px 80px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.4), inset 0 0 0 3px #6B4A25"></div>
+<div aria-hidden="true" style="position: absolute; left: 88px; top: 112px; width: 956px; height: 760px; border-radius: 6px; background: #D7C49C; box-shadow: 0 2px 0 #C9B38A, 0 4px 0 #BFA87E"></div>
+
+<section aria-label="Folio page" class="vl-rise" style="position: absolute; left: 92px; top: 110px; width: 474px; height: 758px; animation-delay: .1s">
+<div aria-hidden="true" class="vl-sheet" style="position: absolute; inset: 0; border-radius: 4px 0 0 4px"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(60,40,15,.12) 0%, rgba(60,40,15,0) 6%, rgba(60,40,15,0) 84%, rgba(60,40,15,.16) 95%, rgba(40,25,8,.42) 100%)"></div>
+
+<div style="position: absolute; left: 44px; top: 34px; right: 40px; display: flex; align-items: flex-end; justify-content: space-between">
+<span style="display: flex; flex-direction: column; gap: 2px"><span class="vl-serif" style="font-size: 30px; font-style: italic; font-weight: 500; line-height: 1">The Treasury Folio</span><span class="vl-sc vl-rubric" style="font-size: 10.5px; font-weight: 700">Folio IV · Saturday the twenty-sixth of September</span></span>
+</div>
+
+<div style="position: absolute; left: 44px; top: 96px; width: 370px; height: 290px; transform: scale(1.05); transform-origin: 0 0" onPointerMove="{{rake}}">
+<div aria-hidden="true" class="vl-sheet vl-lift" style="position: absolute; inset: 0; border-radius: 4px; background-color: #F8F1E1; filter: url(#vl-deckle)"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; border-radius: 4px; pointer-events: none">
+<svg width="370" height="290" viewBox="0 0 370 290" style="position: absolute; left: 0; top: 0; mix-blend-mode: soft-light">
+<defs><filter id="vl-rakef" x="0" y="0" width="370" height="290" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse"><feGaussianBlur in="SourceAlpha" stdDeviation="1.15" result="b"></feGaussianBlur><feDiffuseLighting in="b" surfaceScale="3.2" diffuseConstant="1.3" lighting-color="#FFF4DC" result="d"><fePointLight ref="{{lightRef}}" x="70" y="30" z="64"></fePointLight></feDiffuseLighting></filter></defs>
+<g filter="url(#vl-rakef)"><path d="M340 146L339.9 145.5L339.5 145L338.8 144.5L337.9 144.1L336.8 143.6L335.4 143.3L333.7 142.9L331.8 142.6L329.7 142.4L327.4 142.2L324.8 142.1L322 142.1L319.1 142.2L315.9 142.3L312.5 142.6L309 142.9L305.3 143.3L301.4 143.8L297.5 144.5L293.3 145.2L289.1 146.1L284.8 147L280.3 148.1L275.8 149.3L271.3 150.5L266.6 151.9L262 153.4L257.3 155L252.6 156.7L248 158.4L243.3 160.3L238.7 162.2L234.1 164.3L229.5 166.4L225.1 168.5L220.7 170.7L216.4 173L212.2 175.3L208.1 177.7L204.2 180L200.4 182.4L196.7 184.8L193.2 187.2L189.8 189.6L186.6 191.9L183.6 194.3L180.8 196.5L178.2 198.8L175.7 201L173.5 203.1L171.4 205.1L169.6 207L167.9 208.9L166.5 210.6L165.2 212.2L164.2 213.6L163.4 215L162.8 216.2L162.4 217.2L162.2 218.1L162.1 218.8L162.3 219.3L162.7 219.7L163.2 219.9L163.9 219.8L164.8 219.6L165.8 219.2L167 218.6L168.4 217.8L169.8 216.8L171.4 215.5L173.1 214.1L175 212.4L176.9 210.6L178.9 208.5L181 206.3L183.2 203.8L185.5 201.2L187.7 198.4L190.1 195.4L192.4 192.2L194.8 188.8L197.2 185.3L199.6 181.6L202 177.8L204.3 173.9L206.7 169.8L209 165.6L211.3 161.3L213.5 156.9L215.6 152.5L217.7 147.9L219.8 143.3L221.7 138.7L223.6 134L225.3 129.4L227 124.7L228.6 120L230.1 115.4L231.5 110.7L232.7 106.2L233.9 101.7L235 97.2L235.9 92.9L236.8 88.7L237.5 84.5L238.2 80.6L238.7 76.7L239.1 73L239.4 69.5L239.7 66.1L239.8 62.9L239.9 60L239.9 57.2L239.8 54.6L239.6 52.3L239.4 50.2L239.1 48.3L238.7 46.6L238.4 45.2L237.9 44.1L237.5 43.2L237 42.5L236.5 42.1L236 42L235.5 42.1L235 42.5L234.5 43.2L234.1 44.1L233.6 45.2L233.3 46.6L232.9 48.3L232.6 50.2L232.4 52.3L232.2 54.6L232.1 57.2L232.1 60L232.2 62.9L232.3 66.1L232.6 69.5L232.9 73L233.3 76.7L233.8 80.6L234.5 84.5L235.2 88.7L236.1 92.9L237 97.2L238.1 101.7L239.3 106.2L240.5 110.7L241.9 115.4L243.4 120L245 124.7L246.7 129.4L248.4 134L250.3 138.7L252.2 143.3L254.3 147.9L256.4 152.5L258.5 156.9L260.7 161.3L263 165.6L265.3 169.8L267.7 173.9L270 177.8L272.4 181.6L274.8 185.3L277.2 188.8L279.6 192.2L281.9 195.4L284.3 198.4L286.5 201.2L288.8 203.8L291 206.3L293.1 208.5L295.1 210.6L297 212.4L298.9 214.1L300.6 215.5L302.2 216.8L303.6 217.8L305 218.6L306.2 219.2L307.2 219.6L308.1 219.8L308.8 219.9L309.3 219.7L309.7 219.3L309.9 218.8L309.8 218.1L309.6 217.2L309.2 216.2L308.6 215L307.8 213.6L306.8 212.2L305.5 210.6L304.1 208.9L302.4 207L300.6 205.1L298.5 203.1L296.3 201L293.8 198.8L291.2 196.5L288.4 194.3L285.4 191.9L282.2 189.6L278.8 187.2L275.3 184.8L271.6 182.4L267.8 180L263.9 177.7L259.8 175.3L255.6 173L251.3 170.7L246.9 168.5L242.5 166.4L237.9 164.3L233.3 162.2L228.7 160.3L224 158.4L219.4 156.7L214.7 155L210 153.4L205.4 151.9L200.7 150.5L196.2 149.3L191.7 148.1L187.2 147L182.9 146.1L178.7 145.2L174.5 144.5L170.6 143.8L166.7 143.3L163 142.9L159.5 142.6L156.1 142.3L152.9 142.2L150 142.1L147.2 142.1L144.6 142.2L142.3 142.4L140.2 142.6L138.3 142.9L136.6 143.3L135.2 143.6L134.1 144.1L133.2 144.5L132.5 145L132.1 145.5L132 146L132.1 146.5L132.5 147L133.2 147.5L134.1 147.9L135.2 148.4L136.6 148.7L138.3 149.1L140.2 149.4L142.3 149.6L144.6 149.8L147.2 149.9L150 149.9L152.9 149.8L156.1 149.7L159.5 149.4L163 149.1L166.7 148.7L170.6 148.2L174.5 147.5L178.7 146.8L182.9 145.9L187.2 145L191.7 143.9L196.2 142.7L200.7 141.5L205.4 140.1L210 138.6L214.7 137L219.4 135.3L224 133.6L228.7 131.7L233.3 129.8L237.9 127.7L242.5 125.6L246.9 123.5L251.3 121.3L255.6 119L259.8 116.7L263.9 114.3L267.8 112L271.6 109.6L275.3 107.2L278.8 104.8L282.2 102.4L285.4 100.1L288.4 97.7L291.2 95.5L293.8 93.2L296.3 91L298.5 88.9L300.6 86.9L302.4 85L304.1 83.1L305.5 81.4L306.8 79.8L307.8 78.4L308.6 77L309.2 75.8L309.6 74.8L309.8 73.9L309.9 73.2L309.7 72.7L309.3 72.3L308.8 72.1L308.1 72.2L307.2 72.4L306.2 72.8L305 73.4L303.6 74.2L302.2 75.2L300.6 76.5L298.9 77.9L297 79.6L295.1 81.4L293.1 83.5L291 85.7L288.8 88.2L286.5 90.8L284.3 93.6L281.9 96.6L279.6 99.8L277.2 103.2L274.8 106.7L272.4 110.4L270 114.2L267.7 118.1L265.3 122.2L263 126.4L260.7 130.7L258.5 135.1L256.4 139.5L254.3 144.1L252.2 148.7L250.3 153.3L248.4 158L246.7 162.6L245 167.3L243.4 172L241.9 176.6L240.5 181.3L239.3 185.8L238.1 190.3L237 194.8L236.1 199.1L235.2 203.3L234.5 207.5L233.8 211.4L233.3 215.3L232.9 219L232.6 222.5L232.3 225.9L232.2 229.1L232.1 232L232.1 234.8L232.2 237.4L232.4 239.7L232.6 241.8L232.9 243.7L233.3 245.4L233.6 246.8L234.1 247.9L234.5 248.8L235 249.5L235.5 249.9L236 250L236.5 249.9L237 249.5L237.5 248.8L237.9 247.9L238.4 246.8L238.7 245.4L239.1 243.7L239.4 241.8L239.6 239.7L239.8 237.4L239.9 234.8L239.9 232L239.8 229.1L239.7 225.9L239.4 222.5L239.1 219L238.7 215.3L238.2 211.4L237.5 207.5L236.8 203.3L235.9 199.1L235 194.8L233.9 190.3L232.7 185.8L231.5 181.3L230.1 176.6L228.6 172L227 167.3L225.3 162.6L223.6 158L221.7 153.3L219.8 148.7L217.7 144.1L215.6 139.5L213.5 135.1L211.3 130.7L209 126.4L206.7 122.2L204.3 118.1L202 114.2L199.6 110.4L197.2 106.7L194.8 103.2L192.4 99.8L190.1 96.6L187.7 93.6L185.5 90.8L183.2 88.2L181 85.7L178.9 83.5L176.9 81.4L175 79.6L173.1 77.9L171.4 76.5L169.8 75.2L168.4 74.2L167 73.4L165.8 72.8L164.8 72.4L163.9 72.2L163.2 72.1L162.7 72.3L162.3 72.7L162.1 73.2L162.2 73.9L162.4 74.8L162.8 75.8L163.4 77L164.2 78.4L165.2 79.8L166.5 81.4L167.9 83.1L169.6 85L171.4 86.9L173.5 88.9L175.7 91L178.2 93.2L180.8 95.5L183.6 97.7L186.6 100.1L189.8 102.4L193.2 104.8L196.7 107.2L200.4 109.6L204.2 112L208.1 114.3L212.2 116.7L216.4 119L220.7 121.3L225.1 123.5L229.5 125.6L234.1 127.7L238.7 129.8L243.3 131.7L248 133.6L252.6 135.3L257.3 137L262 138.6L266.6 140.1L271.3 141.5L275.8 142.7L280.3 143.9L284.8 145L289.1 145.9L293.3 146.8L297.5 147.5L301.4 148.2L305.3 148.7L309 149.1L312.5 149.4L315.9 149.7L319.1 149.8L322 149.9L324.8 149.9L327.4 149.8L329.7 149.6L331.8 149.4L333.7 149.1L335.4 148.7L336.8 148.4L337.9 147.9L338.8 147.5L339.5 147L339.9 146.5L340 146L339.9 145.5L339.5 145L338.8 144.5L337.9 144.1L336.8 143.6L335.4 143.3L333.7 142.9L331.8 142.6L329.7 142.4L327.4 142.2L324.8 142.1L322 142.1L319.1 142.2L315.9 142.3L312.5 142.6L309 142.9L305.3 143.3L301.4 143.8L297.5 144.5L293.3 145.2L289.1 146.1L284.8 147L280.3 148.1L275.8 149.3L271.3 150.5L266.6 151.9L262 153.4L257.3 155L252.6 156.7L248 158.4L243.3 160.3L238.7 162.2L234.1 164.3L229.5 166.4L225.1 168.5L220.7 170.7L216.4 173L212.2 175.3L208.1 177.7L204.2 180L200.4 182.4L196.7 184.8L193.2 187.2L189.8 189.6L186.6 191.9L183.6 194.3L180.8 196.5L178.2 198.8L175.7 201L173.5 203.1L171.4 205.1L169.6 207L167.9 208.9L166.5 210.6L165.2 212.2L164.2 213.6L163.4 215L162.8 216.2L162.4 217.2L162.2 218.1L162.1 218.8L162.3 219.3L162.7 219.7L163.2 219.9L163.9 219.8L164.8 219.6L165.8 219.2L167 218.6L168.4 217.8L169.8 216.8L171.4 215.5L173.1 214.1L175 212.4L176.9 210.6L178.9 208.5L181 206.3L183.2 203.8L185.5 201.2L187.7 198.4L190.1 195.4L192.4 192.2L194.8 188.8L197.2 185.3L199.6 181.6L202 177.8L204.3 173.9L206.7 169.8L209 165.6L211.3 161.3L213.5 156.9L215.6 152.5L217.7 147.9L219.8 143.3L221.7 138.7L223.6 134L225.3 129.4L227 124.7L228.6 120L230.1 115.4L231.5 110.7L232.7 106.2L233.9 101.7L235 97.2L235.9 92.9L236.8 88.7L237.5 84.5L238.2 80.6L238.7 76.7L239.1 73L239.4 69.5L239.7 66.1L239.8 62.9L239.9 60L239.9 57.2L239.8 54.6L239.6 52.3L239.4 50.2L239.1 48.3L238.7 46.6L238.4 45.2L237.9 44.1L237.5 43.2L237 42.5L236.5 42.1L236 42L235.5 42.1L235 42.5L234.5 43.2L234.1 44.1L233.6 45.2L233.3 46.6L232.9 48.3L232.6 50.2L232.4 52.3L232.2 54.6L232.1 57.2L232.1 60L232.2 62.9L232.3 66.1L232.6 69.5L232.9 73L233.3 76.7L233.8 80.6L234.5 84.5L235.2 88.7L236.1 92.9L237 97.2L238.1 101.7L239.3 106.2L240.5 110.7L241.9 115.4L243.4 120L245 124.7L246.7 129.4L248.4 134L250.3 138.7L252.2 143.3L254.3 147.9L256.4 152.5L258.5 156.9L260.7 161.3L263 165.6L265.3 169.8L267.7 173.9L270 177.8L272.4 181.6L274.8 185.3L277.2 188.8L279.6 192.2L281.9 195.4L284.3 198.4L286.5 201.2L288.8 203.8L291 206.3L293.1 208.5L295.1 210.6L297 212.4L298.9 214.1L300.6 215.5L302.2 216.8L303.6 217.8L305 218.6L306.2 219.2L307.2 219.6L308.1 219.8L308.8 219.9L309.3 219.7L309.7 219.3L309.9 218.8L309.8 218.1L309.6 217.2L309.2 216.2L308.6 215L307.8 213.6L306.8 212.2L305.5 210.6L304.1 208.9L302.4 207L300.6 205.1L298.5 203.1L296.3 201L293.8 198.8L291.2 196.5L288.4 194.3L285.4 191.9L282.2 189.6L278.8 187.2L275.3 184.8L271.6 182.4L267.8 180L263.9 177.7L259.8 175.3L255.6 173L251.3 170.7L246.9 168.5L242.5 166.4L237.9 164.3L233.3 162.2L228.7 160.3L224 158.4L219.4 156.7L214.7 155L210 153.4L205.4 151.9L200.7 150.5L196.2 149.3L191.7 148.1L187.2 147L182.9 146.1L178.7 145.2L174.5 144.5L170.6 143.8L166.7 143.3L163 142.9L159.5 142.6L156.1 142.3L152.9 142.2L150 142.1L147.2 142.1L144.6 142.2L142.3 142.4L140.2 142.6L138.3 142.9L136.6 143.3L135.2 143.6L134.1 144.1L133.2 144.5L132.5 145L132.1 145.5L132 146L132.1 146.5L132.5 147L133.2 147.5L134.1 147.9L135.2 148.4L136.6 148.7L138.3 149.1L140.2 149.4L142.3 149.6L144.6 149.8L147.2 149.9L150 149.9L152.9 149.8L156.1 149.7L159.5 149.4L163 149.1L166.7 148.7L170.6 148.2L174.5 147.5L178.7 146.8L182.9 145.9L187.2 145L191.7 143.9L196.2 142.7L200.7 141.5L205.4 140.1L210 138.6L214.7 137L219.4 135.3L224 133.6L228.7 131.7L233.3 129.8L237.9 127.7L242.5 125.6L246.9 123.5L251.3 121.3L255.6 119L259.8 116.7L263.9 114.3L267.8 112L271.6 109.6L275.3 107.2L278.8 104.8L282.2 102.4L285.4 100.1L288.4 97.7L291.2 95.5L293.8 93.2L296.3 91L298.5 88.9L300.6 86.9L302.4 85L304.1 83.1L305.5 81.4L306.8 79.8L307.8 78.4L308.6 77L309.2 75.8L309.6 74.8L309.8 73.9L309.9 73.2L309.7 72.7L309.3 72.3L308.8 72.1L308.1 72.2L307.2 72.4L306.2 72.8L305 73.4L303.6 74.2L302.2 75.2L300.6 76.5L298.9 77.9L297 79.6L295.1 81.4L293.1 83.5L291 85.7L288.8 88.2L286.5 90.8L284.3 93.6L281.9 96.6L279.6 99.8L277.2 103.2L274.8 106.7L272.4 110.4L270 114.2L267.7 118.1L265.3 122.2L263 126.4L260.7 130.7L258.5 135.1L256.4 139.5L254.3 144.1L252.2 148.7L250.3 153.3L248.4 158L246.7 162.6L245 167.3L243.4 172L241.9 176.6L240.5 181.3L239.3 185.8L238.1 190.3L237 194.8L236.1 199.1L235.2 203.3L234.5 207.5L233.8 211.4L233.3 215.3L232.9 219L232.6 222.5L232.3 225.9L232.2 229.1L232.1 232L232.1 234.8L232.2 237.4L232.4 239.7L232.6 241.8L232.9 243.7L233.3 245.4L233.6 246.8L234.1 247.9L234.5 248.8L235 249.5L235.5 249.9L236 250L236.5 249.9L237 249.5L237.5 248.8L237.9 247.9L238.4 246.8L238.7 245.4L239.1 243.7L239.4 241.8L239.6 239.7L239.8 237.4L239.9 234.8L239.9 232L239.8 229.1L239.7 225.9L239.4 222.5L239.1 219L238.7 215.3L238.2 211.4L237.5 207.5L236.8 203.3L235.9 199.1L235 194.8L233.9 190.3L232.7 185.8L231.5 181.3L230.1 176.6L228.6 172L227 167.3L225.3 162.6L223.6 158L221.7 153.3L219.8 148.7L217.7 144.1L215.6 139.5L213.5 135.1L211.3 130.7L209 126.4L206.7 122.2L204.3 118.1L202 114.2L199.6 110.4L197.2 106.7L194.8 103.2L192.4 99.8L190.1 96.6L187.7 93.6L185.5 90.8L183.2 88.2L181 85.7L178.9 83.5L176.9 81.4L175 79.6L173.1 77.9L171.4 76.5L169.8 75.2L168.4 74.2L167 73.4L165.8 72.8L164.8 72.4L163.9 72.2L163.2 72.1L162.7 72.3L162.3 72.7L162.1 73.2L162.2 73.9L162.4 74.8L162.8 75.8L163.4 77L164.2 78.4L165.2 79.8L166.5 81.4L167.9 83.1L169.6 85L171.4 86.9L173.5 88.9L175.7 91L178.2 93.2L180.8 95.5L183.6 97.7L186.6 100.1L189.8 102.4L193.2 104.8L196.7 107.2L200.4 109.6L204.2 112L208.1 114.3L212.2 116.7L216.4 119L220.7 121.3L225.1 123.5L229.5 125.6L234.1 127.7L238.7 129.8L243.3 131.7L248 133.6L252.6 135.3L257.3 137L262 138.6L266.6 140.1L271.3 141.5L275.8 142.7L280.3 143.9L284.8 145L289.1 145.9L293.3 146.8L297.5 147.5L301.4 148.2L305.3 148.7L309 149.1L312.5 149.4L315.9 149.7L319.1 149.8L322 149.9L324.8 149.9L327.4 149.8L329.7 149.6L331.8 149.4L333.7 149.1L335.4 148.7L336.8 148.4L337.9 147.9L338.8 147.5L339.5 147L339.9 146.5L340 146L339.9 145.5L339.5 145L338.8 144.5L337.9 144.1L336.8 143.6L335.4 143.3L333.7 142.9L331.8 142.6L329.7 142.4L327.4 142.2L324.8 142.1L322 142.1L319.1 142.2L315.9 142.3L312.5 142.6L309 142.9L305.3 143.3L301.4 143.8L297.5 144.5L293.3 145.2L289.1 146.1L284.8 147L280.3 148.1L275.8 149.3L271.3 150.5L266.6 151.9L262 153.4L257.3 155L252.6 156.7L248 158.4L243.3 160.3L238.7 162.2L234.1 164.3L229.5 166.4L225.1 168.5L220.7 170.7L216.4 173L212.2 175.3L208.1 177.7L204.2 180L200.4 182.4L196.7 184.8L193.2 187.2L189.8 189.6L186.6 191.9L183.6 194.3L180.8 196.5L178.2 198.8L175.7 201L173.5 203.1L171.4 205.1L169.6 207L167.9 208.9L166.5 210.6L165.2 212.2L164.2 213.6L163.4 215L162.8 216.2L162.4 217.2L162.2 218.1L162.1 218.8L162.3 219.3L162.7 219.7L163.2 219.9L163.9 219.8L164.8 219.6L165.8 219.2L167 218.6L168.4 217.8L169.8 216.8L171.4 215.5L173.1 214.1L175 212.4L176.9 210.6L178.9 208.5L181 206.3L183.2 203.8L185.5 201.2L187.7 198.4L190.1 195.4L192.4 192.2L194.8 188.8L197.2 185.3L199.6 181.6L202 177.8L204.3 173.9L206.7 169.8L209 165.6L211.3 161.3L213.5 156.9L215.6 152.5L217.7 147.9L219.8 143.3L221.7 138.7L223.6 134L225.3 129.4L227 124.7L228.6 120L230.1 115.4L231.5 110.7L232.7 106.2L233.9 101.7L235 97.2L235.9 92.9L236.8 88.7L237.5 84.5L238.2 80.6L238.7 76.7L239.1 73L239.4 69.5L239.7 66.1L239.8 62.9L239.9 60L239.9 57.2L239.8 54.6L239.6 52.3L239.4 50.2L239.1 48.3L238.7 46.6L238.4 45.2L237.9 44.1L237.5 43.2L237 42.5L236.5 42.1L236 42L235.5 42.1L235 42.5L234.5 43.2L234.1 44.1L233.6 45.2L233.3 46.6L232.9 48.3L232.6 50.2L232.4 52.3L232.2 54.6L232.1 57.2L232.1 60L232.2 62.9L232.3 66.1L232.6 69.5L232.9 73L233.3 76.7L233.8 80.6L234.5 84.5L235.2 88.7L236.1 92.9L237 97.2L238.1 101.7L239.3 106.2L240.5 110.7L241.9 115.4L243.4 120L245 124.7L246.7 129.4L248.4 134L250.3 138.7L252.2 143.3L254.3 147.9L256.4 152.5L258.5 156.9L260.7 161.3L263 165.6L265.3 169.8L267.7 173.9L270 177.8L272.4 181.6L274.8 185.3L277.2 188.8L279.6 192.2L281.9 195.4L284.3 198.4L286.5 201.2L288.8 203.8L291 206.3L293.1 208.5L295.1 210.6L297 212.4L298.9 214.1L300.6 215.5L302.2 216.8L303.6 217.8L305 218.6L306.2 219.2L307.2 219.6L308.1 219.8L308.8 219.9L309.3 219.7L309.7 219.3L309.9 218.8L309.8 218.1L309.6 217.2L309.2 216.2L308.6 215L307.8 213.6L306.8 212.2L305.5 210.6L304.1 208.9L302.4 207L300.6 205.1L298.5 203.1L296.3 201L293.8 198.8L291.2 196.5L288.4 194.3L285.4 191.9L282.2 189.6L278.8 187.2L275.3 184.8L271.6 182.4L267.8 180L263.9 177.7L259.8 175.3L255.6 173L251.3 170.7L246.9 168.5L242.5 166.4L237.9 164.3L233.3 162.2L228.7 160.3L224 158.4L219.4 156.7L214.7 155L210 153.4L205.4 151.9L200.7 150.5L196.2 149.3L191.7 148.1L187.2 147L182.9 146.1L178.7 145.2L174.5 144.5L170.6 143.8L166.7 143.3L163 142.9L159.5 142.6L156.1 142.3L152.9 142.2L150 142.1L147.2 142.1L144.6 142.2L142.3 142.4L140.2 142.6L138.3 142.9L136.6 143.3L135.2 143.6L134.1 144.1L133.2 144.5L132.5 145L132.1 145.5L132 146L132.1 146.5L132.5 147L133.2 147.5L134.1 147.9L135.2 148.4L136.6 148.7L138.3 149.1L140.2 149.4L142.3 149.6L144.6 149.8L147.2 149.9L150 149.9L152.9 149.8L156.1 149.7L159.5 149.4L163 149.1L166.7 148.7L170.6 148.2L174.5 147.5L178.7 146.8L182.9 145.9L187.2 145L191.7 143.9L196.2 142.7L200.7 141.5L205.4 140.1L210 138.6L214.7 137L219.4 135.3L224 133.6L228.7 131.7L233.3 129.8L237.9 127.7L242.5 125.6L246.9 123.5L251.3 121.3L255.6 119L259.8 116.7L263.9 114.3L267.8 112L271.6 109.6L275.3 107.2L278.8 104.8L282.2 102.4L285.4 100.1L288.4 97.7L291.2 95.5L293.8 93.2L296.3 91L298.5 88.9L300.6 86.9L302.4 85L304.1 83.1L305.5 81.4L306.8 79.8L307.8 78.4L308.6 77L309.2 75.8L309.6 74.8L309.8 73.9L309.9 73.2L309.7 72.7L309.3 72.3L308.8 72.1L308.1 72.2L307.2 72.4L306.2 72.8L305 73.4L303.6 74.2L302.2 75.2L300.6 76.5L298.9 77.9L297 79.6L295.1 81.4L293.1 83.5L291 85.7L288.8 88.2L286.5 90.8L284.3 93.6L281.9 96.6L279.6 99.8L277.2 103.2L274.8 106.7L272.4 110.4L270 114.2L267.7 118.1L265.3 122.2L263 126.4L260.7 130.7L258.5 135.1L256.4 139.5L254.3 144.1L252.2 148.7L250.3 153.3L248.4 158L246.7 162.6L245 167.3L243.4 172L241.9 176.6L240.5 181.3L239.3 185.8L238.1 190.3L237 194.8L236.1 199.1L235.2 203.3L234.5 207.5L233.8 211.4L233.3 215.3L232.9 219L232.6 222.5L232.3 225.9L232.2 229.1L232.1 232L232.1 234.8L232.2 237.4L232.4 239.7L232.6 241.8L232.9 243.7L233.3 245.4L233.6 246.8L234.1 247.9L234.5 248.8L235 249.5L235.5 249.9L236 250L236.5 249.9L237 249.5L237.5 248.8L237.9 247.9L238.4 246.8L238.7 245.4L239.1 243.7L239.4 241.8L239.6 239.7L239.8 237.4L239.9 234.8L239.9 232L239.8 229.1L239.7 225.9L239.4 222.5L239.1 219L238.7 215.3L238.2 211.4L237.5 207.5L236.8 203.3L235.9 199.1L235 194.8L233.9 190.3L232.7 185.8L231.5 181.3L230.1 176.6L228.6 172L227 167.3L225.3 162.6L223.6 158L221.7 153.3L219.8 148.7L217.7 144.1L215.6 139.5L213.5 135.1L211.3 130.7L209 126.4L206.7 122.2L204.3 118.1L202 114.2L199.6 110.4L197.2 106.7L194.8 103.2L192.4 99.8L190.1 96.6L187.7 93.6L185.5 90.8L183.2 88.2L181 85.7L178.9 83.5L176.9 81.4L175 79.6L173.1 77.9L171.4 76.5L169.8 75.2L168.4 74.2L167 73.4L165.8 72.8L164.8 72.4L163.9 72.2L163.2 72.1L162.7 72.3L162.3 72.7L162.1 73.2L162.2 73.9L162.4 74.8L162.8 75.8L163.4 77L164.2 78.4L165.2 79.8L166.5 81.4L167.9 83.1L169.6 85L171.4 86.9L173.5 88.9L175.7 91L178.2 93.2L180.8 95.5L183.6 97.7L186.6 100.1L189.8 102.4L193.2 104.8L196.7 107.2L200.4 109.6L204.2 112L208.1 114.3L212.2 116.7L216.4 119L220.7 121.3L225.1 123.5L229.5 125.6L234.1 127.7L238.7 129.8L243.3 131.7L248 133.6L252.6 135.3L257.3 137L262 138.6L266.6 140.1L271.3 141.5L275.8 142.7L280.3 143.9L284.8 145L289.1 145.9L293.3 146.8L297.5 147.5L301.4 148.2L305.3 148.7L309 149.1L312.5 149.4L315.9 149.7L319.1 149.8L322 149.9L324.8 149.9L327.4 149.8L329.7 149.6L331.8 149.4L333.7 149.1L335.4 148.7L336.8 148.4L337.9 147.9L338.8 147.5L339.5 147L339.9 146.5L340 146Z" fill="none" stroke="#000" stroke-width="1"></path><path d="M301 146L300.9 145.8L300.8 145.5L300.5 145.3L300.1 145L299.6 144.8L299 144.6L298.2 144.4L297.4 144.2L296.4 144L295.4 143.9L294.2 143.7L293 143.6L291.6 143.5L290.2 143.5L288.6 143.4L287 143.4L285.2 143.4L283.4 143.5L281.6 143.5L279.6 143.6L277.6 143.8L275.4 143.9L273.3 144.1L271 144.4L268.8 144.6L266.4 144.9L264 145.3L261.6 145.6L259.1 146L256.6 146.5L254.1 146.9L251.6 147.5L249 148L246.4 148.6L243.8 149.2L241.2 149.8L238.6 150.5L236 151.2L233.4 151.9L230.8 152.7L228.3 153.4L225.8 154.2L223.3 155L220.8 155.9L218.4 156.7L216 157.6L213.6 158.5L211.4 159.4L209.1 160.3L206.9 161.2L204.8 162.1L202.8 163L200.8 163.9L198.9 164.8L197.1 165.7L195.3 166.6L193.6 167.5L192.1 168.4L190.6 169.2L189.2 170.1L187.8 170.9L186.6 171.7L185.5 172.4L184.5 173.2L183.5 173.9L182.7 174.5L182 175.1L181.3 175.7L180.8 176.3L180.4 176.8L180 177.2L179.8 177.6L179.7 178L179.6 178.3L179.7 178.5L179.9 178.7L180.1 178.8L180.5 178.9L181 178.9L181.5 178.8L182.2 178.7L182.9 178.5L183.7 178.2L184.6 177.9L185.6 177.5L186.7 177.1L187.9 176.5L189.1 175.9L190.4 175.3L191.7 174.5L193.2 173.7L194.6 172.9L196.2 171.9L197.8 170.9L199.4 169.8L201.1 168.7L202.9 167.5L204.7 166.3L206.5 164.9L208.3 163.6L210.2 162.1L212.1 160.7L214 159.1L215.9 157.5L217.9 155.9L219.8 154.2L221.8 152.5L223.8 150.8L225.7 149L227.7 147.1L229.6 145.3L231.5 143.4L233.4 141.5L235.3 139.6L237.1 137.7L239 135.7L240.8 133.8L242.5 131.8L244.2 129.8L245.9 127.9L247.5 125.9L249.1 124L250.7 122.1L252.1 120.2L253.6 118.3L254.9 116.5L256.3 114.7L257.5 112.9L258.7 111.1L259.8 109.4L260.9 107.8L261.9 106.2L262.9 104.6L263.7 103.2L264.5 101.7L265.3 100.4L265.9 99.1L266.5 97.9L267.1 96.7L267.5 95.6L267.9 94.6L268.2 93.7L268.5 92.9L268.7 92.2L268.8 91.5L268.9 91L268.9 90.5L268.8 90.1L268.7 89.9L268.5 89.7L268.3 89.6L268 89.7L267.6 89.8L267.2 90L266.8 90.4L266.3 90.8L265.7 91.3L265.1 92L264.5 92.7L263.9 93.5L263.2 94.5L262.4 95.5L261.7 96.6L260.9 97.8L260.1 99.2L259.2 100.6L258.4 102.1L257.5 103.6L256.6 105.3L255.7 107.1L254.8 108.9L253.9 110.8L253 112.8L252.1 114.8L251.2 116.9L250.3 119.1L249.4 121.4L248.5 123.6L247.6 126L246.7 128.4L245.9 130.8L245 133.3L244.2 135.8L243.4 138.3L242.7 140.8L241.9 143.4L241.2 146L240.5 148.6L239.8 151.2L239.2 153.8L238.6 156.4L238 159L237.5 161.6L236.9 164.1L236.5 166.6L236 169.1L235.6 171.6L235.3 174L234.9 176.4L234.6 178.8L234.4 181L234.1 183.3L233.9 185.4L233.8 187.6L233.6 189.6L233.5 191.6L233.5 193.4L233.4 195.2L233.4 197L233.4 198.6L233.5 200.2L233.5 201.6L233.6 203L233.7 204.2L233.9 205.4L234 206.4L234.2 207.4L234.4 208.2L234.6 209L234.8 209.6L235 210.1L235.3 210.5L235.5 210.8L235.8 210.9L236 211L236.2 210.9L236.5 210.8L236.7 210.5L237 210.1L237.2 209.6L237.4 209L237.6 208.2L237.8 207.4L238 206.4L238.1 205.4L238.3 204.2L238.4 203L238.5 201.6L238.5 200.2L238.6 198.6L238.6 197L238.6 195.2L238.5 193.4L238.5 191.6L238.4 189.6L238.2 187.6L238.1 185.4L237.9 183.3L237.6 181L237.4 178.8L237.1 176.4L236.7 174L236.4 171.6L236 169.1L235.5 166.6L235.1 164.1L234.5 161.6L234 159L233.4 156.4L232.8 153.8L232.2 151.2L231.5 148.6L230.8 146L230.1 143.4L229.3 140.8L228.6 138.3L227.8 135.8L227 133.3L226.1 130.8L225.3 128.4L224.4 126L223.5 123.6L222.6 121.4L221.7 119.1L220.8 116.9L219.9 114.8L219 112.8L218.1 110.8L217.2 108.9L216.3 107.1L215.4 105.3L214.5 103.6L213.6 102.1L212.8 100.6L211.9 99.2L211.1 97.8L210.3 96.6L209.6 95.5L208.8 94.5L208.1 93.5L207.5 92.7L206.9 92L206.3 91.3L205.7 90.8L205.2 90.4L204.8 90L204.4 89.8L204 89.7L203.7 89.6L203.5 89.7L203.3 89.9L203.2 90.1L203.1 90.5L203.1 91L203.2 91.5L203.3 92.2L203.5 92.9L203.8 93.7L204.1 94.6L204.5 95.6L204.9 96.7L205.5 97.9L206.1 99.1L206.7 100.4L207.5 101.7L208.3 103.2L209.1 104.6L210.1 106.2L211.1 107.8L212.2 109.4L213.3 111.1L214.5 112.9L215.7 114.7L217.1 116.5L218.4 118.3L219.9 120.2L221.3 122.1L222.9 124L224.5 125.9L226.1 127.9L227.8 129.8L229.5 131.8L231.2 133.8L233 135.7L234.9 137.7L236.7 139.6L238.6 141.5L240.5 143.4L242.4 145.3L244.3 147.1L246.3 149L248.2 150.8L250.2 152.5L252.2 154.2L254.1 155.9L256.1 157.5L258 159.1L259.9 160.7L261.8 162.1L263.7 163.6L265.5 164.9L267.3 166.3L269.1 167.5L270.9 168.7L272.6 169.8L274.2 170.9L275.8 171.9L277.4 172.9L278.8 173.7L280.3 174.5L281.6 175.3L282.9 175.9L284.1 176.5L285.3 177.1L286.4 177.5L287.4 177.9L288.3 178.2L289.1 178.5L289.8 178.7L290.5 178.8L291 178.9L291.5 178.9L291.9 178.8L292.1 178.7L292.3 178.5L292.4 178.3L292.3 178L292.2 177.6L292 177.2L291.6 176.8L291.2 176.3L290.7 175.7L290 175.1L289.3 174.5L288.5 173.9L287.5 173.2L286.5 172.4L285.4 171.7L284.2 170.9L282.8 170.1L281.4 169.2L279.9 168.4L278.4 167.5L276.7 166.6L274.9 165.7L273.1 164.8L271.2 163.9L269.2 163L267.2 162.1L265.1 161.2L262.9 160.3L260.6 159.4L258.4 158.5L256 157.6L253.6 156.7L251.2 155.9L248.7 155L246.2 154.2L243.7 153.4L241.2 152.7L238.6 151.9L236 151.2L233.4 150.5L230.8 149.8L228.2 149.2L225.6 148.6L223 148L220.4 147.5L217.9 146.9L215.4 146.5L212.9 146L210.4 145.6L208 145.3L205.6 144.9L203.2 144.6L201 144.4L198.7 144.1L196.6 143.9L194.4 143.8L192.4 143.6L190.4 143.5L188.6 143.5L186.8 143.4L185 143.4L183.4 143.4L181.8 143.5L180.4 143.5L179 143.6L177.8 143.7L176.6 143.9L175.6 144L174.6 144.2L173.8 144.4L173 144.6L172.4 144.8L171.9 145L171.5 145.3L171.2 145.5L171.1 145.8L171 146L171.1 146.2L171.2 146.5L171.5 146.7L171.9 147L172.4 147.2L173 147.4L173.8 147.6L174.6 147.8L175.6 148L176.6 148.1L177.8 148.3L179 148.4L180.4 148.5L181.8 148.5L183.4 148.6L185 148.6L186.8 148.6L188.6 148.5L190.4 148.5L192.4 148.4L194.4 148.2L196.6 148.1L198.7 147.9L201 147.6L203.2 147.4L205.6 147.1L208 146.7L210.4 146.4L212.9 146L215.4 145.5L217.9 145.1L220.4 144.5L223 144L225.6 143.4L228.2 142.8L230.8 142.2L233.4 141.5L236 140.8L238.6 140.1L241.2 139.3L243.7 138.6L246.2 137.8L248.7 137L251.2 136.1L253.6 135.3L256 134.4L258.4 133.5L260.6 132.6L262.9 131.7L265.1 130.8L267.2 129.9L269.2 129L271.2 128.1L273.1 127.2L274.9 126.3L276.7 125.4L278.4 124.5L279.9 123.6L281.4 122.8L282.8 121.9L284.2 121.1L285.4 120.3L286.5 119.6L287.5 118.8L288.5 118.1L289.3 117.5L290 116.9L290.7 116.3L291.2 115.7L291.6 115.2L292 114.8L292.2 114.4L292.3 114L292.4 113.7L292.3 113.5L292.1 113.3L291.9 113.2L291.5 113.1L291 113.1L290.5 113.2L289.8 113.3L289.1 113.5L288.3 113.8L287.4 114.1L286.4 114.5L285.3 114.9L284.1 115.5L282.9 116.1L281.6 116.7L280.3 117.5L278.8 118.3L277.4 119.1L275.8 120.1L274.2 121.1L272.6 122.2L270.9 123.3L269.1 124.5L267.3 125.7L265.5 127.1L263.7 128.4L261.8 129.9L259.9 131.3L258 132.9L256.1 134.5L254.1 136.1L252.2 137.8L250.2 139.5L248.2 141.2L246.3 143L244.3 144.9L242.4 146.7L240.5 148.6L238.6 150.5L236.7 152.4L234.9 154.3L233 156.3L231.2 158.2L229.5 160.2L227.8 162.2L226.1 164.1L224.5 166.1L222.9 168L221.3 169.9L219.9 171.8L218.4 173.7L217.1 175.5L215.7 177.3L214.5 179.1L213.3 180.9L212.2 182.6L211.1 184.2L210.1 185.8L209.1 187.4L208.3 188.8L207.5 190.3L206.7 191.6L206.1 192.9L205.5 194.1L204.9 195.3L204.5 196.4L204.1 197.4L203.8 198.3L203.5 199.1L203.3 199.8L203.2 200.5L203.1 201L203.1 201.5L203.2 201.9L203.3 202.1L203.5 202.3L203.7 202.4L204 202.3L204.4 202.2L204.8 202L205.2 201.6L205.7 201.2L206.3 200.7L206.9 200L207.5 199.3L208.1 198.5L208.8 197.5L209.6 196.5L210.3 195.4L211.1 194.2L211.9 192.8L212.8 191.4L213.6 189.9L214.5 188.4L215.4 186.7L216.3 184.9L217.2 183.1L218.1 181.2L219 179.2L219.9 177.2L220.8 175.1L221.7 172.9L222.6 170.6L223.5 168.4L224.4 166L225.3 163.6L226.1 161.2L227 158.7L227.8 156.2L228.6 153.7L229.3 151.2L230.1 148.6L230.8 146L231.5 143.4L232.2 140.8L232.8 138.2L233.4 135.6L234 133L234.5 130.4L235.1 127.9L235.5 125.4L236 122.9L236.4 120.4L236.7 118L237.1 115.6L237.4 113.2L237.6 111L237.9 108.7L238.1 106.6L238.2 104.4L238.4 102.4L238.5 100.4L238.5 98.6L238.6 96.8L238.6 95L238.6 93.4L238.5 91.8L238.5 90.4L238.4 89L238.3 87.8L238.1 86.6L238 85.6L237.8 84.6L237.6 83.8L237.4 83L237.2 82.4L237 81.9L236.7 81.5L236.5 81.2L236.2 81.1L236 81L235.8 81.1L235.5 81.2L235.3 81.5L235 81.9L234.8 82.4L234.6 83L234.4 83.8L234.2 84.6L234 85.6L233.9 86.6L233.7 87.8L233.6 89L233.5 90.4L233.5 91.8L233.4 93.4L233.4 95L233.4 96.8L233.5 98.6L233.5 100.4L233.6 102.4L233.8 104.4L233.9 106.6L234.1 108.7L234.4 111L234.6 113.2L234.9 115.6L235.3 118L235.6 120.4L236 122.9L236.5 125.4L236.9 127.9L237.5 130.4L238 133L238.6 135.6L239.2 138.2L239.8 140.8L240.5 143.4L241.2 146L241.9 148.6L242.7 151.2L243.4 153.7L244.2 156.2L245 158.7L245.9 161.2L246.7 163.6L247.6 166L248.5 168.4L249.4 170.6L250.3 172.9L251.2 175.1L252.1 177.2L253 179.2L253.9 181.2L254.8 183.1L255.7 184.9L256.6 186.7L257.5 188.4L258.4 189.9L259.2 191.4L260.1 192.8L260.9 194.2L261.7 195.4L262.4 196.5L263.2 197.5L263.9 198.5L264.5 199.3L265.1 200L265.7 200.7L266.3 201.2L266.8 201.6L267.2 202L267.6 202.2L268 202.3L268.3 202.4L268.5 202.3L268.7 202.1L268.8 201.9L268.9 201.5L268.9 201L268.8 200.5L268.7 199.8L268.5 199.1L268.2 198.3L267.9 197.4L267.5 196.4L267.1 195.3L266.5 194.1L265.9 192.9L265.3 191.6L264.5 190.3L263.7 188.8L262.9 187.4L261.9 185.8L260.9 184.2L259.8 182.6L258.7 180.9L257.5 179.1L256.3 177.3L254.9 175.5L253.6 173.7L252.1 171.8L250.7 169.9L249.1 168L247.5 166.1L245.9 164.1L244.2 162.2L242.5 160.2L240.8 158.2L239 156.3L237.1 154.3L235.3 152.4L233.4 150.5L231.5 148.6L229.6 146.7L227.7 144.9L225.7 143L223.8 141.2L221.8 139.5L219.8 137.8L217.9 136.1L215.9 134.5L214 132.9L212.1 131.3L210.2 129.9L208.3 128.4L206.5 127.1L204.7 125.7L202.9 124.5L201.1 123.3L199.4 122.2L197.8 121.1L196.2 120.1L194.6 119.1L193.2 118.3L191.7 117.5L190.4 116.7L189.1 116.1L187.9 115.5L186.7 114.9L185.6 114.5L184.6 114.1L183.7 113.8L182.9 113.5L182.2 113.3L181.5 113.2L181 113.1L180.5 113.1L180.1 113.2L179.9 113.3L179.7 113.5L179.6 113.7L179.7 114L179.8 114.4L180 114.8L180.4 115.2L180.8 115.7L181.3 116.3L182 116.9L182.7 117.5L183.5 118.1L184.5 118.8L185.5 119.6L186.6 120.3L187.8 121.1L189.2 121.9L190.6 122.8L192.1 123.6L193.6 124.5L195.3 125.4L197.1 126.3L198.9 127.2L200.8 128.1L202.8 129L204.8 129.9L206.9 130.8L209.1 131.7L211.4 132.6L213.6 133.5L216 134.4L218.4 135.3L220.8 136.1L223.3 137L225.8 137.8L228.3 138.6L230.8 139.3L233.4 140.1L236 140.8L238.6 141.5L241.2 142.2L243.8 142.8L246.4 143.4L249 144L251.6 144.5L254.1 145.1L256.6 145.5L259.1 146L261.6 146.4L264 146.7L266.4 147.1L268.8 147.4L271 147.6L273.3 147.9L275.4 148.1L277.6 148.2L279.6 148.4L281.6 148.5L283.4 148.5L285.2 148.6L287 148.6L288.6 148.6L290.2 148.5L291.6 148.5L293 148.4L294.2 148.3L295.4 148.1L296.4 148L297.4 147.8L298.2 147.6L299 147.4L299.6 147.2L300.1 147L300.5 146.7L300.8 146.5L300.9 146.2L301 146Z" fill="none" stroke="#000" stroke-width=".8"></path><svg x="176" y="95" width="120" height="103" viewBox="0 0 100 86"><use href="#vl-mark"></use></svg></g>
+</svg>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 12px; top: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(43,33,24,.34); border-radius: 3px; box-shadow: inset 0 0 0 3px rgba(239,227,200,.0), inset 0 0 0 4px rgba(43,33,24,.18)"></div>
+<svg aria-hidden="true" width="370" height="290" viewBox="0 0 370 290" style="position: absolute; left: 0; top: 0">
+<g fill="#8C6418" fill-opacity=".75"><path d="M12 12h9v1.2h-7.8v7.8H12z"></path><path d="M358 12h-9v1.2h7.8v7.8H358z"></path><path d="M12 278h9v-1.2h-7.8v-7.8H12z"></path><path d="M358 278h-9v-1.2h7.8v-7.8H358z"></path></g>
+</svg>
+<div style="position: absolute; left: 30px; top: 30px; right: 70px; display: flex; align-items: baseline; justify-content: space-between">
+<span class="vl-sc vl-rubric" style="font-size: 11.5px; font-weight: 700">Total Reserve</span>
+<span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">Nº IV·0926</span>
+</div>
+<div class="vl-serif vl-onum vl-ink" style="position: absolute; left: 26px; top: 50px; font-size: 60px; font-weight: 300; line-height: 1; color: #2B2118; letter-spacing: -.005em; white-space: nowrap; text-shadow: 0 0 .6px rgba(43,33,24,.55); animation-delay: .35s">$248,390<span style="font-size: 34px; color: #5E4B36">.12</span></div>
+<div class="vl-serif vl-ink" style="position: absolute; left: 30px; top: 122px; width: 270px; font-size: 14px; font-style: italic; line-height: 1.3; color: #4A3A2A; animation-delay: 1.2s; animation-duration: 2.2s">Two hundred forty-eight thousand, three hundred ninety &amp; <sup style="font-size: 9px">12</sup>/<sub style="font-size: 9px">100</sub> dollars</div>
+<div aria-hidden="true" style="position: absolute; left: 30px; top: 166px; width: 270px; height: 6px; overflow: hidden; font-family: 'Alegreya SC', Georgia, serif; font-size: 4.3px; line-height: 6px; letter-spacing: .06em; color: #5E4B36; white-space: nowrap; border-bottom: .8px solid rgba(43,33,24,.55)">ZEN TREASURY · FOLIO IV · VERIFIED RESERVE · 248,390.12 · KEEPER A. LESCHIK · ZEN TREASURY · FOLIO IV · VERIFIED RESERVE · 248,390.12 · KEEPER A. LESCHIK</div>
+<div style="position: absolute; left: 30px; top: 184px; display: flex; align-items: center; gap: 8px">
+<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.2 10.8 9.6H1.2z" fill="#243F9A"></path></svg>
+<span class="vl-tnum" style="font-size: 14px; font-weight: 700; color: #243F9A">+$1,377.42</span>
+<span class="vl-serif" style="font-size: 14px; font-style: italic; color: #5E4B36">0.56% this day</span>
+</div>
+<div style="position: absolute; left: 30px; top: 222px; display: flex; flex-direction: column; gap: 1px">
+<span class="vl-script" style="font-size: 27px; line-height: 1; color: #1F2A5C">Alex Leschik</span>
+<span style="width: 170px; height: 1px; background: rgba(43,33,24,.45); display: block"></span>
+<span class="vl-sc" style="font-size: 8.5px; color: #6E5A42; margin-top: 3px">Keeper of the Folio</span>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 322px; top: 14px; width: 26px; height: 216px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 .5px rgba(43,33,24,.3)"><img src="/_blob/bee886bb563dfb0be1941af065d35b7b" alt="" style="position: absolute; inset: 0; width: 26px; height: 216px"></div>
+<div aria-hidden="true" style="position: absolute; left: 290px; top: 212px; width: 76px; height: 76px; border-radius: 50%; box-shadow: 0 0 0 2px #D9AC4B, 0 0 0 3px rgba(43,33,24,.35), 0 8px 16px -6px rgba(70,45,15,.55)">
+<img src="/_blob/ba164d066e351496f3b948ca53ddb275" alt="" style="position: absolute; inset: 0; width: 76px; height: 76px; border-radius: 50%; opacity: {{holoPoster}}">
+<canvas ref="{{sealRef}}" style="position: absolute; inset: 0; width: 76px; height: 76px; border-radius: 50%; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas>
+</div>
+</div>
+
+<div style="position: absolute; left: 44px; top: 422px; right: 40px; display: flex; align-items: baseline; gap: 10px">
+<h2 class="vl-serif" style="margin: 0; font-size: 24px; font-style: italic; font-weight: 500; line-height: 1">Holdings</h2>
+<span style="flex-grow: 1; height: 1px; background: linear-gradient(90deg, rgba(43,33,24,.45), rgba(43,33,24,.05)); align-self: center"></span>
+<span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">Four positions</span>
+</div>
+<svg width="170" height="170" viewBox="0 0 150 150" role="img" aria-label="Allocation rosette: US Dollar 47.7%, USD Coin 25.9%, Bitcoin 19.7%, Ether 6.7%" style="position: absolute; left: 40px; top: 462px">
+<circle cx="75" cy="75" r="72" fill="none" stroke="#2B2118" stroke-opacity=".5" stroke-width=".7" stroke-dasharray="1 3.1"></circle>
+<circle cx="75" cy="75" r="67" fill="none" stroke="#2B2118" stroke-opacity=".55" stroke-width=".6"></circle>
+<sc-for list="{{arcs}}" as="a" hint-placeholder-count="4"><path d="{{a.d}}" fill="{{a.fill}}" stroke="#2B2118" stroke-opacity=".7" stroke-width=".7"></path><path d="{{a.d}}" fill="url(#vl-hatch)" opacity=".55"></path></sc-for>
+<circle cx="75" cy="75" r="41" fill="#F6EEDC" stroke="#2B2118" stroke-opacity=".6" stroke-width=".7"></circle>
+<g class="vl-spin" style="transform-origin: 75px 75px"><path d="M75 40L79 71L110 75L79 79L75 110L71 79L40 75L71 71Z" fill="none" stroke="#2B2118" stroke-opacity=".55" stroke-width=".7"></path><path d="M75 52L77.5 72.5L98 75L77.5 77.5L75 98L72.5 77.5L52 75L72.5 72.5Z" fill="url(#vl-g-gold)" fill-opacity=".85" stroke="#8C6418" stroke-width=".5" transform="rotate(45 75 75)"></path></g>
+<circle cx="75" cy="75" r="11" fill="#F6EEDC" stroke="#8C6418" stroke-width=".8"></circle>
+<svg x="68" y="69" width="14" height="12" viewBox="0 0 100 86"><use href="#vl-mark" fill="#2B2118"></use></svg>
+</svg>
+<ul style="position: absolute; left: 230px; top: 470px; width: 204px; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{holdings}}" as="h" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column">
+<span style="display: flex; align-items: flex-end"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; margin-bottom: 3px; background: {{h.swatch}}; box-shadow: inset 0 0 0 .7px rgba(43,33,24,.6)"></span><span style="font-size: 13.5px; font-weight: 700">{{h.name}}</span><span class="vl-leader" aria-hidden="true"></span><span class="vl-tnum" style="font-size: 12.5px; font-weight: 500">{{h.pct}}</span></span>
+<span style="display: flex; justify-content: space-between; padding-left: 17px"><span class="vl-serif" style="font-size: 12.5px; font-style: italic; color: #6E5A42">{{h.pigment}}</span><span class="vl-tnum" style="font-size: 11.5px; color: #5E4B36">{{h.value}}</span></span>
+</li>
+</sc-for>
+</ul>
+<p class="vl-serif" style="position: absolute; left: 44px; right: 40px; top: 666px; margin: 0; font-size: 15px; line-height: 1.45; font-style: italic; color: #4A3A2A">Liquid in gold and lapis, <span class="vl-onum">73.6%</span>. Held in vermilion and Tyrian, <span class="vl-onum">26.4%</span>. The folio closes each night at 5:11 pm and is attested at month's end.</p>
+<div class="vl-sc" style="position: absolute; left: 0; right: 0; bottom: 16px; text-align: center; font-size: 9px; color: #7A6650">— folio ix recto —</div>
+</section>
+
+<section aria-label="Ledger page" class="vl-rise" style="position: absolute; left: 566px; top: 110px; width: 474px; height: 758px; animation-delay: .2s">
+<div aria-hidden="true" class="vl-sheet" style="position: absolute; inset: 0; border-radius: 0 4px 4px 0"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(270deg, rgba(60,40,15,.12) 0%, rgba(60,40,15,0) 6%, rgba(60,40,15,0) 84%, rgba(60,40,15,.16) 95%, rgba(40,25,8,.42) 100%)"></div>
+<div aria-hidden="true" style="position: absolute; left: 70px; top: 0; bottom: 0; width: 1px; background: rgba(163,50,31,.4)"></div>
+
+<div style="position: absolute; left: 84px; right: 40px; top: 30px; display: flex; align-items: flex-end; gap: 6px">
+<span class="vl-serif vl-gold" style="font-size: 60px; font-weight: 600; line-height: .8">S</span>
+<span style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1"><span class="vl-serif" style="font-size: 28px; font-style: italic; font-weight: 500; line-height: 1">eptember</span><span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">The ledger · 26 days · net <span class="vl-tnum" style="font-family: 'Alegreya Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0; color: #243F9A">+$3,362</span></span></span>
+</div>
+
+<div style="position: absolute; left: 40px; top: 100px; width: 394px; height: 190px" onPointerDown="{{down}}" onPointerMove="{{move}}" onPointerUp="{{up}}" onPointerCancel="{{up}}">
+<svg width="394" height="190" viewBox="0 0 394 190" role="img" aria-label="Daily balance for September" style="position: absolute; left: 0; top: 0; overflow: visible">
+<defs><linearGradient id="vl-washd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8962F" stop-opacity=".3"></stop><stop offset="1" stop-color="#C8962F" stop-opacity="0"></stop></linearGradient></defs>
+<g stroke="#2B2118" stroke-opacity=".12" stroke-width=".7"><path d="M0 22H394M0 56H394M0 90H394M0 124H394M0 158H394"></path></g>
+<path d="{{chart.area}}" fill="url(#vl-washd)"></path>
+<path d="{{chart.line}}" fill="none" stroke="#2B2118" stroke-opacity=".28" stroke-width="3.4" stroke-linecap="round" class="vl-quill" transform="translate(.6 .8)"></path>
+<path d="{{chart.line}}" fill="none" stroke="#2B2118" stroke-width="1.6" stroke-linecap="round" class="vl-quill"></path>
+<sc-for list="{{chart.blots}}" as="b" hint-placeholder-count="8"><circle cx="{{b.x}}" cy="{{b.y}}" r="4.6" fill="{{b.halo}}"></circle><circle cx="{{b.x}}" cy="{{b.y}}" r="2.5" fill="{{b.ink}}"></circle></sc-for>
+<g font-family="Cormorant Garamond, serif" font-size="13" fill="#6E5A42" text-anchor="middle" style="font-variant-numeric: oldstyle-nums"><text x="0" y="186">1</text><text x="95" y="186">8</text><text x="190" y="186">15</text><text x="285" y="186">22</text><text x="394" y="186">30</text></g>
+</svg>
+<div aria-hidden="true" style="position: absolute; left: {{chart.lensL}}px; top: {{chart.lensT}}px; width: 72px; height: 72px; border-radius: 50%; background: radial-gradient(circle, rgba(70,45,15,.28), rgba(70,45,15,0) 68%); transform: translate(6px, 9px)"></div>
+<div aria-hidden="true" style="position: absolute; left: {{chart.lensL}}px; top: {{chart.lensT}}px; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 .7px rgba(43,33,24,.4), inset 0 0 0 1px rgba(255,255,255,.9), inset 0 -5px 8px rgba(120,86,36,.25)">
+<div class="vl-sheet" style="position: absolute; left: 0; top: 0; width: 394px; height: 190px; background-color: #EADCBE; transform-origin: 0 0; transform: {{chart.lensXf}}">
+<svg width="394" height="190" viewBox="0 0 394 190" style="position: absolute; left: 0; top: 0; overflow: visible"><path d="{{chart.area}}" fill="#C8962F" fill-opacity=".14"></path><path d="{{chart.line}}" fill="none" stroke="#2B2118" stroke-width="1.6" stroke-linecap="round"></path><circle cx="{{chart.px}}" cy="{{chart.py}}" r="2.6" fill="#F6EEDC" stroke="#243F9A" stroke-width="1.2"></circle></svg>
+</div>
+<div style="position: absolute; left: 12%; top: 7%; width: 42%; height: 20%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.7), rgba(255,255,255,0) 72%); transform: rotate(-28deg)"></div>
+</div>
+<div class="vl-glass" role="status" style="position: absolute; left: {{chart.tagL}}px; top: {{chart.tagT}}px; height: 28px; padding: 0 11px; border-radius: 14px; display: flex; align-items: center; gap: 7px; white-space: nowrap; pointer-events: none"><span class="vl-sc" style="font-size: 9.5px; font-weight: 700; color: #6E5A42">{{chart.tagDay}}</span><span class="vl-serif vl-onum" style="font-size: 15px; font-weight: 600">{{chart.tagVal}}</span></div>
+</div>
+
+<div class="vl-sc" style="position: absolute; left: 80px; right: 28px; top: 318px; display: grid; grid-template-columns: 26px 1fr 60px 60px 78px; gap: 6px; font-size: 8.5px; color: #6E5A42; padding-bottom: 5px; border-bottom: 1px solid rgba(43,33,24,.35)"><span>Day</span><span>Particulars</span><span style="text-align: right">Debit</span><span style="text-align: right">Credit</span><span style="text-align: right">Balance</span></div>
+<ul style="position: absolute; left: 80px; right: 28px; top: 340px; margin: 0; padding: 0; list-style: none">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+<li style="height: 38px; display: grid; grid-template-columns: 26px 1fr 60px 60px 78px; gap: 6px; align-items: center; border-bottom: 1px solid rgba(43,33,24,.1)">
+<span class="vl-serif vl-onum" style="font-size: 16px; color: #5E4B36">{{r.day}}</span>
+<span class="vl-serif" style="font-size: 14.5px; font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{r.what}}</span>
+<span class="vl-tnum" style="font-size: 12.5px; font-weight: 700; color: #A3321F; text-align: right">{{r.debit}}</span>
+<span class="vl-tnum" style="font-size: 12.5px; font-weight: 700; color: #243F9A; text-align: right">{{r.credit}}</span>
+<span class="vl-tnum" style="font-size: 12px; color: #5E4B36; text-align: right">{{r.bal}}</span>
+</li>
+</sc-for>
+</ul>
+<div style="position: absolute; left: 84px; right: 40px; top: 666px; display: flex; align-items: baseline; justify-content: space-between">
+<span class="vl-serif" style="font-size: 16px; font-style: italic; color: #5E4B36">Carried forward</span>
+<span class="vl-serif vl-onum" style="font-size: 22px; font-weight: 600; padding-bottom: 2px; border-bottom: 3px double rgba(43,33,24,.7)">$248,390.12</span>
+</div>
+<div class="vl-sc" style="position: absolute; left: 0; right: 0; bottom: 16px; text-align: center; font-size: 9px; color: #7A6650">— folio ix verso —</div>
+</section>
+<div aria-hidden="true" style="position: absolute; left: 546px; top: 110px; width: 40px; height: 758px; pointer-events: none; background: linear-gradient(90deg, rgba(40,25,8,0), rgba(40,25,8,.35) 48%, rgba(255,245,220,.25) 52%, rgba(40,25,8,0))"></div>
+
+<article aria-label="Writ of transfer 0417" class="vl-rise" style="position: absolute; left: 1080px; top: 104px; width: 336px; height: 404px; transform: rotate(1.6deg); animation-delay: .35s">
+<div aria-hidden="true" class="vl-sheet" style="position: absolute; inset: 0; border-radius: 4px; filter: url(#vl-deckle); box-shadow: 0 30px 50px -20px rgba(0,0,0,.85)"></div>
+<div aria-hidden="true" style="position: absolute; left: 10px; top: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(43,33,24,.28); border-radius: 3px"></div>
+<div style="position: absolute; left: 24px; right: 24px; top: 24px; display: flex; align-items: baseline; justify-content: space-between"><span class="vl-serif" style="font-size: 23px; font-style: italic; font-weight: 500">Writ of Transfer</span><span class="vl-sc vl-rubric" style="font-size: 10px; font-weight: 700">Nº 0417</span></div>
+<p class="vl-serif" style="position: absolute; left: 24px; right: 24px; top: 64px; margin: 0; font-size: 16px; line-height: 1.38">Pay to the order of <b>Pioneer Fund</b> the sum of <i>twenty-five thousand dollars</i>, <b class="vl-onum">$25,000.00</b>, from Operating ••4417 on the ZEN rail, to arrive forthwith.</p>
+<p class="vl-sc" style="position: absolute; left: 24px; right: 24px; top: 172px; margin: 0; display: flex; flex-wrap: wrap; gap: 3px 10px; font-size: 9px; color: #A3321F"><span>✓ Balance examined</span><span>✓ Payee verified</span><span>✓ Limits kept</span></p>
+<div style="position: absolute; left: 24px; top: 228px; width: 150px; display: flex; flex-direction: column; gap: 3px">
+<span class="vl-script" style="height: 34px; font-size: 28px; line-height: 34px; color: #1F2A5C; clip-path: {{sigClip}}; transition: clip-path 1.4s cubic-bezier(.6,0,.3,1) 1s">Alex Leschik</span>
+<span style="height: 1px; background: rgba(43,33,24,.5); display: block"></span><span class="vl-sc" style="font-size: 8px; color: #6E5A42">Authorized by the Keeper</span>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 200px; top: 196px; width: 112px; height: 112px">
+<svg width="112" height="112" viewBox="0 0 130 130" style="position: absolute; inset: 0; overflow: visible">
+<circle cx="65" cy="65" r="44" fill="none" stroke="#2B2118" stroke-opacity="{{guideOpacity}}" stroke-width=".9" stroke-dasharray="3 4" style="transition: stroke-opacity .4s ease"></circle>
+<g filter="url(#vl-goo)"><sc-for list="{{blobs}}" as="b" hint-placeholder-count="8"><circle class="vl-blob" cx="{{b.x}}" cy="{{b.y}}" r="{{b.r}}" fill="#2B45AE" style="transform: scale({{b.s}}); transition: transform {{b.dur}} cubic-bezier(.3,.9,.3,1) {{b.delay}}"></circle></sc-for></g>
+</svg>
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}">
+<svg class="vl-press" width="112" height="112" viewBox="0 0 130 130" style="position: absolute; inset: 0"><circle cx="65" cy="65" r="36" fill="none" stroke="#6F86E6" stroke-opacity=".75" stroke-width="2"></circle><circle cx="65" cy="65" r="35" fill="none" stroke="#0E1747" stroke-opacity=".55" stroke-width="1.2" transform="translate(.8 1)"></circle></svg>
+<span class="vl-press" style="position: absolute; left: 39px; top: 39px; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1.5px #D9AC4B; animation-delay: .7s"><img src="/_blob/ba164d066e351496f3b948ca53ddb275" alt="" style="position: absolute; inset: 0; width: 34px; height: 34px"></span>
+</sc-if>
+</div>
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}"><div class="vl-lam"></div><p class="vl-sc" role="status" style="position: absolute; left: 24px; right: 24px; top: 336px; margin: 0; text-align: center; font-size: 9.5px; font-weight: 700; color: #243F9A">Sealed · 5:12:04 pm · settled on the ZEN rail</p></sc-if>
+<sc-if value="{{notSealed}}" hint-placeholder-val="{{true}}">
+<button type="button" onPointerDown="{{sdown}}" onPointerUp="{{sup}}" onPointerLeave="{{sup}}" onPointerCancel="{{sup}}" onClick="{{skey}}" onContextMenu="{{shold}}" aria-label="Press and hold to seal the writ, $25,000.00 to Pioneer Fund" class="vl-glass" style="position: absolute; left: 20px; top: 326px; width: 296px; height: 58px; border-radius: 29px; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; display: flex; align-items: center; gap: 12px; padding: 0 18px 0 8px; box-sizing: border-box">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: {{fillW}}; background: linear-gradient(90deg, rgba(43,69,174,.1), rgba(43,69,174,.34)); transition: {{fillT}}"></span>
+<span aria-hidden="true" class="vl-wax" style="position: relative; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="15.5" viewBox="0 0 100 86"><use href="#vl-mark" fill="#F3D48A"></use></svg></span>
+<span class="vl-serif" style="position: relative; font-size: 19px; font-style: italic; font-weight: 600">{{holdTitle}}</span>
+</button>
+</sc-if>
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{sreplay}}" class="vl-glass" style="position: absolute; left: 20px; top: 356px; height: 36px; padding: 0 16px; border-radius: 18px; font-size: 13px; font-weight: 500">Replay</button></sc-if>
+</article>
+
+<article aria-label="Certificate of reserve" class="vl-rise" style="position: absolute; left: 1086px; top: 536px; width: 322px; height: 336px; transform: rotate(-2.2deg); animation-delay: .45s">
+<div aria-hidden="true" class="vl-sheet" style="position: absolute; inset: 0; border-radius: 4px; filter: url(#vl-deckle); box-shadow: 0 30px 50px -20px rgba(0,0,0,.85)"></div>
+<div aria-hidden="true" style="position: absolute; left: 9px; top: 9px; right: 9px; bottom: 9px; border: 1px solid rgba(31,42,92,.45); outline: 1px solid rgba(140,100,24,.5); outline-offset: -5px; border-radius: 3px"></div>
+<div style="position: absolute; left: 0; right: 0; top: 24px; display: flex; flex-direction: column; align-items: center; gap: 2px"><span class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Proof of reserve · September</span><span class="vl-serif" style="font-size: 23px; font-style: italic; font-weight: 500">Certificate of Reserve</span></div>
+<div style="position: absolute; left: 91px; top: 82px; width: 140px; height: 140px">
+<div aria-hidden="true" style="position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(#8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418); box-shadow: 0 8px 18px -8px rgba(70,45,15,.6)"></div>
+<div aria-hidden="true" style="position: absolute; inset: -2px; border-radius: 50%; background: #3B2A12"></div>
+<img src="/_blob/2f07e1281d154fa7e99933db918a5a30" alt="" style="position: absolute; inset: 0; width: 140px; height: 140px; border-radius: 50%; opacity: {{holoPoster}}">
+<canvas ref="{{certRef}}" aria-hidden="true" style="position: absolute; inset: 0; width: 140px; height: 140px; border-radius: 50%; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas>
+</div>
+<p class="vl-serif" style="position: absolute; left: 26px; right: 26px; top: 240px; margin: 0; text-align: center; font-size: 14px; line-height: 1.35">Reserves of <b class="vl-onum">$248,390.12</b> against liabilities of <b class="vl-onum">$0.00</b> · ratio <b class="vl-onum">100%</b></p>
+<a href="Vellum-Certificate.dc.html" class="vl-sc" style="position: absolute; left: 0; right: 0; top: 292px; text-align: center; font-size: 10px; font-weight: 700">Tilt to verify · open certificate</a>
+</article>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveHolo":{"editor":"boolean","default":true,"section":"Hologram"},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const HOLD = 1500;
+    const st = this.state || {};
+    const phase = st.phase || 'draft';
+    const W = 394, H = 170, VMIN = 230000, VMAX = 256000;
+    const EV = [['03', 'Arsenal receipts', 'c', 8400], ['08', 'Compute & models', 'd', 4120], ['12', 'Pioneer Fund grant', 'd', 12500], ['15', 'Arsenal receipts', 'c', 9120], ['19', 'Reserve yield', 'c', 52], ['22', 'Qubit agents', 'c', 3380], ['24', 'Compute & models', 'd', 2210], ['26', 'Arsenal receipts', 'c', 1240]];
+    const OPEN = 245028.12, DAYS = 30, LAST = 26;
+    if (!this._h) {
+      const cur = () => (this.state && this.state.phase) || 'draft';
+      const mountHolo = (key, opts) => (el) => {
+        if (this['_el' + key] === el) return;
+        if (this['_h' + key]) { this['_h' + key].destroy(); this['_h' + key] = null; }
+        this['_el' + key] = el;
+        if (el && window.VellumHolo && this.props.liveHolo !== false) this['_h' + key] = window.VellumHolo.mount(el, Object.assign({ onReady: () => { if (!(this.state && this.state.holoOn)) this.setState({ holoOn: true }); } }, opts));
+      };
+      const setDay = (e) => { const r = e.currentTarget.getBoundingClientRect(); const x = (e.clientX - r.left) * W / r.width; const d = Math.max(1, Math.min(LAST, Math.round(x / W * (DAYS - 1)) + 1)); if (!this.state || this.state.day !== d) this.setState({ day: d }); };
+      const seal = () => { clearTimeout(this._t); this.setState({ phase: 'sealed' }); };
+      this._h = {
+        capRef: mountHolo('cap', { design: 'capital', tint: [1, 0.84, 0.52], texMax: 256 }),
+        sealRef: mountHolo('seal', { design: 'seal', texMax: 320 }),
+        certRef: mountHolo('cert', { design: 'certificate', frame2Text: '$248,390\nSEP · 26', texMax: 640, span: 2 }),
+        lightRef: (el) => { this._light = el; },
+        rake: (e) => { const r = e.currentTarget.getBoundingClientRect(); this._lt = [(e.clientX - r.left) * 370 / r.width, (e.clientY - r.top) * 290 / r.height]; this._touch = performance.now(); },
+        down: (e) => { this._drag = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} setDay(e); },
+        move: (e) => { if (this._drag) setDay(e); },
+        up: () => { this._drag = false; },
+        sdown: (e) => { if (cur() !== 'draft') return; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {} this.setState({ phase: 'holding' }); clearTimeout(this._t); this._t = setTimeout(seal, HOLD); },
+        sup: () => { if (cur() === 'holding') { clearTimeout(this._t); this.setState({ phase: 'draft' }); } },
+        skey: (e) => { if (e && e.detail === 0 && cur() === 'draft') seal(); },
+        shold: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+        sreplay: () => { clearTimeout(this._t); this.setState({ phase: 'draft' }); }
+      };
+    }
+    const daily = []; let b = OPEN;
+    for (let d = 1; d <= LAST; d++) { EV.forEach((e) => { if (Number(e[0]) === d) b += e[2] === 'c' ? e[3] : -e[3]; }); daily.push(b); }
+    const X = (d) => (d - 1) / (DAYS - 1) * W, Y = (v) => 10 + (1 - (v - VMIN) / (VMAX - VMIN)) * (H - 20);
+    const pts = daily.map((v, i) => [X(i + 1), Y(v)]);
+    let line = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (let i = 0; i < pts.length - 1; i++) { const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2; line += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1); }
+    const area = line + 'L' + pts[pts.length - 1][0].toFixed(1) + ' ' + H + 'L0 ' + H + 'Z';
+    const day = st.day || 12, px = X(day), py = Y(daily[day - 1]), ML = 2.2, LS = 72;
+    const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const short = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const chart = {
+      line: line, area: area,
+      blots: EV.map((e) => { const d = Number(e[0]); return { x: X(d).toFixed(1), y: Y(daily[d - 1]).toFixed(1), ink: e[2] === 'c' ? '#243F9A' : '#A3321F', halo: e[2] === 'c' ? 'rgba(36,63,154,.18)' : 'rgba(163,50,31,.18)' }; }),
+      px: px.toFixed(1), py: py.toFixed(1), lensL: (px - LS / 2).toFixed(1), lensT: (py - LS / 2).toFixed(1),
+      lensXf: 'translate(' + (LS / 2 - px * ML).toFixed(1) + 'px,' + (LS / 2 - py * ML).toFixed(1) + 'px) scale(' + ML + ')',
+      tagL: Math.max(-4, Math.min(W - 150, px - 75)).toFixed(1), tagT: (py - LS / 2 - 34 < -30 ? py + LS / 2 + 6 : py - LS / 2 - 34).toFixed(1),
+      tagDay: 'Sep ' + day, tagVal: money(daily[day - 1])
+    };
+    const rows = []; let rb = 248390.12;
+    EV.slice().reverse().forEach((e) => { rows.push({ day: e[0], what: e[1], debit: e[2] === 'd' ? short(e[3]) : '', credit: e[2] === 'c' ? short(e[3]) : '', bal: short(rb) }); rb -= e[2] === 'c' ? e[3] : -e[3]; });
+    const Hh = [
+      { name: 'US Dollar', pigment: 'Gold leaf', pct: '47.7%', value: '$118,400.00', share: 0.477, fill: 'url(#vl-g-gold)', swatch: 'linear-gradient(135deg, #FBE6A8, #C8962F)' },
+      { name: 'USD Coin', pigment: 'Lapis lazuli', pct: '25.9%', value: '$64,250.00', share: 0.259, fill: 'url(#vl-g-lapis)', swatch: 'linear-gradient(135deg, #5B78E0, #1B2F7E)' },
+      { name: 'Bitcoin', pigment: 'Vermilion', pct: '19.7%', value: '$48,970.31', share: 0.197, fill: 'url(#vl-g-verm)', swatch: 'linear-gradient(135deg, #E4704F, #9C2E1B)' },
+      { name: 'Ether', pigment: 'Tyrian purple', pct: '6.7%', value: '$16,769.81', share: 0.067, fill: 'url(#vl-g-tyr)', swatch: 'linear-gradient(135deg, #B062A6, #55204F)' }
+    ];
+    const arcs = []; let a0 = -Math.PI / 2; const R1 = 65, R0 = 45, gap = 0.035;
+    const pt = (r, a) => (75 + r * Math.cos(a)).toFixed(2) + ' ' + (75 + r * Math.sin(a)).toFixed(2);
+    Hh.forEach((h) => { const a1 = a0 + h.share * Math.PI * 2, s = a0 + gap / 2, e = a1 - gap / 2, large = e - s > Math.PI ? 1 : 0; arcs.push({ d: 'M' + pt(R1, s) + 'A' + R1 + ' ' + R1 + ' 0 ' + large + ' 1 ' + pt(R1, e) + 'L' + pt(R0, e) + 'A' + R0 + ' ' + R0 + ' 0 ' + large + ' 0 ' + pt(R0, s) + 'Z', fill: h.fill }); a0 = a1; });
+    const sealed = phase === 'sealed', holding = phase === 'holding', on = holding || sealed;
+    const B = [[65, 65, 40, 0], [44, 50, 18, .12], [88, 48, 16, .25], [90, 86, 19, .38], [46, 90, 17, .5], [65, 28, 12, .62], [102, 66, 12, .74], [30, 68, 11, .86]];
+    const holoOn = this.props.liveHolo !== false && !!st.holoOn;
+    return Object.assign({}, this._h, {
+      chart: chart, rows: rows, holdings: Hh, arcs: arcs,
+      blobs: B.map((q) => ({ x: q[0], y: q[1], r: q[2], s: on ? 1 : 0, dur: holding ? '1.1s' : (sealed ? '.5s' : '.35s'), delay: holding ? (q[3] * 0.45).toFixed(2) + 's' : '0s' })),
+      isSealed: sealed, notSealed: !sealed, guideOpacity: on ? 0 : 0.5,
+      sigClip: sealed ? 'inset(0 -4% 0 0)' : 'inset(0 100% 0 0)',
+      fillW: holding ? '100%' : '0%', fillT: holding ? 'width 1.5s linear' : 'width .4s cubic-bezier(.2,.8,.2,1)',
+      holdTitle: holding ? 'Pouring the wax…' : 'Press & hold to seal',
+      holoLive: holoOn ? 1 : 0, holoPoster: holoOn ? 0 : 1
+    });
+  }
+  componentDidMount() {
+    this._lc = [70, 30];
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const tick = () => {
+      this._raf = requestAnimationFrame(tick);
+      if (!this._light || document.hidden) return;
+      const now = performance.now(); let tx, ty;
+      if (this._lt && now - this._touch < 3500) { tx = this._lt[0]; ty = this._lt[1]; }
+      else if (reduce) { tx = 70; ty = 30; }
+      else { const t = now / 1000; tx = 370 * (0.5 + 0.46 * Math.sin(t * 0.32)); ty = 290 * (0.42 + 0.34 * Math.sin(t * 0.21 + 1.3)); }
+      this._lc[0] += (tx - this._lc[0]) * 0.08; this._lc[1] += (ty - this._lc[1]) * 0.08;
+      this._light.setAttribute('x', this._lc[0].toFixed(1)); this._light.setAttribute('y', this._lc[1].toFixed(1));
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); clearTimeout(this._t); ['cap', 'seal', 'cert'].forEach((k) => { if (this['_h' + k]) this['_h' + k].destroy(); }); }
+}
+</script>
+</body>
+</html>

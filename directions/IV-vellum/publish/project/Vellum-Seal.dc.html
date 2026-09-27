@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — The Scribe</title>
+<script src="./support.js"></script>
+<script src="/_blob/5a6980f863bb52cba929728181058d4c"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DCBF;color:#2B2118;font-family:'Alegreya Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#243F9A;text-decoration:none}a:hover{color:#15296B}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid #243F9A;outline-offset:3px}
+.vl-serif{font-family:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif}
+.vl-sc{font-family:'Alegreya SC',Alegreya,Georgia,serif;letter-spacing:.09em}
+.vl-script{font-family:'Pinyon Script','Snell Roundhand',cursive}
+.vl-onum{font-variant-numeric:oldstyle-nums proportional-nums}
+.vl-tnum{font-variant-numeric:lining-nums tabular-nums}
+.vl-vellum{background-color:#EFE3C8;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-rubric{color:#A3321F}
+.vl-hit{position:relative}
+.vl-hit::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+.vl-glass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.16) 55%,rgba(255,255,255,.26) 100%);-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:blur(2px) saturate(165%) brightness(1.04);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.34),inset 0 -12px 20px -12px rgba(120,86,36,.28),0 14px 30px -14px rgba(64,42,14,.45),0 2px 5px rgba(64,42,14,.16)}
+.vl-glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(90% 60% at 22% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),radial-gradient(60% 50% at 88% 110%,rgba(255,255,255,.4),rgba(255,255,255,0) 60%);mix-blend-mode:soft-light}
+.vl-glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from 210deg,rgba(255,255,255,.9),rgba(255,210,170,.5) 12%,rgba(255,255,255,.1) 30%,rgba(150,190,255,.45) 50%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.9));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.vl-refract-dock{-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:url(#vl-dockref) blur(.5px) saturate(175%) brightness(1.05)}
+.vl-refract-sheet{-webkit-backdrop-filter:blur(10px) saturate(165%) brightness(1.05);backdrop-filter:url(#vl-sheetref) blur(8px) saturate(175%) brightness(1.06)}
+.vl-sheet{background-color:#F6EEDC;background-image:url(/_blob/e3efdea5f1161e7054d5535cf2e0c47d);background-size:256px 256px}
+.vl-lift{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 22px 44px -22px rgba(70,45,15,.55),0 3px 8px rgba(70,45,15,.16)}
+.vl-wax{background:radial-gradient(circle at 36% 30%,#7C93F0 0%,#3553C4 26%,#1E3290 58%,#121E5C 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,20,.5),0 3px 8px rgba(20,30,90,.35)}
+.vl-gold{background-image:linear-gradient(100deg,#8C6418 0%,#E9C46A 22%,#FFF1C4 36%,#C8962F 52%,#F3D48A 70%,#8C6418 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:vl-gilt 7s ease-in-out infinite}
+@keyframes vl-gilt{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.vl-ink{animation:vl-ink 1.6s cubic-bezier(.3,.1,.1,1) both}
+@keyframes vl-ink{from{clip-path:inset(0 100% 0 0);filter:blur(1.2px);opacity:.4}60%{filter:blur(.3px);opacity:1}to{clip-path:inset(0 -2% 0 0);filter:blur(0);opacity:1}}
+.vl-rise{animation:vl-rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.vl-draw{animation:vl-draw 2.2s cubic-bezier(.45,0,.2,1) both}
+@keyframes vl-draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.vl-spin{animation:vl-spin 120s linear infinite}
+@keyframes vl-spin{to{transform:rotate(360deg)}}
+.vl-tile{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.vl-tile:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.vl-gold,.vl-spin{animation:none!important}.vl-ink,.vl-rise,.vl-draw{animation-duration:.01s!important;animation-delay:0s!important}}
+.vl-line{display:block;white-space:nowrap}
+.vl-nib{position:absolute;left:0;top:0;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#6A5A48,#1B130C);box-shadow:0 0 0 1.5px rgba(255,255,255,.5);animation:vl-nib 7.4s linear .6s both;offset-path:path('M110 106H350M110 130H342M110 154H330M26 182H352M26 206H320');offset-rotate:0deg}
+@keyframes vl-nib{0%{offset-distance:0%;opacity:1}96%{opacity:1}100%{offset-distance:100%;opacity:0}}
+.vl-blob{transform-box:fill-box;transform-origin:center}
+.vl-lam{position:absolute;inset:0;pointer-events:none;border-radius:4px;background:linear-gradient(115deg,rgba(255,255,255,0) 20%,rgba(255,120,190,.30) 32%,rgba(255,220,120,.32) 38%,rgba(120,255,190,.30) 44%,rgba(110,170,255,.34) 50%,rgba(200,130,255,.30) 56%,rgba(255,255,255,0) 68%);background-size:300% 100%;mix-blend-mode:color-dodge;animation:vl-lam 2.2s cubic-bezier(.5,0,.3,1) .9s both}
+@keyframes vl-lam{0%{background-position:130% 0;opacity:1}85%{opacity:1}100%{background-position:-40% 0;opacity:.0}}
+.vl-irid{position:absolute;inset:0;pointer-events:none;border-radius:4px;background:linear-gradient(115deg,rgba(255,140,200,.07),rgba(140,255,210,.07),rgba(140,180,255,.08),rgba(255,210,140,.07));mix-blend-mode:color-dodge;animation:vl-rise 1s ease 3s both}
+.vl-sig{animation:vl-sig 1.6s cubic-bezier(.6,0,.3,1) 1.3s both}
+@keyframes vl-sig{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 -4% 0 0)}}
+.vl-press{animation:vl-press .7s cubic-bezier(.3,1.6,.5,1) .45s both}
+@keyframes vl-press{0%{transform:scale(1.35);opacity:0}60%{opacity:1}100%{transform:scale(1);opacity:1}}
+.vl-shadowin{animation:vl-shadowin .6s ease-in both}
+@keyframes vl-shadowin{0%{opacity:0;transform:scale(1.6)}70%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(.95)}}
+.vl-stamp{animation:vl-rise .8s cubic-bezier(.2,.8,.2,1) 1.6s both}
+</style>
+</helmet>
+<div class="vl-vellum" style="position: relative; width: 402px; height: 874px; overflow: hidden; color: #2B2118">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="vl-mark" viewBox="0 0 100 86"><path fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<linearGradient id="vl-g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE6A8"></stop><stop offset=".35" stop-color="#D9AC4B"></stop><stop offset=".6" stop-color="#F6DC92"></stop><stop offset="1" stop-color="#8C6418"></stop></linearGradient>
+<linearGradient id="vl-g-lapis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B78E0"></stop><stop offset="1" stop-color="#1B2F7E"></stop></linearGradient>
+<linearGradient id="vl-g-verm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4704F"></stop><stop offset="1" stop-color="#9C2E1B"></stop></linearGradient>
+<linearGradient id="vl-g-tyr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B062A6"></stop><stop offset="1" stop-color="#55204F"></stop></linearGradient>
+<pattern id="vl-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke="#2B2118" stroke-opacity=".35" stroke-width=".7"></path></pattern>
+<filter id="vl-deckle" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-leaf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .6  0 0 0 .55 0" result="c"></feColorMatrix><feComposite in="c" in2="SourceAlpha" operator="in" result="ci"></feComposite><feBlend in="SourceGraphic" in2="ci" mode="overlay"></feBlend></filter>
+<filter id="vl-dockref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/79507f2c8dd1f668719259c7c9f25dc9" x="0" y="0" width="370" height="60" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-sheetref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/d3895c9c6ef566779d2f82c607c0e2ba" x="0" y="0" width="370" height="430" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+</defs>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 45%, rgba(255,250,236,.3) 0%, rgba(255,250,236,0) 45%, rgba(126,86,34,.2) 88%, rgba(96,62,20,.34) 100%)"></div>
+
+<header class="vl-rise" style="position: absolute; left: 16px; right: 16px; top: 54px; height: 44px; display: flex; align-items: center; gap: 12px">
+<a href="Vellum-Vault.dc.html" aria-label="Back to the Folio" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg></a>
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 3C12 5 7 10 5 17l-1 4 4-1c7-2 11-8 12-17z"></path><path d="M5 17c3-1 6-4 8-8"></path><path d="M9 11l3 1"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1"><span class="vl-serif" style="font-size: 23px; font-style: italic; font-weight: 500; line-height: 1">The Scribe</span><span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">Treasury scope · verified</span></div>
+<button type="button" aria-label="Scribe options" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="#2B2118" aria-hidden="true"><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle></svg></button>
+</header>
+
+<div class="vl-glass vl-rise" style="position: absolute; right: 16px; top: 112px; max-width: 300px; padding: 11px 15px; box-sizing: border-box; border-radius: 20px 20px 6px 20px; display: flex; flex-direction: column; gap: 5px; animation-delay: .15s">
+<span class="vl-serif" style="font-size: 16px; font-style: italic; line-height: 1.3">“Move $25,000 to the Pioneer Fund and renew Arsenal Pro.”</span>
+<span class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Spoken · 0:04 · 5:11 pm</span>
+</div>
+
+<article aria-label="Writ of transfer 0417" class="vl-rise" style="position: absolute; left: 16px; top: 188px; width: 370px; height: 520px; animation-delay: .25s">
+<div aria-hidden="true" class="vl-sheet vl-lift" style="position: absolute; inset: 0; border-radius: 4px; filter: url(#vl-deckle)"></div>
+<div aria-hidden="true" style="position: absolute; left: 12px; top: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(43,33,24,.3); border-radius: 3px; box-shadow: inset 0 0 0 4px rgba(43,33,24,.0), inset 0 0 0 5px rgba(43,33,24,.14)"></div>
+
+<div style="position: absolute; left: 26px; right: 26px; top: 26px; display: flex; align-items: baseline; justify-content: space-between">
+<h1 class="vl-serif" style="margin: 0; font-size: 26px; font-style: italic; font-weight: 500; line-height: 1">Writ of Transfer</h1>
+<span class="vl-sc vl-rubric" style="font-size: 11px; font-weight: 700">Nº 0417</span>
+</div>
+<svg aria-hidden="true" width="318" height="14" viewBox="0 0 318 14" style="position: absolute; left: 26px; top: 60px"><path d="M0 7H138M180 7H318" stroke="#2B2118" stroke-opacity=".4" stroke-width=".8"></path><path d="M159 1c-5 4-12 4-16 6 4 2 11 2 16 6 5-4 12-4 16-6-4-2-11-2-16-6z" fill="#A3321F" fill-opacity=".85"></path></svg>
+
+<div aria-hidden="true" style="position: absolute; left: 26px; top: 86px; width: 72px; height: 72px">
+<img src="/_blob/cee6d8bd93c2ea17e7c626ddb6fd448c" alt="" style="position: absolute; inset: 0; width: 72px; height: 72px; opacity: {{holoPoster}}">
+<canvas ref="{{capRef}}" style="position: absolute; inset: 0; width: 72px; height: 72px; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas>
+</div>
+
+<p aria-label="Pay to the order of Pioneer Fund, keeper of the AI Pioneer Program, the sum of twenty-five thousand dollars, $25,000.00, drawn upon Operating ending 4417 and carried on the ZEN rail, to arrive forthwith." class="vl-serif" style="position: absolute; left: 0; top: 0; margin: 0; font-size: 17.5px; line-height: 24px; color: #2B2118">
+<span aria-hidden="true" class="vl-line vl-ink" style="position: absolute; left: 110px; top: 88px; animation-duration: 1.4s; animation-delay: .6s">Pay to the order of <b style="font-weight: 700">Pioneer Fund</b>,</span>
+<span aria-hidden="true" class="vl-line vl-ink" style="position: absolute; left: 110px; top: 112px; animation-duration: 1.4s; animation-delay: 2s">keeper of the AI Pioneer Program,</span>
+<span aria-hidden="true" class="vl-line vl-ink" style="position: absolute; left: 110px; top: 136px; animation-duration: 1.4s; animation-delay: 3.4s">the sum of <i>twenty-five thousand</i></span>
+<span aria-hidden="true" class="vl-line vl-ink" style="position: absolute; left: 26px; top: 164px; animation-duration: 1.5s; animation-delay: 4.8s"><i>dollars</i> — <b class="vl-onum" style="font-weight: 700">$25,000.00</b> — drawn upon Operating</span>
+<span aria-hidden="true" class="vl-line vl-ink" style="position: absolute; left: 26px; top: 188px; animation-duration: 1.4s; animation-delay: 6.3s">••4417 on the ZEN rail, to arrive forthwith.</span>
+</p>
+
+<dl class="vl-rise" style="position: absolute; left: 26px; top: 234px; width: 318px; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding-top: 12px; border-top: 1px solid rgba(43,33,24,.18); animation-delay: 7.4s">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 9px; color: #6E5A42">From</dt><dd style="margin: 0; font-size: 14px; font-weight: 700">Operating ••4417</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 9px; color: #6E5A42">To</dt><dd style="margin: 0; display: flex; align-items: center; gap: 5px; font-size: 14px; font-weight: 700">Pioneer Fund<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#243F9A"></circle><path d="m7.5 12.4 3 3 6-6.2" fill="none" stroke="#F6EEDC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 9px; color: #6E5A42">Arrives</dt><dd class="vl-serif" style="margin: 0; font-size: 16px; font-style: italic; font-weight: 600">Forthwith</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 9px; color: #6E5A42">Rail fee</dt><dd class="vl-tnum" style="margin: 0; font-size: 14px; font-weight: 700">$0.00</dd></div>
+</dl>
+
+<p class="vl-sc vl-rise" style="position: absolute; left: 26px; top: 346px; width: 318px; margin: 0; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 9.5px; color: #A3321F; animation-delay: 7.6s">
+<span>✓ Balance examined</span><span>✓ Payee verified</span><span>✓ Limits kept</span><span>✓ Simulated clean</span>
+</p>
+
+<div style="position: absolute; left: 26px; top: 404px; width: 170px; display: flex; flex-direction: column; gap: 3px">
+<span class="vl-script" style="height: 38px; font-size: 32px; line-height: 38px; color: #1F2A5C; clip-path: inset(0 100% 0 0)" aria-hidden="true">{{sigPlaceholder}}</span>
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}"><span class="vl-script vl-sig" style="position: absolute; left: 0; top: 0; height: 38px; font-size: 32px; line-height: 38px; color: #1F2A5C; white-space: nowrap">Alex Leschik</span></sc-if>
+<span style="height: 1px; background: rgba(43,33,24,.5); display: block"></span>
+<span class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Authorized by the Keeper</span>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: 226px; top: 364px; width: 130px; height: 130px">
+<svg width="130" height="130" viewBox="0 0 130 130" style="position: absolute; inset: 0; overflow: visible">
+<defs>
+<filter id="vl-goo" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"></feGaussianBlur>
+<feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo"></feColorMatrix>
+<feGaussianBlur in="goo" stdDeviation="2.6" result="h"></feGaussianBlur>
+<feSpecularLighting in="h" surfaceScale="6" specularConstant="1.25" specularExponent="24" lighting-color="#FFFFFF" result="s"><fePointLight x="26" y="4" z="110"></fePointLight></feSpecularLighting>
+<feComposite in="s" in2="goo" operator="in" result="si"></feComposite>
+<feDiffuseLighting in="h" surfaceScale="6" diffuseConstant="1" lighting-color="#FFFFFF" result="d"><feDistantLight azimuth="235" elevation="48"></feDistantLight></feDiffuseLighting>
+<feComposite in="goo" in2="d" operator="arithmetic" k1="1.15" k2="0" k3="0" k4="0" result="lit"></feComposite>
+<feComposite in="si" in2="lit" operator="arithmetic" k1="0" k2=".9" k3="1" k4="0"></feComposite>
+</filter>
+</defs>
+<circle cx="65" cy="65" r="44" fill="none" stroke="#2B2118" stroke-opacity="{{guideOpacity}}" stroke-width=".9" stroke-dasharray="3 4" style="transition: stroke-opacity .4s ease"></circle>
+<text x="65" y="69" text-anchor="middle" font-family="Alegreya SC, Georgia, serif" font-size="9" letter-spacing="1.4" fill="#6E5A42" fill-opacity="{{guideOpacity}}" style="transition: fill-opacity .4s ease">SEAL HERE</text>
+<g filter="url(#vl-goo)">
+<sc-for list="{{blobs}}" as="b" hint-placeholder-count="8">
+<circle class="vl-blob" cx="{{b.x}}" cy="{{b.y}}" r="{{b.r}}" fill="#2B45AE" style="transform: scale({{b.s}}); transition: transform {{b.dur}} cubic-bezier(.3,.9,.3,1) {{b.delay}}"></circle>
+</sc-for>
+</g>
+</svg>
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}">
+<span class="vl-shadowin" style="position: absolute; left: 20px; top: 20px; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, rgba(10,14,40,.7), rgba(10,14,40,0) 70%)"></span>
+<svg class="vl-press" width="130" height="130" viewBox="0 0 130 130" style="position: absolute; inset: 0">
+<circle cx="65" cy="65" r="36" fill="none" stroke="#6F86E6" stroke-opacity=".75" stroke-width="2"></circle>
+<circle cx="65" cy="65" r="35" fill="none" stroke="#0E1747" stroke-opacity=".55" stroke-width="1.2" transform="translate(.8 1)"></circle>
+<path id="vl-sealtext" d="M65 36a29 29 0 1 1-.1 0" fill="none"></path>
+<text font-family="Alegreya SC, Georgia, serif" font-size="6.2" letter-spacing="1.6" fill="#AFC0FF" fill-opacity=".85"><textPath href="#vl-sealtext">ZEN · TREASURY · FOLIO IV · SEALED ·</textPath></text>
+</svg>
+<span class="vl-press" style="position: absolute; left: 45px; top: 45px; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1.5px #D9AC4B, 0 0 0 2.5px rgba(10,14,40,.5), 0 2px 4px rgba(0,0,0,.4); animation-delay: .7s">
+<img src="/_blob/ba164d066e351496f3b948ca53ddb275" alt="" style="position: absolute; inset: 0; width: 40px; height: 40px">
+</span>
+</sc-if>
+<span style="position: absolute; left: 45px; top: 45px; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; opacity: {{insertLive}}; transition: opacity .6s ease 1s; pointer-events: none">
+<canvas ref="{{sealRef}}" style="position: absolute; inset: 0; width: 40px; height: 40px"></canvas>
+</span>
+</div>
+
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}">
+<div class="vl-lam" aria-hidden="true"></div>
+<div class="vl-irid" aria-hidden="true"></div>
+<p class="vl-stamp vl-sc" role="status" style="position: absolute; left: 26px; right: 26px; top: 486px; margin: 0; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 10px; font-weight: 700; color: #243F9A"><span style="height: 1px; flex-grow: 1; background: rgba(36,63,154,.35)"></span>Sealed · 5:12:04 pm · settled on the ZEN rail<span style="height: 1px; flex-grow: 1; background: rgba(36,63,154,.35)"></span></p>
+</sc-if>
+<sc-if value="{{notSealed}}" hint-placeholder-val="{{true}}">
+<span class="vl-nib" aria-hidden="true"></span>
+</sc-if>
+</article>
+
+<sc-if value="{{notSealed}}" hint-placeholder-val="{{true}}">
+<button type="button" onPointerDown="{{down}}" onPointerUp="{{up}}" onPointerLeave="{{up}}" onPointerCancel="{{up}}" onClick="{{key}}" onContextMenu="{{hold}}" aria-label="Press and hold to seal the writ, $25,000.00 to Pioneer Fund" class="vl-glass vl-refract-dock" style="position: absolute; left: 16px; top: 728px; width: 370px; height: 72px; border-radius: 36px; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; display: flex; align-items: center; gap: 14px; padding: 0 22px 0 12px; box-sizing: border-box">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: {{fillW}}; background: linear-gradient(90deg, rgba(43,69,174,.10), rgba(43,69,174,.34)); transition: {{fillT}}"></span>
+<span aria-hidden="true" class="vl-wax" style="position: relative; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="19" viewBox="0 0 100 86"><use href="#vl-mark" fill="#F3D48A"></use></svg></span>
+<span style="position: relative; display: flex; flex-direction: column; gap: 2px; text-align: left; flex-grow: 1">
+<span class="vl-serif" style="font-size: 21px; font-style: italic; font-weight: 600; line-height: 1">{{holdTitle}}</span>
+<span class="vl-sc" style="font-size: 9.5px; color: #5E4B36">{{holdSub}}</span>
+</span>
+<span class="vl-serif vl-onum" style="position: relative; font-size: 20px; font-weight: 600">$25,000</span>
+</button>
+<p class="vl-sc" style="position: absolute; left: 0; right: 0; top: 812px; margin: 0; text-align: center; font-size: 9px; color: #6E5A42">Release to cancel · Face ID confirms on device</p>
+</sc-if>
+
+<sc-if value="{{isSealed}}" hint-placeholder-val="{{false}}">
+<div class="vl-stamp" style="position: absolute; left: 16px; top: 728px; width: 370px; display: flex; gap: 10px; animation-delay: 2.2s">
+<button type="button" onClick="{{replay}}" class="vl-glass" style="height: 56px; padding: 0 22px; border-radius: 28px; font-size: 15px; font-weight: 500">Replay</button>
+<a href="Vellum-Certificate.dc.html" class="vl-glass" style="height: 56px; padding: 0 18px; border-radius: 28px; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #2B2118; flex-grow: 1; justify-content: center">Proof 7f3a…d6c1</a>
+<a href="Vellum-Vault.dc.html" class="vl-wax" style="height: 56px; padding: 0 26px; border-radius: 28px; display: flex; align-items: center; font-size: 15px; font-weight: 700; color: #F3D48A">Done</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveHolo":{"editor":"boolean","default":true,"section":"Hologram"},"state":{"editor":"enum","options":["draft","sealed"],"default":"draft","section":"Prototype"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const HOLD = 1500;
+    const st = this.state || {};
+    const phase = st.phase || (this.props.state === 'sealed' ? 'sealed' : 'draft');
+    if (!this._h) {
+      const cur = () => (this.state && this.state.phase) || (this.props.state === 'sealed' ? 'sealed' : 'draft');
+      const mountHolo = (key, opts) => (el) => {
+        if (this['_el' + key] === el) return;
+        if (this['_h' + key]) { this['_h' + key].destroy(); this['_h' + key] = null; }
+        this['_el' + key] = el;
+        if (el && window.VellumHolo && this.props.liveHolo !== false) {
+          this['_h' + key] = window.VellumHolo.mount(el, Object.assign({ onReady: () => { if (!(this.state && this.state.holoOn)) this.setState({ holoOn: true }); } }, opts));
+        }
+      };
+      const seal = () => { clearTimeout(this._t); this.setState({ phase: 'sealed' }); setTimeout(() => { if (this._hseal) this._hseal.set({ flash: 1.2 }); }, 1100); };
+      this._h = {
+        capRef: mountHolo('cap', { design: 'capital', tint: [1, 0.84, 0.52], texMax: 384 }),
+        sealRef: mountHolo('seal', { design: 'seal', texMax: 200, glitter: 0.6 }),
+        down: (e) => {
+          if (cur() !== 'draft') return;
+          try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+          this.setState({ phase: 'holding' });
+          clearTimeout(this._t); this._t = setTimeout(seal, HOLD);
+        },
+        up: () => { if (cur() === 'holding') { clearTimeout(this._t); this.setState({ phase: 'draft' }); } },
+        key: (e) => { if (e && e.detail === 0 && cur() === 'draft') seal(); },
+        hold: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+        replay: () => { clearTimeout(this._t); this.setState({ phase: 'draft' }); }
+      };
+    }
+    const sealed = phase === 'sealed', holding = phase === 'holding';
+    const on = holding || sealed;
+    const B = [[65, 65, 40, 0], [44, 50, 18, .12], [88, 48, 16, .25], [90, 86, 19, .38], [46, 90, 17, .5], [65, 28, 12, .62], [102, 66, 12, .74], [30, 68, 11, .86]];
+    const blobs = B.map((b) => ({ x: b[0], y: b[1], r: b[2], s: on ? 1 : 0, dur: holding ? '1.1s' : (sealed ? '.5s' : '.35s'), delay: holding ? (b[3] * 0.45).toFixed(2) + 's' : '0s' }));
+    const holoOn = this.props.liveHolo !== false && !!st.holoOn;
+    return Object.assign({}, this._h, {
+      blobs: blobs, isSealed: sealed, notSealed: !sealed,
+      guideOpacity: on ? 0 : 0.55,
+      insertLive: sealed && holoOn ? 1 : 0,
+      holoLive: holoOn ? 1 : 0, holoPoster: holoOn ? 0 : 1,
+      sigPlaceholder: 'Alex Leschik',
+      fillW: holding ? '100%' : '0%',
+      fillT: holding ? 'width 1.5s linear' : 'width .4s cubic-bezier(.2,.8,.2,1)',
+      holdTitle: holding ? 'Pouring the wax…' : 'Press & hold to seal',
+      holdSub: holding ? 'Keep holding' : 'Lapis wax · holographic insert'
+    });
+  }
+  componentWillUnmount() { clearTimeout(this._t); ['cap', 'seal'].forEach((k) => { if (this['_h' + k]) this['_h' + k].destroy(); }); }
+}
+</script>
+</body>
+</html>

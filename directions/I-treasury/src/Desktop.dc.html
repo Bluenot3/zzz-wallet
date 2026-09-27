@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Treasury — Command Deck</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#070B16;color:#EDE6D6;font-family:'Geist','Helvetica Neue',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#E9D29A;text-decoration:none}a:hover{color:#F7E8BF}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+input{font:inherit;color:inherit;background:none;border:0;outline:0;margin:0;padding:0}
+input::placeholder{color:#8A96B0}
+button:focus-visible,a:focus-visible{outline:2px solid #6E9BFF;outline-offset:3px}
+.cz{font-family:'Cinzel','Trajan Pro','Times New Roman',serif}
+.mono{font-family:'Geist Mono',ui-monospace,Menlo,monospace}
+.tnum{font-variant-numeric:tabular-nums lining-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.matte{background:linear-gradient(145deg,#172039 0%,#0D1326 100%);box-shadow:-6px -6px 14px rgba(98,128,200,.10),8px 10px 20px rgba(0,0,0,.62),inset 1px 1px 0 rgba(255,255,255,.07),inset -1px -1px 0 rgba(0,0,0,.4);transition:box-shadow .15s ease,background .15s ease}
+button.matte:hover,a.matte:hover{background:linear-gradient(145deg,#1B2542 0%,#0E1528 100%)}
+button.matte:active,a.matte:active,.matte-in{background:linear-gradient(145deg,#0A0F1F 0%,#121B33 100%);box-shadow:inset 5px 6px 12px rgba(0,0,0,.62),inset -4px -4px 10px rgba(98,128,200,.10),0 1px 0 rgba(255,255,255,.05)}
+.glass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.17) 0%,rgba(255,255,255,.05) 55%,rgba(255,255,255,.09) 100%);-webkit-backdrop-filter:blur(20px) saturate(190%) brightness(1.1);backdrop-filter:blur(20px) saturate(190%) brightness(1.1);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12),inset 0 0 22px rgba(255,255,255,.06),0 14px 32px rgba(0,0,0,.42),0 2px 6px rgba(0,0,0,.28)}
+.glass-dark{position:relative;background:linear-gradient(180deg,rgba(34,48,90,.62) 0%,rgba(10,16,32,.78) 100%);-webkit-backdrop-filter:blur(34px) saturate(170%);backdrop-filter:blur(34px) saturate(170%);border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(255,255,255,.06),inset 0 0 40px rgba(120,160,255,.06),0 40px 80px rgba(0,0,0,.55),0 4px 12px rgba(0,0,0,.35)}
+.glass::before,.glass-dark::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 90% at 18% -10%,rgba(255,255,255,.22),rgba(255,255,255,0) 46%),radial-gradient(90% 70% at 100% 120%,rgba(110,160,255,.16),rgba(110,160,255,0) 60%);mix-blend-mode:screen}
+.paper{position:relative;background:radial-gradient(140% 100% at 8% 0%,#F8F2E6 0%,#F0E7D5 52%,#E5D9C1 100%);color:#16223F;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 0 rgba(110,86,40,.16),0 24px 40px -20px rgba(0,0,0,.75),0 3px 6px rgba(0,0,0,.35)}
+.holo{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.4) 0 1px,rgba(255,255,255,0) 1px 6px),repeating-linear-gradient(-45deg,rgba(255,255,255,.4) 0 1px,rgba(255,255,255,0) 1px 6px),linear-gradient(115deg,#F3C9E4 0%,#BFE2F8 17%,#DDD3FD 33%,#FFEDBE 50%,#C4F0DC 67%,#CFD4FF 83%,#F3C9E4 100%);background-size:auto,auto,300% 300%;animation:holo 10s linear infinite}
+.gold-text{background-image:linear-gradient(180deg,#F8E9BD 0%,#DDBB72 48%,#A57F3A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.ivory-text{background-image:linear-gradient(180deg,#FFFFFF 0%,#F1E8D3 50%,#CDBB92 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 10px 20px rgba(0,0,0,.4))}
+.shimmer{background-image:linear-gradient(90deg,#8E9AB6 0%,#8E9AB6 35%,#F4EEE2 50%,#8E9AB6 65%,#8E9AB6 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shimmer 2.8s linear infinite}
+.sheen{animation:sheen 6s cubic-bezier(.45,0,.2,1) infinite}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes holo{to{background-position:0 0,0 0,150% 50%}}
+@keyframes shimmer{from{background-position:100% 0}to{background-position:-100% 0}}
+@keyframes sheen{0%{transform:translateX(-140%) skewX(-18deg)}55%,100%{transform:translateX(420%) skewX(-18deg)}}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
+@media (prefers-reduced-motion:reduce){.holo,.shimmer,.sheen,.pulse{animation:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: 900px; overflow: hidden; background: radial-gradient(80% 70% at 22% -12%, #1C2F66 0%, #0C1430 46%, #070B16 100%); color: #EDE6D6">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F8FB"></stop><stop offset=".32" stop-color="#BCC3D0"></stop><stop offset=".52" stop-color="#EEF1F5"></stop><stop offset=".78" stop-color="#8B94A6"></stop><stop offset="1" stop-color="#D7DCE4"></stop></linearGradient>
+<linearGradient id="spark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D4B26A" stop-opacity=".2"></stop><stop offset=".5" stop-color="#E9D29A"></stop><stop offset="1" stop-color="#F8E9BD"></stop></linearGradient>
+<symbol id="zm" viewBox="0 0 100 86"><path d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<symbol id="rose" viewBox="-50 -50 100 100"><g fill="none" stroke="currentColor" stroke-width=".35"><ellipse rx="46" ry="15"></ellipse><ellipse rx="46" ry="15" transform="rotate(10)"></ellipse><ellipse rx="46" ry="15" transform="rotate(20)"></ellipse><ellipse rx="46" ry="15" transform="rotate(30)"></ellipse><ellipse rx="46" ry="15" transform="rotate(40)"></ellipse><ellipse rx="46" ry="15" transform="rotate(50)"></ellipse><ellipse rx="46" ry="15" transform="rotate(60)"></ellipse><ellipse rx="46" ry="15" transform="rotate(70)"></ellipse><ellipse rx="46" ry="15" transform="rotate(80)"></ellipse><ellipse rx="46" ry="15" transform="rotate(90)"></ellipse><ellipse rx="46" ry="15" transform="rotate(100)"></ellipse><ellipse rx="46" ry="15" transform="rotate(110)"></ellipse><ellipse rx="46" ry="15" transform="rotate(120)"></ellipse><ellipse rx="46" ry="15" transform="rotate(130)"></ellipse><ellipse rx="46" ry="15" transform="rotate(140)"></ellipse><ellipse rx="46" ry="15" transform="rotate(150)"></ellipse><ellipse rx="46" ry="15" transform="rotate(160)"></ellipse><ellipse rx="46" ry="15" transform="rotate(170)"></ellipse><ellipse rx="34" ry="24"></ellipse><ellipse rx="34" ry="24" transform="rotate(15)"></ellipse><ellipse rx="34" ry="24" transform="rotate(30)"></ellipse><ellipse rx="34" ry="24" transform="rotate(45)"></ellipse><ellipse rx="34" ry="24" transform="rotate(60)"></ellipse><ellipse rx="34" ry="24" transform="rotate(75)"></ellipse><ellipse rx="34" ry="24" transform="rotate(90)"></ellipse><ellipse rx="34" ry="24" transform="rotate(105)"></ellipse><ellipse rx="34" ry="24" transform="rotate(120)"></ellipse><ellipse rx="34" ry="24" transform="rotate(135)"></ellipse><ellipse rx="34" ry="24" transform="rotate(150)"></ellipse><ellipse rx="34" ry="24" transform="rotate(165)"></ellipse><circle r="48.5"></circle><circle r="47.2"></circle><circle r="13"></circle><circle r="11.4"></circle></g></symbol>
+<pattern id="gw" width="12" height="8" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D4B26A" stroke-width=".45"><path d="M0 4q3-3.5 6 0t6 0"></path><path d="M0 4q3 3.5 6 0t6 0"></path><path d="M-3 4q3-3.5 6 0t6 0t6 0"></path><path d="M-3 4q3 3.5 6 0t6 0t6 0"></path></g></pattern>
+<pattern id="gwn" width="12" height="8" patternUnits="userSpaceOnUse"><g fill="none" stroke="#16223F" stroke-width=".4"><path d="M0 4q3-3.5 6 0t6 0"></path><path d="M0 4q3 3.5 6 0t6 0"></path><path d="M-3 4q3-3.5 6 0t6 0t6 0"></path><path d="M-3 4q3 3.5 6 0t6 0t6 0"></path></g></pattern>
+<pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v4" stroke="#D4B26A" stroke-width=".6"></path></pattern>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"></stop><stop offset="1" stop-color="#fff" stop-opacity="0"></stop></linearGradient>
+<mask id="fadeMask"><rect x="0" y="180" width="600" height="62" fill="url(#fade)"></rect></mask>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .42  0 0 0 0 .3  0 0 0 .55 0"></feColorMatrix></filter>
+</defs>
+</svg>
+
+<div style="position: absolute; left: 980px; top: -160px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(60,123,255,.30) 0%, rgba(60,123,255,0) 64%)"></div>
+<svg width="900" height="900" style="position: absolute; left: -200px; top: -180px; color: #8FA6E0; opacity: .06" aria-hidden="true"><use href="#rose" width="900" height="900"></use></svg>
+<svg width="700" height="700" style="position: absolute; left: 820px; top: 380px; color: #8FA6E0; opacity: .05" aria-hidden="true"><use href="#rose" width="700" height="700"></use></svg>
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .16; mix-blend-mode: overlay; pointer-events: none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+
+<nav class="matte" aria-label="Primary" style="position: absolute; left: 24px; top: 24px; width: 76px; height: 852px; box-sizing: border-box; border-radius: 28px; display: flex; flex-direction: column; align-items: center; padding: 18px 0; gap: 10px">
+<div class="matte-in" style="position: relative; width: 52px; height: 52px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px">
+<svg width="30" height="26" viewBox="0 0 100 86" style="filter: drop-shadow(0 1px 0 rgba(0,0,0,.7)) drop-shadow(0 0 6px rgba(76,134,255,.45))" aria-hidden="true"><use href="#zm" fill="url(#silver)"></use></svg>
+<span style="position: absolute; right: 6px; top: 10px; bottom: 10px; width: 1.5px; border-radius: 1px; background: linear-gradient(180deg, rgba(76,134,255,0), #6E9BFF, rgba(76,134,255,0)); box-shadow: 0 0 8px #3C7BFF"></span>
+</div>
+<a href="#vault" aria-label="Vault" aria-current="page" class="matte-in" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"></path><path d="M5.5 10v8"></path><path d="M10 10v8"></path><path d="M14 10v8"></path><path d="M18.5 10v8"></path><path d="M3.5 20.5h17"></path></svg>
+</a>
+<a href="#agent" aria-label="ZEN Agent" style="position: relative; width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB8CF" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z"></path></svg>
+<span class="holo" style="position: absolute; right: 9px; top: 9px; width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 2px #121A30"></span>
+</a>
+<a href="#markets" aria-label="Markets" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB8CF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5h16"></path><path d="M5.5 15 10 10.5l3.5 3.5 5-6"></path></svg>
+</a>
+<a href="#instruments" aria-label="Instruments" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB8CF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h8.5L19 8v12.5H6z"></path><path d="M14 3.5V8h5"></path><path d="M9 12.5h7"></path><path d="M9 16h5"></path></svg>
+</a>
+<a href="#activity" aria-label="Activity" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB8CF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6.5h11"></path><path d="M9 12h11"></path><path d="M9 17.5h11"></path><path d="M4.5 6.5h.01"></path><path d="M4.5 12h.01"></path><path d="M4.5 17.5h.01"></path></svg>
+</a>
+<div style="flex-grow: 1"></div>
+<a href="#settings" aria-label="Settings" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#AEB8CF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7"></path></svg>
+</a>
+<button class="matte" aria-label="Account — Alex Leschik" style="width: 48px; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center">
+<span class="cz gold-text" style="font-size: 13px; font-weight: 700; letter-spacing: .08em">AL</span>
+</button>
+</nav>
+
+<header style="position: absolute; left: 128px; top: 34px; width: 600px; height: 62px; display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="cz gold-text" style="font-size: 10.5px; font-weight: 700; letter-spacing: .32em; line-height: 1">ZEN TREASURY · OVERVIEW</span>
+<h1 class="cz" style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: .02em; line-height: 1; color: #F4EEE2; white-space: nowrap">Good evening, Alex</h1>
+</div>
+<div class="matte-in" style="position: relative; width: 276px; height: 44px; box-sizing: border-box; border-radius: 22px; padding: 4px; flex-shrink: 0">
+<div class="glass" style="position: absolute; left: 4px; top: 4px; width: 89px; height: 36px; box-sizing: border-box; border-radius: 18px"></div>
+<div style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); height: 36px">
+<button aria-pressed="true" style="height: 36px; border-radius: 18px; font-size: 12.5px; font-weight: 500; color: #F7F1E4">Total</button>
+<button aria-pressed="false" style="height: 36px; border-radius: 18px; font-size: 12.5px; font-weight: 500; color: #9BA6BF">Operating</button>
+<button aria-pressed="false" style="height: 36px; border-radius: 18px; font-size: 12.5px; font-weight: 500; color: #9BA6BF">Pioneer Fund</button>
+</div>
+</div>
+</header>
+
+<div style="position: absolute; left: 128px; top: 116px; width: 600px; height: 310px; border-radius: 28px; overflow: hidden; background: radial-gradient(120% 150% at 0% 0%, #22387A 0%, #15275A 38%, #0C1738 100%); box-shadow: 0 40px 70px -24px rgba(0,0,0,.85), 0 0 0 1px rgba(233,210,154,.28), inset 0 1px 0 rgba(255,255,255,.14)">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .5; mix-blend-mode: soft-light" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+<svg viewBox="0 0 600 310" width="600" height="310" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<rect x="0" y="248" width="600" height="46" fill="url(#gw)" opacity=".22"></rect>
+<use href="#rose" x="330" y="-50" width="264" height="264" style="color: #D4B26A" opacity=".17"></use>
+<rect x="10.5" y="10.5" width="579" height="289" rx="19" fill="none" stroke="#D4B26A" stroke-opacity=".6" stroke-width=".9"></rect>
+<rect x="15.5" y="15.5" width="569" height="279" rx="15" fill="none" stroke="#D4B26A" stroke-opacity=".3" stroke-width=".5" stroke-dasharray="1 2"></rect>
+<text x="36" y="26.2" font-family="Geist Mono, monospace" font-size="4.6" letter-spacing=".9" fill="#E9D29A" fill-opacity=".66" textLength="440" lengthAdjust="spacingAndGlyphs">ZEN AI CO · POWERING INTELLIGENT SYSTEMS · INTEGRITY · STABILITY · INNOVATION · EXECUTION · PRECISION · TRUST · SOVEREIGNTY · SERIES 2026 ·</text>
+<text x="36" y="289" font-family="Geist Mono, monospace" font-size="4.6" letter-spacing=".9" fill="#E9D29A" fill-opacity=".66" textLength="440" lengthAdjust="spacingAndGlyphs">PRECISION · TRUST · SOVEREIGNTY · SERIES 2026 · ZEN AI CO · POWERING INTELLIGENT SYSTEMS · INTEGRITY · STABILITY · INNOVATION ·</text>
+<g fill="#E9D29A" opacity=".8"><path d="M10.5 6l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z"></path><path d="M10.5 295l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z"></path><path d="M589.5 6l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z"></path><path d="M589.5 295l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z"></path></g>
+<path d="M36.0 235.0C38.5 235.2 46.0 236.3 51.0 236.0C56.0 235.7 60.9 234.8 65.9 233.5C70.9 232.1 75.9 229.9 80.9 227.8C85.9 225.8 90.9 222.8 95.9 221.1C100.9 219.5 105.8 218.6 110.8 217.8C115.8 217.1 120.8 216.8 125.8 216.5C130.8 216.2 135.8 216.2 140.8 216.2C145.7 216.2 150.7 216.1 155.7 216.5C160.7 216.9 165.7 217.7 170.7 218.8C175.7 219.9 180.7 221.5 185.7 223.0C190.6 224.5 195.6 227.9 200.6 228.0C205.6 228.0 210.6 224.2 215.6 223.3C220.6 222.3 225.6 223.2 230.6 222.3C235.5 221.4 240.5 217.9 245.5 217.7C250.5 217.6 255.5 221.1 260.5 221.3C265.5 221.6 270.5 219.8 275.4 219.3C280.4 218.7 285.4 218.9 290.4 218.1C295.4 217.4 300.4 215.3 305.4 214.7C310.4 214.0 315.4 215.1 320.3 214.3C325.3 213.5 330.3 211.4 335.3 209.9C340.3 208.4 345.3 207.1 350.3 205.4C355.3 203.7 360.3 199.6 365.2 199.6C370.2 199.7 375.2 204.0 380.2 205.5C385.2 206.9 390.2 208.9 395.2 208.3C400.2 207.8 405.1 205.0 410.1 202.3C415.1 199.7 420.1 194.6 425.1 192.4C430.1 190.3 435.1 190.0 440.1 189.5C445.1 188.9 450.0 190.2 455.0 189.3C460.0 188.4 467.5 184.9 470.0 184.0L470 242L36 242Z" fill="url(#hatch)" mask="url(#fadeMask)" opacity=".55"></path>
+<path d="M36.0 235.0C38.5 235.2 46.0 236.3 51.0 236.0C56.0 235.7 60.9 234.8 65.9 233.5C70.9 232.1 75.9 229.9 80.9 227.8C85.9 225.8 90.9 222.8 95.9 221.1C100.9 219.5 105.8 218.6 110.8 217.8C115.8 217.1 120.8 216.8 125.8 216.5C130.8 216.2 135.8 216.2 140.8 216.2C145.7 216.2 150.7 216.1 155.7 216.5C160.7 216.9 165.7 217.7 170.7 218.8C175.7 219.9 180.7 221.5 185.7 223.0C190.6 224.5 195.6 227.9 200.6 228.0C205.6 228.0 210.6 224.2 215.6 223.3C220.6 222.3 225.6 223.2 230.6 222.3C235.5 221.4 240.5 217.9 245.5 217.7C250.5 217.6 255.5 221.1 260.5 221.3C265.5 221.6 270.5 219.8 275.4 219.3C280.4 218.7 285.4 218.9 290.4 218.1C295.4 217.4 300.4 215.3 305.4 214.7C310.4 214.0 315.4 215.1 320.3 214.3C325.3 213.5 330.3 211.4 335.3 209.9C340.3 208.4 345.3 207.1 350.3 205.4C355.3 203.7 360.3 199.6 365.2 199.6C370.2 199.7 375.2 204.0 380.2 205.5C385.2 206.9 390.2 208.9 395.2 208.3C400.2 207.8 405.1 205.0 410.1 202.3C415.1 199.7 420.1 194.6 425.1 192.4C430.1 190.3 435.1 190.0 440.1 189.5C445.1 188.9 450.0 190.2 455.0 189.3C460.0 188.4 467.5 184.9 470.0 184.0" fill="none" stroke="url(#spark)" stroke-width="1.6" stroke-linecap="round"></path>
+<circle cx="470" cy="184" r="7" fill="#E9D29A" opacity=".18"></circle>
+<circle cx="470" cy="184" r="3" fill="#F8E9BD"></circle>
+<text x="470" y="170" text-anchor="end" font-family="Geist Mono, monospace" font-size="7" letter-spacing="1.6" fill="#C9B27A">30-DAY RESERVE</text>
+</svg>
+
+<div style="position: absolute; left: 36px; top: 42px; display: flex; flex-direction: column; gap: 14px">
+<span class="cz gold-text" style="font-size: 10.5px; font-weight: 700; letter-spacing: .32em; line-height: 1">TOTAL RESERVE</span>
+<div style="display: flex; align-items: baseline; gap: 3px; line-height: 1">
+<span class="cz ivory-text tnum" style="font-size: 62px; font-weight: 500; letter-spacing: .01em">$248,390</span>
+<span class="cz gold-text tnum" style="font-size: 30px; font-weight: 600">.12</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 14px; background: rgba(212,178,106,.11); border: 1px solid rgba(212,178,106,.3); align-self: flex-start">
+<svg width="10" height="8" viewBox="0 0 10 8" aria-hidden="true"><path d="M5 .5 9.5 7.5H.5z" fill="#8FE0C4"></path></svg>
+<span class="mono tnum" style="font-size: 12.5px; color: #F1EADB">+$1,377.42</span>
+<span style="font-size: 12.5px; color: #B9C2D6">0.56% today</span>
+</div>
+</div>
+
+<div style="position: absolute; left: 36px; top: 256px; display: flex; align-items: center; gap: 18px">
+<span class="mono gold-text" style="font-size: 13px; font-weight: 500; letter-spacing: .24em">ZT 2026 0926 A</span>
+<span class="cz" style="font-size: 9px; font-weight: 700; letter-spacing: .26em; color: #C9B27A">SERIES 2026 · OPERATING</span>
+</div>
+
+<div style="position: absolute; left: 416px; top: 38px; width: 84px; height: 84px">
+<div class="holo" style="position: absolute; left: 0; top: 0; width: 84px; height: 84px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.55), inset 0 -8px 16px rgba(40,50,110,.18), 0 8px 20px rgba(0,0,0,.55)"></div>
+<svg viewBox="-42 -42 84 84" width="84" height="84" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+<defs><path id="sealRingD" d="M-32 0a32 32 0 1 1 64 0a32 32 0 1 1-64 0"></path></defs>
+<circle r="40" fill="none" stroke="#1B2A5A" stroke-opacity=".5" stroke-width=".7"></circle>
+<circle r="26" fill="none" stroke="#1B2A5A" stroke-opacity=".45" stroke-width=".6"></circle>
+<text font-family="Cinzel, serif" font-size="6.2" font-weight="700" letter-spacing="1.35" fill="#1B2A5A" fill-opacity=".75"><textPath href="#sealRingD">VERIFIED RESERVE · ZEN AI CO · 2026 ·</textPath></text>
+<use href="#rose" x="-24" y="-24" width="48" height="48" style="color: #1B2A5A" opacity=".32"></use>
+<svg x="-13" y="-11.2" width="26" height="22.4" viewBox="0 0 100 86"><use href="#zm" fill="#1B2A5A" fill-opacity=".85"></use></svg>
+</svg>
+</div>
+
+<div style="position: absolute; left: 510px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(110,155,255,.1), #7EA6FF 30%, #7EA6FF 70%, rgba(110,155,255,.1)); box-shadow: 0 0 12px #3C7BFF, 0 0 2px #9DBBFF"></div>
+<div class="holo" style="position: absolute; left: 524px; top: 0; bottom: 0; width: 38px; overflow: hidden; box-shadow: inset 1px 0 0 rgba(255,255,255,.65), inset -1px 0 0 rgba(20,30,70,.2), 0 0 16px rgba(190,220,255,.22)">
+<svg width="22" height="19" viewBox="0 0 100 86" style="position: absolute; left: 8px; top: 44px; opacity: .42" aria-hidden="true"><use href="#zm" fill="#1B2A5A"></use></svg>
+<svg width="22" height="19" viewBox="0 0 100 86" style="position: absolute; left: 8px; top: 146px; opacity: .42" aria-hidden="true"><use href="#zm" fill="#1B2A5A"></use></svg>
+<svg width="22" height="19" viewBox="0 0 100 86" style="position: absolute; left: 8px; top: 248px; opacity: .42" aria-hidden="true"><use href="#zm" fill="#1B2A5A"></use></svg>
+<div class="sheen" style="position: absolute; top: -20px; bottom: -20px; left: 0; width: 26px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.75), rgba(255,255,255,0))"></div>
+</div>
+<div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(50% 70% at 22% 10%, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 62%)"></div>
+</div>
+
+<nav aria-label="Quick actions" style="position: absolute; left: 128px; top: 446px; width: 600px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<a href="#send" class="matte" style="height: 56px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 500; color: #E4E8F1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>Send</a>
+<a href="#receive" class="matte" style="height: 56px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 500; color: #E4E8F1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7 7 17"></path><path d="M15 17H7V9"></path></svg>Receive</a>
+<a href="#exchange" class="matte" style="height: 56px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 500; color: #E4E8F1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8.5h13"></path><path d="M15 5.5l3 3-3 3"></path><path d="M19 15.5H6"></path><path d="M9 12.5l-3 3 3 3"></path></svg>Exchange</a>
+<a href="#vault" class="matte" style="height: 56px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 500; color: #E4E8F1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"></rect><circle cx="12" cy="12" r="3.2"></circle><path d="M12 8.8V7.5"></path><path d="M12 16.5v-1.3"></path></svg>Vault</a>
+</nav>
+
+<section class="paper" aria-label="Holdings ledger" style="position: absolute; left: 128px; top: 522px; width: 600px; height: 354px; box-sizing: border-box; border-radius: 24px; overflow: hidden; padding: 20px 24px">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .55; mix-blend-mode: multiply; pointer-events: none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+<svg width="260" height="224" viewBox="0 0 100 86" style="position: absolute; right: -40px; bottom: -30px; opacity: .04" aria-hidden="true"><use href="#zm" fill="#16223F"></use></svg>
+<svg viewBox="0 0 600 354" width="600" height="354" style="position: absolute; left: 0; top: 0; pointer-events: none" aria-hidden="true"><g fill="none" stroke-width=".5" stroke-linecap="round" opacity=".42"><path d="M330 16q4-2.5 8 .5" stroke="#B0413E"></path><path d="M8 190q2.5 3 6 2.5" stroke="#3C5BA8"></path><path d="M586 128q3-2 6 .5" stroke="#B0413E"></path><path d="M420 344q3 2.5 7 1.5" stroke="#3C5BA8"></path></g></svg>
+
+<div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 class="cz" style="margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .06em; line-height: 1; color: #16223F">Holdings Ledger</h2>
+<span class="mono" style="font-size: 9.5px; letter-spacing: .1em; color: #5B6275">AS OF SEP 26, 2026 · 5:11 PM ET · 4 POSITIONS</span>
+</div>
+<a href="#ledger" style="display: flex; align-items: center; height: 32px; font-size: 12.5px; font-weight: 500; color: #2E3F72">View all</a>
+</div>
+<div style="position: relative; margin-top: 12px; height: 3px; border-top: 1px solid rgba(22,34,63,.6); border-bottom: 1px solid rgba(22,34,63,.25)"></div>
+
+<div class="cz" style="position: relative; display: grid; grid-template-columns: 196px 128px 116px 60px 52px; justify-content: space-between; align-items: center; height: 32px; font-size: 8.5px; font-weight: 700; letter-spacing: .18em; color: #5B6275; border-bottom: 1px solid rgba(22,34,63,.18)">
+<span>ASSET</span><span style="text-align: right">HOLDING</span><span style="text-align: right">VALUE</span><span style="text-align: right">24H</span><span style="text-align: right">ALLOC</span>
+</div>
+
+<div style="position: relative; display: grid; grid-template-columns: 196px 128px 116px 60px 52px; justify-content: space-between; align-items: center; height: 58px; border-bottom: 1px solid rgba(22,34,63,.12)">
+<div style="display: flex; align-items: center; gap: 12px"><span class="cz" style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(22,34,63,.55); box-shadow: inset 0 0 0 3px #F3EBDB, inset 0 0 0 3.6px rgba(22,34,63,.3); font-size: 9px; font-weight: 700; color: #16223F">USD</span><div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600; color: #16223F">US Dollar</span><span style="font-size: 11.5px; color: #5B6275">Cash · Operating</span></div></div>
+<span class="mono tnum" style="text-align: right; font-size: 12px; color: #2A3656">118,400.00 USD</span>
+<span class="tnum" style="text-align: right; font-size: 14px; font-weight: 600; color: #16223F">$118,400.00</span>
+<span class="mono" style="text-align: right; font-size: 11px; color: #5B6275">—</span>
+<span class="mono tnum" style="text-align: right; font-size: 11px; color: #16223F">47.7%</span>
+</div>
+<div style="position: relative; display: grid; grid-template-columns: 196px 128px 116px 60px 52px; justify-content: space-between; align-items: center; height: 58px; border-bottom: 1px solid rgba(22,34,63,.12)">
+<div style="display: flex; align-items: center; gap: 12px"><span class="cz" style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(22,34,63,.55); box-shadow: inset 0 0 0 3px #F3EBDB, inset 0 0 0 3.6px rgba(22,34,63,.3); font-size: 8px; font-weight: 700; color: #16223F">USDC</span><div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600; color: #16223F">USD Coin</span><span style="font-size: 11.5px; color: #5B6275">Stable · ZEN rail</span></div></div>
+<span class="mono tnum" style="text-align: right; font-size: 12px; color: #2A3656">64,250.00 USDC</span>
+<span class="tnum" style="text-align: right; font-size: 14px; font-weight: 600; color: #16223F">$64,250.00</span>
+<span class="mono tnum" style="text-align: right; font-size: 11px; color: #5B6275">0.00%</span>
+<span class="mono tnum" style="text-align: right; font-size: 11px; color: #16223F">25.9%</span>
+</div>
+<div style="position: relative; display: grid; grid-template-columns: 196px 128px 116px 60px 52px; justify-content: space-between; align-items: center; height: 58px; border-bottom: 1px solid rgba(22,34,63,.12)">
+<div style="display: flex; align-items: center; gap: 12px"><span class="cz" style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(22,34,63,.55); box-shadow: inset 0 0 0 3px #F3EBDB, inset 0 0 0 3.6px rgba(22,34,63,.3); font-size: 9px; font-weight: 700; color: #16223F">BTC</span><div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600; color: #16223F">Bitcoin</span><span class="tnum" style="font-size: 11.5px; color: #5B6275">$95,551.82</span></div></div>
+<span class="mono tnum" style="text-align: right; font-size: 12px; color: #2A3656">0.5125 BTC</span>
+<span class="tnum" style="text-align: right; font-size: 14px; font-weight: 600; color: #16223F">$48,970.31</span>
+<span class="mono tnum" style="display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 11px; color: #1F6B55"><svg width="8" height="7" viewBox="0 0 10 8" aria-hidden="true"><path d="M5 .5 9.5 7.5H.5z" fill="#1F6B55"></path></svg>2.41%</span>
+<span class="mono tnum" style="text-align: right; font-size: 11px; color: #16223F">19.7%</span>
+</div>
+<div style="position: relative; display: grid; grid-template-columns: 196px 128px 116px 60px 52px; justify-content: space-between; align-items: center; height: 58px">
+<div style="display: flex; align-items: center; gap: 12px"><span class="cz" style="width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(22,34,63,.55); box-shadow: inset 0 0 0 3px #F3EBDB, inset 0 0 0 3.6px rgba(22,34,63,.3); font-size: 9px; font-weight: 700; color: #16223F">ETH</span><div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 600; color: #16223F">Ether</span><span class="tnum" style="font-size: 11.5px; color: #5B6275">$3,809.59</span></div></div>
+<span class="mono tnum" style="text-align: right; font-size: 12px; color: #2A3656">4.402 ETH</span>
+<span class="tnum" style="text-align: right; font-size: 14px; font-weight: 600; color: #16223F">$16,769.81</span>
+<span class="mono tnum" style="display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 11px; color: #1F6B55"><svg width="8" height="7" viewBox="0 0 10 8" aria-hidden="true"><path d="M5 .5 9.5 7.5H.5z" fill="#1F6B55"></path></svg>1.36%</span>
+<span class="mono tnum" style="text-align: right; font-size: 11px; color: #16223F">6.7%</span>
+</div>
+</section>
+
+<section class="glass-dark" aria-label="ZEN Agent" style="position: absolute; left: 760px; top: 24px; width: 656px; height: 852px; box-sizing: border-box; border-radius: 32px; overflow: hidden">
+<header style="position: relative; height: 76px; box-sizing: border-box; display: flex; align-items: center; gap: 14px; padding: 0 20px 0 24px; border-bottom: 1px solid rgba(255,255,255,.08)">
+<span class="holo" style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.65), 0 0 18px rgba(170,200,255,.35)"><svg width="22" height="19" viewBox="0 0 100 86" aria-hidden="true"><use href="#zm" fill="#16244F"></use></svg></span>
+<div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1">
+<div style="display: flex; align-items: center; gap: 8px"><h2 class="cz" style="margin: 0; font-size: 17px; font-weight: 700; letter-spacing: .06em; line-height: 1; color: #F4EEE2">ZEN Agent</h2><span class="pulse" style="width: 6px; height: 6px; border-radius: 50%; background: #6E9BFF; box-shadow: 0 0 8px #3C7BFF"></span></div>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 1; color: #A7B1C8"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E9D29A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Verified · Treasury scope · Signing requires Face ID</span>
+</div>
+<button aria-label="Session history" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.12)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9D1E3" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg></button>
+<button aria-label="Conversation options" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#C9D1E3" aria-hidden="true"><circle cx="5.5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="18.5" cy="12" r="1.6"></circle></svg></button>
+</header>
+
+<div style="position: relative; padding: 22px 28px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="height: 1px; flex-grow: 1; background: linear-gradient(90deg, rgba(212,178,106,0), rgba(212,178,106,.4))"></span>
+<span class="mono" style="font-size: 10px; letter-spacing: .18em; color: #8E9AB6">TODAY · 5:11 PM</span>
+<span style="height: 1px; flex-grow: 1; background: linear-gradient(90deg, rgba(212,178,106,.4), rgba(212,178,106,0))"></span>
+</div>
+
+<div class="matte" style="align-self: flex-end; max-width: 500px; box-sizing: border-box; padding: 13px 18px; border-radius: 22px 22px 6px 22px; font-size: 15px; line-height: 1.45; color: #F4EEE2">Move $25,000 to the Pioneer Fund and renew Arsenal Pro.</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 8px"><span class="holo" style="width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.6)"><svg width="10" height="8.6" viewBox="0 0 100 86" aria-hidden="true"><use href="#zm" fill="#16244F"></use></svg></span><span class="mono" style="font-size: 10px; letter-spacing: .18em; color: #E9D29A">ZEN AGENT</span></div>
+<p style="margin: 0; max-width: 560px; font-size: 15px; line-height: 1.55; color: #E4E8F1; text-wrap: pretty">Drafted and verified. The transfer settles instantly on the ZEN rail; Arsenal Pro renews from Operating on Oct 1. Review the instrument, then slide to seal.</p>
+</div>
+
+<div style="display: flex; gap: 8px">
+<span class="glass" style="height: 32px; box-sizing: border-box; border-radius: 16px; display: flex; align-items: center; gap: 7px; padding: 0 13px 0 10px; font-size: 12.5px; color: #E4E8F1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FE0C4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: relative" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span style="position: relative">Balance sufficient</span></span>
+<span class="glass" style="height: 32px; box-sizing: border-box; border-radius: 16px; display: flex; align-items: center; gap: 7px; padding: 0 13px 0 10px; font-size: 12.5px; color: #E4E8F1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FE0C4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: relative" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span style="position: relative">Payee verified</span></span>
+<span class="glass" style="height: 32px; box-sizing: border-box; border-radius: 16px; display: flex; align-items: center; gap: 7px; padding: 0 13px 0 10px; font-size: 12.5px; color: #E4E8F1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FE0C4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: relative" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg><span style="position: relative">Fee simulated · $0.00</span></span>
+</div>
+
+<article class="paper" aria-label="Instrument of transfer, number 0417" style="border-radius: 22px; box-sizing: border-box; padding: 20px 24px; overflow: hidden; display: flex; flex-direction: column; gap: 14px">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .55; mix-blend-mode: multiply; pointer-events: none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+<div aria-hidden="true" style="position: absolute; left: 7px; top: 7px; right: 7px; bottom: 7px; border: 1px solid rgba(22,34,63,.2); border-radius: 16px; pointer-events: none"></div>
+<svg width="280" height="280" style="position: absolute; right: -70px; top: -80px; color: #16223F; opacity: .07" aria-hidden="true"><use href="#rose" width="280" height="280"></use></svg>
+<span class="cz" aria-hidden="true" style="position: absolute; left: 150px; top: 86px; font-size: 76px; font-weight: 700; letter-spacing: .2em; color: rgba(22,34,63,.05); transform: rotate(-10deg); pointer-events: none">DRAFT</span>
+<div style="position: relative; display: flex; align-items: center; justify-content: space-between">
+<span class="cz" style="font-size: 11px; font-weight: 700; letter-spacing: .22em; color: #16223F">INSTRUMENT OF TRANSFER</span>
+<span class="mono" style="font-size: 10.5px; letter-spacing: .08em; color: #5B6275">No. 0417 · DRAFTED 5:11 PM</span>
+</div>
+<div style="position: relative; height: 3px; border-top: 1px solid rgba(22,34,63,.6); border-bottom: 1px solid rgba(22,34,63,.25)"></div>
+<div style="position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 5px">
+<span class="cz" style="font-size: 8.5px; font-weight: 700; letter-spacing: .2em; color: #5B6275">PAY TO THE ORDER OF</span>
+<div style="display: flex; align-items: center; gap: 10px"><span style="font-size: 20px; font-weight: 600; color: #16223F">Pioneer Fund</span><span class="holo" style="display: flex; align-items: center; gap: 5px; height: 24px; padding: 0 9px 0 7px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 1px 3px rgba(22,34,63,.25); font-size: 11px; font-weight: 600; color: #16223F"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16223F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Verified</span></div>
+<span style="font-size: 12.5px; color: #5B6275">AI Pioneer Program · ZEN rail</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
+<div style="position: relative; width: 212px; height: 54px; box-sizing: border-box; border: 1px solid rgba(22,34,63,.55); border-radius: 11px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: inset 0 0 0 3px rgba(243,235,219,.9), inset 0 0 0 3.6px rgba(22,34,63,.25)">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .16" aria-hidden="true"><rect width="100%" height="100%" fill="url(#gwn)"></rect></svg>
+<span class="cz tnum" style="position: relative; font-size: 26px; font-weight: 700; color: #16223F">$25,000.00</span>
+</div>
+<span style="font-size: 11.5px; color: #5B6275">Twenty-five thousand and 00/100 US dollars</span>
+</div>
+</div>
+<div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; padding-top: 12px; border-top: 1px dashed rgba(22,34,63,.22)">
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="cz" style="font-size: 8px; font-weight: 700; letter-spacing: .18em; color: #5B6275">FROM</span><span class="tnum" style="font-size: 13px; font-weight: 500; color: #16223F">Operating ••4417</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="cz" style="font-size: 8px; font-weight: 700; letter-spacing: .18em; color: #5B6275">ARRIVES</span><span style="font-size: 13px; font-weight: 500; color: #16223F">Instantly</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="cz" style="font-size: 8px; font-weight: 700; letter-spacing: .18em; color: #5B6275">FEE</span><span class="tnum" style="font-size: 13px; font-weight: 500; color: #16223F">$0.00</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="cz" style="font-size: 8px; font-weight: 700; letter-spacing: .18em; color: #5B6275">MEMO</span><span style="font-size: 13px; font-weight: 500; color: #16223F">Q4 program operations</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; width: 132px"><div style="height: 22px; border-bottom: 1px solid rgba(22,34,63,.6)"></div><span class="cz" style="font-size: 7.5px; font-weight: 700; letter-spacing: .16em; color: #5B6275">AUTHORIZED SIGNATURE</span></div>
+</div>
+</article>
+
+<div class="paper" style="height: 58px; box-sizing: border-box; border-radius: 18px; display: flex; align-items: center; gap: 14px; padding: 0 10px 0 18px; overflow: hidden">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .55; mix-blend-mode: multiply; pointer-events: none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+<span style="position: relative; width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(22,34,63,.4)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16223F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16"></path><path d="M8.5 3.5v4"></path><path d="M15.5 3.5v4"></path></svg></span>
+<div style="position: relative; display: flex; flex-direction: column; gap: 3px; flex-grow: 1"><span style="font-size: 14px; font-weight: 600; color: #16223F">Arsenal Pro renewal</span><span style="font-size: 12px; color: #5B6275">Scheduled · Oct 1 · from Operating</span></div>
+<a href="#instrument-0418" style="position: relative; display: flex; align-items: center; gap: 2px; height: 40px; padding: 0 8px 0 12px; font-size: 13px; font-weight: 500; color: #2E3F72">Review<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E3F72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+</div>
+
+<button class="matte-in" aria-label="Sign and seal instrument 0417 with Face ID" style="position: relative; width: 600px; height: 58px; border-radius: 29px; overflow: hidden">
+<span class="glass" style="position: absolute; top: 4px; left: 4px; width: 50px; height: 50px; box-sizing: border-box; border-radius: 25px; display: flex; align-items: center; justify-content: center">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F4EEE2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position: relative" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2"></path><path d="M16 4h2a2 2 0 0 1 2 2v2"></path><path d="M20 16v2a2 2 0 0 1-2 2h-2"></path><path d="M8 20H6a2 2 0 0 1-2-2v-2"></path><path d="M9 9.5v1"></path><path d="M15 9.5v1"></path><path d="M12 9.5v3.5h-1"></path><path d="M9 15.5c1.8 1.4 4.2 1.4 6 0"></path></svg>
+</span>
+<span class="shimmer" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 14.5px; font-weight: 500; letter-spacing: .02em">Slide to sign &amp; seal instrument 0417</span>
+<svg width="30" height="14" viewBox="0 0 30 14" style="position: absolute; right: 24px; top: 22px" fill="none" stroke="#5E6A86" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2l5 5-5 5"></path><path d="M12 2l5 5-5 5" stroke="#7B87A3"></path><path d="M21 2l5 5-5 5" stroke="#A3AEC6"></path></svg>
+</button>
+</div>
+
+<form class="glass" aria-label="Message ZEN Agent" onSubmit="{{hold}}" style="position: absolute; left: 28px; right: 28px; bottom: 24px; height: 60px; box-sizing: border-box; border-radius: 30px; display: flex; align-items: center; gap: 8px; padding: 0 8px; margin: 0">
+<button type="button" aria-label="Attach" style="position: relative; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(255,255,255,.07); box-shadow: inset 0 1px 0 rgba(255,255,255,.14)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EDE6D6" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg></button>
+<label for="askDesk" class="sr">Instruct ZEN Agent</label>
+<input id="askDesk" type="text" placeholder="Instruct ZEN — pay, move, schedule, explain…" autocomplete="off" style="position: relative; flex-grow: 1; min-width: 0; height: 44px; font-size: 15px; color: #F4EEE2">
+<button type="button" aria-label="Dictate" style="position: relative; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9D1E3" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5.5 11a6.5 6.5 0 0 0 13 0"></path><path d="M12 17.5V21"></path></svg></button>
+<button type="submit" class="holo" aria-label="Send instruction" style="position: relative; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 0 16px rgba(170,200,255,.3)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16223F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5.5 11.5 12 5l6.5 6.5"></path></svg></button>
+</form>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { hold: (e) => { if (e && e.preventDefault) e.preventDefault(); } };
+  }
+}
+</script>
+</body>
+</html>

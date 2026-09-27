@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — Atelier</title>
+<script src="./support.js"></script>
+<script src="/_blob/VL_HOLO"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+<style>
+__VL_BASE_CSS__
+.vl-card{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 0 0 .7px rgba(43,33,24,.25),0 14px 28px -16px rgba(70,45,15,.55)}
+.vl-label{display:flex;flex-direction:column;gap:2px}
+.vl-demo-ink{animation:vl-inkloop 4.5s cubic-bezier(.3,.1,.1,1) infinite}
+@keyframes vl-inkloop{0%{clip-path:inset(0 100% 0 0);filter:blur(1px)}35%,90%{clip-path:inset(0 -2% 0 0);filter:blur(0);opacity:1}100%{clip-path:inset(0 -2% 0 0);opacity:0}}
+.vl-demo-blob{transform-box:fill-box;transform-origin:center;animation:vl-blobloop 4s cubic-bezier(.3,.9,.3,1) infinite}
+@keyframes vl-blobloop{0%{transform:scale(0)}30%,88%{transform:scale(1)}100%{transform:scale(0)}}
+.vl-demo-page{transform-origin:0 50%;animation:vl-pageloop 4.2s cubic-bezier(.62,.04,.26,1) infinite}
+@keyframes vl-pageloop{0%,15%{transform:rotateY(0deg)}55%,75%{transform:rotateY(-178deg)}100%{transform:rotateY(0deg)}}
+.vl-demo-foil{background:linear-gradient(115deg,rgba(255,255,255,0) 20%,rgba(255,120,190,.55) 32%,rgba(255,220,120,.55) 38%,rgba(120,255,190,.5) 44%,rgba(110,170,255,.55) 50%,rgba(200,130,255,.5) 56%,rgba(255,255,255,0) 68%);background-size:300% 100%;mix-blend-mode:color-dodge;animation:vl-foilloop 3.6s ease-in-out infinite}
+@keyframes vl-foilloop{0%{background-position:130% 0}100%{background-position:-40% 0}}
+</style>
+</helmet>
+<div class="vl-vellum" style="position: relative; width: 1200px; height: 874px; overflow: hidden; color: #2B2118">
+
+__VL_DEFS__
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="vl-goo2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"></feGaussianBlur>
+<feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo"></feColorMatrix>
+<feGaussianBlur in="goo" stdDeviation="2.6" result="h"></feGaussianBlur>
+<feSpecularLighting in="h" surfaceScale="6" specularConstant="1.25" specularExponent="24" lighting-color="#FFFFFF" result="s"><fePointLight x="26" y="4" z="110"></fePointLight></feSpecularLighting>
+<feComposite in="s" in2="goo" operator="in" result="si"></feComposite>
+<feDiffuseLighting in="h" surfaceScale="6" diffuseConstant="1" lighting-color="#FFFFFF" result="d"><feDistantLight azimuth="235" elevation="48"></feDistantLight></feDiffuseLighting>
+<feComposite in="goo" in2="d" operator="arithmetic" k1="1.15" k2="0" k3="0" k4="0" result="lit"></feComposite>
+<feComposite in="si" in2="lit" operator="arithmetic" k1="0" k2=".9" k3="1" k4="0"></feComposite>
+</filter>
+<filter id="vl-lensA" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feImage href="/_blob/VL_LENS" x="18" y="22" width="110" height="110" preserveAspectRatio="none" result="map"></feImage>
+<feDisplacementMap in="SourceGraphic" in2="map" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+</filter>
+</defs></svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, rgba(255,250,236,.3) 0%, rgba(255,250,236,0) 45%, rgba(126,86,34,.18) 88%, rgba(96,62,20,.3) 100%)"></div>
+
+<header class="vl-rise" style="position: absolute; left: 48px; top: 40px; width: 1104px; display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span class="vl-sc vl-rubric" style="font-size: 11px; font-weight: 700">Vellum · Direction IV · The Atelier</span>
+<h1 class="vl-serif" style="margin: 0; font-size: 46px; font-style: italic; font-weight: 500; line-height: 1">The Illuminated Treasury</h1>
+</div>
+<p class="vl-serif" style="margin: 0; width: 470px; font-size: 16px; line-height: 1.45; font-style: italic; color: #4A3A2A; text-align: right">Money kept the way the great ledgers were kept: written in ink, gilded where it matters, and sealed so anyone can tell it is true.</p>
+</header>
+
+<section aria-label="Materials" class="vl-rise" style="position: absolute; left: 48px; top: 142px; width: 528px; animation-delay: .15s">
+<span class="vl-sc" style="font-size: 10px; color: #6E5A42">Materials</span>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 16px">
+
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 164px"><div style="position: absolute; inset: 14px; border: 1px solid rgba(43,33,24,.3)"></div><div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: repeating-linear-gradient(0deg, rgba(43,33,24,.06) 0 1px, transparent 1px 3.2px), linear-gradient(90deg, transparent 48%, rgba(43,33,24,.08) 49%, rgba(43,33,24,.08) 51%, transparent 52%)"></div></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Calfskin vellum</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">Laid and chain lines, foxed at the edge</span></div>
+
+<div class="vl-label"><div class="vl-card" style="height: 164px; background: radial-gradient(120% 90% at 35% 25%, #5A4634 0%, #2B2118 45%, #120C07 100%)"><div style="position: absolute; left: 22%; top: 16%; width: 46%; height: 24%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,240,220,.45), rgba(255,240,220,0) 70%); transform: rotate(-20deg)"></div><span class="vl-script" style="position: absolute; left: 18px; bottom: 18px; font-size: 30px; color: #E9DCBF; opacity: .85">Ink</span></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Iron-gall ink</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">#2B2118 · oxidizes warm with age</span></div>
+
+<div class="vl-label"><div class="vl-card" style="height: 164px"><svg width="100%" height="100%" viewBox="0 0 160 164" preserveAspectRatio="none" style="position: absolute; inset: 0"><rect width="160" height="164" fill="url(#vl-g-gold)" filter="url(#vl-leaf)"></rect><path d="M0 60 L160 44 M0 118 L160 128 M70 0 L64 164" stroke="#8C6418" stroke-opacity=".35" stroke-width=".8"></path></svg></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Gold leaf</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">22 carat, burnished and laid in squares</span></div>
+
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 164px"><svg width="160" height="164" viewBox="0 0 160 164" style="position: absolute; inset: 0"><g filter="url(#vl-goo2)"><circle cx="80" cy="82" r="38" fill="#2B45AE"></circle><circle cx="56" cy="64" r="17" fill="#2B45AE"></circle><circle cx="104" cy="62" r="15" fill="#2B45AE"></circle><circle cx="106" cy="102" r="18" fill="#2B45AE"></circle><circle cx="58" cy="106" r="16" fill="#2B45AE"></circle><circle cx="80" cy="44" r="11" fill="#2B45AE"></circle></g><circle cx="80" cy="82" r="30" fill="none" stroke="#6F86E6" stroke-opacity=".7" stroke-width="1.8"></circle><svg x="64" y="68" width="32" height="28" viewBox="0 0 100 86"><use href="#vl-mark" fill="#8FA2F0" fill-opacity=".85"></use></svg></svg></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Lapis wax</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">Ultramarine, pooled and stamped</span></div>
+
+<div class="vl-label"><div class="vl-card" style="height: 164px; background: #1B1510"><img src="/_blob/VL_P_SEAL" alt="" style="position: absolute; left: 12px; top: 10px; width: 140px; height: 140px; border-radius: 50%; opacity: {{holoPoster}}"><canvas ref="{{holoRef}}" aria-hidden="true" style="position: absolute; left: 12px; top: 10px; width: 140px; height: 140px; border-radius: 50%; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Holographic foil</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">Diffraction gratings, 1,150 to 1,850 nm</span></div>
+
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 164px"><div style="position: absolute; inset: 0; filter: url(#vl-lensA)"><div style="position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(43,33,24,.55) 0 1px, transparent 1px 10px), repeating-linear-gradient(0deg, rgba(36,63,154,.45) 0 1px, transparent 1px 10px)"></div></div><div style="position: absolute; left: 18px; top: 22px; width: 110px; height: 110px; border-radius: 50%; box-shadow: 0 0 0 .7px rgba(43,33,24,.4), inset 0 0 0 1px rgba(255,255,255,.9), inset 0 -6px 10px rgba(120,86,36,.22), 8px 12px 18px -6px rgba(70,45,15,.4)"><div style="position: absolute; left: 14%; top: 8%; width: 42%; height: 20%; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,255,255,.75), rgba(255,255,255,0) 72%); transform: rotate(-28deg)"></div></div></div><span style="font-size: 14px; font-weight: 700; margin-top: 8px">Liquid glass</span><span class="vl-serif" style="font-size: 13px; font-style: italic; color: #6E5A42">Refracts the page beneath, rim-lit</span></div>
+</div>
+</section>
+
+<section aria-label="Signature components" class="vl-rise" style="position: absolute; left: 48px; top: 650px; width: 528px; animation-delay: .3s">
+<span class="vl-sc" style="font-size: 10px; color: #6E5A42">Signature components</span>
+<ul style="margin: 12px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px">
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">The loupe</span><span class="vl-serif" style="font-size: 13.5px; font-style: italic; color: #4A3A2A">A glass lens you drag to read microprint and single days of the ledger.</span></li>
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">Raking light</span><span class="vl-serif" style="font-size: 13.5px; font-style: italic; color: #4A3A2A">Your touch moves a light across the folio; embossing rises out of the paper.</span></li>
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">The kinegram</span><span class="vl-serif" style="font-size: 13.5px; font-style: italic; color: #4A3A2A">Tilt the certificate and its hologram turns from the ZEN seal to the attested reserve.</span></li>
+<li style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 14px; font-weight: 700">Wax &amp; hologram seal</span><span class="vl-serif" style="font-size: 13.5px; font-style: italic; color: #4A3A2A">Hold to pour lapis wax; the stamp sets a holographic insert into it.</span></li>
+</ul>
+</section>
+
+<div aria-hidden="true" style="position: absolute; left: 606px; top: 142px; width: 1px; height: 690px; background: linear-gradient(180deg, rgba(43,33,24,0), rgba(43,33,24,.22) 12%, rgba(43,33,24,.22) 88%, rgba(43,33,24,0))"></div>
+
+<section aria-label="Pigments" class="vl-rise" style="position: absolute; left: 636px; top: 142px; width: 516px; animation-delay: .2s">
+<span class="vl-sc" style="font-size: 10px; color: #6E5A42">Pigments · one per position</span>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<div class="vl-label"><span class="vl-card" style="height: 74px; display: block"><svg width="100%" height="100%" viewBox="0 0 120 74" preserveAspectRatio="none"><rect width="120" height="74" fill="url(#vl-g-gold)" filter="url(#vl-leaf)"></rect></svg></span><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Gold leaf</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">US Dollar</span></div>
+<div class="vl-label"><span class="vl-card" style="height: 74px; display: block"><svg width="100%" height="100%" viewBox="0 0 120 74" preserveAspectRatio="none"><rect width="120" height="74" fill="url(#vl-g-lapis)"></rect><rect width="120" height="74" fill="url(#vl-hatch)" opacity=".25"></rect></svg></span><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Lapis lazuli</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">USD Coin</span></div>
+<div class="vl-label"><span class="vl-card" style="height: 74px; display: block"><svg width="100%" height="100%" viewBox="0 0 120 74" preserveAspectRatio="none"><rect width="120" height="74" fill="url(#vl-g-verm)"></rect><rect width="120" height="74" fill="url(#vl-hatch)" opacity=".25"></rect></svg></span><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Vermilion</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">Bitcoin · rubrics</span></div>
+<div class="vl-label"><span class="vl-card" style="height: 74px; display: block"><svg width="100%" height="100%" viewBox="0 0 120 74" preserveAspectRatio="none"><rect width="120" height="74" fill="url(#vl-g-tyr)"></rect><rect width="120" height="74" fill="url(#vl-hatch)" opacity=".25"></rect></svg></span><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Tyrian purple</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">Ether</span></div>
+</div>
+</section>
+
+<section aria-label="Type" class="vl-rise" style="position: absolute; left: 636px; top: 300px; width: 516px; display: flex; flex-direction: column; gap: 10px; animation-delay: .3s">
+<span class="vl-sc" style="font-size: 10px; color: #6E5A42">Type</span>
+<div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid rgba(43,33,24,.15)"><span class="vl-serif vl-onum" style="font-size: 50px; font-weight: 300; line-height: 1">$248,390<span style="font-size: 28px; color: #5E4B36">.12</span></span><span class="vl-sc" style="font-size: 9px; color: #6E5A42; text-align: right">Cormorant Garamond<br>300 · old-style figures</span></div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid rgba(43,33,24,.15)"><span class="vl-sc vl-rubric" style="font-size: 16px; font-weight: 700">Total Reserve · Writ Nº 0417</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42; text-align: right">Alegreya SC<br>rubrics &amp; labels</span></div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid rgba(43,33,24,.15)"><span style="font-size: 16px">Press &amp; hold to seal · verified payee</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42; text-align: right">Alegreya Sans<br>interface</span></div>
+<div style="display: flex; align-items: baseline; justify-content: space-between"><span class="vl-script" style="font-size: 34px; line-height: 1; color: #1F2A5C">Alex Leschik</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42; text-align: right">Pinyon Script<br>signatures only</span></div>
+</section>
+
+<section aria-label="Motion" class="vl-rise" style="position: absolute; left: 636px; top: 566px; width: 516px; animation-delay: .4s">
+<span class="vl-sc" style="font-size: 10px; color: #6E5A42">Motion</span>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 128px"><div class="vl-serif vl-demo-ink" style="position: absolute; left: 12px; top: 40px; font-size: 20px; font-style: italic; white-space: nowrap">Pay to the</div><div class="vl-serif vl-demo-ink" style="position: absolute; left: 12px; top: 66px; font-size: 20px; font-style: italic; white-space: nowrap; animation-delay: .4s">order of…</div></div><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Ink bleed</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">1.4s per line</span></div>
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 128px"><svg width="120" height="128" viewBox="0 0 120 128" style="position: absolute; left: 50%; top: 0; margin-left: -60px"><g filter="url(#vl-goo2)"><circle class="vl-demo-blob" cx="60" cy="64" r="28" fill="#2B45AE"></circle><circle class="vl-demo-blob" cx="42" cy="50" r="13" fill="#2B45AE" style="animation-delay: .15s"></circle><circle class="vl-demo-blob" cx="80" cy="50" r="12" fill="#2B45AE" style="animation-delay: .3s"></circle><circle class="vl-demo-blob" cx="80" cy="82" r="13" fill="#2B45AE" style="animation-delay: .45s"></circle><circle class="vl-demo-blob" cx="42" cy="82" r="12" fill="#2B45AE" style="animation-delay: .6s"></circle></g></svg></div><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Wax pour</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">1.5s hold</span></div>
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 128px; perspective: 400px"><div style="position: absolute; left: 30px; top: 18px; width: 64px; height: 92px; background: #E2D2AE; box-shadow: 1px 1px 0 #D0BD92"></div><div class="vl-demo-page vl-sheet" style="position: absolute; left: 30px; top: 18px; width: 64px; height: 92px; box-shadow: inset 0 0 0 .5px rgba(43,33,24,.3); -webkit-backface-visibility: hidden; backface-visibility: hidden"><div style="position: absolute; left: 10px; right: 10px; top: 14px; height: 50px; background: repeating-linear-gradient(0deg, rgba(43,33,24,.3) 0 1px, transparent 1px 8px)"></div></div></div><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Page turn</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">1.25s · 3D</span></div>
+<div class="vl-label"><div class="vl-card vl-sheet" style="height: 128px"><div style="position: absolute; left: 14px; top: 20px; right: 14px; bottom: 20px; border: 1px solid rgba(43,33,24,.3)"></div><div style="position: absolute; left: 26px; right: 26px; top: 36px; height: 44px; background: repeating-linear-gradient(0deg, rgba(43,33,24,.3) 0 1px, transparent 1px 8px)"></div><div style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,140,200,.10), rgba(140,255,210,.10), rgba(140,180,255,.12), rgba(255,210,140,.10)); mix-blend-mode: color-dodge"></div><div class="vl-demo-foil" style="position: absolute; inset: 0"></div></div><span style="font-size: 13.5px; font-weight: 700; margin-top: 6px">Holo laminate</span><span class="vl-sc" style="font-size: 9px; color: #6E5A42">Sweeps once on seal</span></div>
+</div>
+</section>
+
+<section aria-label="Principles" class="vl-rise" style="position: absolute; left: 636px; top: 786px; width: 516px; animation-delay: .5s">
+<span class="vl-serif" style="font-size: 15.5px; font-style: italic; color: #4A3A2A">Ink for what happened, gold for what is held, wax for what is promised, light for what is proven.</span>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveHolo":{"editor":"boolean","default":true,"section":"Hologram"},"$preview":{"width":1200,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._h = {
+        holoRef: (el) => {
+          if (el === this._cv) return;
+          if (this._holo) { this._holo.destroy(); this._holo = null; }
+          this._cv = el;
+          if (el && window.VellumHolo && this.props.liveHolo !== false) this._holo = window.VellumHolo.mount(el, { design: 'seal', texMax: 420, onReady: () => this.setState({ holoOn: true }) });
+        }
+      };
+    }
+    const on = this.props.liveHolo !== false && !!st.holoOn;
+    return Object.assign({}, this._h, { holoLive: on ? 1 : 0, holoPoster: on ? 0 : 1 });
+  }
+  componentWillUnmount() { if (this._holo) this._holo.destroy(); }
+}
+</script>
+</body>
+</html>

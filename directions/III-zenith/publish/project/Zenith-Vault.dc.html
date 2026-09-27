@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Zenith — Vault</title>
+<script src="./support.js"></script>
+<script src="/_blob/d77b8bfa2093fd85595ac135fbf6f7be"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&amp;family=Instrument+Sans:wdth,wght@75..100,400..700&amp;family=Martian+Mono:wdth,wght@75..112.5,100..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050508;color:#ECEEF4;font-family:'Instrument Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#9FE8F4;text-decoration:none}a:hover{color:#D5F8FC}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid #7FE3F0;outline-offset:3px}
+.zn-d{font-family:'Anybody','Instrument Sans',ui-sans-serif,sans-serif}
+.zn-m{font-family:'Martian Mono',ui-monospace,'SF Mono',Menlo,monospace;font-stretch:87.5%}
+.zn-tnum{font-variant-numeric:tabular-nums lining-nums}
+.zn-hit{position:relative}
+.zn-hit::after{content:"";position:absolute;left:-2px;right:-2px;top:50%;height:44px;transform:translateY(-50%)}
+.zn-glass{background:linear-gradient(180deg,rgba(255,255,255,.085) 0%,rgba(255,255,255,.03) 100%);-webkit-backdrop-filter:blur(26px) saturate(170%);backdrop-filter:blur(26px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.35),0 24px 48px -24px rgba(0,0,0,.9)}
+.zn-edge::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:conic-gradient(from var(--zn-a),rgba(255,255,255,.05),rgba(127,227,240,.6) 12%,rgba(168,139,255,.4) 20%,rgba(255,190,138,.45) 28%,rgba(255,255,255,.05) 40%,rgba(255,255,255,.05) 62%,rgba(255,255,255,.22) 76%,rgba(255,255,255,.05) 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:zn-edge 12s linear infinite}
+@property --zn-a{syntax:'<angle>';inherits:false;initial-value:200deg}
+@keyframes zn-edge{from{--zn-a:200deg}to{--zn-a:560deg}}
+.zn-chip{background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.025));-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.13),inset 0 0 0 1px rgba(255,255,255,.07)}
+.zn-tile{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.016));box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 0 0 1px rgba(255,255,255,.05);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .25s ease}
+.zn-tile:hover{background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.03))}
+.zn-seg{background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.zn-spectral{background-image:linear-gradient(100deg,#F4F6FB 0%,#F4F6FB 34%,#9FE8F4 44%,#B9A6FF 50%,#FFC89A 56%,#F4F6FB 66%,#F4F6FB 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:zn-sheen 9s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes zn-sheen{0%,14%{background-position:100% 0}62%,100%{background-position:0 0}}
+.zn-hero-mask{-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 34%,rgba(0,0,0,.55) 52%,transparent 70%);mask-image:radial-gradient(circle at 50% 50%,#000 34%,rgba(0,0,0,.55) 52%,transparent 70%)}
+.zn-spin-slow{animation:zn-spin 240s linear infinite}
+.zn-spin-rev{animation:zn-spin 420s linear infinite reverse}
+.zn-spin-bezel{animation:zn-spin 600s linear infinite}
+@keyframes zn-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@property --zn-s{syntax:'<angle>';inherits:false;initial-value:360deg}
+.zn-sweep{-webkit-mask-image:conic-gradient(from 0deg,#000 var(--zn-s),transparent calc(var(--zn-s) + 50deg));mask-image:conic-gradient(from 0deg,#000 var(--zn-s),transparent calc(var(--zn-s) + 50deg));animation:zn-spin 420s linear infinite reverse,zn-sweep 3.4s cubic-bezier(.5,0,.2,1) .4s both}
+@keyframes zn-sweep{from{--zn-s:-50deg}to{--zn-s:360deg}}
+.zn-twinkle{animation:zn-tw 7s ease-in-out infinite alternate}
+@keyframes zn-tw{from{opacity:.42}to{opacity:.72}}
+.zn-live{animation:zn-live 2.4s ease-out infinite}
+@keyframes zn-live{0%{box-shadow:0 0 0 0 rgba(127,227,240,.65)}70%{box-shadow:0 0 0 7px rgba(127,227,240,0)}100%{box-shadow:0 0 0 0 rgba(127,227,240,0)}}
+.zn-orbit{animation:zn-spin 9s linear infinite}
+.zn-rise{animation:zn-rise 1.1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes zn-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.zn-roll{animation:zn-roll 2s cubic-bezier(.16,.84,.2,1) both}
+@keyframes zn-roll{from{transform:translateY(0)}to{transform:translateY(var(--ty))}}
+.zn-mini{perspective:140px}
+.zn-mini i{position:absolute;inset:3px;border-radius:50%;border:1.2px solid;transform:rotateZ(var(--r)) rotateX(72deg);animation:zn-mini 5s linear infinite}
+@keyframes zn-mini{from{transform:rotateZ(var(--r)) rotateX(72deg)}to{transform:rotateZ(calc(var(--r) + 360deg)) rotateX(72deg)}}
+.zn-corebtn{position:relative;background:radial-gradient(circle at 50% 40%,rgba(127,227,240,.42),rgba(34,56,110,.45) 52%,rgba(8,10,16,.92) 100%);box-shadow:inset 0 0 0 1px rgba(207,246,251,.38),0 0 22px rgba(127,227,240,.35),0 8px 18px rgba(0,0,0,.6)}
+.zn-corebtn::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,rgba(127,227,240,0),rgba(127,227,240,.9) 18%,rgba(127,227,240,0) 36%,rgba(168,139,255,0) 50%,rgba(255,190,138,.7) 68%,rgba(255,190,138,0) 86%);-webkit-mask:radial-gradient(circle,transparent 25px,#000 25.5px,#000 26.5px,transparent 27px);mask:radial-gradient(circle,transparent 25px,#000 25.5px,#000 26.5px,transparent 27px);animation:zn-spin 6s linear infinite}
+@media (prefers-reduced-motion:reduce){.zn-spin-slow,.zn-spin-rev,.zn-spin-bezel,.zn-orbit,.zn-mini i,.zn-spectral,.zn-edge::before,.zn-live,.zn-twinkle,.zn-corebtn::after,.zn-flow,.zn-pulse{animation:none!important}.zn-sweep{animation:none!important;-webkit-mask-image:none;mask-image:none}.zn-rise,.zn-roll,.zn-draw{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</helmet>
+<div class="zn-root" style="position: relative; width: 402px; height: 874px; overflow: hidden; background: #050508; color: #ECEEF4">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="zn-mark" viewBox="0 0 100 86"><path fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<linearGradient id="zn-ti" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6F8FB"></stop><stop offset=".38" stop-color="#9DA5B3"></stop><stop offset=".62" stop-color="#E7EBF1"></stop><stop offset="1" stop-color="#6D7482"></stop></linearGradient>
+<linearGradient id="zn-arcfade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7FE3F0" stop-opacity=".55"></stop><stop offset=".5" stop-color="#DCE3EE" stop-opacity=".08"></stop><stop offset="1" stop-color="#A88BFF" stop-opacity=".45"></stop></linearGradient>
+<linearGradient id="zn-g-usd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#9AA3B2"></stop></linearGradient>
+<linearGradient id="zn-g-usdc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8FE9FF"></stop><stop offset="1" stop-color="#2F5BFF"></stop></linearGradient>
+<linearGradient id="zn-g-btc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE0AE"></stop><stop offset="1" stop-color="#E0843A"></stop></linearGradient>
+<linearGradient id="zn-g-eth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9CCFF"></stop><stop offset="1" stop-color="#7650F0"></stop></linearGradient>
+<linearGradient id="zn-g-photon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7FE3F0" stop-opacity="0"></stop><stop offset=".5" stop-color="#CFF6FB"></stop><stop offset="1" stop-color="#7FE3F0" stop-opacity="0"></stop></linearGradient>
+</defs>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(70% 38% at 50% 33%, rgba(38,64,132,.42) 0%, rgba(14,22,52,.22) 45%, rgba(5,5,8,0) 72%), radial-gradient(90% 26% at 50% 104%, rgba(255,170,110,.07) 0%, rgba(5,5,8,0) 70%)"></div>
+<img src="/_blob/22598c3e02f8d66e2c5a5b7a7f7b0950" alt="" aria-hidden="true" class="zn-twinkle" style="position: absolute; left: 0; top: 0; width: 402px; height: 874px; opacity: .6; pointer-events: none">
+
+<div aria-hidden="true" class="zn-hero-mask" style="position: absolute; left: -9px; top: 82px; width: 420px; height: 420px; pointer-events: none">
+<img src="/_blob/1050618e8fe84b474b0d18bc8eb34ee9" alt="" class="zn-spin-slow" style="position: absolute; left: 0; top: 0; width: 420px; height: 420px; opacity: .5">
+<img src="/_blob/d9f491c7b2f182c8dfd46bd9de001579" alt="" class="zn-spin-rev zn-sweep" style="position: absolute; left: 20px; top: 20px; width: 380px; height: 380px; opacity: .16; mix-blend-mode: screen">
+</div>
+
+<svg aria-hidden="true" width="402" height="402" viewBox="-201 -201 402 402" style="position: absolute; left: 0; top: 91px; overflow: visible; pointer-events: none">
+<g class="zn-spin-bezel" style="transform-origin: 0 0">
+<path d="M0 -176L0 -183.5M6.1 -175.9L6.3 -179.4M12.3 -175.6L12.5 -179.1M18.4 -175L18.8 -178.5M24.5 -174.3L25 -177.8M30.6 -173.3L31.9 -180.7M36.6 -172.2L37.3 -175.6M42.6 -170.8L43.4 -174.2M48.5 -169.2L49.5 -172.5M54.4 -167.4L55.5 -170.7M60.2 -165.4L62.8 -172.4M65.9 -163.2L67.2 -166.4M71.6 -160.8L73 -164M77.2 -158.2L78.7 -161.3M82.6 -155.4L84.3 -158.5M88 -152.4L91.8 -158.9M93.3 -149.3L95.1 -152.2M98.4 -145.9L100.4 -148.8M103.5 -142.4L105.5 -145.2M108.4 -138.7L110.5 -141.4M113.1 -134.8L118 -140.6M117.8 -130.8L120.1 -133.4M122.3 -126.6L124.7 -129.1M126.6 -122.3L129.1 -124.7M130.8 -117.8L133.4 -120.1M134.8 -113.1L140.6 -118M138.7 -108.4L141.4 -110.5M142.4 -103.5L145.2 -105.5M145.9 -98.4L148.8 -100.4M149.3 -93.3L152.2 -95.1M152.4 -88L158.9 -91.7M155.4 -82.6L158.5 -84.3M158.2 -77.2L161.3 -78.7M160.8 -71.6L164 -73M163.2 -65.9L166.4 -67.2M165.4 -60.2L172.4 -62.8M167.4 -54.4L170.7 -55.5M169.2 -48.5L172.5 -49.5M170.8 -42.6L174.2 -43.4M172.2 -36.6L175.6 -37.3M173.3 -30.6L180.7 -31.9M174.3 -24.5L177.8 -25M175 -18.4L178.5 -18.8M175.6 -12.3L179.1 -12.5M175.9 -6.1L179.4 -6.3M176 0L183.5 0M175.9 6.1L179.4 6.3M175.6 12.3L179.1 12.5M175 18.4L178.5 18.8M174.3 24.5L177.8 25M173.3 30.6L180.7 31.9M172.2 36.6L175.6 37.3M170.8 42.6L174.2 43.4M169.2 48.5L172.5 49.5M167.4 54.4L170.7 55.5M165.4 60.2L172.4 62.8M163.2 65.9L166.4 67.2M160.8 71.6L164 73M158.2 77.2L161.3 78.7M155.4 82.6L158.5 84.3M152.4 88L158.9 91.7M149.3 93.3L152.2 95.1M145.9 98.4L148.8 100.4M142.4 103.5L145.2 105.5M138.7 108.4L141.4 110.5M134.8 113.1L140.6 118M130.8 117.8L133.4 120.1M126.6 122.3L129.1 124.7M122.3 126.6L124.7 129.1M117.8 130.8L120.1 133.4M113.1 134.8L118 140.6M108.4 138.7L110.5 141.4M103.5 142.4L105.5 145.2M98.4 145.9L100.4 148.8M93.3 149.3L95.1 152.2M88 152.4L91.8 158.9M82.6 155.4L84.3 158.5M77.2 158.2L78.7 161.3M71.6 160.8L73 164M65.9 163.2L67.2 166.4M60.2 165.4L62.8 172.4M54.4 167.4L55.5 170.7M48.5 169.2L49.5 172.5M42.6 170.8L43.4 174.2M36.6 172.2L37.3 175.6M30.6 173.3L31.9 180.7M24.5 174.3L25 177.8M18.4 175L18.8 178.5M12.3 175.6L12.5 179.1M6.1 175.9L6.3 179.4M0 176L0 183.5M-6.1 175.9L-6.3 179.4M-12.3 175.6L-12.5 179.1M-18.4 175L-18.8 178.5M-24.5 174.3L-25 177.8M-30.6 173.3L-31.9 180.7M-36.6 172.2L-37.3 175.6M-42.6 170.8L-43.4 174.2M-48.5 169.2L-49.5 172.5M-54.4 167.4L-55.5 170.7M-60.2 165.4L-62.8 172.4M-65.9 163.2L-67.2 166.4M-71.6 160.8L-73 164M-77.2 158.2L-78.7 161.3M-82.6 155.4L-84.3 158.5M-88 152.4L-91.7 158.9M-93.3 149.3L-95.1 152.2M-98.4 145.9L-100.4 148.8M-103.5 142.4L-105.5 145.2M-108.4 138.7L-110.5 141.4M-113.1 134.8L-118 140.6M-117.8 130.8L-120.1 133.4M-122.3 126.6L-124.7 129.1M-126.6 122.3L-129.1 124.7M-130.8 117.8L-133.4 120.1M-134.8 113.1L-140.6 118M-138.7 108.4L-141.4 110.5M-142.4 103.5L-145.2 105.5M-145.9 98.4L-148.8 100.4M-149.3 93.3L-152.2 95.1M-152.4 88L-158.9 91.7M-155.4 82.6L-158.5 84.3M-158.2 77.2L-161.3 78.7M-160.8 71.6L-164 73M-163.2 65.9L-166.4 67.2M-165.4 60.2L-172.4 62.8M-167.4 54.4L-170.7 55.5M-169.2 48.5L-172.5 49.5M-170.8 42.6L-174.2 43.4M-172.2 36.6L-175.6 37.3M-173.3 30.6L-180.7 31.9M-174.3 24.5L-177.8 25M-175 18.4L-178.5 18.8M-175.6 12.3L-179.1 12.5M-175.9 6.1L-179.4 6.3M-176 0L-183.5 0M-175.9 -6.1L-179.4 -6.3M-175.6 -12.3L-179.1 -12.5M-175 -18.4L-178.5 -18.8M-174.3 -24.5L-177.8 -25M-173.3 -30.6L-180.7 -31.9M-172.2 -36.6L-175.6 -37.3M-170.8 -42.6L-174.2 -43.4M-169.2 -48.5L-172.5 -49.5M-167.4 -54.4L-170.7 -55.5M-165.4 -60.2L-172.4 -62.8M-163.2 -65.9L-166.4 -67.2M-160.8 -71.6L-164 -73M-158.2 -77.2L-161.3 -78.7M-155.4 -82.6L-158.5 -84.3M-152.4 -88L-158.9 -91.8M-149.3 -93.3L-152.2 -95.1M-145.9 -98.4L-148.8 -100.4M-142.4 -103.5L-145.2 -105.5M-138.7 -108.4L-141.4 -110.5M-134.8 -113.1L-140.6 -118M-130.8 -117.8L-133.4 -120.1M-126.6 -122.3L-129.1 -124.7M-122.3 -126.6L-124.7 -129.1M-117.8 -130.8L-120.1 -133.4M-113.1 -134.8L-118 -140.6M-108.4 -138.7L-110.5 -141.4M-103.5 -142.4L-105.5 -145.2M-98.4 -145.9L-100.4 -148.8M-93.3 -149.3L-95.1 -152.2M-88 -152.4L-91.8 -158.9M-82.6 -155.4L-84.3 -158.5M-77.2 -158.2L-78.7 -161.3M-71.6 -160.8L-73 -164M-65.9 -163.2L-67.2 -166.4M-60.2 -165.4L-62.8 -172.4M-54.4 -167.4L-55.5 -170.7M-48.5 -169.2L-49.5 -172.5M-42.6 -170.8L-43.4 -174.2M-36.6 -172.2L-37.3 -175.6M-30.6 -173.3L-31.9 -180.7M-24.5 -174.3L-25 -177.8M-18.4 -175L-18.8 -178.5M-12.3 -175.6L-12.5 -179.1M-6.1 -175.9L-6.3 -179.4" stroke="#DCE3EE" stroke-opacity=".30" stroke-width=".8" fill="none"></path>
+<circle r="190" fill="none" stroke="url(#zn-arcfade)" stroke-width=".8" stroke-dasharray="2 5"></circle>
+</g>
+<circle r="172" fill="none" stroke="#DCE3EE" stroke-opacity=".10" stroke-width=".6"></circle>
+<g font-family="Martian Mono, monospace" font-size="7" fill="#8C93A5" letter-spacing="1" text-anchor="middle">
+<text x="0" y="-162">000</text><text x="-164" y="2.5">270</text><text x="164" y="2.5">090</text>
+</g>
+</svg>
+
+<img src="/_blob/6589c6dd8ba7aafb5f6942245cec5084" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 82px; width: 402px; height: 420px; pointer-events: none; opacity: {{posterOrbit}}; transition: opacity .8s ease">
+<img src="/_blob/1f1f4250a767402eadaa110ecfa04bb6" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 82px; width: 402px; height: 420px; pointer-events: none; opacity: {{posterChart}}; transition: opacity .8s ease">
+<canvas ref="{{coreRef}}" aria-hidden="true" style="position: absolute; left: 0; top: 82px; width: 402px; height: 420px; pointer-events: none; opacity: {{coreOpacity}}; transition: opacity 1.2s ease"></canvas>
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 402px; height: 874px; pointer-events: none; opacity: {{chartOpacity}}; transition: opacity .6s ease .35s">
+<sc-for list="{{chartLabels}}" as="c" hint-placeholder-count="4">
+<div class="zn-m" style="position: absolute; right: 213px; top: {{c.y}}px; height: 18px; padding: 0 7px; box-sizing: border-box; border-radius: 9px; display: flex; align-items: center; gap: 6px; font-size: 8.5px; letter-spacing: .12em; color: #ECEEF4; background: rgba(8,9,14,.72); box-shadow: inset 0 0 0 1px rgba(255,255,255,.09); white-space: nowrap">
+<span style="width: 5px; height: 5px; border-radius: 50%; background: {{c.color}}; box-shadow: 0 0 6px {{c.color}}"></span>{{c.sym}}<span style="color: #9BA2B4">{{c.pct}}</span>
+</div>
+</sc-for>
+</div>
+
+<button type="button" onClick="{{toggleChart}}" aria-pressed="{{chartOn}}" aria-label="Read the core as an allocation chart" style="position: absolute; left: 111px; top: 202px; width: 180px; height: 180px; border-radius: 50%"></button>
+
+<header class="zn-rise" style="position: absolute; left: 16px; right: 16px; top: 54px; height: 44px; display: flex; align-items: center; justify-content: space-between; animation-delay: .1s">
+<a href="#vault" aria-label="ZEN Zenith Treasury home" style="display: flex; align-items: center; gap: 11px; color: #ECEEF4">
+<span style="width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center" class="zn-chip">
+<svg width="22" height="19" viewBox="0 0 100 86" aria-hidden="true"><use href="#zn-mark" fill="url(#zn-ti)"></use></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span class="zn-d zn-spectral" style="font-size: 14px; font-weight: 360; font-stretch: 150%; letter-spacing: .34em; line-height: 1">ZENITH</span>
+<span class="zn-m" style="font-size: 7.5px; letter-spacing: .3em; color: #8C93A5; line-height: 1">TREASURY · SERIES III</span>
+</span>
+</a>
+<div style="display: flex; align-items: center; gap: 10px">
+<a href="Zenith-Appearance.dc.html" aria-label="Appearance and themes" class="zn-chip" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="#DCE3EE" stroke-width="1.5"></circle><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="#DCE3EE"></path><circle cx="12" cy="12" r="11" stroke="#7FE3F0" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="1.5 3"></circle></svg>
+</a>
+<a href="#profile" aria-label="Profile — Alex Leschik" style="position: relative; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: #ECEEF4">
+<span class="zn-orbit" aria-hidden="true" style="position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(220,227,238,.22)"><i style="position: absolute; left: 19px; top: -2.5px; width: 5px; height: 5px; border-radius: 50%; background: #7FE3F0; box-shadow: 0 0 8px #7FE3F0"></i></span>
+<span class="zn-d" style="width: 34px; height: 34px; border-radius: 17px; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 500; font-stretch: 130%; letter-spacing: .06em; background: linear-gradient(160deg, #2A2F3C, #101218); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.06)">AL</span>
+</a>
+</div>
+</header>
+
+<div class="zn-rise" style="position: absolute; left: 16px; top: 116px; display: flex; flex-direction: column; gap: 12px; animation-delay: .5s">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="zn-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">LIQUID</span>
+<span class="zn-d zn-tnum" style="font-size: 15px; font-weight: 300; font-stretch: 120%; color: #ECEEF4; line-height: 1">73.6<span style="font-size: 10px; color: #9BA2B4">%</span></span>
+<span style="width: 54px; height: 2px; border-radius: 1px; background: rgba(255,255,255,.1); overflow: hidden; display: block"><span style="display: block; width: 73.6%; height: 2px; background: linear-gradient(90deg, #E8EDF5, #6FA8FF)"></span></span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="zn-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">VOLATILE</span>
+<span class="zn-d zn-tnum" style="font-size: 15px; font-weight: 300; font-stretch: 120%; color: #ECEEF4; line-height: 1">26.4<span style="font-size: 10px; color: #9BA2B4">%</span></span>
+<span style="width: 54px; height: 2px; border-radius: 1px; background: rgba(255,255,255,.1); overflow: hidden; display: block"><span style="display: block; width: 26.4%; height: 2px; background: linear-gradient(90deg, #FFC48E, #A88BFF)"></span></span>
+</div>
+</div>
+
+<div class="zn-rise zn-seg" role="group" aria-label="Core view" style="position: absolute; right: 16px; top: 114px; height: 30px; padding: 3px; box-sizing: border-box; border-radius: 15px; display: flex; gap: 2px; animation-delay: .55s">
+<button type="button" onClick="{{showOrbit}}" aria-pressed="{{orbitOn}}" class="zn-hit zn-m" style="height: 24px; padding: 0 10px; border-radius: 12px; font-size: 8px; letter-spacing: .2em; color: {{orbitInk}}; background: {{orbitBg}}; transition: background .3s ease, color .3s ease">ORBIT</button>
+<button type="button" onClick="{{showChart}}" aria-pressed="{{chartOn}}" class="zn-hit zn-m" style="height: 24px; padding: 0 10px; border-radius: 12px; font-size: 8px; letter-spacing: .2em; color: {{chartInk}}; background: {{chartBg}}; transition: background .3s ease, color .3s ease">CHART</button>
+</div>
+
+<section aria-label="Total reserve" class="zn-rise" style="position: absolute; left: 0; right: 0; top: 480px; display: flex; flex-direction: column; align-items: center; gap: 8px; animation-delay: .35s">
+<div class="zn-m" style="display: flex; align-items: center; gap: 8px; font-size: 8.5px; letter-spacing: .3em; color: #9BA2B4">
+<span class="zn-live" aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #7FE3F0"></span>TOTAL RESERVE
+</div>
+<div class="zn-d zn-tnum" aria-label="$248,390.12" style="display: flex; align-items: flex-start; font-size: 50px; font-weight: 220; font-stretch: 118%; letter-spacing: -.01em; line-height: 1; color: #F3F5FA; filter: drop-shadow(0 0 16px rgba(127,227,240,.22))">
+<sc-for list="{{digits}}" as="g" hint-placeholder-count="8">
+<sc-if value="{{g.isDigit}}" hint-placeholder-val="{{true}}">
+<span aria-hidden="true" style="display: inline-block; height: 1em; overflow: hidden"><span class="zn-roll" style="display: block; white-space: pre-line; line-height: 1; --ty: {{g.ty}}; animation-delay: {{g.delay}}">0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9</span></span>
+</sc-if>
+<sc-if value="{{g.isSym}}" hint-placeholder-val="{{false}}">
+<span aria-hidden="true" style="display: inline-block; color: {{g.ink}}; font-weight: 200">{{g.ch}}</span>
+</sc-if>
+</sc-for>
+<span aria-hidden="true" style="font-size: 22px; font-weight: 300; margin-top: 5px; margin-left: 2px; color: #9BA2B4">.12</span>
+</div>
+<a href="Zenith-Flows.dc.html" class="zn-chip" style="height: 30px; padding: 0 13px 0 11px; box-sizing: border-box; border-radius: 15px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #CFF6FB">
+<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1.5 9 8.5H1z" fill="#7FE3F0"></path></svg>
+<span class="zn-tnum" style="font-weight: 600">+$1,377.42</span><span class="zn-tnum" style="color: #9BA2B4">0.56% today</span>
+</a>
+</section>
+
+<nav aria-label="Positions" class="zn-rise" style="position: absolute; left: 16px; top: 606px; width: 370px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; animation-delay: .6s">
+<sc-for list="{{positions}}" as="p" hint-placeholder-count="4">
+<a href="{{p.href}}" class="zn-tile" style="height: 56px; padding: 0 12px 0 10px; box-sizing: border-box; border-radius: 16px; display: flex; align-items: center; gap: 10px; color: #ECEEF4">
+<svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" style="flex-shrink: 0">
+<circle cx="15" cy="15" r="11.5" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="2.2"></circle>
+<circle cx="15" cy="15" r="11.5" fill="none" stroke="{{p.grad}}" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="{{p.dash}}" transform="rotate(-90 15 15)"></circle>
+<circle cx="15" cy="15" r="3.2" fill="{{p.dot}}"></circle>
+</svg>
+<span style="display: flex; flex-direction: column; gap: 3px; min-width: 0; flex-grow: 1">
+<span style="display: flex; align-items: baseline; justify-content: space-between; gap: 6px"><span style="font-size: 13px; font-weight: 600; letter-spacing: .02em">{{p.sym}}</span><span class="zn-m zn-tnum" style="font-size: 9px; color: #9BA2B4">{{p.pct}}</span></span>
+<span class="zn-tnum" style="font-size: 12px; color: #B7BDCB">{{p.value}}</span>
+</span>
+</a>
+</sc-for>
+</nav>
+
+<a href="Zenith-Agent.dc.html" class="zn-rise zn-glass zn-edge" style="position: absolute; left: 16px; top: 736px; width: 370px; height: 60px; padding: 0 16px 0 10px; box-sizing: border-box; border-radius: 30px; display: flex; align-items: center; gap: 12px; color: #ECEEF4; animation-delay: .7s">
+<span class="zn-mini" aria-hidden="true" style="position: relative; width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 50% 50%, rgba(127,227,240,.35), rgba(20,30,60,.2) 55%, rgba(0,0,0,0) 70%)">
+<i style="border-color: rgba(232,238,248,.75); --r: 0deg"></i><i style="border-color: rgba(95,150,255,.8); --r: 60deg; animation-duration: 7s"></i><i style="border-color: rgba(255,180,110,.75); --r: 120deg; animation-duration: 9s"></i>
+<svg width="13" height="11" viewBox="0 0 100 86" style="position: absolute; left: 13.5px; top: 14.5px"><use href="#zn-mark" fill="#EAFBFF"></use></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1">
+<span class="zn-m" style="font-size: 8px; letter-spacing: .28em; color: #7FE3F0">NAVIGATOR</span>
+<span style="font-size: 14.5px; font-weight: 500">2 transfers ready to align</span>
+</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+</a>
+
+<nav aria-label="Primary" class="zn-rise zn-glass zn-edge" style="position: absolute; left: 16px; top: 808px; width: 370px; height: 56px; box-sizing: border-box; border-radius: 28px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; animation-delay: .8s">
+<a href="#vault" aria-current="page" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #ECEEF4">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CFF6FB" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="3.2"></circle><ellipse cx="12" cy="12" rx="9.5" ry="4.2" transform="rotate(-24 12 12)"></ellipse></svg>
+<span style="font-size: 10px; font-weight: 600">Vault</span>
+</a>
+<a href="Zenith-Flows.dc.html" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9BA2B4">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 7c5 0 6 5 9 5s4-5 9-5"></path><path d="M3 17c5 0 6-5 9-5s4 5 9 5"></path><circle cx="12" cy="12" r="1.3" fill="#9BA2B4"></circle></svg>
+<span style="font-size: 10px; font-weight: 500">Flows</span>
+</a>
+<a href="Zenith-Agent.dc.html" aria-label="Navigator" style="height: 56px; display: flex; align-items: center; justify-content: center">
+<span class="zn-corebtn" style="width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center">
+<svg width="19" height="16.4" viewBox="0 0 100 86" aria-hidden="true"><use href="#zn-mark" fill="#EAFBFF"></use></svg>
+</span>
+</a>
+<a href="#activity" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9BA2B4">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"></path></svg>
+<span style="font-size: 10px; font-weight: 500">Activity</span>
+</a>
+<a href="Zenith-Appearance.dc.html" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9BA2B4">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>
+<span style="font-size: 10px; font-weight: 500">Settings</span>
+</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveCore":{"editor":"boolean","default":true,"section":"Core"},"view":{"editor":"enum","options":["orbit","chart"],"default":"orbit","section":"Core"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const live = this.props.liveCore !== false;
+    const chart = st.chart != null ? st.chart : this.props.view === 'chart';
+    if (!this._h) {
+      this._h = {
+        coreRef: (el) => {
+          if (el === this._cv) return;
+          if (this._core) { this._core.destroy(); this._core = null; }
+          this._cv = el;
+          if (el && window.ZenithCore && this.props.liveCore !== false) {
+            this._core = window.ZenithCore.mount(el, {
+              zoom: 0.93, alignEuler: [0.36, 0, 0], alignRate: 0.75,
+              onReady: () => this.setState({ coreOn: true })
+            });
+            if (this._core && this._chart) this._core.set({ align: 1 });
+          }
+        },
+        toggleChart: () => this._setChart(!this._chart),
+        showOrbit: () => this._setChart(false),
+        showChart: () => this._setChart(true)
+      };
+      this._setChart = (on) => {
+        this._chart = on;
+        if (this._core) this._core.set({ align: on ? 1 : 0 });
+        this.setState({ chart: on });
+      };
+    }
+    this._chart = chart;
+    if (this._core) this._core.set({ align: chart ? 1 : 0 });
+    const coreOn = !!st.coreOn && live;
+    const K = 171.89, Z = 0.93, A = 0.36, D = 4.9, CY = 292;
+    const labelY = (r) => {
+      const y = r * Z * Math.cos(A), zp = r * Z * Math.sin(A);
+      return Math.round(CY - y * K * D / (D - zp) - 9);
+    };
+    const pos = [
+      { sym: 'USD', pct: '47.7%', value: '$118,400.00', share: 0.477, r: 1.0, dot: '#E9EDF4', grad: 'url(#zn-g-usd)', color: '#E8F4FF', href: '#usd' },
+      { sym: 'USDC', pct: '25.9%', value: '$64,250.00', share: 0.259, r: 0.835, dot: '#6FA8FF', grad: 'url(#zn-g-usdc)', color: '#5BB8FF', href: '#usdc' },
+      { sym: 'BTC', pct: '19.7%', value: '$48,970.31', share: 0.197, r: 0.68, dot: '#FFB472', grad: 'url(#zn-g-btc)', color: '#FFAE5E', href: '#btc' },
+      { sym: 'ETH', pct: '6.7%', value: '$16,769.81', share: 0.067, r: 0.535, dot: '#A88BFF', grad: 'url(#zn-g-eth)', color: '#A88BFF', href: '#eth' }
+    ];
+    const C = 2 * Math.PI * 11.5;
+    const positions = pos.map((p) => Object.assign({}, p, { dash: (p.share * C).toFixed(2) + ' ' + C.toFixed(2) }));
+    const chartLabels = pos.map((p) => ({ sym: p.sym, pct: p.pct, color: p.color, y: labelY(p.r) }));
+    const whole = '$248,390';
+    let di = 0;
+    const digits = whole.split('').map((ch) => {
+      const isDigit = /[0-9]/.test(ch);
+      const g = { ch: ch, isDigit: isDigit, isSym: !isDigit, ink: ch === '$' ? '#9BA2B4' : '#F3F5FA' };
+      if (isDigit) { g.ty = '-' + (10 + Number(ch)) + 'em'; g.delay = (0.25 + di * 0.07).toFixed(2) + 's'; di++; }
+      return g;
+    });
+    return Object.assign({}, this._h, {
+      positions: positions,
+      chartLabels: chartLabels,
+      digits: digits,
+      chartOn: chart,
+      orbitOn: !chart,
+      chartOpacity: chart ? 1 : 0,
+      coreOpacity: coreOn ? 1 : 0,
+      posterOrbit: coreOn || chart ? 0 : 1,
+      posterChart: coreOn || !chart ? 0 : 1,
+      orbitBg: chart ? 'transparent' : 'rgba(236,238,244,.14)',
+      chartBg: chart ? 'rgba(127,227,240,.18)' : 'transparent',
+      orbitInk: chart ? '#9BA2B4' : '#ECEEF4',
+      chartInk: chart ? '#CFF6FB' : '#9BA2B4'
+    });
+  }
+  componentWillUnmount() { if (this._core) this._core.destroy(); }
+}
+</script>
+</body>
+</html>

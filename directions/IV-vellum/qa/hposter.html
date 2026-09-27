@@ -1,0 +1,5 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script src="../assets/vellum-holo.js"></script></head><body><canvas id="c"></canvas>
+<script>
+window.renderPoster=function(w,h,opts,t,tilt){var c=document.getElementById('c');c.style.width=w+'px';c.style.height=h+'px';opts.interactive=false;var inst=VellumHolo.mount(c,opts);return new Promise(function(res){setTimeout(function(){inst.renderAt(t,tilt);res(c.toDataURL('image/png'));},200);});};
+</script></body></html>

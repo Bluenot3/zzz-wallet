@@ -1,0 +1,230 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Agent.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "v1",
+      "radius": 48,
+      "title": "ZEN Agent — draft, sign & seal",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "Desktop.dc.html": {
+      "h": 900,
+      "page": "v1",
+      "radius": 20,
+      "title": "Command Deck — desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 964
+    },
+    "Main.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "v1",
+      "radius": 48,
+      "title": "Vault — Treasury home",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "Materials.dc.html": {
+      "h": 844,
+      "page": "v1",
+      "title": "Material system",
+      "w": 1200,
+      "x": 1410,
+      "y": 0
+    },
+    "Send.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "page": "v1",
+      "radius": 48,
+      "title": "Send — instrument entry",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "Sovereign-Agent.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v2",
+      "radius": 55,
+      "title": "Sovereign Agent — hold to seal",
+      "w": 402,
+      "x": 482,
+      "y": 0
+    },
+    "Sovereign-Anatomy.dc.html": {
+      "h": 874,
+      "page": "v2",
+      "title": "Anatomy of the note — exploded view",
+      "w": 1200,
+      "x": 1446,
+      "y": 0
+    },
+    "Sovereign-Desktop.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v2",
+      "radius": 20,
+      "title": "Sovereign Command — desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 994
+    },
+    "Sovereign-Dial.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v2",
+      "radius": 55,
+      "title": "Vault Dial — turn to send",
+      "w": 402,
+      "x": 964,
+      "y": 0
+    },
+    "Sovereign-Vault.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v2",
+      "radius": 55,
+      "title": "Sovereign Vault — polymer note",
+      "w": 402,
+      "x": 0,
+      "y": 0
+    },
+    "Zenith-Agent.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v3",
+      "radius": 55,
+      "title": "Navigator — hold to align",
+      "w": 402,
+      "x": 482,
+      "y": 0
+    },
+    "Zenith-Appearance.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v3",
+      "radius": 55,
+      "title": "Appearance — theme switch (incl. legacy)",
+      "w": 402,
+      "x": 1446,
+      "y": 0
+    },
+    "Zenith-Desktop.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v3",
+      "radius": 20,
+      "title": "Zenith Command — desktop",
+      "w": 1440,
+      "x": 0,
+      "y": 994
+    },
+    "Zenith-Flows.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v3",
+      "radius": 55,
+      "title": "Flows — gravity of capital",
+      "w": 402,
+      "x": 964,
+      "y": 0
+    },
+    "Zenith-System.dc.html": {
+      "h": 874,
+      "page": "v3",
+      "title": "Anatomy of the core — material & motion system",
+      "w": 1200,
+      "x": 1928,
+      "y": 0
+    },
+    "Zenith-Vault.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v3",
+      "radius": 55,
+      "title": "Zenith Vault — live armillary core",
+      "w": 402,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-26T21:40:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "page": "v3",
+    "view": "canvas"
+  },
+  "notes": {
+    "sov": {
+      "kind": "title1",
+      "maxW": 2646,
+      "page": "v2",
+      "text": "ZEN Sovereign — Direction II · Legacy theme",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "title": {
+      "kind": "title1",
+      "maxW": 2610,
+      "page": "v1",
+      "text": "ZEN Treasury — Direction I · Legacy theme",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "zen3": {
+      "kind": "title1",
+      "maxW": 3128,
+      "page": "v3",
+      "text": "ZEN Zenith — Direction III",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Agent.dc.html",
+    "Send.dc.html",
+    "Materials.dc.html",
+    "Desktop.dc.html",
+    "Sovereign-Vault.dc.html",
+    "Sovereign-Agent.dc.html",
+    "Sovereign-Dial.dc.html",
+    "Sovereign-Anatomy.dc.html",
+    "Sovereign-Desktop.dc.html",
+    "Zenith-Vault.dc.html",
+    "Zenith-Agent.dc.html",
+    "Zenith-Flows.dc.html",
+    "Zenith-Appearance.dc.html",
+    "Zenith-System.dc.html",
+    "Zenith-Desktop.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "v3",
+      "name": "III · Zenith"
+    },
+    {
+      "id": "v2",
+      "name": "II · Sovereign — Legacy"
+    },
+    {
+      "id": "v1",
+      "name": "I · Treasury — Legacy"
+    }
+  ],
+  "title": "ZEN Treasury Wallet"
+}

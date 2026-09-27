@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — Certificate of Reserve</title>
+<script src="./support.js"></script>
+<script src="/_blob/VL_HOLO"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9DCBF;color:#2B2118;font-family:'Alegreya Sans',ui-sans-serif,-apple-system,'Segoe UI',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#243F9A;text-decoration:none}a:hover{color:#15296B}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible{outline:2px solid #243F9A;outline-offset:3px}
+.vl-serif{font-family:'Cormorant Garamond',Cormorant,Garamond,'Times New Roman',serif}
+.vl-sc{font-family:'Alegreya SC',Alegreya,Georgia,serif;letter-spacing:.09em}
+.vl-script{font-family:'Pinyon Script','Snell Roundhand',cursive}
+.vl-onum{font-variant-numeric:oldstyle-nums proportional-nums}
+.vl-tnum{font-variant-numeric:lining-nums tabular-nums}
+.vl-vellum{background-color:#EFE3C8;background-image:url(/_blob/VL_TILE);background-size:256px 256px}
+.vl-rubric{color:#A3321F}
+.vl-hit{position:relative}
+.vl-hit::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+.vl-glass{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.42) 0%,rgba(255,252,244,.16) 55%,rgba(255,255,255,.26) 100%);-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:blur(2px) saturate(165%) brightness(1.04);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.34),inset 0 -12px 20px -12px rgba(120,86,36,.28),0 14px 30px -14px rgba(64,42,14,.45),0 2px 5px rgba(64,42,14,.16)}
+.vl-glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(90% 60% at 22% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),radial-gradient(60% 50% at 88% 110%,rgba(255,255,255,.4),rgba(255,255,255,0) 60%);mix-blend-mode:soft-light}
+.vl-glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from 210deg,rgba(255,255,255,.9),rgba(255,210,170,.5) 12%,rgba(255,255,255,.1) 30%,rgba(150,190,255,.45) 50%,rgba(255,255,255,.1) 70%,rgba(255,255,255,.9));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.vl-refract-dock{-webkit-backdrop-filter:blur(2px) saturate(165%) brightness(1.04);backdrop-filter:url(#vl-dockref) blur(.5px) saturate(175%) brightness(1.05)}
+.vl-refract-sheet{-webkit-backdrop-filter:blur(10px) saturate(165%) brightness(1.05);backdrop-filter:url(#vl-sheetref) blur(8px) saturate(175%) brightness(1.06)}
+.vl-sheet{background-color:#F6EEDC;background-image:url(/_blob/VL_TILE);background-size:256px 256px}
+.vl-lift{box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 22px 44px -22px rgba(70,45,15,.55),0 3px 8px rgba(70,45,15,.16)}
+.vl-wax{background:radial-gradient(circle at 36% 30%,#7C93F0 0%,#3553C4 26%,#1E3290 58%,#121E5C 100%);box-shadow:inset 0 2px 3px rgba(255,255,255,.45),inset 0 -3px 6px rgba(0,0,20,.5),0 3px 8px rgba(20,30,90,.35)}
+.vl-gold{background-image:linear-gradient(100deg,#8C6418 0%,#E9C46A 22%,#FFF1C4 36%,#C8962F 52%,#F3D48A 70%,#8C6418 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:vl-gilt 7s ease-in-out infinite}
+@keyframes vl-gilt{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.vl-ink{animation:vl-ink 1.6s cubic-bezier(.3,.1,.1,1) both}
+@keyframes vl-ink{from{clip-path:inset(0 100% 0 0);filter:blur(1.2px);opacity:.4}60%{filter:blur(.3px);opacity:1}to{clip-path:inset(0 -2% 0 0);filter:blur(0);opacity:1}}
+.vl-rise{animation:vl-rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes vl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.vl-draw{animation:vl-draw 2.2s cubic-bezier(.45,0,.2,1) both}
+@keyframes vl-draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.vl-spin{animation:vl-spin 120s linear infinite}
+@keyframes vl-spin{to{transform:rotate(360deg)}}
+.vl-tile{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.vl-tile:hover{transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.vl-gold,.vl-spin{animation:none!important}.vl-ink,.vl-rise,.vl-draw{animation-duration:.01s!important;animation-delay:0s!important}}
+.vl-vial{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(214,236,210,.35) 45%,rgba(255,255,255,.45));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -2px 4px rgba(90,110,60,.25),inset 0 0 0 1px rgba(255,255,255,.4),0 6px 14px -6px rgba(64,42,14,.45),0 0 0 .7px rgba(43,33,24,.35)}
+.vl-bubble{position:absolute;top:4px;width:30px;height:16px;border-radius:9px;background:radial-gradient(ellipse at 40% 30%,rgba(255,255,255,.98),rgba(255,255,255,.55) 45%,rgba(200,230,200,.25) 75%);box-shadow:inset 0 -1px 2px rgba(90,110,60,.35),0 0 0 .6px rgba(90,110,60,.4)}
+.vl-frame-a,.vl-frame-b{transition:opacity .35s ease}
+</style>
+</helmet>
+<div class="vl-vellum" style="position: relative; width: 402px; height: 874px; overflow: hidden; color: #2B2118">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="vl-mark" viewBox="0 0 100 86"><path fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<linearGradient id="vl-g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE6A8"></stop><stop offset=".35" stop-color="#D9AC4B"></stop><stop offset=".6" stop-color="#F6DC92"></stop><stop offset="1" stop-color="#8C6418"></stop></linearGradient>
+<linearGradient id="vl-g-lapis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B78E0"></stop><stop offset="1" stop-color="#1B2F7E"></stop></linearGradient>
+<linearGradient id="vl-g-verm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4704F"></stop><stop offset="1" stop-color="#9C2E1B"></stop></linearGradient>
+<linearGradient id="vl-g-tyr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B062A6"></stop><stop offset="1" stop-color="#55204F"></stop></linearGradient>
+<pattern id="vl-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V4" stroke="#2B2118" stroke-opacity=".35" stroke-width=".7"></path></pattern>
+<filter id="vl-deckle" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-leaf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"></feTurbulence><feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .6  0 0 0 .55 0" result="c"></feColorMatrix><feComposite in="c" in2="SourceAlpha" operator="in" result="ci"></feComposite><feBlend in="SourceGraphic" in2="ci" mode="overlay"></feBlend></filter>
+<filter id="vl-dockref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/VL_DOCKMAP" x="0" y="0" width="370" height="60" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="26" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+<filter id="vl-sheetref" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feImage href="/_blob/VL_SHEETMAP" x="0" y="0" width="370" height="430" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter>
+</defs>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 45%, rgba(255,250,236,.3) 0%, rgba(255,250,236,0) 45%, rgba(126,86,34,.2) 88%, rgba(96,62,20,.34) 100%)"></div>
+
+<header class="vl-rise" style="position: absolute; left: 16px; right: 16px; top: 54px; height: 44px; display: flex; align-items: center; gap: 12px">
+<a href="Vellum-Vault.dc.html" aria-label="Back to the Folio" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg></a>
+<span class="vl-sc" style="flex-grow: 1; font-size: 10px; color: #6E5A42">Attestation · September</span>
+<button type="button" aria-label="Share certificate" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"></path><path d="M5 12v7.5h14V12"></path></svg></button>
+</header>
+
+<article aria-label="Certificate of reserve" class="vl-rise" onPointerMove="{{tiltMove}}" style="position: absolute; left: 16px; top: 108px; width: 370px; height: 640px; animation-delay: .1s">
+<div aria-hidden="true" class="vl-sheet vl-lift" style="position: absolute; inset: 0; border-radius: 4px; filter: url(#vl-deckle)"></div>
+<img src="/_blob/VL_CERTBORDER" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 370px; height: 640px; pointer-events: none">
+
+<div style="position: absolute; left: 40px; right: 40px; top: 46px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+<span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">ZEN Treasury · Folio IV</span>
+<h1 class="vl-serif" style="margin: 0; font-size: 33px; font-style: italic; font-weight: 500; line-height: 1">Certificate of Reserve</h1>
+<span class="vl-sc vl-rubric" style="font-size: 9.5px; font-weight: 700">Proof of reserve · attested monthly</span>
+</div>
+
+<div style="position: absolute; left: 85px; top: 142px; width: 200px; height: 200px">
+<div aria-hidden="true" style="position: absolute; inset: -8px; border-radius: 50%; background: conic-gradient(from 0deg, #8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418); box-shadow: 0 10px 22px -8px rgba(70,45,15,.6), inset 0 0 0 1px rgba(43,33,24,.35)"></div>
+<div aria-hidden="true" style="position: absolute; inset: -3px; border-radius: 50%; background: #3B2A12"></div>
+<img src="/_blob/VL_P_CERT" alt="" style="position: absolute; inset: 0; width: 200px; height: 200px; border-radius: 50%; opacity: {{holoPoster}}">
+<canvas ref="{{certRef}}" aria-hidden="true" style="position: absolute; inset: 0; width: 200px; height: 200px; border-radius: 50%; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas>
+</div>
+
+<div style="position: absolute; left: 60px; right: 60px; top: 364px; display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div class="vl-vial" aria-hidden="true" style="width: 160px; height: 24px; border-radius: 12px">
+<span style="position: absolute; left: 50%; top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.35)"></span>
+<span style="position: absolute; left: calc(50% - 20px); top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.2)"></span>
+<span style="position: absolute; left: calc(50% + 20px); top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.2)"></span>
+<span ref="{{bubbleRef}}" class="vl-bubble" style="left: 65px"></span>
+</div>
+<span class="vl-sc" style="position: relative; height: 14px; width: 260px; text-align: center; font-size: 9.5px; color: #243F9A">
+<span ref="{{frameARef}}" class="vl-frame-a" style="position: absolute; left: 0; right: 0">Tilt left · the ZEN seal</span>
+<span ref="{{frameBRef}}" class="vl-frame-b" style="position: absolute; left: 0; right: 0; opacity: 0">Tilt right · the attested reserve</span>
+</span>
+</div>
+
+<p class="vl-serif" style="position: absolute; left: 44px; right: 44px; top: 412px; margin: 0; text-align: center; font-size: 15px; line-height: 1.36; color: #2B2118">This certifies that the ZEN Treasury held reserves of <b class="vl-onum" style="font-weight: 700">$248,390.12</b> against liabilities of <b class="vl-onum" style="font-weight: 700">$0.00</b> at 5:11 pm ET on the twenty-sixth of September, 2026.</p>
+
+<dl style="position: absolute; left: 44px; right: 44px; top: 506px; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding-top: 10px; border-top: 1px solid rgba(43,33,24,.2); text-align: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Reserve ratio</dt><dd class="vl-serif vl-onum" style="margin: 0; font-size: 19px; font-weight: 600">100%</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Positions</dt><dd class="vl-serif vl-onum" style="margin: 0; font-size: 19px; font-weight: 600">4</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Root</dt><dd class="vl-tnum" style="margin: 0; font-size: 12px; font-weight: 700; padding-top: 4px">7f3a…d6c1</dd></div>
+</dl>
+
+<div style="position: absolute; left: 44px; top: 560px; width: 150px; display: flex; flex-direction: column; gap: 2px">
+<span class="vl-script" style="font-size: 26px; line-height: 1; color: #1F2A5C">Alex Leschik</span>
+<span style="height: 1px; background: rgba(43,33,24,.45); display: block"></span>
+<span class="vl-sc" style="font-size: 8px; color: #6E5A42">Keeper of the Folio</span>
+</div>
+<span class="vl-wax" aria-hidden="true" style="position: absolute; left: 270px; top: 548px; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center">
+<span style="width: 36px; height: 36px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1.5px #D9AC4B"><img src="/_blob/VL_P_SEAL" alt="" style="width: 36px; height: 36px; display: block"></span>
+</span>
+</article>
+
+<div class="vl-rise" style="position: absolute; left: 16px; top: 766px; width: 370px; display: flex; gap: 10px; animation-delay: .5s">
+<a href="#share" class="vl-glass" style="height: 56px; border-radius: 28px; flex-grow: 1; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700; color: #2B2118">Share with auditor</a>
+<a href="#download" class="vl-wax" style="height: 56px; border-radius: 28px; padding: 0 22px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #F3D48A">Save PDF</a>
+</div>
+<p class="vl-sc" style="position: absolute; left: 0; right: 0; top: 834px; margin: 0; text-align: center; font-size: 9px; color: #6E5A42">Verifiable offline · the hologram changes with the angle of view</p>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveHolo":{"editor":"boolean","default":true,"section":"Hologram"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._h = {
+        certRef: (el) => {
+          if (el === this._cv) return;
+          if (this._holo) { this._holo.destroy(); this._holo = null; }
+          this._cv = el;
+          if (el && window.VellumHolo && this.props.liveHolo !== false) {
+            this._holo = window.VellumHolo.mount(el, { design: 'certificate', frame2Text: '$248,390\nSEP · 26', texMax: 900, span: 1.4, onReady: () => this.setState({ holoOn: true }) });
+          }
+        },
+        bubbleRef: (el) => { this._bubble = el; },
+        frameARef: (el) => { this._fa = el; },
+        frameBRef: (el) => { this._fb = el; },
+        tiltMove: () => {}
+      };
+    }
+    const on = this.props.liveHolo !== false && !!st.holoOn;
+    return Object.assign({}, this._h, { holoLive: on ? 1 : 0, holoPoster: on ? 0 : 1 });
+  }
+  componentDidMount() {
+    const tick = () => {
+      this._raf = requestAnimationFrame(tick);
+      if (!this._holo || !this._bubble || document.hidden) return;
+      const t = this._holo.getTilt();
+      const x = Math.max(-1, Math.min(1, t[0]));
+      this._bubble.style.transform = 'translateX(' + (-x * 58).toFixed(1) + 'px)';
+      const f = x > 0 ? 1 : 0;
+      if (this._fa && this._fb && f !== this._f) { this._f = f; this._fa.style.opacity = f ? '0' : '1'; this._fb.style.opacity = f ? '1' : '0'; }
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); if (this._holo) this._holo.destroy(); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Sovereign — Anatomy of the Note</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&amp;family=Geist:wght@300;400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05070F;color:#EDE6D6;font-family:'Geist','Helvetica Neue',Helvetica,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:#E9D29A;text-decoration:none}
+.bd{font-family:'Bodoni Moda','Bodoni 72','Didot',Georgia,serif;font-optical-sizing:auto}
+.mono{font-family:'Geist Mono',ui-monospace,Menlo,monospace}
+.tnum{font-variant-numeric:tabular-nums lining-nums}
+.holo{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.42) 0 1px,rgba(255,255,255,0) 1px 5px),repeating-linear-gradient(-45deg,rgba(255,255,255,.42) 0 1px,rgba(255,255,255,0) 1px 5px),linear-gradient(115deg,#F3C9E4 0%,#BFE2F8 17%,#DDD3FD 33%,#FFEDBE 50%,#C4F0DC 67%,#CFD4FF 83%,#F3C9E4 100%);background-size:auto,auto,300% 300%;animation:holo 10s linear infinite}
+.gold-text{background-image:linear-gradient(180deg,#FAEBC0 0%,#DDBB72 48%,#A57F3A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.ovi{background-image:linear-gradient(100deg,#FFF6DC 0%,#E9CB86 18%,#D6B066 32%,#F4E4B8 44%,#84DCC6 58%,#90A8FF 72%,#E9CB86 88%,#FFF6DC 100%);background-size:280% 100%;background-position:30% 50%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.plate{position:absolute;left:0;top:0;width:370px;height:232px;border-radius:22px;transform-style:preserve-3d}
+.ghost{position:absolute;left:0;top:0;width:370px;height:232px;box-sizing:border-box;border-radius:22px;border:1px dashed rgba(200,215,255,.22)}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes holo{to{background-position:0 0,0 0,150% 50%}}
+@keyframes float{0%,100%{transform:rotateX(56deg) rotateZ(-38deg) scale(1.12) translateZ(0)}50%{transform:rotateX(56deg) rotateZ(-38deg) scale(1.12) translateZ(10px)}}
+@media (prefers-reduced-motion:reduce){.holo,.float{animation:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 1200px; height: 874px; overflow: hidden; background: radial-gradient(70% 80% at 32% 55%, #182B62 0%, #0A1330 50%, #05070F 100%); color: #EDE6D6">
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="subA" cx=".18" cy=".08" r="1.15"><stop offset="0" stop-color="#27408A"></stop><stop offset=".42" stop-color="#16295E"></stop><stop offset="1" stop-color="#0A1432"></stop></radialGradient>
+<radialGradient id="discA" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#1E3474"></stop><stop offset="1" stop-color="#0B1636"></stop></radialGradient>
+<linearGradient id="zShadeA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"></stop><stop offset=".55" stop-color="#000" stop-opacity=".08"></stop><stop offset="1" stop-color="#000" stop-opacity=".42"></stop></linearGradient>
+<pattern id="zHatchA" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="3.6" height="3.6" fill="#B8904A"></rect><rect width="3.6" height="1.7" fill="#FBEBC0"></rect></pattern>
+<pattern id="ropeA" width="10" height="8" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D9BD7E" stroke-width=".4"><path d="M0 4q2.5-3.6 5 0t5 0"></path><path d="M0 4q2.5 3.6 5 0t5 0"></path><path d="M-2.5 4q2.5-3.6 5 0t5 0t5 0"></path><path d="M-2.5 4q2.5 3.6 5 0t5 0t5 0"></path></g></pattern>
+<symbol id="zm" viewBox="0 0 100 86"><path d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></symbol>
+<path id="zpA" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path>
+<clipPath id="noteClipA"><path d="M22 0H348A22 22 0 0 1 370 22V210A22 22 0 0 1 348 232H22A22 22 0 0 1 0 210V22A22 22 0 0 1 22 0ZM325 22A21 21 0 0 0 304 43V189A21 21 0 0 0 325 210A21 21 0 0 0 346 189V43A21 21 0 0 0 325 22Z" clip-rule="evenodd"></path></clipPath>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .42  0 0 0 0 .3  0 0 0 .55 0"></feColorMatrix></filter>
+</defs>
+</svg>
+
+<img src="/_blob/08ab14cb5bcc2d153259c4de5d2aa247" alt="" style="position: absolute; left: -60px; top: 60px; width: 860px; height: 860px; opacity: .07; pointer-events: none">
+<svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: .16; mix-blend-mode: overlay; pointer-events: none" aria-hidden="true"><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+
+<header style="position: absolute; left: 48px; top: 44px; width: 640px; display: flex; flex-direction: column; gap: 12px">
+<span class="mono gold-text" style="font-size: 10px; font-weight: 500; letter-spacing: .32em">ZEN SOVEREIGN · EXPLODED VIEW</span>
+<h1 class="bd" style="margin: 0; font-size: 40px; font-weight: 500; line-height: 1.05; color: #F4EEE2">Anatomy of the <span style="font-style: italic">Sovereign Note</span></h1>
+<p style="margin: 0; max-width: 520px; font-size: 15px; line-height: 1.55; color: #A7B1C8">Six plates, four materials. Each plate has one job, and together they composite into the balance card on the Vault screen.</p>
+</header>
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 780px; height: 874px; perspective: 3200px; perspective-origin: 50% 45%">
+<div style="position: absolute; left: 200px; top: 452px; width: 370px; height: 232px; transform-style: preserve-3d; transform: rotateX(56deg) rotateZ(-38deg) scale(1.06)">
+
+<div style="position: absolute; left: -330px; top: -300px; width: 1030px; height: 832px; transform: translateZ(-90px); background-image: linear-gradient(rgba(143,166,224,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(143,166,224,.13) 1px, transparent 1px); background-size: 31px 29px; background-position: 0 0; -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent 100%); mask-image: radial-gradient(closest-side, #000 30%, transparent 100%)"></div>
+<div style="position: absolute; left: 10px; top: 14px; width: 370px; height: 232px; border-radius: 26px; transform: translateZ(-89px); background: rgba(0,0,0,.75); filter: blur(26px)"></div>
+
+<div style="position: absolute; left: 0; top: 0; width: 1px; height: 270px; transform-origin: 0 0; transform: rotateX(90deg); border-left: 1px dashed rgba(200,215,255,.28)"></div>
+<div style="position: absolute; left: 369px; top: 0; width: 1px; height: 270px; transform-origin: 0 0; transform: rotateX(90deg); border-left: 1px dashed rgba(200,215,255,.28)"></div>
+<div style="position: absolute; left: 0; top: 231px; width: 1px; height: 270px; transform-origin: 0 0; transform: rotateX(90deg); border-left: 1px dashed rgba(200,215,255,.28)"></div>
+<div style="position: absolute; left: 369px; top: 231px; width: 1px; height: 270px; transform-origin: 0 0; transform: rotateX(90deg); border-left: 1px dashed rgba(200,215,255,.28)"></div>
+
+<div class="plate" style="transform: translateZ(0px)">
+<svg width="370" height="232" viewBox="0 0 370 232" style="position: absolute; left: 0; top: 0; overflow: visible">
+<path d="M22 0H348A22 22 0 0 1 370 22V210A22 22 0 0 1 348 232H22A22 22 0 0 1 0 210V22A22 22 0 0 1 22 0ZM325 22A21 21 0 0 0 304 43V189A21 21 0 0 0 325 210A21 21 0 0 0 346 189V43A21 21 0 0 0 325 22Z" fill="url(#subA)" fill-rule="evenodd" stroke="rgba(233,210,154,.35)" stroke-width=".8"></path>
+<g clip-path="url(#noteClipA)"><rect width="370" height="232" filter="url(#grain)" opacity=".45" style="mix-blend-mode: soft-light"></rect></g>
+</svg>
+<span id="m1" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+<div class="plate" style="transform: translateZ(54px)">
+<div class="ghost"></div>
+<svg width="370" height="232" viewBox="0 0 370 232" style="position: absolute; left: 0; top: 0">
+<g clip-path="url(#noteClipA)">
+<g fill="none" stroke="#D9BD7E" stroke-opacity=".22" stroke-width=".6"><circle cx="240" cy="150" r="96"></circle><circle cx="240" cy="150" r="104"></circle><circle cx="240" cy="150" r="112"></circle><circle cx="240" cy="150" r="120"></circle><circle cx="240" cy="150" r="128"></circle><circle cx="240" cy="150" r="136"></circle><circle cx="240" cy="150" r="144"></circle><circle cx="240" cy="150" r="152"></circle><circle cx="240" cy="150" r="160"></circle><circle cx="240" cy="150" r="168"></circle><circle cx="240" cy="150" r="176"></circle><circle cx="240" cy="150" r="184"></circle><circle cx="240" cy="150" r="192"></circle><circle cx="240" cy="150" r="200"></circle><circle cx="240" cy="150" r="208"></circle><circle cx="240" cy="150" r="216"></circle><circle cx="240" cy="150" r="224"></circle><circle cx="240" cy="150" r="232"></circle></g>
+<rect x="0" y="160" width="370" height="46" fill="url(#ropeA)" opacity=".7"></rect>
+</g>
+<rect x="10.5" y="10.5" width="349" height="211" rx="16" fill="none" stroke="#D9BD7E" stroke-opacity=".8" stroke-width=".9"></rect>
+<rect x="14.5" y="14.5" width="341" height="203" rx="13" fill="none" stroke="#D9BD7E" stroke-opacity=".45" stroke-width=".5" stroke-dasharray="1 2"></rect>
+<text x="28" y="23.4" font-family="Geist Mono, monospace" font-size="4" letter-spacing=".8" fill="#EBD5A0" textLength="258" lengthAdjust="spacingAndGlyphs">ZEN AI CO · SOVEREIGN RESERVE · POWERING INTELLIGENT SYSTEMS · INTEGRITY · STABILITY · INNOVATION ·</text>
+<text x="28" y="213" font-family="Geist Mono, monospace" font-size="4" letter-spacing=".8" fill="#EBD5A0" textLength="258" lengthAdjust="spacingAndGlyphs">PRECISION · TRUST · SOVEREIGNTY · SERIES 2026 · ZEN AI CO · PRECISION · TRUST · SOVEREIGNTY · 2026 ·</text>
+</svg>
+<img src="/_blob/9b42b6d5d1d5ebd85e133dac710620c1" alt="" style="position: absolute; left: 182px; top: 92px; width: 116px; height: 116px">
+<span id="m2" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+<div class="plate" style="transform: translateZ(108px)">
+<div class="ghost"></div>
+<svg viewBox="-70 -70 140 140" width="116" height="116" style="position: absolute; left: 182px; top: 92px; filter: drop-shadow(0 6px 8px rgba(0,0,0,.5))">
+<circle r="35.5" fill="none" stroke="#E2C688" stroke-opacity=".8" stroke-width=".7"></circle>
+<circle r="33.5" fill="url(#discA)" stroke="#E2C688" stroke-opacity=".5" stroke-width=".5"></circle>
+<g fill="none" stroke="#E2C688" stroke-opacity=".16" stroke-width=".45"><circle r="4"></circle><circle r="7"></circle><circle r="10"></circle><circle r="13"></circle><circle r="16"></circle><circle r="19"></circle><circle r="22"></circle><circle r="25"></circle><circle r="28"></circle><circle r="31"></circle></g>
+<g transform="translate(-24 -20.6) scale(.48)">
+<use href="#zpA" fill="#000" fill-opacity=".55" transform="translate(2.4 2.6)"></use>
+<use href="#zpA" fill="#FFF3CF" fill-opacity=".5" transform="translate(-1.3 -1.3)"></use>
+<use href="#zpA" fill="url(#zHatchA)"></use>
+<use href="#zpA" fill="url(#zShadeA)"></use>
+<use href="#zpA" fill="none" stroke="#FFF1C8" stroke-opacity=".85" stroke-width="1.1"></use>
+</g>
+</svg>
+<span id="m3" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+<div class="plate" style="transform: translateZ(162px)">
+<div class="ghost"></div>
+<div style="position: absolute; left: 28px; top: 36px; display: flex; flex-direction: column; gap: 9px">
+<span class="bd gold-text" style="font-size: 9.5px; font-weight: 700; letter-spacing: .32em; line-height: 1">TOTAL RESERVE</span>
+<div style="display: flex; align-items: baseline; gap: 1px; line-height: 1"><span class="bd ovi tnum" style="font-size: 42px; font-weight: 500; letter-spacing: -.01em">$248,390</span><span class="bd gold-text tnum" style="font-size: 21px; font-weight: 600">.12</span></div>
+</div>
+<div style="position: absolute; left: 28px; top: 166px; display: flex; flex-direction: column; gap: 7px">
+<span class="bd" style="font-size: 8px; font-weight: 700; letter-spacing: .3em; line-height: 1; color: #CDB57C">SERIES 2026</span>
+<span class="mono gold-text" style="font-size: 12.5px; font-weight: 500; letter-spacing: .22em; line-height: 1">ZS 2026 0926 A</span>
+</div>
+<span class="mono" style="position: absolute; left: 351px; top: 60px; writing-mode: vertical-rl; font-size: 8.5px; font-weight: 500; letter-spacing: .22em; color: #86ABFF">ZS 2026 0926 A</span>
+<span id="m4" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+<div class="plate" style="transform: translateZ(216px)">
+<div class="ghost"></div>
+<div style="position: absolute; left: 304px; top: 22px; width: 42px; height: 188px; box-sizing: border-box; border-radius: 21px; background: linear-gradient(160deg, rgba(255,255,255,.34) 0%, rgba(190,215,255,.12) 40%, rgba(255,255,255,.05) 60%, rgba(190,215,255,.22) 100%); border: 1px solid rgba(255,255,255,.6); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), inset 3px 0 8px rgba(255,255,255,.2), inset -3px -10px 16px rgba(80,120,220,.25), 0 0 24px rgba(140,180,255,.25)"></div>
+<span id="m5" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+<div class="plate" style="transform: translateZ(270px)">
+<div class="ghost"></div>
+<div style="position: absolute; left: 295.5px; top: 0; width: 2.2px; height: 232px; background: repeating-linear-gradient(180deg, #7EA6FF 0 16px, transparent 16px 26px); box-shadow: 0 0 8px #3C7BFF"></div>
+<span class="holo" style="position: absolute; left: 309px; top: 36px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.75), 0 0 14px rgba(200,220,255,.55)"><svg width="16" height="13.8" viewBox="0 0 100 86"><use href="#zm" fill="#1B2A5A"></use></svg></span>
+<span class="holo" style="position: absolute; left: 318px; top: 80px; width: 14px; height: 116px; border-radius: 7px; opacity: .55"></span>
+<span id="m6" style="position: absolute; left: 368px; top: 150px; width: 2px; height: 2px"></span>
+</div>
+
+</div>
+</div>
+
+<svg width="1200" height="874" viewBox="0 0 1200 874" style="position: absolute; left: 0; top: 0; pointer-events: none" aria-hidden="true">
+<g fill="none" stroke="#D9BD7E" stroke-opacity=".6" stroke-width=".8"><path d="M565.7 290.9H660L780 190H800"></path><path d="M564.0 337.3H660L780 307H800"></path><path d="M562.4 382.8H660L780 426H800"></path><path d="M560.7 427.5H660L780 545H800"></path><path d="M559.1 471.3H660L780 664H800"></path><path d="M557.6 514.4H660L780 783H800"></path></g>
+<g fill="#F1DDA6"><circle cx="565.7" cy="290.9" r="2.6"></circle><circle cx="564.0" cy="337.3" r="2.6"></circle><circle cx="562.4" cy="382.8" r="2.6"></circle><circle cx="560.7" cy="427.5" r="2.6"></circle><circle cx="559.1" cy="471.3" r="2.6"></circle><circle cx="557.6" cy="514.4" r="2.6"></circle></g>
+<g fill="none" stroke="#F1DDA6" stroke-width="1"><circle cx="800" cy="190" r="2.5"></circle><circle cx="800" cy="307" r="2.5"></circle><circle cx="800" cy="426" r="2.5"></circle><circle cx="800" cy="545" r="2.5"></circle><circle cx="800" cy="664" r="2.5"></circle><circle cx="800" cy="783" r="2.5"></circle></g>
+</svg>
+
+<ol style="position: absolute; left: 812px; top: 176px; width: 352px; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 20px">
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">06</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Foil &amp; security thread</span><span class="mono holo" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; font-weight: 500; letter-spacing: .16em; color: #16223F">HOLOGRAM · PROOF</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">Iridescent foil and a windowed signal-blue thread. Present only where value is verified.</p></div>
+</li>
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">05</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Polymer window</span><span class="mono" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; letter-spacing: .16em; color: #DCE6FF; border: 1px solid rgba(220,230,255,.4); background: rgba(255,255,255,.08)">LIQUID GLASS</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">A clear lens cut through the stock that refracts the screen behind the note.</p></div>
+</li>
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">04</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Optically variable figures</span><span class="mono" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; letter-spacing: .16em; color: #E9D29A; border: 1px solid rgba(233,210,154,.45)">INK · RECORD</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">The balance in Bodoni, printed in OVI: gold at rest, shifting to teal and blue as the note tilts.</p></div>
+</li>
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">03</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Intaglio medallion</span><span class="mono" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; letter-spacing: .16em; color: #E9D29A; border: 1px solid rgba(233,210,154,.45)">INK · RECORD</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">The Z mark engraved as raised hatch lines over an engine-turned disc.</p></div>
+</li>
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">02</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Lathe guilloche &amp; microprint</span><span class="mono" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; letter-spacing: .16em; color: #E9D29A; border: 1px solid rgba(233,210,154,.45)">INK · RECORD</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">Rosettes and rope bands generated from sine-modulated curves, bordered by 4-point microprint.</p></div>
+</li>
+<li style="display: flex; gap: 16px">
+<span class="bd gold-text tnum" style="font-size: 28px; font-weight: 500; line-height: 1; width: 38px; flex-shrink: 0">01</span>
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="bd" style="font-size: 17px; font-weight: 600; color: #F4EEE2">Treasury stock</span><span class="mono" style="align-self: flex-start; height: 20px; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; font-size: 9px; letter-spacing: .16em; color: #16223F; background: #F1E8D6">PAPER · RECORD</span><p style="margin: 0; font-size: 13px; line-height: 1.5; color: #A7B1C8">Navy intaglio stock with fiber grain and a die-cut window. Every record is printed on it.</p></div>
+</li>
+</ol>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<!doctype html><html><body style="margin:0;background:#333"><canvas id="c" width="512" height="512"></canvas><script>
+var MARK='M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z';
+var S=512,cv=document.getElementById('c'),g=cv.getContext('2d'),sc2=S*0.78/100,ox=(S-100*sc2)/2,oy=(S-86*sc2)/2,path=new Path2D(MARK);
+g.fillStyle='#000';g.fillRect(0,0,S,S);
+g.save();g.globalCompositeOperation='lighter';g.filter='blur(14px)';g.translate(ox,oy);g.scale(sc2,sc2);g.fillStyle='rgb(0,255,0)';g.fill(path,'evenodd');g.restore();
+g.save();g.globalCompositeOperation='lighter';g.translate(ox,oy);g.scale(sc2,sc2);g.fillStyle='rgb(255,0,0)';g.fill(path,'evenodd');g.restore();
+</script></body></html>

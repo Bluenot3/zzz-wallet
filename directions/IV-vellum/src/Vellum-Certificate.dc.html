@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Vellum — Certificate of Reserve</title>
+<script src="./support.js"></script>
+<script src="/_blob/VL_HOLO"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&amp;family=Alegreya+SC:wght@500;700&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
+<style>
+__VL_BASE_CSS__
+.vl-vial{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(214,236,210,.35) 45%,rgba(255,255,255,.45));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -2px 4px rgba(90,110,60,.25),inset 0 0 0 1px rgba(255,255,255,.4),0 6px 14px -6px rgba(64,42,14,.45),0 0 0 .7px rgba(43,33,24,.35)}
+.vl-bubble{position:absolute;top:4px;width:30px;height:16px;border-radius:9px;background:radial-gradient(ellipse at 40% 30%,rgba(255,255,255,.98),rgba(255,255,255,.55) 45%,rgba(200,230,200,.25) 75%);box-shadow:inset 0 -1px 2px rgba(90,110,60,.35),0 0 0 .6px rgba(90,110,60,.4)}
+.vl-frame-a,.vl-frame-b{transition:opacity .35s ease}
+</style>
+</helmet>
+<div class="vl-vellum" style="position: relative; width: 402px; height: 874px; overflow: hidden; color: #2B2118">
+
+__VL_DEFS__
+
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 80% at 50% 45%, rgba(255,250,236,.3) 0%, rgba(255,250,236,0) 45%, rgba(126,86,34,.2) 88%, rgba(96,62,20,.34) 100%)"></div>
+
+<header class="vl-rise" style="position: absolute; left: 16px; right: 16px; top: 54px; height: 44px; display: flex; align-items: center; gap: 12px">
+<a href="Vellum-Vault.dc.html" aria-label="Back to the Folio" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg></a>
+<span class="vl-sc" style="flex-grow: 1; font-size: 10px; color: #6E5A42">Attestation · September</span>
+<button type="button" aria-label="Share certificate" class="vl-glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B2118" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"></path><path d="M5 12v7.5h14V12"></path></svg></button>
+</header>
+
+<article aria-label="Certificate of reserve" class="vl-rise" onPointerMove="{{tiltMove}}" style="position: absolute; left: 16px; top: 108px; width: 370px; height: 640px; animation-delay: .1s">
+<div aria-hidden="true" class="vl-sheet vl-lift" style="position: absolute; inset: 0; border-radius: 4px; filter: url(#vl-deckle)"></div>
+<img src="/_blob/VL_CERTBORDER" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 370px; height: 640px; pointer-events: none">
+
+<div style="position: absolute; left: 40px; right: 40px; top: 46px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center">
+<span class="vl-sc" style="font-size: 9.5px; color: #6E5A42">ZEN Treasury · Folio IV</span>
+<h1 class="vl-serif" style="margin: 0; font-size: 33px; font-style: italic; font-weight: 500; line-height: 1">Certificate of Reserve</h1>
+<span class="vl-sc vl-rubric" style="font-size: 9.5px; font-weight: 700">Proof of reserve · attested monthly</span>
+</div>
+
+<div style="position: absolute; left: 85px; top: 142px; width: 200px; height: 200px">
+<div aria-hidden="true" style="position: absolute; inset: -8px; border-radius: 50%; background: conic-gradient(from 0deg, #8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418, #F3D48A, #B8872E, #FBE6A8, #8C6418); box-shadow: 0 10px 22px -8px rgba(70,45,15,.6), inset 0 0 0 1px rgba(43,33,24,.35)"></div>
+<div aria-hidden="true" style="position: absolute; inset: -3px; border-radius: 50%; background: #3B2A12"></div>
+<img src="/_blob/VL_P_CERT" alt="" style="position: absolute; inset: 0; width: 200px; height: 200px; border-radius: 50%; opacity: {{holoPoster}}">
+<canvas ref="{{certRef}}" aria-hidden="true" style="position: absolute; inset: 0; width: 200px; height: 200px; border-radius: 50%; opacity: {{holoLive}}; transition: opacity .8s ease"></canvas>
+</div>
+
+<div style="position: absolute; left: 60px; right: 60px; top: 364px; display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div class="vl-vial" aria-hidden="true" style="width: 160px; height: 24px; border-radius: 12px">
+<span style="position: absolute; left: 50%; top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.35)"></span>
+<span style="position: absolute; left: calc(50% - 20px); top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.2)"></span>
+<span style="position: absolute; left: calc(50% + 20px); top: 3px; bottom: 3px; width: 1px; background: rgba(43,33,24,.2)"></span>
+<span ref="{{bubbleRef}}" class="vl-bubble" style="left: 65px"></span>
+</div>
+<span class="vl-sc" style="position: relative; height: 14px; width: 260px; text-align: center; font-size: 9.5px; color: #243F9A">
+<span ref="{{frameARef}}" class="vl-frame-a" style="position: absolute; left: 0; right: 0">Tilt left · the ZEN seal</span>
+<span ref="{{frameBRef}}" class="vl-frame-b" style="position: absolute; left: 0; right: 0; opacity: 0">Tilt right · the attested reserve</span>
+</span>
+</div>
+
+<p class="vl-serif" style="position: absolute; left: 44px; right: 44px; top: 412px; margin: 0; text-align: center; font-size: 15px; line-height: 1.36; color: #2B2118">This certifies that the ZEN Treasury held reserves of <b class="vl-onum" style="font-weight: 700">$248,390.12</b> against liabilities of <b class="vl-onum" style="font-weight: 700">$0.00</b> at 5:11 pm ET on the twenty-sixth of September, 2026.</p>
+
+<dl style="position: absolute; left: 44px; right: 44px; top: 506px; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding-top: 10px; border-top: 1px solid rgba(43,33,24,.2); text-align: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Reserve ratio</dt><dd class="vl-serif vl-onum" style="margin: 0; font-size: 19px; font-weight: 600">100%</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Positions</dt><dd class="vl-serif vl-onum" style="margin: 0; font-size: 19px; font-weight: 600">4</dd></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><dt class="vl-sc" style="font-size: 8.5px; color: #6E5A42">Root</dt><dd class="vl-tnum" style="margin: 0; font-size: 12px; font-weight: 700; padding-top: 4px">7f3a…d6c1</dd></div>
+</dl>
+
+<div style="position: absolute; left: 44px; top: 560px; width: 150px; display: flex; flex-direction: column; gap: 2px">
+<span class="vl-script" style="font-size: 26px; line-height: 1; color: #1F2A5C">Alex Leschik</span>
+<span style="height: 1px; background: rgba(43,33,24,.45); display: block"></span>
+<span class="vl-sc" style="font-size: 8px; color: #6E5A42">Keeper of the Folio</span>
+</div>
+<span class="vl-wax" aria-hidden="true" style="position: absolute; left: 270px; top: 548px; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center">
+<span style="width: 36px; height: 36px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1.5px #D9AC4B"><img src="/_blob/VL_P_SEAL" alt="" style="width: 36px; height: 36px; display: block"></span>
+</span>
+</article>
+
+<div class="vl-rise" style="position: absolute; left: 16px; top: 766px; width: 370px; display: flex; gap: 10px; animation-delay: .5s">
+<a href="#share" class="vl-glass" style="height: 56px; border-radius: 28px; flex-grow: 1; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700; color: #2B2118">Share with auditor</a>
+<a href="#download" class="vl-wax" style="height: 56px; border-radius: 28px; padding: 0 22px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #F3D48A">Save PDF</a>
+</div>
+<p class="vl-sc" style="position: absolute; left: 0; right: 0; top: 834px; margin: 0; text-align: center; font-size: 9px; color: #6E5A42">Verifiable offline · the hologram changes with the angle of view</p>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveHolo":{"editor":"boolean","default":true,"section":"Hologram"},"$preview":{"width":402,"height":874}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._h = {
+        certRef: (el) => {
+          if (el === this._cv) return;
+          if (this._holo) { this._holo.destroy(); this._holo = null; }
+          this._cv = el;
+          if (el && window.VellumHolo && this.props.liveHolo !== false) {
+            this._holo = window.VellumHolo.mount(el, { design: 'certificate', frame2Text: '$248,390\nSEP · 26', texMax: 900, span: 1.4, onReady: () => this.setState({ holoOn: true }) });
+          }
+        },
+        bubbleRef: (el) => { this._bubble = el; },
+        frameARef: (el) => { this._fa = el; },
+        frameBRef: (el) => { this._fb = el; },
+        tiltMove: () => {}
+      };
+    }
+    const on = this.props.liveHolo !== false && !!st.holoOn;
+    return Object.assign({}, this._h, { holoLive: on ? 1 : 0, holoPoster: on ? 0 : 1 });
+  }
+  componentDidMount() {
+    const tick = () => {
+      this._raf = requestAnimationFrame(tick);
+      if (!this._holo || !this._bubble || document.hidden) return;
+      const t = this._holo.getTilt();
+      const x = Math.max(-1, Math.min(1, t[0]));
+      this._bubble.style.transform = 'translateX(' + (-x * 58).toFixed(1) + 'px)';
+      const f = x > 0 ? 1 : 0;
+      if (this._fa && this._fb && f !== this._f) { this._f = f; this._fa.style.opacity = f ? '0' : '1'; this._fb.style.opacity = f ? '1' : '0'; }
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); if (this._holo) this._holo.destroy(); }
+}
+</script>
+</body>
+</html>

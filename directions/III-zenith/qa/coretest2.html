@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#06060A} .w{position:relative;width:402px;height:402px} canvas{width:402px;height:402px;display:block}</style>
+<script src="../assets/zenith-core.js"></script></head><body><div class="w"><canvas id="c"></canvas></div>
+<script>
+var q=new URLSearchParams(location.search);
+var inst=ZenithCore.mount(document.getElementById('c'),{intro:false,interactive:false,noOrb:true});
+window.__inst=inst;
+setTimeout(function(){ inst.renderAt(+(q.get('t')||7), {align:+(q.get('a')||0), explode:+(q.get('x')||0), tilt:[+(q.get('tx')||0),+(q.get('ty')||0)]}); window.__done=1; }, 300);
+</script></body></html>
