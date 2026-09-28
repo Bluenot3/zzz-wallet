@@ -9,7 +9,7 @@ components). Built by [ZEN AI Co.](https://zenai.world) for the Arsenal platform
 
 ## What this is
 
-Four progressively more ambitious visual directions for the same wallet product — a
+Five progressively more ambitious visual directions for the same wallet product — a
 mobile treasury/portfolio app for holding and sending digital assets — each a complete,
 independent set of screens (vault/home, send/agent flow, ledger/analytics, a
 certificate/proof-of-reserve view, a materials/design-system board, and a desktop
@@ -20,11 +20,17 @@ between them live.
 |---|----------|-----------|--------|
 | I | **Treasury** | Classic dark fintech — deep obsidian, brushed metal, precise data | Legacy (toggleable) |
 | II | **Sovereign** | Polymer banknote — engraved guilloché, lathe rings, foil ink | Legacy (toggleable) |
-| III | **Zenith** | Real-time armillary sphere — orbital rings, thin-film titanium, glass, bloom | Live |
-| IV | **Vellum** | Parchment + hologram — liquid glass, wax seals, diffraction-grating kinegram | **Default** |
+| III | **Zenith** | Real-time armillary sphere — orbital rings, thin-film titanium, glass, bloom | Legacy (toggleable) |
+| IV | **Vellum** | Parchment + hologram — liquid glass, wax seals, diffraction-grating kinegram | Legacy (toggleable) |
+| V | **Meridian** | Best-of synthesis of I–IV on a refined armillary core, plus a standalone analytics/infographics dashboard | **Default** |
 
 Each direction after the first was generated as a full creative escalation on the last,
 while keeping every earlier direction live and selectable — nothing was thrown away.
+Direction V is not a reset: it evolves III's live WebGL armillary engine (a second,
+finer engraved-guilloché ring frequency and a cooler steel base tone synthesized from
+II), keeps IV's compact multi-theme switcher pattern, and adds the first board in the
+system that isn't wallet/chat UI — a fully interactive reserve-analytics dashboard
+(drag-to-inspect chart, live gauges, capital-flow donut, instrument certificate).
 
 ## Repo layout
 
@@ -47,13 +53,20 @@ directions/
     src/                     Vellum-Vault / -Seal / -Ledger / -Certificate / -Atelier / -Desktop
     assets/                  vellum-holo.js (custom WebGL1 hologram engine) + procedural art
     gen/, project/, publish/, qa/   same pattern as III
+  V-meridian/                 best-of-synthesis direction (5 boards)
+    src/                     Meridian-Vault / -Navigator / -Appearance / -Infographics / -Desktop
+    assets/                  meridian-core.js (zenith-core.js fork: 2nd guilloché ring
+                              frequency, cooler steel base) + procedural art
+    gen/                     build script (Python) + blob_ids.json (published asset map)
+    project/, publish/       built .dc.html output (dev + publish-ready)
+    qa/                      Playwright QA harness + a few reference screenshots
 brand/                        ZEN mark source (SVG/PNG + generator)
 ```
 
-## The two custom rendering engines
+## The rendering engines
 
-Both are dependency-free, hand-written WebGL1 engines (no three.js) built specifically
-for this project:
+Dependency-free, hand-written WebGL1 engines (no three.js) built specifically for this
+project:
 
 - **`directions/III-zenith/assets/zenith-core.js`** — real-time orbital-ring renderer.
   Rings are colored by a thin-film-interference spectral shader (the color comes from
@@ -63,10 +76,14 @@ for this project:
   hologram renderer. Canvas-baked relief textures feed a spectral grating shader that
   shifts rainbow bands with device tilt, plus a tilt-driven kinegram frame-swap and
   micro-facet glitter.
+- **`directions/V-meridian/assets/meridian-core.js`** — synthesis fork of `zenith-core.js`
+  adding a second, finer engraved-guilloché tick ring (borrowed from II's lathe-ring
+  language) and a cooler "precision-steel" base tone.
 
-Both expose a small `mount(canvas, opts) → { set(), renderAt(), destroy() }` API and are
-paired everywhere with a deterministic pre-rendered poster frame that crossfades to the
-live canvas once it's ready (accessibility / low-power / `prefers-reduced-motion` safe).
+Each engine exposes a small `mount(canvas, opts) → { set(), renderAt(), destroy() }` API
+and is paired everywhere with a deterministic pre-rendered poster frame that crossfades
+to the live canvas once it's ready (accessibility / low-power / `prefers-reduced-motion`
+safe).
 
 ## Notes
 
