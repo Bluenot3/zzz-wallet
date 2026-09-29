@@ -72,7 +72,7 @@ __MD_DEFS__
 <a href="#vault" aria-label="Vault" aria-current="page" style="position: relative; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: rgba(127,227,240,.1); box-shadow: inset 0 0 0 1px rgba(127,227,240,.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CFF6FB" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="3.2"></circle><ellipse cx="12" cy="12" rx="9.5" ry="4.2" transform="rotate(-24 12 12)"></ellipse></svg></a>
 <a href="Meridian-Infographics.dc.html" aria-label="Flows" style="width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 7c5 0 6 5 9 5s4-5 9-5"></path><path d="M3 17c5 0 6-5 9-5s4 5 9 5"></path><circle cx="12" cy="12" r="1.3" fill="#9BA2B4"></circle></svg></a>
 <a href="#navigator" aria-label="Navigator" style="position: relative; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="m15.5 8.5-2.2 4.8-4.8 2.2 2.2-4.8z" stroke-linejoin="round"></path></svg><span style="position: absolute; right: 10px; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: #7FE3F0; box-shadow: 0 0 0 2px #0A0B10, 0 0 8px #7FE3F0"></span></a>
-<a href="#activity" aria-label="Activity" style="width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"></path></svg></a>
+<a href="Meridian-Activity.dc.html" aria-label="Activity" style="width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"></path></svg></a>
 <a href="Meridian-Appearance.dc.html" aria-label="Settings" style="width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg></a>
 <a href="#profile" aria-label="Profile — Alex Leschik" class="md-d" style="margin-top: auto; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; font-stretch: 130%; color: #ECEEF4; background: linear-gradient(160deg, #2A2F3C, #101218); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 0 0 1px rgba(220,227,238,.2)">AL</a>
 </nav>
@@ -84,7 +84,7 @@ __MD_DEFS__
 </div>
 <label class="md-chip" style="margin-left: 64px; width: 340px; height: 44px; padding: 0 14px; box-sizing: border-box; border-radius: 22px; display: flex; align-items: center; gap: 10px">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m20 20-4.2-4.2"></path></svg>
-<input type="search" placeholder="Search, or ask Navigator to move money" aria-label="Search or ask Navigator" style="flex-grow: 1; min-width: 0; height: 40px; border: 0; outline: none; background: transparent; font: inherit; font-size: 13px; color: #ECEEF4">
+<input type="search" placeholder="Ask Navigator or search" aria-label="Search or ask Navigator" style="flex-grow: 1; min-width: 0; height: 40px; border: 0; outline: none; background: transparent; font: inherit; font-size: 13px; color: #ECEEF4">
 <span class="md-m" style="height: 20px; padding: 0 6px; border-radius: 6px; display: flex; align-items: center; font-size: 8px; color: #9BA2B4; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12)">⌘K</span>
 </label>
 <nav aria-label="Theme" class="md-seg" style="margin-left: auto; height: 44px; padding: 4px; box-sizing: border-box; border-radius: 22px; display: flex; align-items: center; gap: 2px">
@@ -135,12 +135,36 @@ __MD_DEFS__
 <div style="margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; width: 250px">
 <div style="display: flex; flex-direction: column; gap: 5px"><span class="md-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">LIQUID</span><span class="md-d md-tnum" style="font-size: 19px; font-weight: 300; font-stretch: 120%; line-height: 1">73.6<span style="font-size: 12px; color: #9BA2B4">%</span></span><span style="height: 2px; border-radius: 1px; background: rgba(255,255,255,.1); display: block; overflow: hidden"><span style="display: block; width: 73.6%; height: 2px; background: linear-gradient(90deg, #E8EDF5, #7FE3F0)"></span></span></div>
 <div style="display: flex; flex-direction: column; gap: 5px"><span class="md-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">VOLATILE</span><span class="md-d md-tnum" style="font-size: 19px; font-weight: 300; font-stretch: 120%; line-height: 1">26.4<span style="font-size: 12px; color: #9BA2B4">%</span></span><span style="height: 2px; border-radius: 1px; background: rgba(255,255,255,.1); display: block; overflow: hidden"><span style="display: block; width: 26.4%; height: 2px; background: linear-gradient(90deg, #D9AC4B, #A88BFF)"></span></span></div>
-<div style="display: flex; flex-direction: column; gap: 5px"><span class="md-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">NET · 30D</span><span class="md-d md-tnum" style="font-size: 19px; font-weight: 300; font-stretch: 120%; line-height: 1; color: #CFF6FB">+$31.1K</span></div>
+<div style="display: flex; flex-direction: column; gap: 5px"><span class="md-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">NET · 30D</span><span class="md-d md-tnum" style="font-size: 19px; font-weight: 300; font-stretch: 120%; line-height: 1; color: #CFF6FB">+$8.3K</span></div>
 <div style="display: flex; flex-direction: column; gap: 5px"><span class="md-m" style="font-size: 7.5px; letter-spacing: .26em; color: #8C93A5">TO ALIGN</span><span class="md-d md-tnum" style="font-size: 19px; font-weight: 300; font-stretch: 120%; line-height: 1">{{toAlign}}</span></div>
 </div>
 <div class="md-seg" role="group" aria-label="Core view" style="margin-top: 22px; width: max-content; height: 34px; padding: 3px; box-sizing: border-box; border-radius: 17px; display: flex; gap: 2px">
 <button type="button" onClick="{{showOrbit}}" aria-pressed="{{orbitOn}}" class="md-hit md-m" style="height: 28px; padding: 0 12px; border-radius: 14px; font-size: 8.5px; letter-spacing: .2em; color: {{orbitInk}}; background: {{orbitBg}}; transition: background .3s ease, color .3s ease">ORBIT</button>
 <button type="button" onClick="{{showChart}}" aria-pressed="{{chartOn}}" class="md-hit md-m" style="height: 28px; padding: 0 12px; border-radius: 14px; font-size: 8.5px; letter-spacing: .2em; color: {{chartInk}}; background: {{chartBg}}; transition: background .3s ease, color .3s ease">ALLOC</button>
+</div>
+</section>
+
+<section aria-label="Allocation versus policy" class="md-tile md-rise" style="position: absolute; left: 108px; top: 470px; width: 352px; height: 178px; padding: 14px 16px; box-sizing: border-box; border-radius: 20px; animation-delay: .45s">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .22em; color: #8C93A5">ALLOCATION VS POLICY</span>
+<span class="md-m" style="height: 18px; padding: 0 8px; border-radius: 9px; display: flex; align-items: center; gap: 5px; font-size: 7px; letter-spacing: .16em; color: #BFF3CC; background: rgba(143,233,166,.08); box-shadow: inset 0 0 0 1px rgba(143,233,166,.25)"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#8FE9A6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"></path></svg>ALL IN BAND</span>
+</div>
+<div role="table" aria-label="Allocation drift from policy targets" style="margin-top: 10px; display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{alloc}}" as="a" hint-placeholder-count="4">
+<div role="row" style="height: 26px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 92px; align-items: center; column-gap: 10px">
+<span role="cell" style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 2px; background: {{a.color}}"></span>{{a.sym}}</span>
+<span role="cell" aria-label="{{a.aria}}" style="position: relative; height: 16px">
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 7px; height: 2px; border-radius: 1px; background: rgba(255,255,255,.07)"></span>
+<span aria-hidden="true" style="position: absolute; left: 20%; width: 60%; top: 4px; height: 8px; border-radius: 4px; background: rgba(127,227,240,.08); box-shadow: inset 0 0 0 1px rgba(127,227,240,.18)"></span>
+<span aria-hidden="true" style="position: absolute; left: 50%; top: 1px; width: 1px; height: 14px; background: rgba(220,227,238,.55)"></span>
+<span aria-hidden="true" style="position: absolute; left: {{a.x}}%; top: 3px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: {{a.color}}; box-shadow: 0 0 0 2px #0E1016, 0 0 8px {{a.glow}}"></span>
+</span>
+<span role="cell" class="md-tnum" style="font-size: 10.5px; color: #B7BDCB; text-align: right; white-space: nowrap">{{a.pct}} <span style="color: {{a.dInk}}">{{a.drift}}</span></span>
+</div>
+</sc-for>
+</div>
+<div class="md-m" aria-hidden="true" style="margin-top: 8px; display: grid; grid-template-columns: 44px minmax(0, 1fr) 92px; column-gap: 10px; font-size: 6.5px; letter-spacing: .14em; color: #6E7488">
+<span></span><span style="display: flex; justify-content: space-between"><span>−5</span><span>BAND ±3 · TARGET</span><span>+5 PTS</span></span><span></span>
 </div>
 </section>
 
@@ -329,7 +353,16 @@ class Component extends DCLogic {
       return g;
     });
     const showAligned = chart || sealed;
+    const TARGET = { USD: 45.0, USDC: 28.0, BTC: 20.0, ETH: 7.0 };
+    const GLOW = { USD: 'rgba(232,244,255,.5)', USDC: 'rgba(91,184,255,.55)', BTC: 'rgba(255,174,94,.55)', ETH: 'rgba(168,139,255,.55)' };
+    const alloc = pos.map((p) => {
+      const cur = p.share * 100, t = TARGET[p.sym], d = cur - t;
+      return { sym: p.sym, color: p.color, glow: GLOW[p.sym], pct: cur.toFixed(1) + '%', drift: (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1),
+        dInk: Math.abs(d) > 2.5 ? '#E6C27A' : '#8C93A5', x: (50 + Math.max(-5, Math.min(5, d)) * 10).toFixed(1),
+        aria: p.sym + ' ' + cur.toFixed(1) + ' percent against a ' + t.toFixed(1) + ' percent target, drift ' + d.toFixed(1) + ' points, band plus or minus 3' };
+    });
     return Object.assign({}, this._h, {
+      alloc: alloc,
       positions: positions,
       chartLabels: chartLabels,
       digits: digits,

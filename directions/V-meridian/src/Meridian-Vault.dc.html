@@ -146,7 +146,7 @@ VERIFIED · PROOF OF RESERVE
 </svg>
 <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0; flex-grow: 1">
 <span style="display: flex; align-items: baseline; justify-content: space-between; gap: 6px"><span style="font-size: 13px; font-weight: 600; letter-spacing: .02em">{{p.sym}}</span><span class="md-m md-tnum" style="font-size: 9px; color: #9BA2B4">{{p.pct}}</span></span>
-<span class="md-tnum" style="font-size: 12px; color: #B7BDCB">{{p.value}}</span>
+<span style="display: flex; align-items: baseline; justify-content: space-between; gap: 6px"><span class="md-tnum" style="font-size: 12px; color: #B7BDCB">{{p.value}}</span><span class="md-tnum" style="font-size: 9.5px; color: {{p.dInk}}">{{p.d24}}</span></span>
 </span>
 </a>
 </sc-for>
@@ -177,7 +177,7 @@ VERIFIED · PROOF OF RESERVE
 <svg width="19" height="16.4" viewBox="0 0 100 86" aria-hidden="true"><use href="#md-mark" fill="#EAFBFF"></use></svg>
 </span>
 </a>
-<a href="#activity" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9BA2B4">
+<a href="Meridian-Activity.dc.html" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9BA2B4">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9BA2B4" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"></path></svg>
 <span style="font-size: 10px; font-weight: 500">Activity</span>
 </a>
@@ -228,10 +228,10 @@ class Component extends DCLogic {
       return Math.round(CY - y * K * D / (D - zp) - 9);
     };
     const pos = [
-      { sym: 'USD', pct: '47.7%', value: '$118,400.00', share: 0.477, r: 1.0, dot: '#E9EDF4', grad: 'url(#md-g-usd)', color: '#E8F4FF', href: '#usd' },
-      { sym: 'USDC', pct: '25.9%', value: '$64,250.00', share: 0.259, r: 0.835, dot: '#6FA8FF', grad: 'url(#md-g-usdc)', color: '#5BB8FF', href: '#usdc' },
-      { sym: 'BTC', pct: '19.7%', value: '$48,970.31', share: 0.197, r: 0.68, dot: '#FFB472', grad: 'url(#md-g-btc)', color: '#FFAE5E', href: '#btc' },
-      { sym: 'ETH', pct: '6.7%', value: '$16,769.81', share: 0.067, r: 0.535, dot: '#A88BFF', grad: 'url(#md-g-eth)', color: '#A88BFF', href: '#eth' }
+      { sym: 'USD', pct: '47.7%', value: '$118,400.00', share: 0.477, r: 1.0, dot: '#E9EDF4', grad: 'url(#md-g-usd)', color: '#E8F4FF', href: 'Meridian-Infographics.dc.html', d24: '0.00%', dInk: '#8C93A5' },
+      { sym: 'USDC', pct: '25.9%', value: '$64,250.00', share: 0.259, r: 0.835, dot: '#6FA8FF', grad: 'url(#md-g-usdc)', color: '#5BB8FF', href: 'Meridian-Infographics.dc.html', d24: '▲ 0.02%', dInk: '#8FE9A6' },
+      { sym: 'BTC', pct: '19.7%', value: '$48,970.31', share: 0.197, r: 0.68, dot: '#FFB472', grad: 'url(#md-g-btc)', color: '#FFAE5E', href: 'Meridian-Infographics.dc.html', d24: '▲ 2.31%', dInk: '#8FE9A6' },
+      { sym: 'ETH', pct: '6.7%', value: '$16,769.81', share: 0.067, r: 0.535, dot: '#A88BFF', grad: 'url(#md-g-eth)', color: '#A88BFF', href: 'Meridian-Infographics.dc.html', d24: '▲ 1.58%', dInk: '#8FE9A6' }
     ];
     const C = 2 * Math.PI * 11.5;
     const positions = pos.map((p) => Object.assign({}, p, { dash: (p.share * C).toFixed(2) + ' ' + C.toFixed(2) }));

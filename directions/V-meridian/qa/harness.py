@@ -6,9 +6,9 @@ import sys, json, asyncio, os, mimetypes
 from playwright.async_api import async_playwright
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.join(HERE, '..', 'project')
-OTHER = [os.path.join(HERE, '..', '..', 'v3', 'project'), os.path.join(HERE, '..', '..', 'v4', 'project'), os.path.join(HERE, '..', '..', 'zen', 'project')]
-BLOBS = json.load(open(os.path.join(HERE, 'blobs.json'))) if os.path.exists(os.path.join(HERE, 'blobs.json')) else {}
-PK = os.path.join(HERE, 'pk')
+OTHER = [os.path.join(HERE, '..', '..', d, 'project') for d in ('III-zenith', 'IV-vellum')]
+BLOBS = {k: (v if os.path.isabs(v) else os.path.normpath(os.path.join(HERE, v))) for k, v in (json.load(open(os.path.join(HERE, 'blobs.json'))) if os.path.exists(os.path.join(HERE, 'blobs.json')) else {}).items()}
+PK = os.path.join(HERE, 'pk')  # local npm cache of react/react-dom/babel-standalone (not committed); see README
 CDN = {
     'react@18.3.1/umd/react.production.min.js': PK + '/react-18.3.1/package/umd/react.production.min.js',
     'react-dom@18.3.1/umd/react-dom.production.min.js': PK + '/react-dom-18.3.1/package/umd/react-dom.production.min.js',
@@ -64,6 +64,10 @@ async def main(jobs):
                 elif k == 'mouse': await pg.mouse.move(st[1], st[2], steps=st[3] if len(st) > 3 else 1)
                 elif k == 'down': await pg.mouse.down()
                 elif k == 'up': await pg.mouse.up()
+                elif k == 'key': await pg.keyboard.press(st[1])
+                elif k == 'focus': await pg.focus(st[1])
+                elif k == 'clickxy': await pg.mouse.click(st[1], st[2])
+                else: print('UNKNOWN STEP', k)
             await ctx.close()
         await b.close()
 

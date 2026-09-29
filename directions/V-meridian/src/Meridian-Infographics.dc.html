@@ -15,7 +15,13 @@
 __MD_BASE_CSS__
 .md-card{position:relative;box-sizing:border-box}
 .md-tick{stroke:#DCE3EE}
-.md-flow-arc{transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.mi-rb{transition:opacity .28s ease}
+.mi-node{transition:opacity .28s ease}
+.mi-row{transition:background .2s ease}
+.mi-row:hover{background:rgba(255,255,255,.035)}
+.mi-seg-btn{transition:background .3s ease,color .3s ease}
+.mi-plot:focus-visible{outline:1px solid rgba(127,227,240,.55);outline-offset:4px}
+.mi-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </helmet>
 <div class="md-root" style="position: relative; width: 1440px; height: 900px; overflow: hidden; background: #06070A; color: #ECEEF4">
@@ -25,8 +31,8 @@ __MD_DEFS__
 <div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(60% 46% at 18% 8%, rgba(38,64,132,.30) 0%, rgba(14,22,52,.14) 45%, rgba(6,7,10,0) 72%), radial-gradient(46% 60% at 100% 100%, rgba(217,172,75,.06) 0%, rgba(6,7,10,0) 70%)"></div>
 <img src="/_blob/MD_STARS_D" alt="" aria-hidden="true" class="md-twinkle" style="position: absolute; left: 0; top: 0; width: 1440px; height: 900px; opacity: .34; pointer-events: none; mix-blend-mode: screen">
 
-<header class="md-rise" style="position: absolute; left: 28px; right: 28px; top: 28px; height: 44px; display: flex; align-items: center; justify-content: space-between">
-<a href="Meridian-Vault.dc.html" aria-label="ZEN Meridian Treasury home" style="display: flex; align-items: center; gap: 11px; color: #ECEEF4">
+<header class="md-rise" style="position: absolute; left: 28px; right: 28px; top: 28px; height: 44px">
+<a href="Meridian-Vault.dc.html" aria-label="ZEN Meridian Treasury home" style="position: absolute; left: 0; top: 4px; display: flex; align-items: center; gap: 11px; color: #ECEEF4">
 <span style="width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center" class="md-chip">
 <svg width="19" height="16" viewBox="0 0 100 86" aria-hidden="true"><use href="#md-mark" fill="url(#md-ti)"></use></svg>
 </span>
@@ -35,12 +41,21 @@ __MD_DEFS__
 <span class="md-m" style="font-size: 7px; letter-spacing: .28em; color: #8C93A5; line-height: 1">TREASURY · SERIES V</span>
 </span>
 </a>
-<span class="md-m md-rise" style="font-size: 9.5px; letter-spacing: .22em; color: #8C93A5; animation-delay: .1s">INSTRUMENT PANEL · BEYOND THE VAULT</span>
-<div style="display: flex; align-items: center; gap: 10px">
+<div role="group" aria-label="Date range — scopes performance and capital flows" style="position: absolute; left: 484px; top: 6px; height: 32px; display: flex; align-items: center; gap: 12px">
+<span class="md-m" style="font-size: 8px; letter-spacing: .24em; color: #8C93A5">RANGE</span>
+<div class="md-seg" style="height: 32px; padding: 3px; box-sizing: border-box; border-radius: 16px; display: flex; gap: 2px">
+<sc-for list="{{ranges}}" as="rg" hint-placeholder-count="3">
+<button type="button" onClick="{{rg.pick}}" aria-pressed="{{rg.on}}" class="md-hit md-m mi-seg-btn" style="height: 26px; min-width: 48px; padding: 0 12px; border-radius: 13px; font-size: 9px; letter-spacing: .14em; color: {{rg.ink}}; background: {{rg.bg}}">{{rg.label}}</button>
+</sc-for>
+</div>
+<span class="md-m" style="font-size: 8px; letter-spacing: .16em; color: #6E7488">{{rangeSpan}}</span>
+</div>
+<div style="position: absolute; right: 0; top: 2px; display: flex; align-items: center; gap: 16px">
+<span class="md-m" style="font-size: 8.5px; letter-spacing: .24em; color: #8C93A5">INSTRUMENT PANEL</span>
 <a href="Meridian-Appearance.dc.html" aria-label="Appearance and themes" class="md-chip" style="width: 40px; height: 40px; border-radius: 20px; display: flex; align-items: center; justify-content: center">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="#DCE3EE" stroke-width="1.5"></circle><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="#DCE3EE"></path></svg>
 </a>
-<a href="Meridian-Navigator.dc.html" aria-label="Navigator" class="md-d" style="width: 40px; height: 40px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 500; letter-spacing: .06em; background: linear-gradient(160deg, #2A2F3C, #101218); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.06)">AL</a>
+<a href="Meridian-Navigator.dc.html" aria-label="Navigator" class="md-d" style="width: 40px; height: 40px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 500; letter-spacing: .06em; color: #ECEEF4; background: linear-gradient(160deg, #2A2F3C, #101218); box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.06)">AL</a>
 </div>
 </header>
 
@@ -48,48 +63,59 @@ __MD_DEFS__
 <div style="position: absolute; left: 24px; top: 22px; right: 24px; display: flex; align-items: center; justify-content: space-between">
 <span class="md-m" style="display: flex; align-items: center; gap: 7px; font-size: 8.5px; letter-spacing: .26em; color: #9BA2B4"><span class="md-live" aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #7FE3F0"></span>LIVE INSTRUMENT</span>
 <div role="group" aria-label="Core view" class="md-seg" style="height: 28px; padding: 3px; box-sizing: border-box; border-radius: 14px; display: flex; gap: 2px">
-<button type="button" onClick="{{showOrbit}}" aria-pressed="{{orbitOn}}" class="md-hit md-m" style="height: 22px; padding: 0 9px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{orbitInk}}; background: {{orbitBg}}; transition: background .3s ease, color .3s ease">ORBIT</button>
-<button type="button" onClick="{{showChart}}" aria-pressed="{{chartOn}}" class="md-hit md-m" style="height: 22px; padding: 0 9px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{chartInk}}; background: {{chartBg}}; transition: background .3s ease, color .3s ease">ALLOC</button>
+<button type="button" onClick="{{showOrbit}}" aria-pressed="{{orbitOn}}" class="md-hit md-m mi-seg-btn" style="height: 22px; padding: 0 9px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{orbitInk}}; background: {{orbitBg}}">ORBIT</button>
+<button type="button" onClick="{{showChart}}" aria-pressed="{{chartOn}}" class="md-hit md-m mi-seg-btn" style="height: 22px; padding: 0 9px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{chartInk}}; background: {{chartBg}}">ALLOC</button>
 </div>
 </div>
-<div aria-hidden="true" class="md-hero-mask" style="position: absolute; left: 70px; top: 56px; width: 320px; height: 320px; pointer-events: none">
+<div aria-hidden="true" class="md-hero-mask" style="position: absolute; left: 70px; top: 50px; width: 320px; height: 320px; pointer-events: none">
 <img src="/_blob/MD_GRAT" alt="" class="md-spin-slow" style="position: absolute; left: -50px; top: -50px; width: 420px; height: 420px; opacity: .42">
 <img src="/_blob/MD_ROSE" alt="" class="md-spin-rev" style="position: absolute; left: -30px; top: -30px; width: 380px; height: 380px; opacity: .14; mix-blend-mode: screen">
 </div>
-<div class="md-engrave md-engrave-ring" aria-hidden="true" style="position: absolute; left: 62px; top: 48px; width: 336px; height: 336px; pointer-events: none; opacity: .55"></div>
-<img src="/_blob/MD_P_ORBIT" alt="" aria-hidden="true" style="position: absolute; left: 70px; top: 56px; width: 320px; height: 320px; pointer-events: none; opacity: {{posterOrbit}}; transition: opacity .8s ease">
-<img src="/_blob/MD_P_CHART" alt="" aria-hidden="true" style="position: absolute; left: 70px; top: 56px; width: 320px; height: 320px; pointer-events: none; opacity: {{posterChart}}; transition: opacity .8s ease">
-<canvas ref="{{coreRef}}" aria-hidden="true" style="position: absolute; left: 70px; top: 56px; width: 320px; height: 320px; pointer-events: none; opacity: {{coreOpacity}}; transition: opacity 1.2s ease"></canvas>
-<button type="button" onClick="{{toggleMode}}" aria-pressed="{{chartOn}}" aria-label="Read the core as an allocation chart" style="position: absolute; left: 130px; top: 116px; width: 200px; height: 200px; border-radius: 50%"></button>
-<div style="position: absolute; left: 0; right: 0; top: 392px; display: flex; flex-direction: column; align-items: center; gap: 4px">
+<div class="md-engrave md-engrave-ring" aria-hidden="true" style="position: absolute; left: 62px; top: 42px; width: 336px; height: 336px; pointer-events: none; opacity: .55"></div>
+<img src="/_blob/MD_P_ORBIT" alt="" aria-hidden="true" style="position: absolute; left: 70px; top: 50px; width: 320px; height: 320px; pointer-events: none; opacity: {{posterOrbit}}; transition: opacity .8s ease">
+<img src="/_blob/MD_P_CHART" alt="" aria-hidden="true" style="position: absolute; left: 70px; top: 50px; width: 320px; height: 320px; pointer-events: none; opacity: {{posterChart}}; transition: opacity .8s ease">
+<canvas ref="{{coreRef}}" aria-hidden="true" style="position: absolute; left: 70px; top: 50px; width: 320px; height: 320px; pointer-events: none; opacity: {{coreOpacity}}; transition: opacity 1.2s ease"></canvas>
+<button type="button" onClick="{{toggleMode}}" aria-pressed="{{chartOn}}" aria-label="Read the core as an allocation chart" style="position: absolute; left: 130px; top: 110px; width: 200px; height: 200px; border-radius: 50%"></button>
+<div style="position: absolute; left: 0; right: 0; top: 364px; display: flex; flex-direction: column; align-items: center; gap: 5px">
 <span class="md-m" style="font-size: 8px; letter-spacing: .26em; color: #8C93A5">TOTAL RESERVE</span>
-<span class="md-d md-tnum" style="font-size: 30px; font-weight: 260; font-stretch: 116%; color: #F3F5FA">$248,390<span style="font-size: 15px; color: #9BA2B4">.12</span></span>
-<span class="md-tnum" style="font-size: 11.5px; color: #7FE3F0">+$1,377.42 · 0.56% today</span>
+<span class="md-d" style="font-size: 34px; font-weight: 260; font-stretch: 116%; color: #F3F5FA; line-height: 1.05">$248,390<span style="font-size: 16px; color: #9BA2B4">.12</span></span>
+<span class="md-tnum" style="font-size: 11.5px; color: #7FE3F0">▲ +$1,377.42 · 0.56% today</span>
 </div>
 </section>
 
-<div class="md-rise" style="position: absolute; left: 28px; top: 588px; width: 460px; height: 180px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; animation-delay: .3s">
-<div class="md-tile" style="border-radius: 18px; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
-<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">RESERVE RATIO</span>
-<span class="md-d md-tnum" style="font-size: 24px; font-weight: 300; color: #ECEEF4">100<span style="font-size: 13px; color: #9BA2B4">%</span></span>
-<svg width="100%" height="16" viewBox="0 0 190 16" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 24,10 48,11 72,7 96,8 120,4 144,5 166,2 190,3" fill="none" stroke="#7FE3F0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+<section aria-label="Reserve instrument — proof of reserve" class="md-card md-rise" style="position: absolute; left: 28px; top: 588px; width: 460px; height: 180px; border-radius: 24px; background: linear-gradient(165deg, rgba(217,172,75,.11), rgba(255,255,255,.02) 55%); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 0 0 1px rgba(217,172,75,.3); animation-delay: .3s; overflow: hidden">
+<div class="md-engrave" aria-hidden="true" style="position: absolute; left: 8px; top: 8px; right: 8px; bottom: 8px; border-radius: 18px; opacity: .38"></div>
+<svg width="112" height="112" viewBox="0 0 112 112" aria-hidden="true" style="position: absolute; right: -36px; bottom: -42px; opacity: .38">
+<circle cx="56" cy="56" r="52" fill="none" stroke="url(#md-brass)" stroke-width=".8"></circle>
+<circle cx="56" cy="56" r="44" fill="none" stroke="url(#md-brass)" stroke-width=".6" stroke-dasharray="1 2.4"></circle>
+<circle cx="56" cy="56" r="34" fill="none" stroke="url(#md-brass)" stroke-width=".8"></circle>
+<svg x="38" y="41" width="36" height="31" viewBox="0 0 100 86"><use href="#md-mark" fill="url(#md-brass)"></use></svg>
+</svg>
+<span class="md-d" style="position: absolute; left: 22px; top: 18px; font-size: 14px; font-weight: 500">Reserve instrument</span>
+<span class="md-m" style="position: absolute; left: 22px; top: 40px; font-size: 7.5px; letter-spacing: .18em; color: #D9AC4B">PROOF OF RESERVE · ATTESTED</span>
+<span style="position: absolute; right: 22px; top: 17px; height: 24px; padding: 0 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px; background: rgba(143,233,166,.08); box-shadow: inset 0 0 0 1px rgba(143,233,166,.28)">
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8FE9A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"></path></svg>
+<span style="font-size: 10.5px; font-weight: 600; color: #BFF3CC">Verified · offline capable</span>
+</span>
+<div style="position: absolute; left: 22px; right: 22px; top: 72px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px">
+<div style="padding: 0 0 12px; border-bottom: 1px solid rgba(217,172,75,.24); display: flex; flex-direction: column; gap: 5px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">MERKLE ROOT</span>
+<span class="md-tnum" style="font-size: 13.5px; font-weight: 700">7f3a…d6c1</span>
 </div>
-<div class="md-tile" style="border-radius: 18px; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
-<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">POSITIONS</span>
-<span class="md-d md-tnum" style="font-size: 24px; font-weight: 300; color: #ECEEF4">4</span>
-<span class="md-tnum" style="font-size: 10px; color: #9BA2B4">USD · USDC · BTC · ETH</span>
+<div style="padding: 0 0 12px; border-bottom: 1px solid rgba(217,172,75,.24); display: flex; flex-direction: column; gap: 5px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">RESERVE RATIO</span>
+<span class="md-tnum" style="font-size: 13.5px; font-weight: 700">100.0%<span style="font-weight: 500; color: #9BA2B4"> · fully backed</span></span>
 </div>
-<div class="md-tile" style="border-radius: 18px; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
-<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">YIELD APY</span>
-<span class="md-d md-tnum" style="font-size: 24px; font-weight: 300; color: #ECEEF4">4.35<span style="font-size: 13px; color: #9BA2B4">%</span></span>
-<svg width="100%" height="16" viewBox="0 0 190 16" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,9 24,11 48,7 72,9 96,5 120,6 144,3 166,4 190,1" fill="none" stroke="#D9AC4B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+<div style="padding: 12px 0 0; display: flex; flex-direction: column; gap: 5px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">POSITIONS</span>
+<span class="md-tnum" style="font-size: 13.5px; font-weight: 700">4 of 4<span style="font-weight: 500; color: #9BA2B4"> attested</span></span>
 </div>
-<div class="md-tile" style="border-radius: 18px; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
-<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">ROOT</span>
-<span class="md-tnum" style="font-size: 15px; font-weight: 700; color: #ECEEF4; margin-top: 4px">7f3a…d6c1</span>
-<span class="md-tnum" style="font-size: 10px; color: #9BA2B4">verified · attested</span>
+<div style="padding: 12px 0 0; display: flex; flex-direction: column; gap: 5px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">LAST ATTESTED</span>
+<span class="md-tnum" style="font-size: 13.5px; font-weight: 700">Sep 26 · 5:11 PM ET</span>
 </div>
 </div>
+</section>
 
 <a href="Meridian-Vault.dc.html" class="md-rise md-glass md-edge" style="position: absolute; left: 28px; top: 792px; width: 460px; height: 72px; padding: 0 20px; box-sizing: border-box; border-radius: 24px; display: flex; align-items: center; gap: 14px; color: #ECEEF4; animation-delay: .35s">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FE3F0" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 2"></path></svg>
@@ -101,99 +127,190 @@ __MD_DEFS__
 </a>
 
 <section aria-label="Reserve performance" class="md-card md-glass md-edge md-rise" style="position: absolute; left: 512px; top: 112px; width: 900px; height: 308px; border-radius: 26px; animation-delay: .2s">
-<div style="position: absolute; left: 28px; top: 22px; right: 28px; display: flex; align-items: baseline; justify-content: space-between">
+<div style="position: absolute; left: 28px; top: 20px; display: flex; align-items: center; gap: 22px">
 <span class="md-d" style="font-size: 16px; font-weight: 500">Reserve performance</span>
-<span class="md-m" style="font-size: 8px; letter-spacing: .2em; color: #8C93A5">MAR — SEP 2026 · DRAG TO INSPECT</span>
+<span style="display: flex; align-items: center; gap: 16px; font-size: 10.5px; color: #B7BDCB">
+<span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 2px; border-radius: 1px; background: #7FE3F0"></span>Reserve</span>
+<span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 2px; border-radius: 1px; background: #8C93A5"></span>Contributions</span>
+<span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 12px; height: 8px; border-radius: 2px; background: rgba(127,227,240,.22)"></span>Earned</span>
+</span>
 </div>
-<div ref="{{chartRef}}" onPointerMove="{{chartMove}}" onPointerLeave="{{chartLeave}}" style="position: absolute; left: 44px; top: 78px; width: 812px; height: 168px; cursor: crosshair">
-<svg width="812" height="168" viewBox="0 0 812 168" style="overflow: visible; display: block">
-<path d="{{chart.area}}" fill="url(#md-g-chart)"></path>
-<path class="md-draw" d="{{chart.path}}" fill="none" stroke="#7FE3F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="--len: 1400; filter: drop-shadow(0 0 6px rgba(127,227,240,.5))"></path>
-<sc-for list="{{pts}}" as="p" hint-placeholder-count="7">
-<circle cx="{{p.x}}" cy="{{p.y}}" r="{{p.r}}" fill="#0C0E14" stroke="#7FE3F0" stroke-width="1.6" opacity="{{p.op}}"></circle>
+<div role="group" aria-label="Chart or table view" class="md-seg" style="position: absolute; right: 24px; top: 16px; height: 28px; padding: 3px; box-sizing: border-box; border-radius: 14px; display: flex; gap: 2px">
+<button type="button" onClick="{{viewChart}}" aria-pressed="{{isChart}}" class="md-hit md-m mi-seg-btn" style="height: 22px; padding: 0 10px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{vcInk}}; background: {{vcBg}}">CHART</button>
+<button type="button" onClick="{{viewTable}}" aria-pressed="{{isTable}}" class="md-hit md-m mi-seg-btn" style="height: 22px; padding: 0 10px; border-radius: 11px; font-size: 7.5px; letter-spacing: .18em; color: {{vtInk}}; background: {{vtBg}}">TABLE</button>
+</div>
+<div style="position: absolute; left: 28px; top: 54px; display: flex; gap: 34px">
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">CHANGE</span>
+<span style="font-size: 14px; font-weight: 600; color: #F3F5FA">{{perf.change}}</span>
+</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">NET DEPOSITS</span>
+<span style="font-size: 14px; font-weight: 600; color: #F3F5FA">{{perf.dep}}</span>
+</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">EARNED</span>
+<span style="display: flex; align-items: baseline; gap: 8px"><span style="font-size: 14px; font-weight: 600; color: #CFF6FB">{{perf.earned}}</span><span style="font-size: 10.5px; color: #9BA2B4">{{perf.pct}} on avg. reserve</span></span>
+</span>
+</div>
+
+<sc-if value="{{isChart}}" hint-placeholder-val="{{true}}">
+<sc-for list="{{yt}}" as="g" hint-placeholder-count="5">
+<span class="md-m md-tnum" aria-hidden="true" style="position: absolute; left: 0; width: 64px; text-align: right; top: {{g.top}}px; transform: translateY(-50%); font-size: 8.5px; color: #6E7488">{{g.label}}</span>
 </sc-for>
-<line x1="{{chart.hoverX}}" y1="0" x2="{{chart.hoverX}}" y2="168" stroke="#DCE3EE" stroke-opacity=".3" stroke-width="1" stroke-dasharray="2 3" opacity="{{chart.hoverShow}}"></line>
+<svg width="720" height="150" viewBox="0 0 720 150" aria-hidden="true" style="position: absolute; left: 76px; top: 100px; overflow: visible">
+<sc-for list="{{yt}}" as="g" hint-placeholder-count="5">
+<line x1="0" x2="720" y1="{{g.y}}" y2="{{g.y}}" stroke="#FFFFFF" stroke-opacity=".07" stroke-width="1"></line>
+</sc-for>
+<defs>
+<clipPath id="mi-above"><path d="{{pf.clipA}}"></path></clipPath>
+<clipPath id="mi-below"><path d="{{pf.clipB}}"></path></clipPath>
+</defs>
+<path d="{{pf.gap}}" fill="#7FE3F0" fill-opacity=".15" clip-path="url(#mi-above)"></path>
+<path d="{{pf.gap}}" fill="#8C93A5" fill-opacity=".16" clip-path="url(#mi-below)"></path>
+<path d="{{pf.base}}" fill="none" stroke="#8C93A5" stroke-width="1.5" stroke-linejoin="round"></path>
+<path class="md-draw" d="{{pf.line}}" fill="none" stroke="#7FE3F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="--len: 4000; filter: drop-shadow(0 0 5px rgba(127,227,240,.45))"></path>
+<sc-for list="{{pf.events}}" as="ev" hint-placeholder-count="4">
+<path d="{{ev.d}}" fill="{{ev.fill}}" stroke="#8C93A5" stroke-width="1.2"></path>
+</sc-for>
+<line x1="{{pf.hx}}" x2="{{pf.hx}}" y1="0" y2="150" stroke="#DCE3EE" stroke-opacity=".38" stroke-width="1" opacity="{{pf.hShow}}"></line>
+<circle cx="{{pf.hx}}" cy="{{pf.hyB}}" r="4" fill="#8C93A5" stroke="#0B0D12" stroke-width="2" opacity="{{pf.hShow}}"></circle>
+<circle cx="{{pf.dotX}}" cy="{{pf.dotY}}" r="4.5" fill="#7FE3F0" stroke="#0B0D12" stroke-width="2"></circle>
 </svg>
-<div class="md-glass" style="position: absolute; top: -6px; padding: 6px 10px; border-radius: 10px; transform: translate(-50%, -100%); white-space: nowrap; opacity: {{chart.hoverShow}}; transition: opacity .15s ease; left: {{chart.hoverX}}px">
-<span class="md-m" style="font-size: 8px; letter-spacing: .18em; color: #8C93A5; display: block">{{chart.hoverLabel}}</span>
-<span class="md-tnum" style="font-size: 13px; font-weight: 600; color: #F3F5FA">{{chart.hoverValue}}</span>
+<sc-for list="{{xt}}" as="t" hint-placeholder-count="6">
+<span class="md-m" aria-hidden="true" style="position: absolute; top: 262px; left: {{t.x}}px; transform: translateX(-50%); font-size: 8.5px; letter-spacing: .06em; color: #6E7488; white-space: nowrap">{{t.label}}</span>
+</sc-for>
+<sc-for list="{{ends}}" as="en" hint-placeholder-count="2">
+<span aria-hidden="true" style="position: absolute; left: 810px; top: {{en.top}}px; transform: translateY(-50%); display: flex; align-items: center; gap: 6px; white-space: nowrap; opacity: {{pf.endOp}}; transition: opacity .2s ease">
+<span style="width: 8px; height: 2px; border-radius: 1px; background: {{en.key}}"></span>
+<span class="md-tnum" style="font-size: 11px; font-weight: 600; color: {{en.ink}}">{{en.label}}</span>
+</span>
+</sc-for>
+<button type="button" class="mi-plot" onPointerMove="{{chartMove}}" onPointerLeave="{{chartLeave}}" onKeyDown="{{chartKey}}" onFocus="{{chartFocus}}" onBlur="{{chartLeave}}" aria-label="Inspect reserve performance. Arrow keys move one day, Shift and arrow move a week, Home and End jump to the range edges." style="position: absolute; left: 76px; top: 96px; width: 720px; height: 158px; border-radius: 8px; cursor: crosshair; touch-action: none"></button>
+<div aria-hidden="true" style="position: absolute; left: {{tip.x}}px; top: {{tip.y}}px; transform: {{tip.tf}}; width: 196px; padding: 10px 12px; box-sizing: border-box; border-radius: 12px; background: rgba(11,13,19,.94); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 0 0 1px rgba(255,255,255,.08), 0 14px 32px rgba(0,0,0,.6); display: flex; flex-direction: column; gap: 6px; pointer-events: none; opacity: {{pf.hShow}}; transition: opacity .15s ease">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">{{tip.date}}</span>
+<span style="display: flex; align-items: center; gap: 7px"><span style="width: 10px; height: 2px; border-radius: 1px; background: #7FE3F0"></span><span class="md-tnum" style="font-size: 13px; font-weight: 700; color: #F3F5FA">{{tip.reserve}}</span><span style="margin-left: auto; font-size: 9.5px; color: #8C93A5">Reserve</span></span>
+<span style="display: flex; align-items: center; gap: 7px"><span style="width: 10px; height: 2px; border-radius: 1px; background: #8C93A5"></span><span class="md-tnum" style="font-size: 11.5px; font-weight: 600; color: #DCE1EA">{{tip.base}}</span><span style="margin-left: auto; font-size: 9.5px; color: #8C93A5">Contributions</span></span>
+<span style="display: flex; align-items: center; gap: 7px"><span style="width: 10px; height: 6px; border-radius: 2px; background: rgba(127,227,240,.3)"></span><span class="md-tnum" style="font-size: 11.5px; font-weight: 600; color: #CFF6FB">{{tip.earned}}</span><span style="margin-left: auto; font-size: 9.5px; color: #8C93A5">Earned in range</span></span>
+<sc-if value="{{tip.hasEvent}}" hint-placeholder-val="{{false}}">
+<span style="padding-top: 6px; border-top: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; gap: 7px; font-size: 10px; color: #DCE1EA"><span style="width: 7px; height: 7px; transform: rotate(45deg); background: {{tip.evFill}}; box-shadow: inset 0 0 0 1.2px #8C93A5"></span>{{tip.evLabel}}<span class="md-tnum" style="margin-left: auto; font-weight: 600">{{tip.evAmt}}</span></span>
+</sc-if>
 </div>
-<div aria-hidden="true" style="position: absolute; left: 0; top: 178px; width: 812px">
-<sc-for list="{{months}}" as="mo" hint-placeholder-count="7">
-<span class="md-m" style="position: absolute; top: 0; left: {{mo.x}}px; transform: translateX(-50%); font-size: 9px; letter-spacing: .08em; color: #6E7488">{{mo.m}}</span>
+<span class="mi-sr" aria-live="polite">{{pf.announce}}</span>
+</sc-if>
+
+<sc-if value="{{isTable}}" hint-placeholder-val="{{false}}">
+<div role="table" aria-label="Reserve performance table" style="position: absolute; left: 28px; right: 28px; top: 96px">
+<div role="row" style="height: 22px; display: grid; grid-template-columns: 110px repeat(3, minmax(0, 1fr)) 1.3fr; align-items: center; column-gap: 16px; padding: 0 10px; box-shadow: inset 0 -1px 0 rgba(255,255,255,.1)">
+<span role="columnheader" class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">DATE</span>
+<span role="columnheader" class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5; text-align: right">RESERVE</span>
+<span role="columnheader" class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5; text-align: right">CONTRIBUTIONS</span>
+<span role="columnheader" class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5; text-align: right">EARNED IN RANGE</span>
+<span role="columnheader" class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5; text-align: right">FLOWS SINCE PRIOR ROW</span>
+</div>
+<sc-for list="{{rows}}" as="rw" hint-placeholder-count="8">
+<div role="row" class="mi-row" style="height: 19px; display: grid; grid-template-columns: 110px repeat(3, minmax(0, 1fr)) 1.3fr; align-items: center; column-gap: 16px; padding: 0 10px; border-radius: 6px">
+<span role="cell" style="font-size: 11px; color: #B7BDCB">{{rw.date}}</span>
+<span role="cell" class="md-tnum" style="font-size: 11px; font-weight: 600; color: #F3F5FA; text-align: right">{{rw.reserve}}</span>
+<span role="cell" class="md-tnum" style="font-size: 11px; color: #DCE1EA; text-align: right">{{rw.base}}</span>
+<span role="cell" class="md-tnum" style="font-size: 11px; color: #CFF6FB; text-align: right">{{rw.earned}}</span>
+<span role="cell" class="md-tnum" style="font-size: 11px; color: #9BA2B4; text-align: right">{{rw.flows}}</span>
+</div>
 </sc-for>
 </div>
-</div>
+</sc-if>
 </section>
 
-<section aria-label="Capital flows" class="md-card md-tile md-rise" style="position: absolute; left: 512px; top: 444px; width: 289px; height: 320px; border-radius: 24px; animation-delay: .25s; overflow: hidden">
-<img src="/_blob/MD_GRAVITY" alt="" aria-hidden="true" style="position: absolute; left: -60px; top: -20px; width: 420px; height: 360px; opacity: .16; pointer-events: none; mix-blend-mode: screen">
-<span class="md-d" style="position: absolute; left: 20px; top: 18px; font-size: 14px; font-weight: 500">Capital flows</span>
-<span class="md-m" style="position: absolute; left: 20px; top: 42px; font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">TREASURY → POSITIONS</span>
-<svg width="180" height="180" viewBox="0 0 180 180" style="position: absolute; left: 54px; top: 66px">
-<circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14"></circle>
-<sc-for list="{{flows}}" as="f" hint-placeholder-count="4">
-<circle class="md-flow-arc" cx="90" cy="90" r="70" fill="none" stroke="{{f.color}}" stroke-width="14" stroke-dasharray="{{f.dash}}" stroke-dashoffset="{{f.off}}" transform="rotate(-90 90 90)" stroke-linecap="butt"></circle>
+<section aria-label="Capital flows" onPointerLeave="{{flowLeave}}" class="md-card md-tile md-rise" style="position: absolute; left: 512px; top: 444px; width: 560px; height: 320px; border-radius: 24px; animation-delay: .25s; overflow: hidden">
+<img src="/_blob/MD_GRAVITY" alt="" aria-hidden="true" style="position: absolute; left: 60px; top: -20px; width: 440px; height: 360px; opacity: .09; pointer-events: none; mix-blend-mode: screen">
+<span class="md-d" style="position: absolute; left: 22px; top: 18px; font-size: 14px; font-weight: 500">Capital flows</span>
+<span class="md-m" style="position: absolute; left: 22px; top: 40px; font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">SOURCES → TREASURY → POSITIONS · {{rangeId}}</span>
+<div aria-live="polite" style="position: absolute; right: 22px; top: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">{{flowRead.k}}</span>
+<span class="md-tnum" style="font-size: 13px; font-weight: 600; color: #F3F5FA">{{flowRead.v}}</span>
+</div>
+<svg width="560" height="320" viewBox="0 0 560 320" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs>
+<linearGradient id="mi-src" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9BA2B4" stop-opacity=".30"></stop><stop offset="1" stop-color="#DCE3EE" stop-opacity=".13"></stop></linearGradient>
+<linearGradient id="mi-usd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE3EE" stop-opacity=".12"></stop><stop offset="1" stop-color="#E8F4FF" stop-opacity=".5"></stop></linearGradient>
+<linearGradient id="mi-usdc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE3EE" stop-opacity=".12"></stop><stop offset="1" stop-color="#5BB8FF" stop-opacity=".62"></stop></linearGradient>
+<linearGradient id="mi-btc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE3EE" stop-opacity=".12"></stop><stop offset="1" stop-color="#FFAE5E" stop-opacity=".62"></stop></linearGradient>
+<linearGradient id="mi-eth" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE3EE" stop-opacity=".12"></stop><stop offset="1" stop-color="#A88BFF" stop-opacity=".62"></stop></linearGradient>
+<linearGradient id="mi-out" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#DCE3EE" stop-opacity=".1"></stop><stop offset="1" stop-color="#6E7488" stop-opacity=".45"></stop></linearGradient>
+</defs>
+<sc-for list="{{sk.ribbons}}" as="rb" hint-placeholder-count="9">
+<path class="mi-rb" d="{{rb.d}}" fill="{{rb.fill}}" opacity="{{rb.op}}" onPointerEnter="{{rb.enter}}"></path>
 </sc-for>
-<circle cx="90" cy="90" r="46" fill="#0A0B10"></circle>
-<svg x="76" y="76" width="28" height="24" viewBox="0 0 100 86" aria-hidden="true"><use href="#md-mark" fill="url(#md-ti)"></use></svg>
+<sc-for list="{{sk.nodes}}" as="nd" hint-placeholder-count="10">
+<rect class="mi-node" x="{{nd.x}}" y="{{nd.y}}" width="{{nd.w}}" height="{{nd.h}}" rx="2" fill="{{nd.fill}}" opacity="{{nd.op}}" onPointerEnter="{{nd.enter}}"></rect>
+</sc-for>
+<sc-for list="{{sk.leaders}}" as="ld" hint-placeholder-count="2">
+<path d="{{ld.d}}" fill="none" stroke="#6E7488" stroke-width="1"></path>
+</sc-for>
 </svg>
-<div style="position: absolute; left: 16px; right: 16px; bottom: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 10px">
-<sc-for list="{{flows}}" as="f" hint-placeholder-count="4">
-<span style="display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: #B7BDCB"><span style="width: 6px; height: 6px; border-radius: 50%; background: {{f.color}}"></span>{{f.sym}}<span class="md-tnum" style="margin-left: auto; color: #8C93A5">{{f.pct}}%</span></span>
+<span class="md-m" aria-hidden="true" style="position: absolute; left: {{sk.tx}}px; top: {{sk.ty}}px; transform: translate(-50%, -100%); font-size: 7px; letter-spacing: .22em; color: #9BA2B4; white-space: nowrap">TREASURY</span>
+<sc-for list="{{sk.labels}}" as="lb" hint-placeholder-count="9">
+<span style="position: absolute; left: {{lb.x}}px; top: {{lb.y}}px; transform: {{lb.tf}}; display: flex; flex-direction: column; align-items: {{lb.ai}}; gap: 2px; white-space: nowrap; pointer-events: none; opacity: {{lb.op}}; transition: opacity .28s ease">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: #E4E8F0"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 2px; background: {{lb.key}}"></span>{{lb.name}}</span>
+<span class="md-tnum" style="font-size: 9.5px; color: #9BA2B4">{{lb.sub}}</span>
+</span>
 </sc-for>
-</div>
 </section>
 
-<section aria-label="Reserve instrument" class="md-card md-rise" style="position: absolute; left: 817px; top: 444px; width: 289px; height: 320px; border-radius: 24px; background: linear-gradient(165deg, rgba(217,172,75,.10), rgba(255,255,255,.02) 55%); box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 0 0 1px rgba(217,172,75,.28); animation-delay: .3s">
-<div class="md-engrave md-engrave-ring" aria-hidden="true" style="position: absolute; left: 8px; top: 8px; right: 8px; bottom: 8px; border-radius: 20px; opacity: .5; -webkit-mask-image: none; mask-image: none"></div>
-<span class="md-d" style="position: absolute; left: 20px; top: 18px; font-size: 14px; font-weight: 500">Reserve instrument</span>
-<span class="md-m" style="position: absolute; left: 20px; top: 42px; font-size: 7.5px; letter-spacing: .18em; color: #D9AC4B">PROOF OF RESERVE · ATTESTED</span>
-<div style="position: absolute; left: 20px; right: 20px; top: 78px; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid rgba(217,172,75,.22)"><span class="md-m" style="font-size: 8px; letter-spacing: .16em; color: #8C93A5">ROOT</span><span class="md-tnum" style="font-size: 13px; font-weight: 700">7f3a…d6c1</span></div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid rgba(217,172,75,.22)"><span class="md-m" style="font-size: 8px; letter-spacing: .16em; color: #8C93A5">RATIO</span><span class="md-tnum" style="font-size: 13px; font-weight: 700">100%</span></div>
-<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid rgba(217,172,75,.22)"><span class="md-m" style="font-size: 8px; letter-spacing: .16em; color: #8C93A5">POSITIONS</span><span class="md-tnum" style="font-size: 13px; font-weight: 700">4</span></div>
-<div style="display: flex; justify-content: space-between; align-items: baseline"><span class="md-m" style="font-size: 8px; letter-spacing: .16em; color: #8C93A5">ATTESTED</span><span class="md-tnum" style="font-size: 12px; font-weight: 600">SEP 26 · 5:11 PM ET</span></div>
-</div>
-<div style="position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; align-items: center; gap: 8px">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FE9A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"></path></svg>
-<span class="md-tnum" style="font-size: 11px; color: #8FE9A6; font-weight: 600">Verified · offline capable</span>
-</div>
-</section>
-
-<section aria-label="Risk and yield" class="md-card md-tile md-rise" style="position: absolute; left: 1122px; top: 444px; width: 290px; height: 320px; border-radius: 24px; animation-delay: .35s">
+<section aria-label="Risk and yield" class="md-card md-tile md-rise" style="position: absolute; left: 1088px; top: 444px; width: 324px; height: 320px; border-radius: 24px; animation-delay: .35s">
 <span class="md-d" style="position: absolute; left: 20px; top: 18px; font-size: 14px; font-weight: 500">Risk &amp; yield</span>
-<div style="position: absolute; left: 8px; top: 50px; width: 137px; height: 220px; display: flex; flex-direction: column; align-items: center">
-<svg width="156" height="164" viewBox="0 0 156 184">
-<path d="{{volArcBg}}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="9" stroke-linecap="round"></path>
-<path d="{{volArc}}" fill="none" stroke="#5BB8FF" stroke-width="9" stroke-linecap="round"></path>
-<sc-for list="{{volTicks}}" as="t" hint-placeholder-count="25">
+<span class="md-m" style="position: absolute; right: 20px; top: 21px; font-size: 7.5px; letter-spacing: .18em; color: #8C93A5">MODELLED · LIVE BOOK</span>
+<div style="position: absolute; left: 14px; top: 46px; width: 140px; display: flex; flex-direction: column; align-items: center">
+<div style="position: relative; width: 140px; height: 111px"><svg width="140" height="111" viewBox="0 0 156 124" role="img" aria-label="{{gVol.aria}}">
+<path d="{{gVol.bg}}" fill="none" stroke="#FFFFFF" stroke-opacity=".08" stroke-width="8" stroke-linecap="round"></path>
+<path d="{{gVol.arc}}" fill="none" stroke="#5BB8FF" stroke-width="8" stroke-linecap="round"></path>
+<sc-for list="{{gVol.ticks}}" as="t" hint-placeholder-count="21">
 <line class="md-tick" x1="{{t.x1}}" y1="{{t.y1}}" x2="{{t.x2}}" y2="{{t.y2}}" stroke-width="{{t.w}}" opacity="{{t.op}}"></line>
 </sc-for>
-<text x="78" y="82" text-anchor="middle" font-family="Instrument Sans" font-size="26" font-weight="300" fill="#ECEEF4">24</text>
-<text x="78" y="100" text-anchor="middle" font-family="Martian Mono" font-size="7" letter-spacing="2" fill="#8C93A5">VOLATILITY</text>
 </svg>
+<span style="position: absolute; left: 0; right: 0; top: 49px; text-align: center; font-size: 21px; font-weight: 400; color: #ECEEF4">{{gVol.value}}</span>
+<span class="md-m" style="position: absolute; left: 0; right: 0; top: 78px; text-align: center; font-size: 6.5px; letter-spacing: .2em; color: #8C93A5">VOLATILITY</span></div>
+<span class="md-tnum" style="margin-top: 2px; font-size: 9.5px; color: #8C93A5">annualized · 0–40%</span>
 </div>
-<div style="position: absolute; right: 8px; top: 50px; width: 137px; height: 220px; display: flex; flex-direction: column; align-items: center">
-<svg width="156" height="164" viewBox="0 0 156 184">
-<path d="{{apyArcBg}}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="9" stroke-linecap="round"></path>
-<path d="{{apyArc}}" fill="none" stroke="#D9AC4B" stroke-width="9" stroke-linecap="round"></path>
-<sc-for list="{{apyTicks}}" as="t" hint-placeholder-count="25">
+<div style="position: absolute; right: 14px; top: 46px; width: 140px; display: flex; flex-direction: column; align-items: center">
+<div style="position: relative; width: 140px; height: 111px"><svg width="140" height="111" viewBox="0 0 156 124" role="img" aria-label="{{gApy.aria}}">
+<path d="{{gApy.bg}}" fill="none" stroke="#FFFFFF" stroke-opacity=".08" stroke-width="8" stroke-linecap="round"></path>
+<path d="{{gApy.arc}}" fill="none" stroke="#D9AC4B" stroke-width="8" stroke-linecap="round"></path>
+<sc-for list="{{gApy.ticks}}" as="t" hint-placeholder-count="21">
 <line class="md-tick" x1="{{t.x1}}" y1="{{t.y1}}" x2="{{t.x2}}" y2="{{t.y2}}" stroke-width="{{t.w}}" opacity="{{t.op}}"></line>
 </sc-for>
-<text x="78" y="78" text-anchor="middle" font-family="Instrument Sans" font-size="22" font-weight="300" fill="#ECEEF4">4.35%</text>
-<text x="78" y="100" text-anchor="middle" font-family="Martian Mono" font-size="7" letter-spacing="2" fill="#8C93A5">YIELD APY</text>
 </svg>
+<span style="position: absolute; left: 0; right: 0; top: 49px; text-align: center; font-size: 21px; font-weight: 400; color: #ECEEF4">{{gApy.value}}</span>
+<span class="md-m" style="position: absolute; left: 0; right: 0; top: 78px; text-align: center; font-size: 6.5px; letter-spacing: .2em; color: #8C93A5">STABLE YIELD</span></div>
+<span class="md-tnum" style="margin-top: 2px; font-size: 9.5px; color: #8C93A5">{{blended}} blended</span>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 20px; right: 20px; top: 180px; height: 1px; background: rgba(255,255,255,.08)"></div>
+<div style="position: absolute; left: 20px; right: 20px; top: 192px; display: flex; justify-content: space-between; align-items: baseline">
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">STRESS TEST</span>
+<span class="md-m md-tnum" style="font-size: 7.5px; letter-spacing: .12em; color: #DCE1EA">{{worst}}</span>
+</div>
+<div role="table" aria-label="Stress scenarios" style="position: absolute; left: 20px; right: 20px; top: 210px; display: flex; flex-direction: column; gap: 2px">
+<sc-for list="{{stress}}" as="s" hint-placeholder-count="4">
+<div role="row" style="height: 24px; display: grid; grid-template-columns: 112px minmax(0, 1fr) 84px; align-items: center; column-gap: 10px">
+<span role="cell" style="font-size: 10px; color: #C9CEDA; white-space: nowrap">{{s.label}}</span>
+<span role="cell" aria-hidden="true" style="position: relative; height: 6px; border-radius: 3px; background: rgba(255,255,255,.06)"><span style="position: absolute; left: 0; top: 0; bottom: 0; width: {{s.w}}%; border-radius: 0 3px 3px 0; background: #F08A7E"></span></span>
+<span role="cell" class="md-tnum" style="font-size: 10px; font-weight: 600; color: #E4E8F0; text-align: right; white-space: nowrap">{{s.value}}</span>
+</div>
+</sc-for>
 </div>
 </section>
 
-<div aria-label="Live ticker" class="md-rise md-glass md-edge" style="position: absolute; left: 512px; top: 788px; width: 900px; height: 76px; border-radius: 22px; display: flex; align-items: center; padding: 0 28px; box-sizing: border-box; gap: 28px; animation-delay: .4s">
+<div aria-label="Live position values" class="md-rise md-glass md-edge" style="position: absolute; left: 512px; top: 788px; width: 900px; height: 76px; border-radius: 22px; display: flex; align-items: center; padding: 0 26px; box-sizing: border-box; gap: 24px; animation-delay: .4s">
+<span style="display: flex; flex-direction: column; gap: 6px; padding-right: 22px; box-shadow: inset -1px 0 0 rgba(255,255,255,.09)">
+<span class="md-m" style="display: flex; align-items: center; gap: 6px; font-size: 7.5px; letter-spacing: .22em; color: #9FE8F4"><span class="md-live" aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #7FE3F0"></span>LIVE</span>
+<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">24H CHANGE</span>
+</span>
 <sc-for list="{{ticker}}" as="k" hint-placeholder-count="5">
 <span style="display: flex; flex-direction: column; gap: 4px">
-<span class="md-m" style="font-size: 7.5px; letter-spacing: .2em; color: #8C93A5">{{k.sym}}</span>
+<span class="md-m" style="display: flex; align-items: center; gap: 6px; font-size: 7.5px; letter-spacing: .2em; color: #8C93A5"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 2px; background: {{k.key}}"></span>{{k.sym}}</span>
 <span style="display: flex; align-items: baseline; gap: 6px">
 <span class="md-tnum" style="font-size: 14px; font-weight: 600; color: #ECEEF4">{{k.price}}</span>
-<span class="md-tnum" style="font-size: 10px; color: {{k.deltaColor}}">{{k.delta}}</span>
+<span class="md-tnum" style="font-size: 10px; color: {{k.dc}}">{{k.delta}}</span>
 </span>
 </span>
 </sc-for>
@@ -201,53 +318,124 @@ __MD_DEFS__
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"liveCore":{"editor":"boolean","default":true,"section":"Core"},"view":{"editor":"enum","options":["orbit","chart"],"default":"chart","section":"Core"},"$preview":{"width":1440,"height":900}}'>
-const SERIES = [
-  { m: 'Mar', v: 198400 },
-  { m: 'Apr', v: 206800 },
-  { m: 'May', v: 219500 },
-  { m: 'Jun', v: 213900 },
-  { m: 'Jul', v: 231200 },
-  { m: 'Aug', v: 240100 },
-  { m: 'Sep', v: 248390 }
+<script type="text/x-dc" data-dc-script data-props='{"liveCore":{"editor":"boolean","default":true,"section":"Core"},"view":{"editor":"enum","options":["orbit","chart"],"default":"chart","section":"Core"},"range":{"editor":"enum","options":["1M","3M","6M"],"default":"6M","section":"Data"},"$preview":{"width":1440,"height":900}}'>
+/* ---------- Book of record (illustrative sample data, internally consistent) ---------- */
+const DAY = 86400000;
+const T0 = Date.UTC(2026, 2, 28);            // Mar 28, 2026
+const N = 185;                                // Mar 28 → Sep 28 inclusive
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const ANCH = [[0, 198400], [31, 206800], [61, 219500], [92, 213900], [122, 231200], [153, 240100], [184, 248390.12]];
+const EVENTS = [
+  { d: 12, amt: 8000, label: 'Arsenal revenue sweep' },
+  { d: 47, amt: 11500, label: 'Arsenal revenue sweep' },
+  { d: 75, amt: 10000, label: 'Pioneer Program grant' },
+  { d: 82, amt: -15000, label: 'Pioneer Fund disbursement' },
+  { d: 103, amt: 12500, label: 'Arsenal revenue sweep' },
+  { d: 138, amt: 9000, label: 'Arsenal revenue sweep' },
+  { d: 146, amt: -6500, label: 'Vendor settlements' },
+  { d: 166, amt: 7500, label: 'Arsenal revenue sweep' }
 ];
-const POSITIONS = [
-  { sym: 'USD', pct: 47.7, color: '#E8F4FF' },
-  { sym: 'USDC', pct: 25.9, color: '#5BB8FF' },
-  { sym: 'BTC', pct: 19.7, color: '#FFAE5E' },
-  { sym: 'ETH', pct: 6.7, color: '#A88BFF' }
+const SEG_AMP = [1100, 2400, 3000, 3900, 4400, 3100];
+const POS = [
+  { sym: 'USD', v: 118400.00, color: '#E8F4FF', d24: 0.00 },
+  { sym: 'USDC', v: 64250.00, color: '#5BB8FF', d24: 0.02 },
+  { sym: 'BTC', v: 48970.31, color: '#FFAE5E', d24: 2.31 },
+  { sym: 'ETH', v: 16769.81, color: '#A88BFF', d24: 1.58 }
 ];
-const TICKER_BASE = [
-  { sym: 'BTC', price: 48970.31, delta: 1.2, unit: '$' },
-  { sym: 'ETH', price: 16769.81, delta: -0.4, unit: '$' },
-  { sym: 'USDC', price: 64250.00, delta: 0.0, unit: '$' },
-  { sym: 'GAS', price: 12, delta: -3.1, unit: 'gwei' },
-  { sym: 'UPTIME', price: 99.98, delta: 0.0, unit: '%' }
-];
-function polar(cx, cy, r, deg) {
-  const rad = (deg - 90) * Math.PI / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+const TOTAL = 248390.12;
+const STABLE = (118400 + 64250) / TOTAL;
+const APY = 0.0435;
+const RANGES = [{ id: '1M', d0: 153 }, { id: '3M', d0: 92 }, { id: '6M', d0: 0 }];
+
+function dateOf(d) { return new Date(T0 + d * DAY); }
+function fmtDay(d) { const t = dateOf(d); return MON[t.getUTCMonth()] + ' ' + t.getUTCDate(); }
+function fmtDayY(d) { return fmtDay(d) + ', ' + dateOf(d).getUTCFullYear(); }
+function money(v, dp) { dp = dp == null ? 2 : dp; return '$' + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+function signed(v, dp) { return (v < 0 ? '−' : '+') + money(v, dp); }
+function kfmt(v, dp) { return '$' + (v / 1000).toFixed(dp) + 'K'; }
+
+const C = new Array(N);
+const EV_DAY = {};
+(function () {
+  let c = ANCH[0][1];
+  EVENTS.forEach(function (e) { EV_DAY[e.d] = e; });
+  for (let d = 0; d < N; d++) { if (d > 0 && EV_DAY[d]) c += EV_DAY[d].amt; C[d] = c; }
+})();
+const V = new Array(N), Y = new Array(N);
+(function () {
+  const P = ANCH.map(function (a) { return [a[0], a[1] - C[a[0]]]; });
+  const n = P.length, h = [], dl = [], m = new Array(n);
+  for (let i = 0; i < n - 1; i++) { h[i] = P[i + 1][0] - P[i][0]; dl[i] = (P[i + 1][1] - P[i][1]) / h[i]; }
+  m[0] = dl[0]; m[n - 1] = dl[n - 2];
+  for (let i = 1; i < n - 1; i++) {
+    if (dl[i - 1] * dl[i] <= 0) m[i] = 0;
+    else { const w1 = 2 * h[i] + h[i - 1], w2 = h[i] + 2 * h[i - 1]; m[i] = (w1 + w2) / (w1 / dl[i - 1] + w2 / dl[i]); }
+  }
+  for (let s = 0; s < n - 1; s++) {
+    const a = P[s], b = P[s + 1], hs = b[0] - a[0];
+    for (let d = a[0]; d <= b[0]; d++) {
+      const t = (d - a[0]) / hs, t2 = t * t, t3 = t2 * t;
+      const base = (2 * t3 - 3 * t2 + 1) * a[1] + (t3 - 2 * t2 + t) * hs * m[s] + (-2 * t3 + 3 * t2) * b[1] + (t3 - t2) * hs * m[s + 1];
+      const nz = SEG_AMP[s] * Math.sin(Math.PI * t) * (0.46 * Math.sin(d * 0.61 + 1.3) + 0.28 * Math.sin(d * 1.37 + 0.4) + 0.16 * Math.sin(d * 2.9 + 2.2) + 0.1 * Math.sin(d * 5.3 + 0.9));
+      V[d] = Math.round((C[d] + base + nz) * 100) / 100;
+    }
+  }
+  V[N - 1] = TOTAL;
+  Y[0] = 0;
+  for (let d = 1; d < N; d++) Y[d] = Y[d - 1] + V[d - 1] * STABLE * APY / 365;
+})();
+
+function niceScale(lo, hi, target) {
+  const raw = (hi - lo) / target;
+  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const cand = [1, 2, 2.5, 5, 10].map(function (s) { return s * mag; });
+  let step = cand[cand.length - 1];
+  for (let i = 0; i < cand.length; i++) { if (cand[i] >= raw) { step = cand[i]; break; } }
+  const t0 = Math.floor(lo / step) * step, t1 = Math.ceil(hi / step) * step;
+  const ticks = [];
+  for (let t = t0; t <= t1 + step * 0.01; t += step) ticks.push(t);
+  return { lo: t0, hi: t1, step: step, ticks: ticks };
 }
+function polar(cx, cy, r, deg) { const rad = (deg - 90) * Math.PI / 180; return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) }; }
 function arcPath(cx, cy, r, a0, a1) {
   const p0 = polar(cx, cy, r, a0), p1 = polar(cx, cy, r, a1);
-  const large = (a1 - a0) > 180 ? 1 : 0;
-  return 'M ' + p0.x.toFixed(2) + ' ' + p0.y.toFixed(2) + ' A ' + r + ' ' + r + ' 0 ' + large + ' 1 ' + p1.x.toFixed(2) + ' ' + p1.y.toFixed(2);
+  return 'M ' + p0.x.toFixed(2) + ' ' + p0.y.toFixed(2) + ' A ' + r + ' ' + r + ' 0 ' + ((a1 - a0) > 180 ? 1 : 0) + ' 1 ' + p1.x.toFixed(2) + ' ' + p1.y.toFixed(2);
 }
-function gaugeTicks(cx, cy, rOuter, rInner, a0, a1, count) {
-  const arr = [];
-  for (let i = 0; i <= count; i++) {
-    const deg = a0 + (a1 - a0) * (i / count);
-    const maj = i % 6 === 0;
-    const ro = maj ? rOuter + 4 : rOuter;
-    const po = polar(cx, cy, ro, deg), pi = polar(cx, cy, rInner, deg);
-    arr.push({ x1: pi.x.toFixed(2), y1: pi.y.toFixed(2), x2: po.x.toFixed(2), y2: po.y.toFixed(2), op: maj ? 0.6 : 0.24, w: maj ? 1.4 : 0.8 });
+function gauge(frac, value, aria) {
+  const cx = 78, cy = 76, r = 54, a0 = -125, a1 = 125;
+  const ticks = [];
+  for (let i = 0; i <= 20; i++) {
+    const deg = a0 + (a1 - a0) * i / 20, maj = i % 5 === 0;
+    const po = polar(cx, cy, r + (maj ? 14 : 11), deg), pi = polar(cx, cy, r + 7, deg);
+    ticks.push({ x1: pi.x.toFixed(2), y1: pi.y.toFixed(2), x2: po.x.toFixed(2), y2: po.y.toFixed(2), op: maj ? 0.6 : 0.22, w: maj ? 1.4 : 0.8 });
   }
-  return arr;
+  return { bg: arcPath(cx, cy, r, a0, a1), arc: arcPath(cx, cy, r, a0, a0 + (a1 - a0) * frac), ticks: ticks, value: value, aria: aria };
 }
+function declutter(items, gap, lo, hi) {
+  items.forEach(function (it) { it.ly = Math.max(lo, Math.min(hi, it.cy)); });
+  for (let i = 1; i < items.length; i++) if (items[i].ly - items[i - 1].ly < gap) items[i].ly = items[i - 1].ly + gap;
+  const last = items[items.length - 1];
+  if (last && last.ly > hi) {
+    last.ly = hi;
+    for (let i = items.length - 2; i >= 0; i--) if (items[i + 1].ly - items[i].ly < gap) items[i].ly = items[i + 1].ly - gap;
+  }
+}
+
+const SK = { top: 78, h: 220, xL: 152, xT: 276, xR: 398, w: 8, gap: 8 };
+const B_BTC = 48970.31 / TOTAL, B_ETH = 16769.81 / TOTAL;
+const VOL = Math.sqrt(Math.pow(B_BTC * 0.50, 2) + Math.pow(B_ETH * 0.65, 2) + 2 * 0.8 * B_BTC * 0.50 * B_ETH * 0.65);
+
 class Component extends DCLogic {
   renderVals() {
     const st = this.state || {};
     if (!this._h) {
+      this._pick = {};
+      RANGES.forEach((r) => { this._pick[r.id] = () => this.setState({ range: r.id, hover: null, kbd: false, flow: null }); });
+      this._fe = {};
+      this._enter = (id) => {
+        if (!this._fe[id]) this._fe[id] = () => { if ((this.state || {}).flow !== id) this.setState({ flow: id }); };
+        return this._fe[id];
+      };
       this._h = {
         coreRef: (el) => {
           if (el === this._cv) return;
@@ -264,15 +452,29 @@ class Component extends DCLogic {
         toggleMode: () => this._setChart(!this._chart),
         showOrbit: () => this._setChart(false),
         showChart: () => this._setChart(true),
-        chartRef: (el) => { this._chartEl = el; },
+        viewChart: () => this.setState({ tbl: false }),
+        viewTable: () => this.setState({ tbl: true, hover: null }),
         chartMove: (e) => {
-          if (!this._chartEl) return;
-          const r = this._chartEl.getBoundingClientRect();
-          const x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-          const idx = Math.round(x * (SERIES.length - 1));
-          if (idx !== this._hoverIdx) { this._hoverIdx = idx; this.setState({ hoverIdx: idx }); }
+          const r = e.currentTarget.getBoundingClientRect();
+          const f = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+          const idx = this._d0 + Math.round(f * (N - 1 - this._d0));
+          if (idx !== (this.state || {}).hover || (this.state || {}).kbd) this.setState({ hover: idx, kbd: false });
         },
-        chartLeave: () => { this._hoverIdx = null; this.setState({ hoverIdx: null }); }
+        chartLeave: () => { if ((this.state || {}).hover != null) this.setState({ hover: null, kbd: false }); },
+        chartFocus: () => { if ((this.state || {}).hover == null) this.setState({ hover: N - 1, kbd: true }); },
+        chartKey: (e) => {
+          const cur = (this.state || {}).hover != null ? this.state.hover : N - 1;
+          const step = e.shiftKey ? 7 : 1;
+          let nx = null;
+          if (e.key === 'ArrowLeft') nx = cur - step;
+          else if (e.key === 'ArrowRight') nx = cur + step;
+          else if (e.key === 'Home') nx = this._d0;
+          else if (e.key === 'End') nx = N - 1;
+          if (nx == null) return;
+          e.preventDefault();
+          this.setState({ hover: Math.max(this._d0, Math.min(N - 1, nx)), kbd: true });
+        },
+        flowLeave: () => { if ((this.state || {}).flow) this.setState({ flow: null }); }
       };
       this._setChart = (on) => {
         this._chart = on;
@@ -285,43 +487,163 @@ class Component extends DCLogic {
     if (this._core) this._core.set({ align: chart ? 1 : 0 });
     const coreOn = !!st.coreOn && this.props.liveCore !== false;
 
-    const CW = 812, CH = 168;
-    const vals = SERIES.map((s) => s.v);
-    const vMin = Math.min.apply(null, vals) * 0.94, vMax = Math.max.apply(null, vals) * 1.05;
-    const xs = SERIES.map((_, i) => i * (CW / (SERIES.length - 1)));
-    const ys = SERIES.map((s) => CH - (s.v - vMin) / (vMax - vMin) * CH);
-    const path = xs.map((x, i) => (i === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + ys[i].toFixed(1)).join(' ');
-    const area = path + ' L ' + xs[xs.length - 1].toFixed(1) + ' ' + CH + ' L 0 ' + CH + ' Z';
-    const months = SERIES.map((s, i) => ({ m: s.m, x: xs[i].toFixed(1) }));
-    const hoverIdx = st.hoverIdx != null ? st.hoverIdx : SERIES.length - 1;
-    const hovered = st.hoverIdx != null;
-    const hv = SERIES[hoverIdx];
-    const pts = xs.map((x, i) => ({ x: x.toFixed(1), y: ys[i].toFixed(1), r: i === hoverIdx ? 4.5 : 2.2, op: i === hoverIdx ? 1 : 0.55 }));
+    /* ---------- range ---------- */
+    const rid = st.range || this.props.range || '6M';
+    const RG = RANGES.find((r) => r.id === rid) || RANGES[2];
+    const d0 = RG.d0, d1 = N - 1;
+    this._d0 = d0;
+    const B = (d) => V[d0] + C[d] - C[d0];
+    const ranges = RANGES.map((r) => ({
+      label: r.id, on: r.id === RG.id, pick: this._pick[r.id],
+      ink: r.id === RG.id ? '#CFF6FB' : '#9BA2B4',
+      bg: r.id === RG.id ? 'rgba(127,227,240,.18)' : 'transparent'
+    }));
 
-    const gA0 = -135, gA1 = 135;
-    const gcx = 78, gcy = 92, gr = 62;
-    const volFrac = 0.24, apyFrac = 0.435;
-
-    const flowC = 2 * Math.PI * 70;
-    let flowStart = 0;
-    const flows = POSITIONS.map((p) => {
-      const dash = (p.pct / 100 * flowC).toFixed(2) + ' ' + flowC.toFixed(2);
-      const off = (-flowStart / 100 * flowC).toFixed(2);
-      flowStart += p.pct;
-      return Object.assign({}, p, { dash: dash, off: off });
+    /* ---------- performance chart ---------- */
+    const PW = 720, PH = 150;
+    let lo = Infinity, hi = -Infinity, sum = 0;
+    for (let d = d0; d <= d1; d++) { lo = Math.min(lo, V[d], B(d)); hi = Math.max(hi, V[d], B(d)); sum += V[d]; }
+    const pad = (hi - lo) * 0.08;
+    const sc = niceScale(lo - pad, hi + pad, 4);
+    const xOf = (d) => (d - d0) / (d1 - d0) * PW;
+    const yOf = (v) => PH - (v - sc.lo) / (sc.hi - sc.lo) * PH;
+    const lp = [], bp = [];
+    for (let d = d0; d <= d1; d++) {
+      const x = xOf(d).toFixed(1);
+      lp.push(x + ' ' + yOf(V[d]).toFixed(1));
+      if (d > d0) bp.push(x + ' ' + yOf(B(d - 1)).toFixed(1));
+      bp.push(x + ' ' + yOf(B(d)).toFixed(1));
+    }
+    const line = 'M' + lp.join(' L');
+    const base = 'M' + bp.join(' L');
+    const gap = line + ' L' + bp.slice().reverse().join(' L') + ' Z';
+    const events = EVENTS.filter((e) => e.d > d0 && e.d <= d1).map((e) => {
+      const x = xOf(e.d), y = yOf(B(e.d));
+      return { d: 'M' + x.toFixed(1) + ' ' + (y - 4.5).toFixed(1) + ' L' + (x + 4.5).toFixed(1) + ' ' + y.toFixed(1) + ' L' + x.toFixed(1) + ' ' + (y + 4.5).toFixed(1) + ' L' + (x - 4.5).toFixed(1) + ' ' + y.toFixed(1) + ' Z', fill: e.amt > 0 ? '#8C93A5' : '#0B0D12' };
+    });
+    const yt = sc.ticks.map((t) => ({ y: yOf(t).toFixed(1), top: (100 + yOf(t)).toFixed(1), label: kfmt(t, sc.step % 1000 === 0 ? 0 : 1) }));
+    const xt = [];
+    for (let d = d0 + 1; d <= d1; d++) {
+      const dt = dateOf(d).getUTCDate();
+      const hit = RG.id === '6M' ? dt === 1 : RG.id === '3M' ? (dt === 1 || dt === 15) : (dt === 1 || dt === 8 || dt === 15 || dt === 22);
+      if (hit) xt.push({ d: d, x: (76 + xOf(d)).toFixed(1), label: RG.id === '6M' ? MON[dateOf(d).getUTCMonth()] : fmtDay(d) });
+    }
+    const hov = st.hover != null ? Math.max(d0, Math.min(d1, st.hover)) : null;
+    const hd = hov != null ? hov : d1;
+    const hx = xOf(hd), hyV = yOf(V[hd]), hyB = yOf(B(hd));
+    const flip = hx > PW * 0.6;
+    const ev = hov != null && hd > d0 ? EV_DAY[hd] : null;
+    const earnedAt = V[hd] - B(hd);
+    const tip = {
+      x: (76 + hx).toFixed(1),
+      y: (100 + Math.max(ev ? 62 : 50, Math.min(ev ? 90 : 100, hyV))).toFixed(1),
+      tf: flip ? 'translate(calc(-100% - 16px), -50%)' : 'translate(16px, -50%)',
+      date: fmtDayY(hd).toUpperCase(),
+      reserve: money(V[hd]), base: money(B(hd)), earned: signed(earnedAt),
+      hasEvent: !!ev, evLabel: ev ? ev.label : '', evAmt: ev ? signed(ev.amt, 0) : '',
+      evFill: ev && ev.amt > 0 ? '#8C93A5' : '#0B0D12'
+    };
+    const endV = { top: 100 + yOf(V[d1]), label: kfmt(V[d1], 1), key: '#7FE3F0', ink: '#F3F5FA' };
+    const endB = { top: 100 + yOf(B(d1)), label: kfmt(B(d1), 1), key: '#8C93A5', ink: '#B7BDCB' };
+    if (Math.abs(endV.top - endB.top) < 20) { const mid = (endV.top + endB.top) / 2; const up = endV.top <= endB.top; endV.top = mid + (up ? -10 : 10); endB.top = mid + (up ? 10 : -10); }
+    endV.top = endV.top.toFixed(1); endB.top = endB.top.toFixed(1);
+    const change = V[d1] - V[d0], dep = C[d1] - C[d0], earned = change - dep;
+    const avg = sum / (d1 - d0 + 1);
+    const perf = { change: signed(change), dep: signed(dep), earned: signed(earned), pct: (earned / avg * 100).toFixed(1) + '%' };
+    const rowDays = [d0].concat(xt.map((t) => t.d));
+    if (rowDays[rowDays.length - 1] !== d1) rowDays.push(d1);
+    const rows = rowDays.map((d, i) => {
+      let fl = 0, n = 0;
+      if (i > 0) EVENTS.forEach((e) => { if (e.d > rowDays[i - 1] && e.d <= d) { fl += e.amt; n++; } });
+      return { date: fmtDay(d), reserve: money(V[d]), base: money(B(d)), earned: signed(V[d] - B(d)), flows: i === 0 ? 'Range opens' : n === 0 ? '—' : signed(fl, 0) + ' · ' + n + (n === 1 ? ' flow' : ' flows') };
     });
 
+    /* ---------- capital flows (Sankey) ---------- */
+    const open = V[d0], close = V[d1];
+    let dIn = 0, dOut = 0, nIn = 0, nOut = 0;
+    EVENTS.forEach((e) => { if (e.d > d0 && e.d <= d1) { if (e.amt > 0) { dIn += e.amt; nIn++; } else { dOut -= e.amt; nOut++; } } });
+    const yld = Y[d1] - Y[d0];
+    const mkt = close - open - dIn + dOut - yld;
+    const L = [{ id: 'open', name: 'Opening reserve', v: open, sub: money(open, 0) + ' · ' + fmtDay(d0), key: '#9BA2B4' }];
+    if (dIn > 0) L.push({ id: 'dep', name: 'Deposits', v: dIn, sub: '+' + money(dIn, 0) + ' · ' + nIn + (nIn === 1 ? ' inflow' : ' inflows'), key: '#9BA2B4' });
+    L.push({ id: 'yld', name: 'Yield', v: yld, sub: '+' + money(yld, 0) + ' · 4.35% on stables', key: '#9BA2B4' });
+    if (mkt > 0) L.push({ id: 'mkt', name: 'Market gain', v: mkt, sub: '+' + money(mkt, 0) + ' · BTC · ETH', key: '#9BA2B4' });
+    const R = POS.map((p) => ({ id: p.sym, name: p.sym, v: p.v, key: p.color, fill: p.color, asset: true, sub: money(p.v, 0) + ' · ' + (p.v / close * 100).toFixed(1) + '%' }));
+    if (dOut > 0) R.push({ id: 'out', name: 'Paid out', v: dOut, key: '#6E7488', fill: '#6E7488', sub: money(dOut, 0) + ' · ' + nOut + (nOut === 1 ? ' disbursement' : ' disbursements') });
+    if (mkt < 0) R.push({ id: 'mloss', name: 'Market drawdown', v: -mkt, key: '#6E7488', fill: '#6E7488', sub: money(-mkt, 0) });
+    const T = L.reduce((a, n) => a + n.v, 0);
+    const k = (SK.h - SK.gap * (Math.max(L.length, R.length) - 1)) / T;
+    const place = (col) => {
+      col.forEach((n) => { n.hh = Math.max(3, n.v * k); });
+      const tot = col.reduce((a, n) => a + n.hh, 0) + SK.gap * (col.length - 1);
+      let y = SK.top + (SK.h - tot) / 2;
+      col.forEach((n) => { n.y = y; n.cy = y + n.hh / 2; y += n.hh + SK.gap; });
+    };
+    place(L); place(R);
+    const sumL = L.reduce((a, n) => a + n.hh, 0), sumR = R.reduce((a, n) => a + n.hh, 0);
+    const tH = Math.max(sumL, sumR), tTop = SK.top + (SK.h - tH) / 2;
+    const band = (x0, y0, x1, y1, h) => {
+      const xm = (x0 + x1) / 2;
+      return 'M' + x0 + ' ' + y0.toFixed(2) + ' C' + xm + ' ' + y0.toFixed(2) + ' ' + xm + ' ' + y1.toFixed(2) + ' ' + x1 + ' ' + y1.toFixed(2) +
+        ' L' + x1 + ' ' + (y1 + h).toFixed(2) + ' C' + xm + ' ' + (y1 + h).toFixed(2) + ' ' + xm + ' ' + (y0 + h).toFixed(2) + ' ' + x0 + ' ' + (y0 + h).toFixed(2) + ' Z';
+    };
+    const fh = st.flow || null;
+    const ribbons = [], nodes = [], labels = [], leaders = [];
+    let acc = tTop + (tH - sumL) / 2;
+    L.forEach((n) => {
+      ribbons.push({ d: band(SK.xL + SK.w, n.y, SK.xT, acc, n.hh), fill: 'url(#mi-src)', op: fh ? (fh === n.id || fh === 'treasury' ? 1 : 0.22) : 0.9, enter: this._enter(n.id) });
+      acc += n.hh;
+    });
+    acc = tTop + (tH - sumR) / 2;
+    R.forEach((n) => {
+      ribbons.push({ d: band(SK.xT + SK.w, acc, SK.xR, n.y, n.hh), fill: 'url(#mi-' + (n.asset ? n.id.toLowerCase() : 'out') + ')', op: fh ? (fh === n.id || fh === 'treasury' ? 1 : 0.22) : 0.9, enter: this._enter(n.id) });
+      acc += n.hh;
+    });
+    L.forEach((n) => nodes.push({ x: SK.xL, y: n.y.toFixed(2), w: SK.w, h: n.hh.toFixed(2), fill: '#9BA2B4', op: fh && fh !== n.id ? 0.35 : 1, enter: this._enter(n.id) }));
+    nodes.push({ x: SK.xT, y: tTop.toFixed(2), w: SK.w, h: tH.toFixed(2), fill: 'url(#md-ti)', op: 1, enter: this._enter('treasury') });
+    R.forEach((n) => nodes.push({ x: SK.xR, y: n.y.toFixed(2), w: SK.w, h: n.hh.toFixed(2), fill: n.fill, op: fh && fh !== n.id ? 0.35 : 1, enter: this._enter(n.id) }));
+    const lab = (col, side) => {
+      declutter(col, 29, SK.top + 12, SK.top + SK.h - 12);
+      col.forEach((n) => {
+        const lx = side === 'L' ? SK.xL - 10 : SK.xR + SK.w + 10;
+        labels.push({ x: lx, y: n.ly.toFixed(1), tf: side === 'L' ? 'translate(-100%, -50%)' : 'translate(0, -50%)', ai: side === 'L' ? 'flex-end' : 'flex-start', name: n.name, sub: n.sub, key: n.key, op: fh && fh !== n.id && fh !== 'treasury' ? 0.4 : 1 });
+        if (Math.abs(n.ly - n.cy) > 3) {
+          const ax = side === 'L' ? SK.xL - 7 : SK.xR + SK.w + 7, bx = side === 'L' ? SK.xL - 1 : SK.xR + SK.w + 1;
+          leaders.push({ d: 'M' + ax + ' ' + n.ly.toFixed(1) + ' L' + bx + ' ' + n.cy.toFixed(1) });
+        }
+      });
+    };
+    lab(L, 'L'); lab(R, 'R');
+    let flowRead = { k: 'THROUGHPUT · ' + RG.id, v: money(T, 0) };
+    if (fh === 'treasury') flowRead = { k: 'TREASURY · CLOSING RESERVE', v: money(close) };
+    else if (fh) {
+      const nl = L.find((n) => n.id === fh), nr = R.find((n) => n.id === fh);
+      if (nl) flowRead = { k: nl.name.toUpperCase() + ' → TREASURY', v: money(nl.v) + ' · ' + (nl.v / T * 100).toFixed(1) + '% of throughput' };
+      if (nr) flowRead = { k: 'TREASURY → ' + nr.name.toUpperCase(), v: money(nr.v) + ' · ' + (nr.asset ? (nr.v / close * 100).toFixed(1) + '% of reserve' : (nr.v / T * 100).toFixed(1) + '% of throughput') };
+    }
+
+    /* ---------- risk ---------- */
+    const shocks = [
+      { label: 'BTC −30%', loss: 48970.31 * 0.30 },
+      { label: 'ETH −40%', loss: 16769.81 * 0.40 },
+      { label: 'USDC depeg −2%', loss: 64250 * 0.02 },
+      { label: 'BTC −50% · ETH −60%', loss: 48970.31 * 0.5 + 16769.81 * 0.6 }
+    ];
+    const maxLoss = Math.max.apply(null, shocks.map((s) => s.loss));
+    const stress = shocks.map((s) => ({ label: s.label, w: (s.loss / maxLoss * 100).toFixed(1), value: '−' + money(s.loss, 0) + ' · ' + (s.loss / TOTAL * 100).toFixed(1) + '%' }));
+    const worst = 'WORST −' + (maxLoss / TOTAL * 100).toFixed(1) + '% · ' + kfmt(TOTAL - maxLoss, 1) + ' LEFT';
+
+    /* ---------- live strip ---------- */
     const jt = st.tick || 0;
-    const ticker = TICKER_BASE.map((t, i) => {
-      const j = Math.sin(jt * 0.7 + i * 1.7) * (t.unit === '$' ? t.price * 0.0006 : 0.02);
-      const p = t.price + j;
-      const priceStr = t.unit === '%' ? p.toFixed(2) + '%' : t.unit === 'gwei' ? p.toFixed(1) + ' gwei' : '$' + p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      return { sym: t.sym, price: priceStr, delta: (t.delta >= 0 ? '+' : '') + t.delta.toFixed(1) + '%', deltaColor: t.delta > 0 ? '#8FE9A6' : t.delta < 0 ? '#FF9A9A' : '#9BA2B4' };
+    const ticker = POS.map((p, i) => {
+      const j = p.sym === 'BTC' || p.sym === 'ETH' ? Math.sin(jt * 0.7 + i * 1.7) * p.v * 0.0004 : 0;
+      const up = p.d24 > 0;
+      return { sym: p.sym, key: p.color, price: money(p.v + j), delta: (up ? '▲ ' : '') + p.d24.toFixed(2) + '%', dc: up ? '#8FE9A6' : '#9BA2B4' };
     });
+    ticker.push({ sym: 'NETWORK', key: '#6E7488', price: (12 + Math.sin(jt * 0.9) * 0.6).toFixed(1) + ' gwei', delta: 'fee $0.00', dc: '#9BA2B4' });
 
     return Object.assign({}, this._h, {
       chartOn: chart, orbitOn: !chart,
-      chartOpacity: chart ? 1 : 0,
       coreOpacity: coreOn ? 1 : 0,
       posterOrbit: coreOn || chart ? 0 : 1,
       posterChart: coreOn || !chart ? 0 : 1,
@@ -329,29 +651,33 @@ class Component extends DCLogic {
       chartBg: chart ? 'rgba(127,227,240,.18)' : 'transparent',
       orbitInk: chart ? '#9BA2B4' : '#ECEEF4',
       chartInk: chart ? '#CFF6FB' : '#9BA2B4',
-      chart: {
-        path: path, area: area,
-        hoverX: pts[hoverIdx].x,
-        hoverShow: hovered ? 1 : 0,
-        hoverLabel: hv.m,
-        hoverValue: '$' + hv.v.toLocaleString('en-US')
+      ranges: ranges, rangeId: RG.id,
+      rangeSpan: (fmtDay(d0) + ' — ' + fmtDayY(d1)).toUpperCase(),
+      isChart: !st.tbl, isTable: !!st.tbl,
+      vcInk: st.tbl ? '#9BA2B4' : '#CFF6FB', vcBg: st.tbl ? 'transparent' : 'rgba(127,227,240,.18)',
+      vtInk: st.tbl ? '#CFF6FB' : '#9BA2B4', vtBg: st.tbl ? 'rgba(127,227,240,.18)' : 'transparent',
+      perf: perf, yt: yt, xt: xt, rows: rows, ends: [endB, endV],
+      pf: {
+        line: line, base: base, gap: gap, events: events, clipA: base + ' L720 -12 L0 -12 Z', clipB: base + ' L720 162 L0 162 Z',
+        hx: hx.toFixed(1), hyB: hyB.toFixed(1), hShow: hov != null ? 1 : 0,
+        dotX: hx.toFixed(1), dotY: hyV.toFixed(1),
+        endOp: hov != null && hx > PW - 60 ? 0.25 : 1,
+        announce: st.kbd && hov != null ? fmtDayY(hd) + ': reserve ' + money(V[hd]) + ', contributions ' + money(B(hd)) + ', earned in range ' + signed(earnedAt) + (ev ? ', ' + ev.label + ' ' + signed(ev.amt, 0) : '') : ''
       },
-      months: months,
-      pts: pts,
-      flows: flows,
-      volArc: arcPath(gcx, gcy, gr, gA0, gA0 + (gA1 - gA0) * volFrac),
-      volArcBg: arcPath(gcx, gcy, gr, gA0, gA1),
-      volTicks: gaugeTicks(gcx, gcy, gr + 9, gr + 3, gA0, gA1, 24),
-      apyArc: arcPath(gcx, gcy, gr, gA0, gA0 + (gA1 - gA0) * apyFrac),
-      apyArcBg: arcPath(gcx, gcy, gr, gA0, gA1),
-      apyTicks: gaugeTicks(gcx, gcy, gr + 9, gr + 3, gA0, gA1, 24),
+      tip: tip,
+      sk: { ribbons: ribbons, nodes: nodes, labels: labels, leaders: leaders, tx: SK.xT + SK.w / 2, ty: (tTop - 6).toFixed(1) },
+      flowRead: flowRead,
+      gVol: gauge(VOL / 0.40, (VOL * 100).toFixed(1) + '%', 'Annualized volatility ' + (VOL * 100).toFixed(1) + ' percent on a 0 to 40 percent scale'),
+      gApy: gauge(APY / 0.08, (APY * 100).toFixed(2) + '%', 'Stable yield ' + (APY * 100).toFixed(2) + ' percent on a 0 to 8 percent scale'),
+      blended: (APY * STABLE * 100).toFixed(2) + '%',
+      stress: stress, worst: worst,
       ticker: ticker
     });
   }
   componentDidMount() {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return;
-    this._iv = setInterval(() => { this.setState({ tick: (this.state.tick || 0) + 1 }); }, 2600);
+    this._iv = setInterval(() => { this.setState({ tick: ((this.state || {}).tick || 0) + 1 }); }, 2600);
   }
   componentWillUnmount() {
     if (this._core) this._core.destroy();
