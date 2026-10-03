@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Arcology — City</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+__AR_CSS__
+</style>
+</helmet>
+<div style="position: relative; width: 402px; height: 874px; overflow: hidden; background: {{sky}}; color: {{ink}}">
+
+<svg width="402" height="874" viewBox="0 0 402 874" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs><clipPath id="ar-clip"><path d="{{city.clip}}"></path></clipPath></defs>
+<g opacity="{{starOp}}">
+<sc-for list="{{stars}}" as="s" hint-placeholder-count="20">
+<circle class="ar-twinkle" cx="{{s.x}}" cy="{{s.y}}" r="{{s.r}}" fill="#FFFFFF" opacity="{{s.op}}" style="animation-delay: {{s.dl}}"></circle>
+</sc-for>
+</g>
+<sc-for list="{{city.ground}}" as="g" hint-placeholder-count="8">
+<path d="{{g.d}}" fill="{{g.fill}}"></path>
+</sc-for>
+<g clip-path="url(#ar-clip)">
+<sc-for list="{{shadows}}" as="s" hint-placeholder-count="20">
+<path d="{{s.d}}" fill="{{s.fill}}"></path>
+</sc-for>
+</g>
+<sc-for list="{{lights}}" as="l" hint-placeholder-count="20">
+<circle cx="{{l.x}}" cy="{{l.y}}" r="1.7" fill="{{l.fill}}" style="filter: {{l.fx}}"></circle>
+</sc-for>
+<sc-for list="{{items}}" as="it" hint-placeholder-count="60">
+<path d="{{it.d}}" fill="{{it.fill}}" opacity="{{it.op}}" style="filter: {{it.fx}}; transition: opacity .35s ease"></path>
+</sc-for>
+<sc-for list="{{city.front}}" as="fr" hint-placeholder-count="12">
+<path d="{{fr.d}}" fill="none" stroke="{{fr.stroke}}" stroke-width="{{fr.w}}" stroke-linecap="round" stroke-linejoin="round"></path>
+</sc-for>
+<sc-for list="{{stations}}" as="st" hint-placeholder-count="2">
+<rect x="{{st.x0}}" y="{{st.y0}}" width="16" height="5" rx="2.5" fill="{{st.fill}}" stroke="#F2C230" stroke-width="1.2"></rect>
+</sc-for>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 402px; height: 874px; pointer-events: none">
+<div class="ar-train" style="offset-path: path('{{city.beam}}')">
+<svg width="30" height="9" viewBox="0 0 30 9" style="display: block; transform: translate(-15px, -7px)"><rect x=".5" y=".5" width="29" height="8" rx="4" fill="{{trainBody}}" stroke="#1E2A38" stroke-opacity=".35"></rect><rect x="3" y="2.4" width="20" height="2.2" rx="1.1" fill="{{trainWin}}"></rect><rect x="3" y="6" width="24" height="1.1" fill="#F2C230"></rect><circle cx="27" cy="3.6" r="1.3" fill="{{trainLamp}}"></circle></svg>
+</div>
+</div>
+
+<div class="ar-tilt-t" style="position: absolute; left: 0; right: 0; top: 224px; height: 56px"></div>
+<div class="ar-tilt-b" style="position: absolute; left: 0; right: 0; top: 500px; height: 52px"></div>
+
+<header style="position: absolute; left: 20px; right: 20px; top: 50px; height: 44px; display: flex; align-items: center; gap: 10px">
+<a href="Arcology-Vault.dc.html" aria-label="ZEN Arcology, treasury city" style="display: flex; align-items: center; gap: 10px">
+<svg width="26" height="22" viewBox="0 0 100 86" aria-hidden="true"><path fill="{{ink}}" fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 1px">
+<span class="ar-d" style="font-size: 23px; font-weight: 800; letter-spacing: .02em; line-height: 1">Arcology</span>
+<span style="font-size: 11.5px; font-weight: 500; color: {{muted}}; line-height: 1.1">Your treasury, built to scale</span>
+</span>
+</a>
+<button type="button" onClick="{{toggleNight}}" aria-pressed="{{nightOn}}" aria-label="{{nightLabel}}" class="{{plateCls}}" style="margin-left: auto; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{isDay}}" hint-placeholder-val="{{true}}">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</sc-if>
+<sc-if value="{{isNight}}" hint-placeholder-val="{{false}}">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2C230" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"></path></svg>
+</sc-if>
+</button>
+</header>
+
+<section aria-label="Total reserve" style="position: absolute; left: 20px; top: 106px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 13px; font-weight: 600; color: {{muted}}">{{heroLabel}}</span>
+<span class="ar-d ar-num" aria-live="polite" style="display: flex; align-items: flex-start; font-size: 76px; font-weight: 800; letter-spacing: -.01em; line-height: .92">{{heroWhole}}<span style="font-size: 30px; font-weight: 700; margin-top: 6px; margin-left: 2px; color: {{muted}}">{{heroCents}}</span></span>
+<span style="margin-top: 6px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: {{deltaInk}}"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" style="transform: rotate({{deltaRot}}deg)"><path d="M5 1.2 9 8.4H1z" fill="{{deltaInk}}"></path></svg>{{deltaText}}</span>
+</section>
+
+<sc-for list="{{pins}}" as="p" hint-placeholder-count="4">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" aria-label="{{p.aria}}" class="{{p.cls}}" style="position: absolute; left: {{p.x}}px; top: {{p.y}}px; transform: {{p.tf}}; padding: 6px 9px 6px 6px; border-radius: 10px; display: flex; align-items: center; gap: 7px; text-align: left; white-space: nowrap; opacity: {{p.op}}; transition: opacity .35s ease">
+<span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: {{p.line}}; color: #FFFFFF; font-size: 11px; font-weight: 800" class="ar-d">{{p.glyph}}</span>
+<span style="display: flex; flex-direction: column; gap: 1px">
+<span style="font-size: 12px; font-weight: 700; line-height: 1.1">{{p.name}}</span>
+<span class="ar-tnum" style="font-size: 11px; font-weight: 500; color: {{p.sub}}; line-height: 1.1"><b style="font-weight: 700">{{p.value}}</b> {{p.share}}</span>
+</span>
+</button>
+</sc-for>
+<sc-for list="{{stems}}" as="s" hint-placeholder-count="4">
+<span aria-hidden="true" style="position: absolute; left: {{s.x}}px; top: {{s.y}}px; width: 1px; height: 12px; background: {{s.c}}; opacity: {{s.op}}"></span>
+</sc-for>
+
+<section aria-label="Skyline over time" style="position: absolute; left: 20px; right: 20px; top: 566px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<span class="ar-d" style="font-size: 19px; font-weight: 700; letter-spacing: .01em">Skyline</span>
+<span style="font-size: 12px; font-weight: 600; color: {{muted}}">{{scrubNote}}</span>
+</div>
+<div role="group" aria-label="Choose a month to rebuild the skyline" style="position: relative; margin-top: 12px; height: 48px">
+<span aria-hidden="true" style="position: absolute; left: 14px; right: 14px; top: 14px; height: 6px; border-radius: 3px; background: {{lineBg}}"></span>
+<span aria-hidden="true" style="position: absolute; left: 14px; top: 14px; height: 6px; border-radius: 3px; width: {{lineFill}}px; background: #F2C230; transition: width .5s cubic-bezier(.3,.7,.3,1)"></span>
+<sc-for list="{{stops}}" as="m" hint-placeholder-count="7">
+<button type="button" onClick="{{m.pick}}" aria-pressed="{{m.on}}" aria-label="{{m.aria}}" style="position: absolute; left: {{m.x}}px; top: 0; width: 34px; height: 46px; margin-left: -17px; display: flex; flex-direction: column; align-items: center; gap: 6px">
+<span class="ar-stop" aria-hidden="true" style="width: {{m.size}}px; height: {{m.size}}px; margin-top: {{m.mt}}px; border-radius: 50%; box-sizing: border-box; background: {{m.fill}}; border: 2.5px solid {{m.ring}}"></span>
+<span style="font-size: 11px; font-weight: {{m.weight}}; color: {{m.ink}}">{{m.label}}</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<a href="Arcology-Transit.dc.html" class="ar-board" aria-label="Next departure: $25,000 to Pioneer Fund, ready to dispatch. Open Transit" style="position: absolute; left: 20px; right: 20px; top: 668px; height: 92px; border-radius: 16px; box-sizing: border-box; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; color: #E8EDF3">
+<span style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; color: #9AA6B8">Next departure<span style="display: flex; align-items: center; gap: 6px; color: #F2C230"><span class="ar-pulse" aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #F2C230"></span>Ready to dispatch</span></span>
+<span style="display: flex; align-items: center; justify-content: space-between">
+<span class="ar-d" aria-hidden="true" style="display: flex; gap: 2px; font-size: 22px; font-weight: 700; letter-spacing: .04em">
+<sc-for list="{{flapDest}}" as="c" hint-placeholder-count="12"><span class="ar-flap">{{c.ch}}</span></sc-for>
+</span>
+<span class="ar-d ar-tnum" aria-hidden="true" style="display: flex; gap: 2px; font-size: 22px; font-weight: 700">
+<sc-for list="{{flapAmt}}" as="c" hint-placeholder-count="7"><span class="ar-flap">{{c.ch}}</span></sc-for>
+</span>
+</span>
+</a>
+
+<nav aria-label="Primary" class="{{plateCls}}" style="position: absolute; left: 20px; right: 20px; top: 790px; height: 60px; border-radius: 18px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Arcology-Vault.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; position: relative">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ink}}" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5h18M5 20.5V10l4-2v12.5M9 20.5V5l6-2v17.5M15 20.5v-9l4 1.5v7.5"></path></svg>
+<span style="font-size: 11px; font-weight: 700">City</span>
+<span aria-hidden="true" style="position: absolute; bottom: 6px; width: 18px; height: 3px; border-radius: 2px; background: #F2C230"></span>
+</a>
+<a href="Arcology-Transit.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: {{muted}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="14" rx="3"></rect><path d="M6 10h12M9 20.5l-1.5 1.5M15 20.5l1.5 1.5"></path><circle cx="9" cy="13.5" r=".9" fill="currentColor"></circle><circle cx="15" cy="13.5" r=".9" fill="currentColor"></circle></svg>
+<span style="font-size: 11px; font-weight: 600">Transit</span>
+</a>
+<a href="Meridian-Activity.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: {{muted}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+<span style="font-size: 11px; font-weight: 600">Ledger</span>
+</a>
+<a href="Meridian-Appearance.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: {{muted}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"></path></svg>
+<span style="font-size: 11px; font-weight: 600">Themes</span>
+</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"night":{"editor":"boolean","default":false,"section":"Scene"},"$preview":{"width":402,"height":874}}'>
+__AR_ENGINE__
+const STARS = (function () { const a = []; let s = 7; const r = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; for (let i = 0; a.length < 34 && i < 400; i++) { const x = r() * 402, y = 20 + r() * 300; if (x < 300 && y > 36 && y < 236) continue; if (x > 330 && y < 110) continue; a.push({ x: x.toFixed(1), y: y.toFixed(1), r: (0.5 + r() * 1.1).toFixed(2), dl: (r() * 3).toFixed(2) + 's' }); } return a; })();
+const FLAP_DEST = 'PIONEER FUND';
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._pickM = {}; this._pickP = {};
+      AR_BOOK.months.forEach((m, i) => { this._pickM[i] = () => { this.setState({ month: i }); arTween(this, 'f', m[2] / AR_BOOK.total, 900, 1); }; });
+      Object.keys(AR.ASSET).forEach((k) => { this._pickP[k] = () => this.setState({ focus: (this.state || {}).focus === k ? null : k }); });
+      this._h = {
+        toggleNight: () => { const n = !((this.state || {}).nightTarget != null ? this.state.nightTarget : this.props.night); this.setState({ nightTarget: n }); arTween(this, 't', n ? 1 : 0, 1100, this.props.night ? 1 : 0); }
+      };
+    }
+    const nightTarget = st.nightTarget != null ? st.nightTarget : !!this.props.night;
+    const t = st.t != null ? st.t : (nightTarget ? 1 : 0);
+    const mi = st.month != null ? st.month : 6;
+    const f = st.f != null ? st.f : 1;
+    const focus = st.focus || null;
+    const city = AR.build({ ox: 201, oy: 330, tw: 36, values: AR_BOOK.values, f: f, t: t, hScale: 150 / 118400, plinth: 18, dusk: true });
+    const mix = AR.mix;
+    const k = t > 0.75 ? 1 : 0, ink = k ? '#E8EDF3' : '#1E2A38', muted = k ? '#9AA6B8' : '#4A586B';
+    const SK = [['#CBDFF0', '#F0CDB5', '#050A1C'], ['#E4EEF6', '#F5DDCF', '#121E42'], ['#F3F6F9', '#ECE0E8', '#1C2A55'], ['#E9EEF2', '#DDD8EA', '#0B1124']];
+    const skc = (i) => t <= 0.5 ? mix(SK[i][0], SK[i][1], t / 0.5) : mix(SK[i][1], SK[i][2], (t - 0.5) / 0.5);
+    const sky = 'linear-gradient(180deg, ' + skc(0) + ' 0%, ' + skc(1) + ' 46%, ' + skc(2) + ' 74%, ' + skc(3) + ' 100%)';
+    // focus dims other districts' windows
+    let tower = -1;
+    const items = city.items.map((it) => {
+      const o = { d: it.d, fill: it.fill, op: it.op || '1', fx: 'none' };
+      if (it.win) { o.fx = t > 0.35 ? 'drop-shadow(0 0 ' + (2.5 * t).toFixed(1) + 'px ' + it.fill + ')' : 'none'; }
+      return o;
+    });
+    if (focus) {
+      // recompute which window paths belong to which district by matching colors of the focused asset
+      const a = AR.ASSET[focus];
+      const keep = [mix(a.glass, a.glow, t), mix(mix(a.glass, '#5D6B80', 0.25), a.glow, t), mix(a.cap, a.glow, t)];
+      items.forEach((o, i) => { if (city.items[i].win && keep.indexOf(o.fill) === -1) o.op = '0.28'; });
+    }
+    const shadows = city.shadows.map((s) => ({ d: s.d, fill: city.colors.shadow }));
+    const lights = city.lights.map((l) => ({ x: l.x, y: l.y, fill: city.colors.light, fx: t > 0.4 ? 'drop-shadow(0 0 3px rgba(255,214,102,.9))' : 'none' }));
+    const stations = city.stations.map((s) => ({ x0: (s.x - 8).toFixed(1), y0: (s.y - 4).toFixed(1), fill: city.colors.station }));
+    const plateCls = k ? 'ar-plate-n' : 'ar-plate';
+    const SIDE = { USD: 'R', USDC: 'L', BTC: 'L', ETH: 'R' };
+    const today = mi === 6;
+    const pins = [], stems = [];
+    Object.keys(AR.ASSET).forEach((k) => {
+      const a = AR.ASSET[k], ap = city.apex[k], v = AR_BOOK.values[k];
+      const share = (v / AR_BOOK.total * 100).toFixed(1) + '%';
+      const right = SIDE[k] === 'R';
+      const py = ap.y - 12;
+      pins.push({
+        x: (ap.x + (right ? -4 : 4)).toFixed(1), y: py.toFixed(1), tf: right ? 'translate(0, -100%)' : 'translate(-100%, -100%)',
+        name: a.name + ' district', glyph: a.glyph, line: a.line,
+        value: today ? arK(v) : share, share: today ? share : 'share',
+        aria: a.name + ' district, ' + (today ? arMoney(v) + ', ' : '') + share + ' of reserve. ' + (focus === k ? 'Showing only this district; press to show all' : 'Press to highlight'),
+        on: focus === k, pick: this._pickP[k], cls: plateCls, sub: muted, op: focus && focus !== k ? 0.45 : 1
+      });
+      stems.push({ x: ap.x.toFixed(1), y: (ap.y - 12).toFixed(1), c: ink, op: focus && focus !== k ? 0.3 : 0.55 });
+    });
+    const m = AR_BOOK.months[mi];
+    const val = m[2];
+    const whole = '$' + Math.floor(val).toLocaleString('en-US'), cents = '.' + Math.round((val - Math.floor(val)) * 100).toString().padStart(2, '0');
+    const diff = val - AR_BOOK.total;
+    const X0 = 14, X1 = 348;
+    const stops = AR_BOOK.months.map((mm, i) => {
+      const on = i === mi, past = i <= mi;
+      return { x: (X0 + (X1 - X0) * i / 6).toFixed(1), label: mm[0], on: on, pick: this._pickM[i],
+        aria: 'Skyline on ' + mm[1] + ', ' + arMoney(mm[2]), size: on ? 22 : 16, mt: on ? 6 : 9,
+        fill: on ? '#F2C230' : (past ? mix('#FFFFFF', '#1B2335', t) : mix('#FFFFFF', '#1B2335', t)), ring: on ? mix('#1E2A38', '#F2C230', t) : (past ? '#F2C230' : mix('#B9C3CF', '#3A4560', t)),
+        ink: on ? ink : muted, weight: on ? 800 : 600 };
+    });
+    const flap = (s) => s.split('').map((ch) => ({ ch: ch === ' ' ? ' ' : ch }));
+    return Object.assign({}, this._h, {
+      sky: sky, ink: ink, muted: muted, plateCls: plateCls,
+      isDay: !nightTarget, isNight: nightTarget, nightOn: nightTarget,
+      nightLabel: nightTarget ? 'Switch the city to daylight' : 'Switch the city to night',
+      city: city, items: items, shadows: shadows, lights: lights, stations: stations,
+      stars: STARS, starOp: Math.max(0, (t - 0.5) * 1.8).toFixed(2),
+      trainBody: mix('#FFFFFF', '#2B3550', t), trainWin: mix('#9EB2C8', '#FFE7A3', t), trainLamp: mix('#F2C230', '#FFFFFF', t),
+      pins: pins, stems: stems,
+      heroLabel: today ? 'Total reserve' : 'Reserve on ' + m[1],
+      heroWhole: whole, heroCents: cents,
+      deltaText: today ? '+$1,377.42 today (0.56%)' : arMoney(Math.abs(diff)) + ' below today',
+      deltaInk: today ? (k ? '#8FE9A6' : '#1B7A50') : muted, deltaRot: today ? 0 : 180,
+      scrubNote: today ? 'Today, Sep 28' : 'Rebuilt for ' + m[1],
+      stops: stops, lineFill: ((X1 - X0) * mi / 6).toFixed(1), lineBg: mix('#D3DAE2', '#2A3550', t),
+      flapDest: flap(FLAP_DEST), flapAmt: flap('$25,000')
+    });
+  }
+  componentWillUnmount() { ['_tw_t', '_tw_f'].forEach((k) => { if (this[k]) cancelAnimationFrame(this[k]); }); }
+}
+</script>
+</body>
+</html>

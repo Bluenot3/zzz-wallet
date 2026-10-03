@@ -11,5 +11,7 @@
   "VL_TH_VELLUM": "../../IV-vellum/assets/thumb-vellum.png",
   "ZN_TH_ZENITH": "../../III-zenith/assets/thumb-zenith.png",
   "ZN_TH_SOVEREIGN": "../../III-zenith/assets/thumb-sovereign.png",
-  "ZN_TH_TREASURY": "../../III-zenith/assets/thumb-treasury.png"
+  "ZN_TH_TREASURY": "../../III-zenith/assets/thumb-treasury.png",
+  "MD_TH_QUICKSILVER": "../../VII-quicksilver/assets/thumb-quicksilver.png",
+  "MD_TH_ARCOLOGY": "../../VI-arcology/assets/thumb-arcology.png"
 }

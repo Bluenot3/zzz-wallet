@@ -54,7 +54,7 @@
       "is_interactive": true,
       "page": "v5",
       "radius": 55,
-      "title": "Appearance — all five series",
+      "title": "Appearance — all seven series",
       "w": 402,
       "x": 1446,
       "y": 0
@@ -282,6 +282,86 @@
       "w": 402,
       "x": 0,
       "y": 0
+    },
+    "Arcology-Vault.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v6",
+      "radius": 55,
+      "title": "Arcology Vault — tower height is money",
+      "w": 402,
+      "x": 0,
+      "y": 0
+    },
+    "Arcology-Transit.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v6",
+      "radius": 55,
+      "title": "Transit — load the train, hold to dispatch",
+      "w": 402,
+      "x": 482,
+      "y": 0
+    },
+    "Arcology-Desktop.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v6",
+      "radius": 20,
+      "title": "City Hall — desktop, day to dusk to night",
+      "w": 1440,
+      "x": 964,
+      "y": 0
+    },
+    "Arcology-Model.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v6",
+      "radius": 20,
+      "title": "Model kit — exploded layers, rules, motion",
+      "w": 1440,
+      "x": 0,
+      "y": 1020
+    },
+    "Quicksilver-Vault.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v7",
+      "radius": 55,
+      "title": "Quicksilver Vault — volume is value, hold to stress",
+      "w": 402,
+      "x": 0,
+      "y": 0
+    },
+    "Quicksilver-Pour.dc.html": {
+      "h": 874,
+      "is_interactive": true,
+      "page": "v7",
+      "radius": 55,
+      "title": "Pour — drag a measured droplet to send",
+      "w": 402,
+      "x": 482,
+      "y": 0
+    },
+    "Quicksilver-Desktop.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v7",
+      "radius": 20,
+      "title": "Studio — desktop",
+      "w": 1440,
+      "x": 964,
+      "y": 0
+    },
+    "Quicksilver-Anatomy.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "page": "v7",
+      "radius": 20,
+      "title": "Anatomy — live specimen, materials, springs",
+      "w": 1440,
+      "x": 0,
+      "y": 1020
     }
   },
   "createdOnFiles": {
@@ -338,6 +418,24 @@
       "w": 240,
       "x": 0,
       "y": -300
+    },
+    "ark6": {
+      "kind": "title1",
+      "maxW": 2404,
+      "page": "v6",
+      "text": "ZEN Arcology — Direction VI · New",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "qs7": {
+      "kind": "title1",
+      "maxW": 2404,
+      "page": "v7",
+      "text": "ZEN Quicksilver — Direction VII · New",
+      "w": 240,
+      "x": 0,
+      "y": -300
     }
   },
   "order": [
@@ -369,12 +467,28 @@
     "Meridian-Infographics.dc.html",
     "Meridian-Desktop.dc.html",
     "Meridian-Activity.dc.html",
-    "Meridian-System.dc.html"
+    "Meridian-System.dc.html",
+    "Arcology-Vault.dc.html",
+    "Arcology-Transit.dc.html",
+    "Arcology-Desktop.dc.html",
+    "Arcology-Model.dc.html",
+    "Quicksilver-Vault.dc.html",
+    "Quicksilver-Pour.dc.html",
+    "Quicksilver-Desktop.dc.html",
+    "Quicksilver-Anatomy.dc.html"
   ],
   "pages": [
     {
       "id": "v5",
       "name": "V · Meridian — Main"
+    },
+    {
+      "id": "v7",
+      "name": "VII · Quicksilver — New"
+    },
+    {
+      "id": "v6",
+      "name": "VI · Arcology — New"
     },
     {
       "id": "v4",

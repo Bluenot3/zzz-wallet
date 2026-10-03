@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#111}canvas{display:block}</style>
+<script src="/_blob/qs-core"></script><script src="qs-ui.js"></script><!-- copy gen/ui.js next to this page as qs-ui.js --></head><body><canvas id="c"></canvas>
+<script>
+const q=new URLSearchParams(location.search);const S=QS_SCENE[q.get('s')||'phone'];const W=+q.get('w')||402,H=+q.get('h')||874;
+const c=document.getElementById('c');c.style.width=W+'px';c.style.height=H+'px';
+const shocked=q.get('shock')==='1', lift=q.get('lift')||null;
+const pour=q.get('mode')==='pour', spec=q.get('s')==='spec';
+window.qs=Quicksilver.mount(c,{camera:S.camera,scene:S.scene,maxDpr:2,still:true,
+  wall:Object.assign({rect:S.wallRect,texW:2048,align:S.align},spec?{big:'Volume is value',small:'',label:'The one rule'}:pour?qsWall(25000,'Pour to Pioneer Fund'):shocked?qsWall(QS_BOOK.shockTotal,'Worst case'):qsWall(QS_BOOK.total,'Total reserve')),
+  drops:spec?S.pair.map(d=>Object.assign({},d)):pour?qsPourDrops(S,25000,0):qsDrops(S,{lift:lift,shocked:shocked}),
+  rings:pour?[{x:QS_PAY.vessel[0],z:QS_PAY.vessel[1],r:QS_PAY.vesselR,glow:0.7}]:[]});
+window.__done=false;
+document.fonts.ready.then(()=>setTimeout(()=>{qs.redrawWall();qs.renderNow();c.getContext('webgl').finish();window.__done=true},400));
+</script></body></html>

@@ -1,0 +1,25 @@
+body{margin:0;background:#E9EEF2;color:#1E2A38;font-family:'Hanken Grotesk',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+input{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F2C230;outline-offset:3px;border-radius:6px}
+.ar-d{font-family:'Big Shoulders Display','Hanken Grotesk',sans-serif}
+.ar-num{font-variant-numeric:lining-nums}
+.ar-tnum{font-variant-numeric:tabular-nums lining-nums}
+.ar-plate{background:#FFFFFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1px rgba(30,42,56,.09),0 10px 22px -12px rgba(30,42,56,.38)}
+.ar-plate-n{background:#1B2335;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.06),0 10px 22px -12px rgba(0,0,0,.6)}
+.ar-board{background:#141A26;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 0 1px rgba(0,0,0,.4),0 16px 30px -16px rgba(20,26,38,.7)}
+.ar-flap{display:inline-block;position:relative;min-width:.62em;text-align:center;padding:0 .04em;border-radius:3px;background:linear-gradient(180deg,#232B3D 0 49%,#0E131E 49% 51%,#1C2334 51% 100%);color:#F2C230;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.ar-flip{animation:ar-flip .42s cubic-bezier(.3,.7,.3,1) both}
+@keyframes ar-flip{0%{transform:perspective(160px) rotateX(-88deg);filter:brightness(.6)}100%{transform:perspective(160px) rotateX(0);filter:brightness(1)}}
+.ar-tilt-t{-webkit-backdrop-filter:blur(2.6px);backdrop-filter:blur(2.6px);-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent);pointer-events:none}
+.ar-tilt-b{-webkit-backdrop-filter:blur(2.6px);backdrop-filter:blur(2.6px);-webkit-mask-image:linear-gradient(0deg,#000,transparent);mask-image:linear-gradient(0deg,#000,transparent);pointer-events:none}
+.ar-train{position:absolute;left:0;top:0;offset-rotate:auto;animation:ar-run 16s cubic-bezier(.45,.05,.55,.95) infinite alternate}
+@keyframes ar-run{0%,8%{offset-distance:0%}92%,100%{offset-distance:100%}}
+.ar-twinkle{animation:ar-tw 3.2s ease-in-out infinite alternate}
+@keyframes ar-tw{from{opacity:.35}to{opacity:1}}
+.ar-pulse{animation:ar-pulse 1.6s ease-in-out infinite}
+@keyframes ar-pulse{50%{opacity:.35}}
+.ar-stop{transition:transform .25s ease,background .25s ease}
+.ar-stop:hover{transform:scale(1.12)}
+@media (prefers-reduced-motion:reduce){.ar-train,.ar-twinkle,.ar-pulse,.ar-flip{animation:none!important}}

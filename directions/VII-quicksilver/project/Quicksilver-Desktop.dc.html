@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Quicksilver — Studio</title>
+<script src="./support.js"></script>
+<script src="/_blob/qs-core"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=Onest:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#141518;color:#ECEEF1;font-family:'Onest',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+input{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #ECEEF1;outline-offset:3px;border-radius:10px}
+.qs-d{font-family:'Syne','Onest',sans-serif}
+.qs-tnum{font-variant-numeric:tabular-nums lining-nums}
+.qs-plate{background:rgba(22,24,29,.74);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.06),0 18px 40px -20px rgba(0,0,0,.85)}
+.qs-chrome{background:linear-gradient(180deg,#F7F8FA 0%,#D5D9DF 46%,#B9BEC6 54%,#E6E9ED 100%);color:#15171B;box-shadow:inset 0 1px 0 #FFFFFF,inset 0 -1px 0 rgba(0,0,0,.28),0 8px 22px -10px rgba(0,0,0,.9)}
+.qs-chrome:active{background:linear-gradient(180deg,#C9CED5 0%,#B4BAC2 50%,#D4D8DE 100%)}
+.qs-row{transition:background .2s ease}
+.qs-row:hover{background:rgba(255,255,255,.05)}
+.qs-drop{border-radius:50%;transition:box-shadow .25s ease}
+.qs-drop:focus-visible{outline:none;box-shadow:0 0 0 2px #ECEEF1,0 0 0 6px rgba(236,238,241,.18)}
+.qs-fade{transition:opacity 1.1s ease}
+.qs-tag{transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.qs-sheet{animation:qs-up .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes qs-up{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.qs-sheet{animation:none}.qs-tag,.qs-fade{transition:none}}
+.qd-nav{height:40px;padding:0 15px;border-radius:20px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#9AA0AA;transition:color .2s ease,background .2s ease}
+.qd-nav:hover{color:#ECEEF1;background:rgba(255,255,255,.05)}
+.qd-hold{position:relative;overflow:hidden;height:44px;padding:0 18px;border-radius:22px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;touch-action:none;user-select:none;-webkit-user-select:none}
+.qd-hold[aria-pressed="true"]{background:linear-gradient(180deg,#FFB39E 0%,#F07A5C 50%,#FF9C82 100%);color:#2A0F08}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: 900px; overflow: hidden; background: #1B1D21">
+
+<img src="/_blob/qs-poster-desk" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 1440px; height: 900px; pointer-events: none">
+<canvas ref="{{coreRef}}" aria-hidden="true" class="qs-fade" style="position: absolute; left: 0; top: 0; width: 1440px; height: 900px; pointer-events: none; opacity: {{coreOp}}"></canvas>
+
+<header style="position: absolute; left: 32px; right: 32px; top: 24px; height: 48px; display: flex; align-items: center; gap: 26px">
+<a href="Quicksilver-Desktop.dc.html" aria-label="ZEN Quicksilver studio" style="display: flex; align-items: center; gap: 11px">
+<svg width="30" height="30" viewBox="0 0 26 26" aria-hidden="true"><defs><radialGradient id="qd-mk" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".35" stop-color="#C9CED6"></stop><stop offset=".7" stop-color="#4A4F58"></stop><stop offset="1" stop-color="#9AA1AB"></stop></radialGradient></defs><ellipse cx="13" cy="14.5" rx="11.5" ry="9.5" fill="url(#qd-mk)"></ellipse><ellipse cx="9.5" cy="10.5" rx="3.6" ry="1.8" fill="#FFFFFF" opacity=".85"></ellipse></svg>
+<span class="qs-d" style="font-size: 24px; font-weight: 700; letter-spacing: -.01em">Quicksilver</span>
+</a>
+<nav aria-label="Primary" style="display: flex; gap: 4px">
+<a href="Quicksilver-Desktop.dc.html" aria-current="page" class="qd-nav qs-plate" style="color: #ECEEF1; font-weight: 700">Studio</a>
+<a href="Quicksilver-Pour.dc.html" class="qd-nav">Pour</a>
+<a href="Meridian-Activity.dc.html" class="qd-nav">Ledger</a>
+<a href="Quicksilver-Anatomy.dc.html" class="qd-nav">Anatomy</a>
+<a href="Meridian-Appearance.dc.html" class="qd-nav">Themes</a>
+</nav>
+<span class="qs-tnum" style="margin-left: auto; font-size: 13px; font-weight: 600; color: #9AA0AA">Attested Sep 26, 5:11 PM ET</span>
+</header>
+
+<h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0">{{srHero}}</h1>
+<sc-if value="{{posterOnly}}" hint-placeholder-val="false">
+<p aria-hidden="true" class="qs-d qs-tnum" style="position: absolute; left: {{deltaX}}px; top: 104px; margin: 0; font-size: 17px; font-weight: 600; color: #FFB39E">{{posterNote}}</p>
+</sc-if>
+<p aria-live="polite" class="qs-tnum" style="position: absolute; left: {{deltaX}}px; top: {{deltaY}}px; margin: 0; font-size: 15px; font-weight: 600; color: {{deltaInk}}">{{deltaText}}</p>
+
+<sc-for list="{{drops}}" as="d" hint-placeholder-count="4">
+<button type="button" class="qs-drop" onClick="{{d.pick}}" aria-pressed="{{d.on}}" aria-label="{{d.aria}}" style="position: absolute; left: {{d.x}}px; top: {{d.y}}px; width: {{d.w}}px; height: {{d.h}}px; z-index: {{d.z}}"></button>
+</sc-for>
+<sc-for list="{{tags}}" as="t" hint-placeholder-count="4">
+<span aria-hidden="true" class="qs-tag qs-plate" style="position: absolute; left: {{t.x}}px; top: {{t.y}}px; transform: translate(-50%, 0); height: 26px; padding: 0 10px 0 8px; border-radius: 13px; display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; white-space: nowrap; pointer-events: none; opacity: {{t.op}}; z-index: 6">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: {{t.c}}"></span>{{t.k}}<span class="qs-tnum" style="color: {{t.subInk}}">{{t.v}}</span>
+</span>
+</sc-for>
+
+<sc-if value="{{detailOn}}" hint-placeholder-val="false">
+<section class="qs-plate qs-sheet" aria-label="{{det.name}} details" style="position: absolute; left: 40px; top: 744px; width: 640px; height: 120px; border-radius: 22px; padding: 18px 20px; box-sizing: border-box; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 20px; z-index: 8">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: {{det.c}}; box-shadow: 0 0 0 4px {{det.halo}}"></span><h2 class="qs-d" style="margin: 0; font-size: 20px; font-weight: 700">{{det.name}}</h2><span class="qs-d qs-tnum" style="margin-left: 6px; font-size: 22px; font-weight: 600">{{det.whole}}<span style="font-size: 14px; color: #9AA0AA">{{det.cents}}</span></span></span>
+<span class="qs-tnum" style="font-size: 13.5px; color: #9AA0AA">{{det.line}}</span>
+<span class="qs-tnum" style="font-size: 13.5px; color: {{det.dInk}}">{{det.line2}}</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{setDown}}" class="qs-plate" style="height: 44px; padding: 0 16px; border-radius: 22px; font-size: 13.5px; font-weight: 700">Set it down</button>
+<a href="Quicksilver-Pour.dc.html" class="qs-chrome" style="height: 44px; padding: 0 20px; border-radius: 22px; display: flex; align-items: center; font-size: 13.5px; font-weight: 700">Pour</a>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{legendOn}}" hint-placeholder-val="true">
+<p style="position: absolute; left: 44px; top: 812px; width: 600px; margin: 0; font-size: 13.5px; line-height: 1.5; color: #9AA0AA">Volume is value. Each droplet holds its asset’s money in liquid metal, so a droplet twice as wide holds eight times as much. Select one to lift it off the floor.</p>
+</sc-if>
+
+<aside aria-label="Treasury" style="position: absolute; left: 968px; top: 96px; width: 440px; display: flex; flex-direction: column; gap: 14px; z-index: 8">
+
+<section class="qs-plate" aria-label="Positions" style="border-radius: 22px; padding: 16px 18px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">{{posTitle}}</h2>
+<span class="qs-tnum" style="font-size: 13px; font-weight: 600; color: #9AA0AA">{{posNote}}</span>
+</div>
+<div role="table" aria-label="Positions by value" style="margin-top: 8px">
+<div role="row" style="display: grid; grid-template-columns: 1fr 120px 64px 72px; height: 26px; align-items: center; padding: 0 8px; font-size: 12px; font-weight: 600; color: #9AA0AA">
+<span role="columnheader">Asset</span><span role="columnheader" style="text-align: right">Value</span><span role="columnheader" style="text-align: right">Share</span><span role="columnheader" style="text-align: right">{{lastCol}}</span>
+</div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="4">
+<div role="row" style="border-top: 1px solid rgba(255,255,255,.06)">
+<button type="button" class="qs-row" onClick="{{r.pick}}" aria-pressed="{{r.on}}" aria-label="{{r.aria}}" style="width: 100%; height: 42px; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 1fr 120px 64px 72px; align-items: center; text-align: left; background: {{r.bg}}">
+<span role="cell" style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: {{r.c}}; box-shadow: 0 0 0 3px {{r.halo}}"></span>{{r.k}}<span style="font-weight: 500; color: #9AA0AA">{{r.name}}</span></span>
+<span role="cell" class="qs-tnum" style="text-align: right; font-size: 14px; font-weight: 600; color: {{r.vInk}}">{{r.v}}</span>
+<span role="cell" class="qs-tnum" style="text-align: right; font-size: 13px; color: #9AA0AA">{{r.share}}</span>
+<span role="cell" class="qs-tnum" style="text-align: right; font-size: 13px; font-weight: 600; color: {{r.dInk}}">{{r.d24}}</span>
+</button>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="qs-plate" aria-label="Stress test" style="border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Stress test</h2>
+<p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.45; color: #9AA0AA">The worst case from the Instrument Panel: BTC falls 50% and ETH 60% while stablecoins hold. Hold to watch the metal take the shock.</p>
+<div style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #9AA0AA">{{lossLabel}}</span><span class="qs-d qs-tnum" style="font-size: 20px; font-weight: 600; color: #FFB39E">{{lossText}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #9AA0AA">Reserve after</span><span class="qs-d qs-tnum" style="font-size: 20px; font-weight: 600">{{afterText}}</span></span>
+</div>
+<button type="button" class="qd-hold qs-chrome" aria-pressed="{{stressed}}" aria-label="{{holdAria}}" onPointerDown="{{holdDown}}" onPointerUp="{{holdUp}}" onPointerLeave="{{holdUp}}" onPointerCancel="{{holdUp}}" onKeyDown="{{holdKey}}" onKeyUp="{{holdKeyUp}}" onClick="{{holdClick}}" onContextMenu="{{noMenu}}" style="margin-top: 14px; width: 100%">
+<svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 14 9l6.5-2-4.4 5 4.4 5-6.5-2-2 6.5-2-6.5-6.5 2 4.4-5-4.4-5L10 9Z" fill="currentColor"></path></svg>{{holdText}}
+</button>
+</section>
+
+<section class="qs-plate" aria-label="Next pour" style="border-radius: 22px; padding: 16px 18px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 16px">
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 12px; font-weight: 600; color: #9AA0AA">Next pour</span>
+<span class="qs-d qs-tnum" style="font-size: 19px; font-weight: 700">$25,000.00 to Pioneer Fund</span>
+<span style="font-size: 13px; color: #9AA0AA">From Operating ··4417, inside the daily limit</span>
+</span>
+<a href="Quicksilver-Pour.dc.html" class="qs-chrome" style="height: 44px; padding: 0 22px; border-radius: 22px; display: flex; align-items: center; font-size: 14px; font-weight: 700">Pour</a>
+</section>
+
+</aside>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lifted":{"editor":"select","options":["none","USD","USDC","BTC","ETH"],"default":"none","section":"Scene"},"stressed":{"editor":"boolean","default":false,"section":"Scene"},"liveCore":{"editor":"boolean","default":true,"section":"Scene"},"$preview":{"width":1440,"height":900}}'>
+/* Quicksilver shared UI layer: one book of record, scene presets, and a projection that matches the engine's camera exactly. */
+const QS_BOOK = {
+  total: 248390.12, today: 1377.42, todayPct: 0.56,
+  assets: [
+    { k: 'USD', name: 'US dollar', value: 118400, d24: 0, ui: '#C9CED6', tint: [0.80, 0.81, 0.83], sub: 'Operating ··4417' },
+    { k: 'USDC', name: 'USD Coin', value: 64250, d24: 0.02, ui: '#86AEFF', tint: [0.52, 0.68, 0.98], sub: '64,250 USDC' },
+    { k: 'BTC', name: 'Bitcoin', value: 48970.31, d24: 2.31, ui: '#F2B04C', tint: [0.98, 0.72, 0.34], sub: '0.5125 BTC at $95,551.82' },
+    { k: 'ETH', name: 'Ether', value: 16769.81, d24: 1.58, ui: '#B7A2FF', tint: [0.70, 0.58, 0.98], sub: '4.402 ETH at $3,809.59' }
+  ],
+  /* Worst case from the Instrument Panel: BTC −50%, ETH −60%, stablecoins hold. */
+  shock: { BTC: 0.5, ETH: 0.6 }
+};
+QS_BOOK.shockLoss = QS_BOOK.assets.reduce((s, a) => s + a.value * (QS_BOOK.shock[a.k] || 0), 0);
+QS_BOOK.shockTotal = QS_BOOK.total - QS_BOOK.shockLoss;
+
+const QS_SCENE = {
+  phone: {
+    camera: { pos: [0, 2.3, 7.4], target: [0, 0.4, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.8, 1.3, 3.6, 1.8], unitR: 0.62, lift: 0.75,
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  },
+  pour: {
+    camera: { pos: [0, 2.6, 8.7], target: [0, 0.32, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.95, 1.3, 3.9, 1.95], unitR: 0.62, lift: 0.75, at: {}
+  },
+  spec: {
+    camera: { pos: [0, 1.25, 4.3], target: [0.05, 0.42, 0], fov: 34 },
+    scene: { wallZ: 2.4, cove: 1.1, light: [0.2, 4.2, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.7, 1.15, 3.4, 1.133], unitR: 0.62, lift: 0.55, at: {},
+    pair: [{ x: -0.52, z: 0, r: 0.55, tint: [0.80, 0.81, 0.83] }, { x: 0.6, z: 0.06, r: 0.42, tint: [0.98, 0.72, 0.34] }]
+  },
+  desk: {
+    camera: { pos: [1.45, 2.2, 7.3], target: [1.45, 0.62, -0.3], fov: 34 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.6, 1.9], k: 0.2, exposure: 1.4 },
+    wallRect: [-2.55, 1.32, 4.6, 1.533], unitR: 0.62, lift: 0.7, align: 'left',
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  }
+};
+
+function qsRadius(v, unitR) { return unitR * Math.cbrt(Math.max(v, 0) / 118400); }
+function qsSq(r) { return Math.min(0.9, Math.max(0.7, 0.94 - 0.28 * r)); }
+function qsDrops(S, opt) {
+  opt = opt || {};
+  return QS_BOOK.assets.map((a) => {
+    const f = opt.shocked ? 1 - (QS_BOOK.shock[a.k] || 0) : 1;
+    return { x: S.at[a.k][0], z: S.at[a.k][1], r: qsRadius(a.value * f, S.unitR), tint: a.tint,
+      lift: opt.lift === a.k ? S.lift : 0, sel: opt.lift === a.k, spike: opt.shocked && QS_BOOK.shock[a.k] ? 1 : 0 };
+  });
+}
+function qsProject(S, p, w, h) {
+  const c = S.camera, sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const nz = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const f = nz(sub(c.target, c.pos)), r = nz([f[1] * 0 - f[2] * 1, f[2] * 0 - f[0] * 0, f[0] * 1 - f[1] * 0]), u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+  const tn = Math.tan(c.fov * Math.PI / 360), d = sub(p, c.pos), z = dot(d, f), asp = w / h;
+  return { x: (dot(d, r) / (z * tn * asp) + 1) / 2 * w, y: (1 - dot(d, u) / (z * tn)) / 2 * h, s: h / 2 / (z * tn) };
+}
+/* Screen circle for a resting (or lifted) droplet: centre and radius in CSS px. */
+function qsDropScreen(S, k, w, h, lifted, shocked) {
+  const a = QS_BOOK.assets.find((x) => x.k === k), f = shocked ? 1 - (QS_BOOK.shock[k] || 0) : 1;
+  const r = qsRadius(a.value * f, S.unitR), sq = lifted ? 0.97 : qsSq(r), y = r * sq + (lifted ? S.lift : 0);
+  const c = qsProject(S, [S.at[k][0], y, S.at[k][1]], w, h);
+  return { x: c.x, y: c.y, r: r * c.s, ry: r * sq * c.s };
+}
+function qsMoney(v, dp) { dp = dp == null ? 2 : dp; return (v < 0 ? '−$' : '$') + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+function qsSplit(v) { const w = Math.floor(v + 1e-9); return { whole: '$' + w.toLocaleString('en-US'), cents: '.' + String(Math.round((v - w) * 100)).padStart(2, '0') }; }
+function qsWall(v, label) { const s = qsSplit(v); return { big: s.whole, small: s.cents, label: label }; }
+/* Pour (send): payees, guardrails, and where the three bodies of metal sit on the floor. */
+const QS_PAY = {
+  balance: 118400, limit: 50000, from: 'Operating ··4417',
+  payees: [
+    { id: 'pf', name: 'Pioneer Fund', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'qa', name: 'Qubit Agents', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'nl', name: 'Northline Labs', verified: false, note: 'Not verified yet' }
+  ],
+  src: [-0.78, 0.02], vessel: [0.98, -0.3], vesselR: 0.4
+};
+function qsPourCheck(amount, payee) {
+  if (!payee.verified) return { ok: false, why: payee.name + ' is not verified yet. Verify them before pouring.' };
+  if (!(amount > 0)) return { ok: false, why: 'Measure an amount to pour.' };
+  if (amount > QS_PAY.balance) return { ok: false, why: 'More than Operating holds (' + qsMoney(QS_PAY.balance) + ').' };
+  if (amount > QS_PAY.limit) return { ok: false, why: 'Over today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. A co-signer has to approve this.' };
+  return { ok: true, why: 'Within today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. ' + payee.name + ' is verified.' };
+}
+/* Source pool, measured droplet (drawn out of the source), and what has arrived in the vessel. */
+function qsPourDrops(S, amount, received, mx) {
+  const a = Math.max(0, Math.min(amount, QS_PAY.balance));
+  const rs = qsRadius(QS_PAY.balance - a - received, S.unitR), rm = a > 0 ? qsRadius(a, S.unitR) : 0, rv = received > 0 ? qsRadius(received, S.unitR) : 0;
+  const restX = QS_PAY.src[0] + rs + rm - 0.05;
+  return [
+    { x: QS_PAY.src[0], z: QS_PAY.src[1], r: rs, tint: QS_BOOK.assets[0].tint },
+    { x: mx != null ? mx : restX, z: 0.32, r: rm, tint: [0.84, 0.85, 0.87] },
+    { x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: rv, tint: [0.84, 0.85, 0.87] }
+  ];
+}
+const QD_W = 1440, QD_H = 900, QD_S = QS_SCENE.desk;
+const QD_TAG = { USD: 'up', USDC: 'up', BTC: 'up', ETH: 'down' };
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {}, P = this.props;
+    if (!this._h) {
+      this._pick = {};
+      QS_BOOK.assets.forEach((a) => { this._pick[a.k] = () => { const cur = this._lifted(); this.setState({ lifted: cur === a.k ? 'none' : a.k }); }; });
+      const start = () => { if (!this._stress) { this._stress = true; this.setState({ stressed: true }); } };
+      const end = () => { if (this._stress) { this._stress = false; this.setState({ stressed: false }); } };
+      this._lifted = () => { const s = this.state || {}; const v = s.lifted != null ? s.lifted : this.props.lifted; return v && v !== 'none' ? v : null; };
+      this._stressOn = () => { const s = this.state || {}; return s.stressed != null ? s.stressed : !!this.props.stressed; };
+      if (P.stressed) this._stress = true;
+      this._h = {
+        coreRef: (el) => {
+          if (el === this._cv) return;
+          if (this._core) { this._core.destroy(); this._core = null; }
+          this._cv = el;
+          if (el && window.Quicksilver && this.props.liveCore !== false) {
+            this._key = '';
+            this._core = window.Quicksilver.mount(el, {
+              camera: QD_S.camera, scene: QD_S.scene, maxDpr: 2,
+              wall: Object.assign({ rect: QD_S.wallRect, texW: 2048, align: QD_S.align }, this._stressOn() ? qsWall(QS_BOOK.shockTotal, 'Worst case') : qsWall(QS_BOOK.total, 'Total reserve')),
+              drops: qsDrops(QD_S, { lift: this._lifted(), shocked: this._stressOn() }),
+              onReady: () => this.setState({ coreOn: true })
+            });
+          }
+        },
+        holdDown: (e) => { if (e.button != null && e.button !== 0) return; this._viaPointer = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) { /* best effort */ } start(); },
+        holdUp: () => { if (this._viaPointer) { this._viaPointer = false; end(); } },
+        holdKey: (e) => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); this._viaKey = true; start(); } },
+        holdKeyUp: (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (this._viaKey) { this._viaKey = false; this._justKey = true; setTimeout(() => { this._justKey = false; }, 0); end(); } } },
+        holdClick: (e) => { if (e.detail === 0 && !this._viaKey && !this._justKey) { if (this._stress) end(); else start(); } },
+        noMenu: (e) => e.preventDefault(),
+        setDown: () => this.setState({ lifted: 'none' })
+      };
+    }
+    const lifted = this._lifted(), stressed = this._stressOn();
+    if (this._core) {
+      const key = (lifted || '-') + '|' + stressed;
+      if (key !== this._key) {
+        const prevStress = this._key.split('|')[1];
+        this._key = key;
+        const o = { drops: qsDrops(QD_S, { lift: lifted, shocked: stressed }) };
+        if (prevStress !== String(stressed)) o.wall = stressed ? qsWall(QS_BOOK.shockTotal, 'Worst case') : qsWall(QS_BOOK.total, 'Total reserve');
+        this._core.set(o);
+      }
+    }
+    const coreOn = !!st.coreOn && P.liveCore !== false;
+    const R = QD_S.wallRect, textX = R[0] + R[2] * 0.05;
+    const base = qsProject(QD_S, [textX, R[1] + R[3] * 0.2, -QD_S.scene.wallZ], QD_W, QD_H);
+    const drops = [], tags = [];
+    ['USDC', 'BTC', 'USD', 'ETH'].forEach((k, zi) => {
+      const a = QS_BOOK.assets.find((x) => x.k === k), up = lifted === k, sc = qsDropScreen(QD_S, k, QD_W, QD_H, up, stressed && !!QS_BOOK.shock[k]);
+      const share = (a.value / QS_BOOK.total * 100).toFixed(1) + '%';
+      drops.push({ x: (sc.x - sc.r * 0.92).toFixed(1), y: (sc.y - sc.ry * 1.05).toFixed(1), w: (sc.r * 1.84).toFixed(1), h: (sc.ry * 2.1).toFixed(1), z: 2 + zi,
+        pick: this._pick[k], on: up, aria: a.name + ', ' + qsMoney(a.value) + ', ' + share + ' of reserve. ' + (up ? 'Lifted; press to set it down.' : 'Press to lift and inspect.') });
+      const down = QD_TAG[k] === 'down', hit = stressed && QS_BOOK.shock[k];
+      tags.push({ k: k, c: a.ui, v: hit ? '−' + Math.round(QS_BOOK.shock[k] * 100) + '%' : share, subInk: hit ? '#FFB39E' : '#9AA0AA',
+        x: (sc.x + (k === 'USDC' ? -sc.r * 0.35 : 0)).toFixed(1), y: (down ? sc.y + sc.ry + 10 : sc.y - sc.ry - 36).toFixed(1), op: up ? 0 : 1 });
+    });
+    const rows = QS_BOOK.assets.map((a) => {
+      const loss = stressed ? a.value * (QS_BOOK.shock[a.k] || 0) : 0;
+      return { k: a.k, name: a.name, c: a.ui, halo: a.ui + '33', pick: this._pick[a.k], on: lifted === a.k, bg: lifted === a.k ? 'rgba(255,255,255,.07)' : 'transparent',
+        v: stressed ? (loss ? qsMoney(-loss) : 'Holds') : qsMoney(a.value), vInk: loss ? '#FFB39E' : '#ECEEF1',
+        share: (a.value / QS_BOOK.total * 100).toFixed(1) + '%',
+        d24: stressed ? (loss ? '−' + Math.round(QS_BOOK.shock[a.k] * 100) + '%' : '0%') : (a.d24 > 0 ? '+' : '') + a.d24.toFixed(2) + '%',
+        dInk: stressed ? (loss ? '#FFB39E' : '#9AA0AA') : (a.d24 > 0 ? '#8FE3B0' : '#9AA0AA'),
+        aria: a.name + ', ' + qsMoney(a.value) + '. ' + (lifted === a.k ? 'Lifted; press to set it down.' : 'Press to lift this droplet.') };
+    });
+    const det = lifted ? (() => {
+      const a = QS_BOOK.assets.find((x) => x.k === lifted), s = qsSplit(a.value);
+      return { name: a.name, c: a.ui, halo: a.ui + '33', whole: s.whole, cents: s.cents, sub: a.sub,
+        line: a.sub, line2: (a.value / QS_BOOK.total * 100).toFixed(1) + '% of reserve, ' + (a.d24 > 0 ? '+' : '') + a.d24.toFixed(2) + '% today', dInk: a.d24 > 0 ? '#8FE3B0' : '#9AA0AA' };
+    })() : { name: '', c: '#000', halo: 'transparent', whole: '', cents: '', line: '', line2: '', dInk: '#9AA0AA' };
+    const pct = (QS_BOOK.shockLoss / QS_BOOK.total * 100).toFixed(1);
+    return Object.assign({}, this._h, {
+      coreOp: coreOn ? 1 : 0, posterOnly: stressed && !coreOn, posterNote: 'Worst case ' + qsMoney(QS_BOOK.shockTotal),
+      srHero: stressed ? 'Worst case reserve ' + qsMoney(QS_BOOK.shockTotal) : 'Total reserve ' + qsMoney(QS_BOOK.total),
+      deltaX: base.x.toFixed(0), deltaY: (base.y + 16).toFixed(0), deltaInk: stressed ? '#FFB39E' : '#8FE3B0',
+      deltaText: stressed ? qsMoney(-QS_BOOK.shockLoss) + ' (−' + pct + '%) if BTC falls 50% and ETH 60%' : '+' + qsMoney(QS_BOOK.today) + ' today (' + QS_BOOK.todayPct.toFixed(2) + '%)',
+      drops: drops, tags: tags, rows: rows, det: det, detailOn: !!lifted, legendOn: !lifted,
+      posTitle: stressed ? 'Worst case' : 'Positions', posNote: stressed ? qsMoney(-QS_BOOK.shockLoss) : qsMoney(QS_BOOK.total), lastCol: stressed ? 'Shock' : '24h',
+      lossText: qsMoney(-QS_BOOK.shockLoss), lossLabel: 'Loss, −' + pct + '%', afterText: qsMoney(QS_BOOK.shockTotal),
+      stressed: stressed, holdText: stressed ? 'Release to recover' : 'Hold to stress test',
+      holdAria: 'Stress test: hold to apply the worst case, BTC down 50% and ETH down 60%. With a keyboard, hold Space.'
+    });
+  }
+  componentWillUnmount() { if (this._core) this._core.destroy(); }
+}
+</script>
+</body>
+</html>

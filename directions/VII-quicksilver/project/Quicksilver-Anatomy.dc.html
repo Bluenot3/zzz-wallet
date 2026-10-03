@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Quicksilver — Anatomy</title>
+<script src="./support.js"></script>
+<script src="/_blob/qs-core"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=Onest:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#141518;color:#ECEEF1;font-family:'Onest',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+input{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #ECEEF1;outline-offset:3px;border-radius:10px}
+.qs-d{font-family:'Syne','Onest',sans-serif}
+.qs-tnum{font-variant-numeric:tabular-nums lining-nums}
+.qs-plate{background:rgba(22,24,29,.74);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.06),0 18px 40px -20px rgba(0,0,0,.85)}
+.qs-chrome{background:linear-gradient(180deg,#F7F8FA 0%,#D5D9DF 46%,#B9BEC6 54%,#E6E9ED 100%);color:#15171B;box-shadow:inset 0 1px 0 #FFFFFF,inset 0 -1px 0 rgba(0,0,0,.28),0 8px 22px -10px rgba(0,0,0,.9)}
+.qs-chrome:active{background:linear-gradient(180deg,#C9CED5 0%,#B4BAC2 50%,#D4D8DE 100%)}
+.qs-row{transition:background .2s ease}
+.qs-row:hover{background:rgba(255,255,255,.05)}
+.qs-drop{border-radius:50%;transition:box-shadow .25s ease}
+.qs-drop:focus-visible{outline:none;box-shadow:0 0 0 2px #ECEEF1,0 0 0 6px rgba(236,238,241,.18)}
+.qs-fade{transition:opacity 1.1s ease}
+.qs-tag{transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.qs-sheet{animation:qs-up .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes qs-up{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.qs-sheet{animation:none}.qs-tag,.qs-fade{transition:none}}
+.qa-nav{height:40px;padding:0 15px;border-radius:20px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#9AA0AA;transition:color .2s ease,background .2s ease}
+.qa-nav:hover{color:#ECEEF1;background:rgba(255,255,255,.05)}
+.qa-rail{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0}
+.qa-rail::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,#ECEEF1 0,#ECEEF1 var(--fill),rgba(255,255,255,.14) var(--fill))}
+.qa-rail::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF 0,#D5D9DF 38%,#6C727C 72%,#B9BEC6 100%);box-shadow:0 4px 12px rgba(0,0,0,.7);cursor:grab}
+.qa-rail::-moz-range-track{height:6px;border-radius:3px;background:rgba(255,255,255,.14)}
+.qa-rail::-moz-range-progress{height:6px;border-radius:3px;background:#ECEEF1}
+.qa-rail::-moz-range-thumb{width:24px;height:24px;border:0;border-radius:50%;background:#D5D9DF}
+.qa-rail:focus-visible{outline:2px solid #ECEEF1;outline-offset:4px;border-radius:10px}
+.qa-toggle{height:40px;padding:0 16px;border-radius:20px;font-size:13.5px;font-weight:700}
+.qa-toggle[aria-pressed="true"]{background:#ECEEF1;color:#15171B}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: 900px; overflow: hidden; background: radial-gradient(120% 90% at 20% 30%, #2A2D33 0%, #1B1D21 55%, #141518 100%)">
+
+<header style="position: absolute; left: 32px; right: 32px; top: 24px; height: 48px; display: flex; align-items: center; gap: 26px">
+<a href="Quicksilver-Desktop.dc.html" aria-label="ZEN Quicksilver studio" style="display: flex; align-items: center; gap: 11px">
+<svg width="30" height="30" viewBox="0 0 26 26" aria-hidden="true"><defs><radialGradient id="qa-mk" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".35" stop-color="#C9CED6"></stop><stop offset=".7" stop-color="#4A4F58"></stop><stop offset="1" stop-color="#9AA1AB"></stop></radialGradient></defs><ellipse cx="13" cy="14.5" rx="11.5" ry="9.5" fill="url(#qa-mk)"></ellipse><ellipse cx="9.5" cy="10.5" rx="3.6" ry="1.8" fill="#FFFFFF" opacity=".85"></ellipse></svg>
+<span class="qs-d" style="font-size: 24px; font-weight: 700; letter-spacing: -.01em">Quicksilver</span>
+</a>
+<nav aria-label="Primary" style="display: flex; gap: 4px">
+<a href="Quicksilver-Desktop.dc.html" class="qa-nav">Studio</a>
+<a href="Quicksilver-Pour.dc.html" class="qa-nav">Pour</a>
+<a href="Meridian-Activity.dc.html" class="qa-nav">Ledger</a>
+<a href="Quicksilver-Anatomy.dc.html" aria-current="page" class="qa-nav qs-plate" style="color: #ECEEF1; font-weight: 700">Anatomy</a>
+<a href="Meridian-Appearance.dc.html" class="qa-nav">Themes</a>
+</nav>
+</header>
+
+<section aria-label="About" style="position: absolute; left: 40px; top: 92px; width: 620px">
+<h1 class="qs-d" style="margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -.01em; line-height: 1.05">Anatomy</h1>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #9AA0AA">Every pixel of metal is computed, not painted: one shader marches light through the droplets, the studio and the printed wall. Try the specimen.</p>
+</section>
+
+<figure aria-label="Live specimen: a USD droplet and a BTC droplet on the studio floor" style="position: absolute; left: 40px; top: 186px; width: 620px; height: 470px; margin: 0; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,.07), 0 30px 60px -30px rgba(0,0,0,.9)">
+<img src="/_blob/qs-poster-spec" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 620px; height: 470px">
+<canvas ref="{{coreRef}}" aria-hidden="true" class="qs-fade" style="position: absolute; left: 0; top: 0; width: 620px; height: 470px; opacity: {{coreOp}}"></canvas>
+<svg width="620" height="470" viewBox="0 0 620 470" aria-hidden="true" style="position: absolute; left: 0; top: 0; pointer-events: none">
+<sc-for list="{{callouts}}" as="c" hint-placeholder-count="4"><path d="{{c.d}}" stroke="#ECEEF1" stroke-opacity=".55" stroke-width="1" fill="none"></path><circle cx="{{c.px}}" cy="{{c.py}}" r="3" fill="#ECEEF1"></circle></sc-for>
+</svg>
+<sc-for list="{{callouts}}" as="c" hint-placeholder-count="4">
+<span aria-hidden="true" class="qs-plate" style="position: absolute; left: {{c.lx}}px; top: {{c.ly}}px; transform: {{c.tf}}; padding: 5px 10px; border-radius: 10px; font-size: 12px; font-weight: 600; white-space: nowrap">{{c.label}}</span>
+</sc-for>
+</figure>
+
+<section aria-label="Specimen controls" style="position: absolute; left: 40px; top: 672px; width: 620px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><label for="qa-k" style="font-size: 13.5px; font-weight: 700">Surface tension</label><span class="qs-tnum" style="font-size: 12.5px; color: #9AA0AA">{{kText}}</span></div>
+<input id="qa-k" class="qa-rail" type="range" min="0" max="40" step="1" value="{{kVal}}" onChange="{{setK}}" aria-valuetext="{{kText}}" style="--fill: {{kFill}}%">
+<p style="margin: 2px 0 0; font-size: 12.5px; line-height: 1.4; color: #9AA0AA">How readily neighbours bridge. The app uses 0.20, so pools touch without swallowing each other.</p>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><label for="qa-s" style="font-size: 13.5px; font-weight: 700">Shock</label><span class="qs-tnum" style="font-size: 12.5px; color: #9AA0AA">{{sText}}</span></div>
+<input id="qa-s" class="qa-rail" type="range" min="0" max="50" step="1" value="{{sVal}}" onChange="{{setS}}" aria-valuetext="{{sText}}" style="--fill: {{sFill}}%">
+<p style="margin: 2px 0 0; font-size: 12.5px; line-height: 1.4; color: #9AA0AA">Drops BTC by up to 50%: the droplet loses volume and grows ferrofluid spikes in proportion.</p>
+</div>
+<div style="grid-column: 1 / span 2; display: flex; align-items: center; gap: 10px">
+<button type="button" class="qa-toggle qs-plate" aria-pressed="{{liftOn}}" onClick="{{toggleLift}}">{{liftText}}</button>
+<button type="button" class="qa-toggle qs-plate" onClick="{{reset}}">Reset specimen</button>
+<span class="qs-tnum" style="margin-left: auto; font-size: 12.5px; color: #9AA0AA">{{specNote}}</span>
+</div>
+</section>
+
+<section class="qs-plate" aria-label="Rules" style="position: absolute; left: 692px; top: 96px; width: 300px; box-sizing: border-box; border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Rules</h2>
+<ul style="margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column; gap: 3px"><span class="qs-d" style="font-size: 15px; font-weight: 700">{{r.lead}}</span><span style="font-size: 12.5px; line-height: 1.42; color: #9AA0AA">{{r.body}}</span></li>
+</sc-for>
+</ul>
+</section>
+
+<section class="qs-plate" aria-label="Scale" style="position: absolute; left: 692px; top: {{scaleTop}}px; width: 300px; height: {{scaleH}}px; box-sizing: border-box; border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Scale</h2>
+<p class="qs-tnum" style="margin: 6px 0 0; font-size: 12.5px; line-height: 1.42; color: #9AA0AA">Radius = 0.62 × ∛(value ÷ $118,400). Drawn to scale below, as seen from above.</p>
+<svg width="264" height="96" viewBox="0 0 264 96" role="img" aria-label="{{scaleAria}}" style="display: block; margin-top: 12px">
+<defs><radialGradient id="qa-chrome" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"></stop><stop offset=".45" stop-color="#FFFFFF" stop-opacity=".18"></stop><stop offset="1" stop-color="#000000" stop-opacity=".35"></stop></radialGradient></defs>
+<sc-for list="{{scale}}" as="sc" hint-placeholder-count="4"><circle cx="{{sc.cx}}" cy="{{sc.cy}}" r="{{sc.r}}" fill="{{sc.c}}"></circle><circle cx="{{sc.cx}}" cy="{{sc.cy}}" r="{{sc.r}}" fill="url(#qa-chrome)"></circle></sc-for>
+</svg>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 4px">
+<sc-for list="{{scale}}" as="sc" hint-placeholder-count="4"><span style="display: flex; flex-direction: column; align-items: center; gap: 1px"><span style="font-size: 12px; font-weight: 700">{{sc.k}}</span><span class="qs-tnum" style="font-size: 11.5px; color: #9AA0AA">{{sc.rw}}</span></span></sc-for>
+</div>
+</section>
+
+<section class="qs-plate" aria-label="Materials" style="position: absolute; left: 1010px; top: 96px; width: 398px; box-sizing: border-box; border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Materials</h2>
+<p style="margin: 6px 0 0; font-size: 12.5px; line-height: 1.42; color: #9AA0AA">Each asset is a metal with its own reflectance at normal incidence (F0). Grazing angles always go white.</p>
+<div role="list" style="margin-top: 12px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{mats}}" as="m" hint-placeholder-count="4">
+<div role="listitem" style="display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center">
+<span aria-hidden="true" style="width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 34% 28%, #FFFFFF 0, {{m.hi}} 22%, {{m.mid}} 52%, #101114 78%, {{m.rim}} 100%); box-shadow: 0 8px 16px -8px rgba(0,0,0,.9)"></span>
+<span style="font-size: 12.5px; font-weight: 700">{{m.name}}</span>
+<span class="qs-tnum" style="font-size: 11px; color: #9AA0AA">{{m.f0}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="qs-plate" aria-label="Motion" style="position: absolute; left: 1010px; top: 330px; width: 398px; box-sizing: border-box; border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Motion</h2>
+<p style="margin: 6px 0 0; font-size: 12.5px; line-height: 1.42; color: #9AA0AA">Springs, not curves: the metal settles the way the physics says. Plots are the real responses.</p>
+<div style="margin-top: 8px">
+<sc-for list="{{springs}}" as="sp" hint-placeholder-count="4">
+<div style="display: grid; grid-template-columns: 1fr 112px; align-items: center; gap: 12px; padding: 7px 0; border-top: 1px solid rgba(255,255,255,.06)">
+<span style="display: flex; flex-direction: column; gap: 1px"><span style="font-size: 13px; font-weight: 700">{{sp.name}}</span><span class="qs-tnum" style="font-size: 11.5px; color: #9AA0AA">{{sp.spec}}</span></span>
+<svg width="112" height="34" viewBox="0 0 112 34" role="img" aria-label="{{sp.aria}}"><path d="M0 8.5H112" stroke="#ECEEF1" stroke-opacity=".18" stroke-dasharray="2 3"></path><path d="{{sp.d}}" stroke="#ECEEF1" stroke-width="1.6" fill="none" stroke-linejoin="round"></path></svg>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="qs-plate" aria-label="Type" style="position: absolute; left: 1010px; top: 666px; width: 398px; height: 194px; box-sizing: border-box; border-radius: 22px; padding: 16px 18px">
+<h2 class="qs-d" style="margin: 0; font-size: 19px; font-weight: 700">Type</h2>
+<span class="qs-d qs-tnum" style="display: block; margin-top: 8px; font-size: 40px; font-weight: 800; line-height: 1">$248,390<span style="font-size: 16px; color: #9AA0AA">.12</span></span>
+<span style="display: block; margin-top: 4px; font-size: 12px; color: #9AA0AA">Syne, for the printed wall and every figure</span>
+<span style="display: block; margin-top: 10px; font-size: 16px; font-weight: 600">Pour $25,000 to Pioneer Fund</span>
+<span style="display: block; margin-top: 3px; font-size: 12px; color: #9AA0AA">Onest, for everything you read and press</span>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"liveCore":{"editor":"boolean","default":true,"section":"Scene"},"$preview":{"width":1440,"height":900}}'>
+/* Quicksilver shared UI layer: one book of record, scene presets, and a projection that matches the engine's camera exactly. */
+const QS_BOOK = {
+  total: 248390.12, today: 1377.42, todayPct: 0.56,
+  assets: [
+    { k: 'USD', name: 'US dollar', value: 118400, d24: 0, ui: '#C9CED6', tint: [0.80, 0.81, 0.83], sub: 'Operating ··4417' },
+    { k: 'USDC', name: 'USD Coin', value: 64250, d24: 0.02, ui: '#86AEFF', tint: [0.52, 0.68, 0.98], sub: '64,250 USDC' },
+    { k: 'BTC', name: 'Bitcoin', value: 48970.31, d24: 2.31, ui: '#F2B04C', tint: [0.98, 0.72, 0.34], sub: '0.5125 BTC at $95,551.82' },
+    { k: 'ETH', name: 'Ether', value: 16769.81, d24: 1.58, ui: '#B7A2FF', tint: [0.70, 0.58, 0.98], sub: '4.402 ETH at $3,809.59' }
+  ],
+  /* Worst case from the Instrument Panel: BTC −50%, ETH −60%, stablecoins hold. */
+  shock: { BTC: 0.5, ETH: 0.6 }
+};
+QS_BOOK.shockLoss = QS_BOOK.assets.reduce((s, a) => s + a.value * (QS_BOOK.shock[a.k] || 0), 0);
+QS_BOOK.shockTotal = QS_BOOK.total - QS_BOOK.shockLoss;
+
+const QS_SCENE = {
+  phone: {
+    camera: { pos: [0, 2.3, 7.4], target: [0, 0.4, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.8, 1.3, 3.6, 1.8], unitR: 0.62, lift: 0.75,
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  },
+  pour: {
+    camera: { pos: [0, 2.6, 8.7], target: [0, 0.32, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.95, 1.3, 3.9, 1.95], unitR: 0.62, lift: 0.75, at: {}
+  },
+  spec: {
+    camera: { pos: [0, 1.25, 4.3], target: [0.05, 0.42, 0], fov: 34 },
+    scene: { wallZ: 2.4, cove: 1.1, light: [0.2, 4.2, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.7, 1.15, 3.4, 1.133], unitR: 0.62, lift: 0.55, at: {},
+    pair: [{ x: -0.52, z: 0, r: 0.55, tint: [0.80, 0.81, 0.83] }, { x: 0.6, z: 0.06, r: 0.42, tint: [0.98, 0.72, 0.34] }]
+  },
+  desk: {
+    camera: { pos: [1.45, 2.2, 7.3], target: [1.45, 0.62, -0.3], fov: 34 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.6, 1.9], k: 0.2, exposure: 1.4 },
+    wallRect: [-2.55, 1.32, 4.6, 1.533], unitR: 0.62, lift: 0.7, align: 'left',
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  }
+};
+
+function qsRadius(v, unitR) { return unitR * Math.cbrt(Math.max(v, 0) / 118400); }
+function qsSq(r) { return Math.min(0.9, Math.max(0.7, 0.94 - 0.28 * r)); }
+function qsDrops(S, opt) {
+  opt = opt || {};
+  return QS_BOOK.assets.map((a) => {
+    const f = opt.shocked ? 1 - (QS_BOOK.shock[a.k] || 0) : 1;
+    return { x: S.at[a.k][0], z: S.at[a.k][1], r: qsRadius(a.value * f, S.unitR), tint: a.tint,
+      lift: opt.lift === a.k ? S.lift : 0, sel: opt.lift === a.k, spike: opt.shocked && QS_BOOK.shock[a.k] ? 1 : 0 };
+  });
+}
+function qsProject(S, p, w, h) {
+  const c = S.camera, sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const nz = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const f = nz(sub(c.target, c.pos)), r = nz([f[1] * 0 - f[2] * 1, f[2] * 0 - f[0] * 0, f[0] * 1 - f[1] * 0]), u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+  const tn = Math.tan(c.fov * Math.PI / 360), d = sub(p, c.pos), z = dot(d, f), asp = w / h;
+  return { x: (dot(d, r) / (z * tn * asp) + 1) / 2 * w, y: (1 - dot(d, u) / (z * tn)) / 2 * h, s: h / 2 / (z * tn) };
+}
+/* Screen circle for a resting (or lifted) droplet: centre and radius in CSS px. */
+function qsDropScreen(S, k, w, h, lifted, shocked) {
+  const a = QS_BOOK.assets.find((x) => x.k === k), f = shocked ? 1 - (QS_BOOK.shock[k] || 0) : 1;
+  const r = qsRadius(a.value * f, S.unitR), sq = lifted ? 0.97 : qsSq(r), y = r * sq + (lifted ? S.lift : 0);
+  const c = qsProject(S, [S.at[k][0], y, S.at[k][1]], w, h);
+  return { x: c.x, y: c.y, r: r * c.s, ry: r * sq * c.s };
+}
+function qsMoney(v, dp) { dp = dp == null ? 2 : dp; return (v < 0 ? '−$' : '$') + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+function qsSplit(v) { const w = Math.floor(v + 1e-9); return { whole: '$' + w.toLocaleString('en-US'), cents: '.' + String(Math.round((v - w) * 100)).padStart(2, '0') }; }
+function qsWall(v, label) { const s = qsSplit(v); return { big: s.whole, small: s.cents, label: label }; }
+/* Pour (send): payees, guardrails, and where the three bodies of metal sit on the floor. */
+const QS_PAY = {
+  balance: 118400, limit: 50000, from: 'Operating ··4417',
+  payees: [
+    { id: 'pf', name: 'Pioneer Fund', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'qa', name: 'Qubit Agents', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'nl', name: 'Northline Labs', verified: false, note: 'Not verified yet' }
+  ],
+  src: [-0.78, 0.02], vessel: [0.98, -0.3], vesselR: 0.4
+};
+function qsPourCheck(amount, payee) {
+  if (!payee.verified) return { ok: false, why: payee.name + ' is not verified yet. Verify them before pouring.' };
+  if (!(amount > 0)) return { ok: false, why: 'Measure an amount to pour.' };
+  if (amount > QS_PAY.balance) return { ok: false, why: 'More than Operating holds (' + qsMoney(QS_PAY.balance) + ').' };
+  if (amount > QS_PAY.limit) return { ok: false, why: 'Over today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. A co-signer has to approve this.' };
+  return { ok: true, why: 'Within today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. ' + payee.name + ' is verified.' };
+}
+/* Source pool, measured droplet (drawn out of the source), and what has arrived in the vessel. */
+function qsPourDrops(S, amount, received, mx) {
+  const a = Math.max(0, Math.min(amount, QS_PAY.balance));
+  const rs = qsRadius(QS_PAY.balance - a - received, S.unitR), rm = a > 0 ? qsRadius(a, S.unitR) : 0, rv = received > 0 ? qsRadius(received, S.unitR) : 0;
+  const restX = QS_PAY.src[0] + rs + rm - 0.05;
+  return [
+    { x: QS_PAY.src[0], z: QS_PAY.src[1], r: rs, tint: QS_BOOK.assets[0].tint },
+    { x: mx != null ? mx : restX, z: 0.32, r: rm, tint: [0.84, 0.85, 0.87] },
+    { x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: rv, tint: [0.84, 0.85, 0.87] }
+  ];
+}
+const QA_S = QS_SCENE.spec, QA_W = 620, QA_H = 470;
+const QA_RULES = [
+  { lead: 'Volume is value', body: 'A droplet’s volume is its asset’s value, so its radius grows with the cube root. Big money looks big, but never absurd.' },
+  { lead: 'Nothing is painted', body: 'Every highlight is a reflection: one overhead softbox, two strips, and a wall that carries the balance.' },
+  { lead: 'Stress shows as spikes', body: 'A shock shrinks the assets it hits to their post-shock volume and raises ferrofluid spikes on them.' },
+  { lead: 'What leaves, arrives', body: 'A pour moves metal from one pool to another. The total never changes in flight.' },
+  { lead: 'The wall is the balance', body: 'The total is printed on the studio wall, so it sits behind every droplet and in every reflection.' }
+];
+const QA_MATS = [
+  { name: 'Mercury', f0: '0.80 0.81 0.83', hi: '#E6E9EE', mid: '#8B9099', rim: '#C9CED6' },
+  { name: 'Cobalt', f0: '0.52 0.68 0.98', hi: '#C6D8FF', mid: '#4F6FA8', rim: '#86AEFF' },
+  { name: 'Gold', f0: '0.98 0.72 0.34', hi: '#FFE2B0', mid: '#A9772E', rim: '#F2B04C' },
+  { name: 'Iris', f0: '0.70 0.58 0.98', hi: '#E3D8FF', mid: '#6E5AA8', rim: '#B7A2FF' }
+];
+/* Simulate each spring with the engine's own integrator and plot it. */
+function qaSpring(stiff, damp, from, to, kick) {
+  let x = from, v = kick || 0; const pts = [];
+  for (let i = 0; i <= 112; i++) {
+    const y = 8.5 + (1 - (x - from) / (to - from || 1)) * 19;
+    pts.push(i + ' ' + Math.max(1, Math.min(33, y)).toFixed(1));
+    for (let s = 0; s < 4; s++) { const dt = 1 / 120; const a = stiff * (to - x) - damp * v; v += a * dt; x += v * dt; }
+  }
+  return 'M' + pts.join(' L');
+}
+const QA_SPRINGS = [
+  { name: 'Lift', spec: 'stiffness 70, damping 11', d: qaSpring(70, 11, 0, 1), aria: 'Lift spring: rises and settles with a small overshoot' },
+  { name: 'Landing jiggle', spec: 'stiffness 160, damping 7', d: qaSpring(160, 7, 0, 1, 6), aria: 'Squash spring: a quick wobble that dies away' },
+  { name: 'Spikes', spec: 'stiffness 60, damping 13', d: qaSpring(60, 13, 0, 1), aria: 'Spike spring: grows smoothly without overshoot' },
+  { name: 'Pour hold', spec: '1400 ms, linear, no shortcut', d: 'M0 27.5 L84 8.5 L112 8.5', aria: 'Pour hold: a straight 1.4 second ramp' }
+];
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {}, P = this.props;
+    const k = st.k != null ? st.k : 0.2, shock = st.shock != null ? st.shock : 0, lift = !!st.lift;
+    if (!this._h) {
+      this._push = (o) => {
+        const s = Object.assign({}, this.state || {}, o), kk = s.k != null ? s.k : 0.2, sh = s.shock != null ? s.shock : 0, lf = !!s.lift;
+        if (!this._core) return;
+        const b = QA_S.pair[1];
+        this._core.set({ k: kk, drops: [null, { r: b.r * Math.cbrt(1 - sh), spike: sh * 2, lift: lf ? QA_S.lift : 0, sel: lf }] });
+      };
+      this._h = {
+        coreRef: (el) => {
+          if (el === this._cv) return;
+          if (this._core) { this._core.destroy(); this._core = null; }
+          this._cv = el;
+          if (el && window.Quicksilver && this.props.liveCore !== false) {
+            this._core = window.Quicksilver.mount(el, {
+              camera: QA_S.camera, scene: QA_S.scene, maxDpr: 2,
+              wall: { rect: QA_S.wallRect, texW: 2048, big: 'Volume is value', small: '', label: 'The one rule' },
+              drops: QA_S.pair.map((d) => Object.assign({}, d)),
+              onReady: () => this.setState({ coreOn: true })
+            });
+          }
+        },
+        setK: (e) => { const o = { k: Number(e.target.value) / 100 }; this.setState(o); this._push(o); },
+        setS: (e) => { const o = { shock: Number(e.target.value) / 100 }; this.setState(o); this._push(o); },
+        toggleLift: () => { const o = { lift: !(this.state || {}).lift }; this.setState(o); this._push(o); },
+        reset: () => { const o = { k: 0.2, shock: 0, lift: false }; this.setState(o); this._push(o); }
+      };
+    }
+    const coreOn = !!st.coreOn && P.liveCore !== false;
+    const A = QA_S.pair[0], B = QA_S.pair[1], sqA = qsSq(A.r), rB = B.r * Math.cbrt(1 - shock), sqB = qsSq(rB);
+    const pr = (p) => qsProject(QA_S, p, QA_W, QA_H);
+    const rim = pr([A.x - A.r * 0.78, A.r * sqA * 1.55, A.z + 0.1]);
+    const bridge = pr([(A.x + A.r + B.x - rB) / 2, Math.min(A.r * sqA, rB * sqB) * 0.9, 0.03]);
+    const inter = pr([A.x + A.r * 0.82, A.r * sqA * 1.05, A.z + 0.32]);
+    const shadow = pr([B.x + 0.05, 0, B.z + rB * 0.95]);
+    const call = (p, lx, ly, tf, label) => ({ px: p.x.toFixed(1), py: p.y.toFixed(1), lx: lx, ly: ly, tf: tf, label: label,
+      d: 'M' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ' L' + (tf.indexOf('-50%, -100%') > 0 ? lx : lx + (tf.indexOf('-100%') === 10 ? -4 : 4)).toFixed(1) + ' ' + (tf.indexOf('-50%, -100%') > 0 ? ly + 2 : ly).toFixed(1) });
+    const callouts = [
+      call(rim, 26, 196, 'translate(0, -50%)', 'Fresnel rim'),
+      call(bridge, 250, 150, 'translate(-50%, -100%)', k >= 0.27 ? 'Bridge, smooth union' : 'Gap, too far to bridge'),
+      call(inter, 360, 404, 'translate(0, -50%)', 'Inter-reflection'),
+      call(shadow, 596, 430, 'translate(-100%, -50%)', 'Contact shadow')
+    ];
+    const S = QS_BOOK.assets.map((a) => ({ k: a.k, r: qsRadius(a.value, 0.62), c: a.ui }));
+    const scalePx = 38 / 0.62;
+    let x = 4;
+    const scale = S.map((s) => { const r = s.r * scalePx, cx = x + r; x += r * 2 + 8; return { k: s.k, c: s.c, cx: cx.toFixed(1), cy: (48).toFixed(1), r: r.toFixed(1), rw: 'r = ' + s.r.toFixed(3) }; });
+    const span = x - 8, off = (264 - span) / 2 - 4;
+    scale.forEach((s) => { s.cx = (Number(s.cx) + off).toFixed(1); });
+    return Object.assign({}, this._h, {
+      coreOp: coreOn ? 1 : 0, callouts: callouts, scaleTop: 588, scaleH: 272,
+      kVal: Math.round(k * 100), kText: k.toFixed(2), kFill: (k / 0.4 * 100).toFixed(1),
+      sVal: Math.round(shock * 100), sText: shock ? 'BTC −' + Math.round(shock * 100) + '%' : 'No shock', sFill: (shock / 0.5 * 100).toFixed(1),
+      liftOn: lift, liftText: lift ? 'Set BTC down' : 'Lift BTC',
+      specNote: 'BTC droplet ' + qsMoney(48970.31 * (1 - shock), 0) + ', radius ' + (qsRadius(48970.31 * (1 - shock), 0.62)).toFixed(3),
+      rules: QA_RULES, mats: QA_MATS, springs: QA_SPRINGS, scale: scale,
+      scaleAria: 'Droplet radii to scale: ' + scale.map((s) => s.k + ' ' + s.rw.slice(4)).join(', ')
+    });
+  }
+  componentWillUnmount() { if (this._core) this._core.destroy(); }
+}
+</script>
+</body>
+</html>

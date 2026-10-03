@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Arcology — Transit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+__AR_CSS__
+.at-flipA{animation:at-fa .46s cubic-bezier(.3,.7,.3,1) both}
+.at-flipB{animation:at-fb .46s cubic-bezier(.3,.7,.3,1) both}
+@keyframes at-fa{0%{transform:perspective(160px) rotateX(-88deg);filter:brightness(.55)}100%{transform:perspective(160px) rotateX(0);filter:brightness(1)}}
+@keyframes at-fb{0%{transform:perspective(160px) rotateX(-88deg);filter:brightness(.55)}100%{transform:perspective(160px) rotateX(0);filter:brightness(1)}}
+.at-amt{width:120px;height:44px;box-sizing:border-box;border:0;border-radius:12px;text-align:center;font-family:'Big Shoulders Display',sans-serif;font-size:24px;font-weight:800;color:#1E2A38;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px rgba(30,42,56,.14)}
+.at-amt:focus{outline:none;box-shadow:inset 0 0 0 2px #F2C230,0 0 0 4px rgba(242,194,48,.25)}
+.at-step{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.at-step:disabled{opacity:.35;cursor:not-allowed}
+.at-sheet{animation:at-up .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes at-up{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+.at-payee{transition:background .2s ease}
+.at-payee:hover{background:rgba(30,42,56,.05)}
+@media (prefers-reduced-motion:reduce){.at-flipA,.at-flipB,.at-sheet{animation:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 402px; height: 874px; overflow: hidden; background: linear-gradient(180deg, #CBDFF0 0%, #E4EEF6 34%, #F3F6F9 70%, #E9EEF2 100%); color: #1E2A38">
+
+<header style="position: absolute; left: 20px; right: 20px; top: 50px; height: 44px; display: flex; align-items: center; gap: 12px">
+<a href="Arcology-Vault.dc.html" aria-label="Back to the city" class="ar-plate" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"></path></svg>
+</a>
+<span style="display: flex; flex-direction: column; gap: 1px">
+<span class="ar-d" style="font-size: 23px; font-weight: 800; letter-spacing: .02em; line-height: 1">Transit</span>
+<span style="font-size: 11.5px; font-weight: 500; color: #5B6B80; line-height: 1.1">Send money on the ZEN line</span>
+</span>
+</header>
+
+<section aria-label="Departure board" class="ar-board" style="position: absolute; left: 20px; right: 20px; top: 110px; height: 128px; border-radius: 16px; box-sizing: border-box; padding: 12px 14px; color: #E8EDF3">
+<button type="button" onClick="{{openPayees}}" aria-haspopup="dialog" aria-label="{{destAria}}" style="width: 100%; display: flex; flex-direction: column; gap: 6px; text-align: left; border-radius: 10px">
+<span style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #9AA6B8">To<span style="color: #F2C230">Change</span></span>
+<span class="ar-d" aria-hidden="true" style="display: flex; gap: 2px; font-size: 21px; font-weight: 700; letter-spacing: .04em">
+<sc-for list="{{flapDest}}" as="c" hint-placeholder-count="12"><span class="ar-flap {{c.cls}}">{{c.ch}}</span></sc-for>
+</span>
+</button>
+<div style="margin-top: 10px; display: flex; align-items: flex-end; justify-content: space-between">
+<span style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #9AA6B8">Load</span>
+<span class="ar-d ar-tnum" aria-hidden="true" style="display: flex; gap: 2px; font-size: 21px; font-weight: 700">
+<sc-for list="{{flapAmt}}" as="c" hint-placeholder-count="7"><span class="ar-flap {{c.cls}}">{{c.ch}}</span></sc-for>
+</span>
+</span>
+<span aria-live="polite" style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-size: 12px; font-weight: 600; color: {{statusInk}}">
+<span style="color: #9AA6B8">Status</span>{{statusText}}
+</span>
+</div>
+</section>
+
+<section aria-label="Load the train" style="position: absolute; left: 20px; right: 20px; top: 252px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<span class="ar-d" style="font-size: 19px; font-weight: 700">Load the train</span>
+<span style="font-size: 12px; font-weight: 600; color: #5B6B80">Each car carries $5,000</span>
+</div>
+<svg width="362" height="34" viewBox="0 0 362 34" role="img" aria-label="{{carsAria}}" style="display: block; margin-top: 10px">
+<rect x="0" y="6" width="34" height="22" rx="6" fill="#1E2A38"></rect>
+<rect x="5" y="10" width="14" height="7" rx="2" fill="#9EB2C8"></rect>
+<rect x="0" y="23" width="34" height="2.4" fill="#F2C230"></rect>
+<sc-for list="{{cars}}" as="c" hint-placeholder-count="5">
+<rect x="{{c.x}}" y="8" width="28" height="20" rx="4" fill="#FFFFFF" stroke="#1E2A38" stroke-opacity=".25"></rect>
+<rect x="{{c.x}}" y="{{c.fy}}" width="28" height="{{c.fh}}" rx="3" fill="#F2C230" opacity=".9"></rect>
+</sc-for>
+<sc-for list="{{wheels}}" as="w" hint-placeholder-count="10"><circle cx="{{w.x}}" cy="30" r="2.6" fill="#1E2A38"></circle></sc-for>
+<text x="356" y="23" text-anchor="end" font-family="Hanken Grotesk, sans-serif" font-size="12" font-weight="700" fill="#5B6B80" opacity="{{moreOp}}">more</text>
+</svg>
+<div style="margin-top: 10px; display: flex; align-items: center; gap: 10px">
+<button type="button" onClick="{{minus}}" disabled="{{minusOff}}" aria-label="Uncouple a car, minus $5,000" class="ar-plate at-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+<label for="at-amount" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Amount in dollars</label>
+<input id="at-amount" class="at-amt ar-tnum" inputmode="decimal" autocomplete="off" value="{{amountText}}" onChange="{{onAmount}}" onBlur="{{normalize}}">
+<button type="button" onClick="{{plus}}" disabled="{{plusOff}}" aria-label="Couple a car, plus $5,000" class="ar-plate at-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5v14"></path></svg></button>
+<span style="margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 11.5px; color: #5B6B80"><span>From Operating ··4417</span><b class="ar-tnum" style="color: #1E2A38">{{afterText}}</b></span>
+</div>
+</section>
+
+<section aria-label="Route and checks" style="position: absolute; left: 20px; right: 20px; top: 388px; height: 296px">
+<span aria-hidden="true" style="position: absolute; left: 13px; top: 12px; bottom: 12px; width: 6px; border-radius: 3px; background: #D3DAE2"></span>
+<span aria-hidden="true" style="position: absolute; left: 13px; top: 12px; width: 6px; border-radius: 3px; height: {{lineDone}}px; background: #F2C230; transition: height .4s cubic-bezier(.3,.7,.3,1)"></span>
+<sc-for list="{{stations}}" as="s" hint-placeholder-count="6">
+<div style="position: absolute; left: 0; right: 0; top: {{s.y}}px; height: 40px; display: flex; align-items: center; gap: 14px">
+<span aria-hidden="true" style="width: {{s.size}}px; height: {{s.size}}px; margin-left: {{s.ml}}px; border-radius: 50%; box-sizing: border-box; flex-shrink: 0; background: {{s.fill}}; border: 3px solid {{s.ring}}; transition: background .3s ease, border-color .3s ease"></span>
+<span style="display: flex; flex-direction: column; gap: 1px; min-width: 0">
+<span style="font-size: {{s.fs}}px; font-weight: 700; color: {{s.ink}}">{{s.name}}</span>
+<span style="font-size: 11.5px; font-weight: 500; color: {{s.subInk}}">{{s.sub}}</span>
+</span>
+<span style="margin-left: auto; font-size: 11.5px; font-weight: 700; color: {{s.tagInk}}">{{s.tag}}</span>
+</div>
+</sc-for>
+<span aria-hidden="true" style="position: absolute; left: 3px; top: {{trainY}}px; width: 26px; height: 12px; border-radius: 6px; background: #1E2A38; box-shadow: 0 0 0 2px #F2C230, 0 6px 14px -4px rgba(30,42,56,.6); opacity: {{trainOp}}; transition: top .38s cubic-bezier(.4,.1,.3,1), opacity .3s ease"></span>
+</section>
+
+<sc-if value="{{showLever}}" hint-placeholder-val="{{true}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 694px">
+<button type="button" onPointerDown="{{down}}" onPointerUp="{{up}}" onPointerLeave="{{up}}" onPointerCancel="{{up}}" onKeyDown="{{keyDown}}" onKeyUp="{{keyUp}}" onContextMenu="{{noMenu}}" disabled="{{leverOff}}" aria-label="{{leverAria}}" class="ar-board" style="position: relative; width: 100%; height: 64px; border-radius: 18px; overflow: hidden; touch-action: none; display: flex; align-items: center; gap: 14px; padding: 0 18px; box-sizing: border-box; color: #E8EDF3; opacity: {{leverOp}}">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: {{holdPct}}%; background: linear-gradient(90deg, rgba(242,194,48,.18), rgba(242,194,48,.5))"></span>
+<span aria-hidden="true" style="position: relative; width: 34px; height: 34px; border-radius: 10px; background: #F2C230; display: flex; align-items: center; justify-content: center; transform: rotate({{leverRot}}deg); transition: transform .15s ease">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 20V6M7 10l5-5 5 5"></path></svg>
+</span>
+<span style="position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 2px">
+<span class="ar-d" style="font-size: 20px; font-weight: 800; letter-spacing: .02em">{{leverTitle}}</span>
+<span style="font-size: 12px; font-weight: 500; color: #9AA6B8">{{leverSub}}</span>
+</span>
+</button>
+</div>
+</sc-if>
+<sc-if value="{{showDone}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 20px; right: 20px; top: 694px; display: flex; gap: 10px">
+<a href="Arcology-Vault.dc.html" class="ar-board" style="flex: 1; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #F2C230; font-weight: 700; font-size: 15px">Back to the city</a>
+<button type="button" onClick="{{reset}}" class="ar-plate" style="flex: 1; height: 64px; border-radius: 18px; font-weight: 700; font-size: 15px">Send another</button>
+</div>
+</sc-if>
+
+<nav aria-label="Primary" class="ar-plate" style="position: absolute; left: 20px; right: 20px; top: 790px; height: 60px; border-radius: 18px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<a href="Arcology-Vault.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5B6B80">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5h18M5 20.5V10l4-2v12.5M9 20.5V5l6-2v17.5M15 20.5v-9l4 1.5v7.5"></path></svg>
+<span style="font-size: 11px; font-weight: 600">City</span>
+</a>
+<a href="Arcology-Transit.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; position: relative">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="14" rx="3"></rect><path d="M6 10h12M9 20.5l-1.5 1.5M15 20.5l1.5 1.5"></path><circle cx="9" cy="13.5" r=".9" fill="#1E2A38"></circle><circle cx="15" cy="13.5" r=".9" fill="#1E2A38"></circle></svg>
+<span style="font-size: 11px; font-weight: 700">Transit</span>
+<span aria-hidden="true" style="position: absolute; bottom: 6px; width: 18px; height: 3px; border-radius: 2px; background: #F2C230"></span>
+</a>
+<a href="Meridian-Activity.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5B6B80">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+<span style="font-size: 11px; font-weight: 600">Ledger</span>
+</a>
+<a href="Meridian-Appearance.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #5B6B80">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"></path></svg>
+<span style="font-size: 11px; font-weight: 600">Themes</span>
+</a>
+</nav>
+
+<sc-if value="{{sheetOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: rgba(20,26,38,.32)">
+<button type="button" onClick="{{closePayees}}" aria-label="Close the destination list" style="position: absolute; inset: 0; width: 100%; height: 100%; cursor: default"></button>
+<div role="dialog" aria-modal="true" aria-label="Choose a destination" class="at-sheet ar-plate" style="position: absolute; left: 12px; right: 12px; bottom: 16px; border-radius: 22px; padding: 18px 14px 14px; box-sizing: border-box">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 0 6px">
+<span class="ar-d" style="font-size: 21px; font-weight: 800">Destinations</span>
+<button type="button" onClick="{{closePayees}}" aria-label="Close" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="margin-top: 6px; display: flex; flex-direction: column">
+<sc-for list="{{payees}}" as="p" hint-placeholder-count="3">
+<button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" class="at-payee" style="height: 64px; padding: 0 8px; border-radius: 14px; display: flex; align-items: center; gap: 12px; text-align: left">
+<span aria-hidden="true" class="ar-d" style="width: 36px; height: 36px; border-radius: 18px; display: flex; align-items: center; justify-content: center; background: {{p.bg}}; color: #FFFFFF; font-size: 15px; font-weight: 800">{{p.initial}}</span>
+<span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1">
+<span style="font-size: 14.5px; font-weight: 700">{{p.name}}</span>
+<span style="font-size: 12px; color: {{p.subInk}}">{{p.sub}}</span>
+</span>
+<sc-if value="{{p.on}}" hint-placeholder-val="{{false}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"></path></svg></sc-if>
+</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"amount":{"editor":"int","default":25000,"min":0,"max":118400,"section":"Transfer"},"$preview":{"width":402,"height":874}}'>
+const BAL = 118400, LIMIT = 50000, CAR = 5000, HOLD = 1400;
+const PAYEES = [
+  { name: 'Pioneer Fund', flap: 'PIONEER FUND', sub: 'AI Pioneer Program, verified', verified: true, bg: '#1E2A38' },
+  { name: 'Qubit Agents', flap: 'QUBIT AGENTS', sub: 'Vendor, verified', verified: true, bg: '#3D8BFF' },
+  { name: 'Northline Labs', flap: 'NORTHLINE', sub: 'New payee, verification pending', verified: false, bg: '#8C6CF2' }
+];
+function fmt(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._pick = PAYEES.map((p, i) => () => this.setState({ payee: i, sheet: false, flipD: ((this.state || {}).flipD || 0) + 1 }));
+      const setAmt = (v) => { v = Math.max(0, Math.min(BAL, Math.round(v))); this.setState({ amount: v, amountText: null, flipA: ((this.state || {}).flipA || 0) + 1 }); };
+      this._setAmt = setAmt;
+      this._h = {
+        openPayees: () => { if (this._phase() === 'ready') this.setState({ sheet: true }); },
+        closePayees: () => this.setState({ sheet: false }),
+        minus: () => { const a = this._amt(); setAmt(a % CAR ? Math.floor(a / CAR) * CAR : a - CAR); },
+        plus: () => { const a = this._amt(); setAmt(a % CAR ? Math.ceil(a / CAR) * CAR : a + CAR); },
+        onAmount: (e) => {
+          const raw = e.target.value.replace(/[^0-9.]/g, '');
+          const v = raw === '' ? 0 : Math.min(BAL, Math.floor(parseFloat(raw) || 0));
+          this.setState({ amountText: e.target.value, amount: v });
+        },
+        normalize: () => { const a = this._amt(); this.setState({ amountText: null, flipA: ((this.state || {}).flipA || 0) + 1, amount: a }); },
+        down: (e) => { if (e && e.button != null && e.button !== 0) return; this._start(); },
+        up: () => this._cancel(),
+        keyDown: (e) => { if ((e.key === ' ' || e.key === 'Enter') && !this._kh) { e.preventDefault(); this._kh = true; this._start(); } },
+        keyUp: (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); this._kh = false; this._cancel(); } },
+        noMenu: (e) => e.preventDefault(),
+        reset: () => { this._clear(); this.setState({ phase: 'ready', run: 0, hold: 0 }); }
+      };
+      this._amt = () => { const s = this.state || {}; return s.amount != null ? s.amount : (this.props.amount != null ? this.props.amount : 25000); };
+      this._phase = () => (this.state || {}).phase || 'ready';
+      this._start = () => {
+        if (this._phase() !== 'ready' || !this._ok) return;
+        const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - t0) / HOLD);
+          this.setState({ hold: p, phase: 'ready' });
+          if (p >= 1) { this._raf = null; this._dispatch(); return; }
+          this._raf = requestAnimationFrame(tick);
+        };
+        this._raf = requestAnimationFrame(tick);
+      };
+      this._cancel = () => { if (this._raf) { cancelAnimationFrame(this._raf); this._raf = null; if (this._phase() === 'ready') this.setState({ hold: 0 }); } };
+      this._dispatch = () => {
+        this.setState({ phase: 'running', run: 0, hold: 1 });
+        let k = 0;
+        const step = () => { k++; this.setState({ run: k }); if (k < 5) this._to = setTimeout(step, 520); else this._to = setTimeout(() => this.setState({ phase: 'arrived' }), 420); };
+        this._to = setTimeout(step, 360);
+      };
+      this._clear = () => { if (this._raf) cancelAnimationFrame(this._raf); if (this._to) clearTimeout(this._to); this._raf = null; this._to = null; };
+    }
+    const amount = this._amt();
+    const pi = st.payee || 0, P = PAYEES[pi];
+    const phase = this._phase();
+    const run = st.run || 0, hold = st.hold || 0;
+    let block = '';
+    if (amount <= 0) block = 'Enter an amount to load';
+    else if (amount > LIMIT) block = 'Over the $50,000 daily limit. Needs a co-signer';
+    else if (!P.verified) block = P.name + ' is not verified yet';
+    this._ok = !block;
+    // stations: origin, 4 checks, terminal
+    const checks = [
+      { name: 'Intent parsed', ok: true, sub: 'Send ' + fmt(amount) + ' to ' + P.name },
+      { name: 'Payee verified', ok: P.verified, sub: P.verified ? 'Identity and account confirmed' : 'Verification pending' },
+      { name: 'Balance covered', ok: amount > 0 && amount <= BAL, sub: amount <= BAL ? fmt(BAL - amount) + ' stays in Operating' : 'More than Operating holds' },
+      { name: 'Within limits', ok: amount > 0 && amount <= LIMIT, sub: amount <= LIMIT ? 'Daily limit $50,000' : 'Over the daily limit' }
+    ];
+    const rows = [{ name: 'Operating Plaza', sub: phase === 'arrived' ? 'Operating ··4417, now ' + fmt(BAL - amount) : 'Operating ··4417, ' + fmt(BAL), kind: 'origin' }]
+      .concat(checks.map((c) => Object.assign({ kind: 'check' }, c)))
+      .concat([{ name: P.name, sub: phase === 'arrived' ? 'Arrived and settled instantly' : 'Arrives instantly on the ZEN line', kind: 'terminal' }]);
+    const SP = 51;
+    const stations = rows.map((r, i) => {
+      const passed = phase !== 'ready' && i <= run;
+      const big = r.kind !== 'check';
+      let tag = '', tagInk = '#5B6B80';
+      if (r.kind === 'check') { if (passed) { tag = 'Cleared'; tagInk = '#1F8A5B'; } else if (!r.ok) { tag = 'Blocked'; tagInk = '#C2412D'; } else { tag = 'Ready'; tagInk = '#5B6B80'; } }
+      if (r.kind === 'terminal' && phase === 'arrived') { tag = 'Arrived'; tagInk = '#1F8A5B'; }
+      return {
+        y: i * SP, name: r.name, sub: r.sub, size: big ? 32 : 22, ml: big ? 0 : 5, fs: big ? 15 : 13.5,
+        fill: passed ? '#F2C230' : '#FFFFFF', ring: passed ? '#1E2A38' : (r.kind === 'check' && !r.ok ? '#C2412D' : '#1E2A38'),
+        ink: '#1E2A38', subInk: r.kind === 'check' && !r.ok ? '#C2412D' : '#5B6B80', tag: tag, tagInk: tagInk
+      };
+    });
+    const runIdx = phase === 'ready' ? 0 : (phase === 'arrived' ? 5 : run);
+    // departure board flaps
+    const flipA = st.flipA || 0, flipD = st.flipD || 0;
+    const pad = (s, n) => (s + ' '.repeat(n)).slice(0, n);
+    const flap = (s, par) => s.split('').map((ch) => ({ ch: ch === ' ' ? ' ' : ch, cls: par ? (par % 2 ? 'at-flipA' : 'at-flipB') : '' }));
+    // cars
+    const full = Math.floor(amount / CAR), part = (amount % CAR) / CAR;
+    const nShow = Math.min(9, full + (part > 0 ? 1 : 0));
+    const cars = [], wheels = [];
+    for (let i = 0; i < nShow; i++) {
+      const x = 38 + i * 32, fill = i < full ? 1 : part;
+      cars.push({ x: x, fy: (28 - 18 * fill).toFixed(1), fh: (18 * fill).toFixed(1) });
+      wheels.push({ x: x + 7 }, { x: x + 21 });
+    }
+    wheels.push({ x: 9 }, { x: 25 });
+    const statusText = phase === 'arrived' ? 'Arrived' : phase === 'running' ? 'Departing' : block ? 'Held at platform' : 'Ready to dispatch';
+    return Object.assign({}, this._h, {
+      flapDest: flap(pad(P.flap, 12), flipD), flapAmt: flap(pad(fmt(amount), 8), flipA),
+      destAria: 'Destination: ' + P.name + '. Change destination',
+      statusText: statusText, statusInk: phase === 'arrived' ? '#8FE9A6' : block ? '#FF9A8A' : '#F2C230',
+      amountText: st.amountText != null ? st.amountText : amount.toLocaleString('en-US'),
+      minusOff: phase !== 'ready' || amount <= 0, plusOff: phase !== 'ready' || amount >= BAL,
+      afterText: fmt(BAL - Math.min(amount, BAL)) + (phase === 'arrived' ? ' now' : ' after'),
+      cars: cars, wheels: wheels, moreOp: full + (part > 0 ? 1 : 0) > 9 ? 1 : 0,
+      carsAria: 'Train with ' + full + ' full car' + (full === 1 ? '' : 's') + (part > 0 ? ' and one part-loaded car' : '') + ', carrying ' + fmt(amount),
+      stations: stations, lineDone: (12 + runIdx * SP).toFixed(0), trainY: (runIdx * SP + 14).toFixed(0), trainOp: phase === 'ready' ? 0 : 1,
+      showLever: phase !== 'arrived', showDone: phase === 'arrived',
+      leverOff: phase !== 'ready' || !!block, leverOp: block ? 0.55 : 1,
+      holdPct: (hold * 100).toFixed(1), leverRot: (-hold * 40).toFixed(1),
+      leverTitle: phase === 'running' ? 'Departing…' : 'Hold to dispatch',
+      leverSub: block || ('Sends ' + fmt(amount) + ' to ' + P.name),
+      leverAria: block ? 'Dispatch unavailable: ' + block : 'Hold to dispatch ' + fmt(amount) + ' to ' + P.name + '. Press and hold, or hold Space',
+      sheetOpen: !!st.sheet,
+      payees: PAYEES.map((p, i) => ({ name: p.name, sub: p.sub, initial: p.name[0], bg: p.bg, on: i === pi, pick: this._pick[i], subInk: p.verified ? '#5B6B80' : '#C2412D' }))
+    });
+  }
+  componentWillUnmount() { if (this._clear) this._clear(); }
+}
+</script>
+</body>
+</html>

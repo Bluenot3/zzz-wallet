@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Quicksilver — Pour</title>
+<script src="./support.js"></script>
+<script src="/_blob/qs-core"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&amp;family=Onest:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#141518;color:#ECEEF1;font-family:'Onest',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+input{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #ECEEF1;outline-offset:3px;border-radius:10px}
+.qs-d{font-family:'Syne','Onest',sans-serif}
+.qs-tnum{font-variant-numeric:tabular-nums lining-nums}
+.qs-plate{background:rgba(22,24,29,.74);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 0 1px rgba(255,255,255,.06),0 18px 40px -20px rgba(0,0,0,.85)}
+.qs-chrome{background:linear-gradient(180deg,#F7F8FA 0%,#D5D9DF 46%,#B9BEC6 54%,#E6E9ED 100%);color:#15171B;box-shadow:inset 0 1px 0 #FFFFFF,inset 0 -1px 0 rgba(0,0,0,.28),0 8px 22px -10px rgba(0,0,0,.9)}
+.qs-chrome:active{background:linear-gradient(180deg,#C9CED5 0%,#B4BAC2 50%,#D4D8DE 100%)}
+.qs-row{transition:background .2s ease}
+.qs-row:hover{background:rgba(255,255,255,.05)}
+.qs-drop{border-radius:50%;transition:box-shadow .25s ease}
+.qs-drop:focus-visible{outline:none;box-shadow:0 0 0 2px #ECEEF1,0 0 0 6px rgba(236,238,241,.18)}
+.qs-fade{transition:opacity 1.1s ease}
+.qs-tag{transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.qs-sheet{animation:qs-up .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes qs-up{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.qs-sheet{animation:none}.qs-tag,.qs-fade{transition:none}}
+.qp-chip{height:34px;padding:0 11px;border-radius:17px;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;white-space:nowrap;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);transition:background .2s ease}
+.qp-chip:hover{background:rgba(255,255,255,.1)}
+.qp-chip[aria-pressed="true"]{background:#ECEEF1;color:#15171B;box-shadow:none}
+.qp-amt{width:150px;height:44px;box-sizing:border-box;border:0;border-radius:12px;padding:0 12px;font-family:'Syne','Onest',sans-serif;font-size:24px;font-weight:700;color:#ECEEF1;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.qp-amt:focus{outline:none;box-shadow:inset 0 0 0 2px #ECEEF1}
+.qp-rail{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0}
+.qp-rail::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(90deg,#ECEEF1 0,#ECEEF1 var(--fill),rgba(255,255,255,.14) var(--fill))}
+.qp-rail::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFFFFF 0,#D5D9DF 38%,#6C727C 72%,#B9BEC6 100%);box-shadow:0 4px 12px rgba(0,0,0,.7),inset 0 -1px 0 rgba(0,0,0,.3);cursor:grab}
+.qp-rail::-moz-range-track{height:6px;border-radius:3px;background:rgba(255,255,255,.14)}
+.qp-rail::-moz-range-progress{height:6px;border-radius:3px;background:#ECEEF1}
+.qp-rail::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:#D5D9DF}
+.qp-rail:focus-visible{outline:2px solid #ECEEF1;outline-offset:4px;border-radius:10px}
+.qp-pour{position:relative;overflow:hidden;width:100%;height:50px;border-radius:25px;font-size:15px;font-weight:700;touch-action:none;user-select:none;-webkit-user-select:none}
+.qp-pour:disabled{opacity:.4;cursor:not-allowed}
+.qp-drag{border-radius:50%;cursor:grab;touch-action:none}
+.qp-drag:active{cursor:grabbing}
+.qp-drag:focus-visible{outline:none;box-shadow:0 0 0 2px #ECEEF1,0 0 0 6px rgba(236,238,241,.18)}
+</style>
+</helmet>
+<div style="position: relative; width: 402px; height: 874px; overflow: hidden; background: #1B1D21">
+
+<img src="/_blob/qs-poster-pour" alt="" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 402px; height: 874px; pointer-events: none">
+<canvas ref="{{coreRef}}" aria-hidden="true" class="qs-fade" style="position: absolute; left: 0; top: 0; width: 402px; height: 874px; pointer-events: none; opacity: {{coreOp}}"></canvas>
+<div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0; height: 120px; pointer-events: none; background: linear-gradient(180deg, rgba(20,21,24,.55), rgba(20,21,24,0))"></div>
+
+<header style="position: absolute; left: 18px; right: 18px; top: 18px; height: 44px; display: flex; align-items: center; gap: 12px">
+<a href="Quicksilver-Vault.dc.html" aria-label="Back to the vault" class="qs-plate" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ECEEF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+</a>
+<h1 class="qs-d" style="margin: 0; font-size: 22px; font-weight: 700">Pour</h1>
+<span style="margin-left: auto; font-size: 12.5px; font-weight: 600; color: #9AA0AA">{{headerNote}}</span>
+</header>
+
+<p aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0">{{srStatus}}</p>
+
+<sc-for list="{{labels}}" as="lb" hint-placeholder-count="2">
+<span aria-hidden="true" style="position: absolute; left: {{lb.x}}px; top: {{lb.y}}px; transform: translate(-50%, 0); display: flex; flex-direction: column; align-items: center; gap: 1px; white-space: nowrap; pointer-events: none; z-index: 4">
+<span style="font-size: 12.5px; font-weight: 700">{{lb.name}}</span>
+<span class="qs-tnum" style="font-size: 12px; color: {{lb.subInk}}">{{lb.sub}}</span>
+</span>
+</sc-for>
+
+<sc-if value="{{dragOn}}" hint-placeholder-val="true">
+<button type="button" class="qp-drag" aria-label="{{dragAria}}" onPointerDown="{{dragDown}}" onPointerMove="{{dragMove}}" onPointerUp="{{dragUp}}" onPointerCancel="{{dragCancel}}" onKeyDown="{{dragKey}}" style="position: absolute; left: {{drag.x}}px; top: {{drag.y}}px; width: {{drag.d}}px; height: {{drag.d}}px; z-index: 5"></button>
+<span aria-hidden="true" class="qs-plate" style="position: absolute; left: {{hint.x}}px; top: {{hint.y}}px; transform: translate(-50%, 0); height: 26px; padding: 0 10px; border-radius: 13px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; white-space: nowrap; pointer-events: none; opacity: {{hint.op}}; transition: opacity .3s ease; z-index: 4">
+<svg width="14" height="10" viewBox="0 0 14 10" aria-hidden="true"><path d="M1 5h11M8.5 1.5 12 5 8.5 8.5" stroke="#ECEEF1" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>{{hint.text}}</span>
+</sc-if>
+
+<section class="qs-plate" aria-label="{{panelLabel}}" style="position: absolute; left: 14px; right: 14px; top: 548px; height: 240px; border-radius: 22px; padding: 14px; box-sizing: border-box; z-index: 8">
+
+<sc-if value="{{formOn}}" hint-placeholder-val="true">
+<div role="group" aria-label="Pour to" style="display: flex; gap: 5px">
+<sc-for list="{{payees}}" as="py" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{py.on}}" class="qp-chip" onClick="{{py.pick}}" aria-label="{{py.aria}}" style="padding: 0 9px; font-size: 12px; gap: 5px">
+<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="{{py.markInk}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{py.mark}}"></path></svg>{{py.name}}</button>
+</sc-for>
+</div>
+<div style="margin-top: 10px; display: flex; align-items: center; gap: 8px">
+<label for="qp-amount" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Amount to pour, in US dollars</label>
+<input id="qp-amount" class="qp-amt qs-tnum" type="text" inputmode="decimal" autocomplete="off" value="{{amountText}}" onChange="{{typeAmount}}" onBlur="{{normalize}}" aria-describedby="qp-why">
+<sc-for list="{{quick}}" as="qk" hint-placeholder-count="3">
+<button type="button" class="qp-chip" onClick="{{qk.pick}}" aria-label="{{qk.aria}}" style="padding: 0 10px">{{qk.label}}</button>
+</sc-for>
+</div>
+<div style="margin-top: 6px">
+<label for="qp-rail" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Measure the amount</label>
+<input id="qp-rail" class="qp-rail" type="range" min="0" max="50000" step="500" value="{{railVal}}" onChange="{{slide}}" aria-valuetext="{{railText}}" style="--fill: {{railFill}}%">
+</div>
+<p id="qp-why" class="qs-tnum" style="margin: 2px 0 0; min-height: 34px; display: flex; align-items: flex-start; gap: 7px; font-size: 12.5px; line-height: 1.35; color: {{whyInk}}">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="{{whyInk}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="{{whyIcon}}"></path></svg>{{why}}</p>
+<button type="button" class="qp-pour qs-chrome" disabled="{{pourOff}}" aria-label="{{pourAria}}" onPointerDown="{{holdDown}}" onPointerUp="{{holdUp}}" onPointerLeave="{{holdUp}}" onPointerCancel="{{holdUp}}" onKeyDown="{{holdKey}}" onKeyUp="{{holdKeyUp}}" onContextMenu="{{noMenu}}" style="margin-top: 4px">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: {{holdPct}}%; background: rgba(21,23,27,.16)"></span>
+<span style="position: relative">{{pourText}}</span>
+</button>
+</sc-if>
+
+<sc-if value="{{doneOn}}" hint-placeholder-val="false">
+<div class="qs-sheet" style="display: flex; flex-direction: column; height: 100%; padding: 2px 4px 0">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #8FE3B0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8FE3B0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"></path></svg>Poured to {{doneTo}}</span>
+<span class="qs-d qs-tnum" style="margin-top: 10px; font-size: 34px; font-weight: 700; line-height: 1">{{doneWhole}}<span style="font-size: 18px; color: #9AA0AA">{{doneCents}}</span></span>
+<span style="margin-top: 8px; font-size: 13px; color: #9AA0AA">From Operating ··4417, now {{doneLeft}}. Arrived instantly and recorded in the ledger.</span>
+<div style="margin-top: auto; display: flex; gap: 8px">
+<a href="Quicksilver-Vault.dc.html" class="qs-chrome" style="flex: 1; height: 48px; border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700">Back to the vault</a>
+<button type="button" onClick="{{again}}" class="qs-plate" style="flex: 1; height: 48px; border-radius: 24px; font-size: 14px; font-weight: 700">Pour again</button>
+</div>
+</div>
+</sc-if>
+
+</section>
+
+<nav aria-label="Primary" class="qs-plate" style="position: absolute; left: 14px; right: 14px; top: 798px; height: 60px; border-radius: 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); z-index: 8">
+<a href="Quicksilver-Vault.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #9AA0AA">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AA" stroke-width="1.7" aria-hidden="true"><ellipse cx="12" cy="14" rx="8.5" ry="6.5"></ellipse><path d="M7.5 11.5c1-1.4 2.6-2.2 4.5-2.2" stroke-linecap="round"></path></svg>Vault</a>
+<a href="Quicksilver-Pour.dc.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11.5px; font-weight: 700">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ECEEF1" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M12 3.5c3 4 5 6.6 5 9.2a5 5 0 0 1-10 0c0-2.6 2-5.2 5-9.2Z"></path></svg>Pour</a>
+<a href="Meridian-Activity.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #9AA0AA">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AA" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h9"></path></svg>Ledger</a>
+<a href="Meridian-Appearance.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: #9AA0AA">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA0AA" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="#9AA0AA" stroke="none"></path></svg>Themes</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"amount":{"editor":"number","default":25000,"section":"Pour"},"payee":{"editor":"select","options":["Pioneer Fund","Qubit Agents","Northline Labs"],"default":"Pioneer Fund","section":"Pour"},"liveCore":{"editor":"boolean","default":true,"section":"Scene"},"$preview":{"width":402,"height":874}}'>
+/* Quicksilver shared UI layer: one book of record, scene presets, and a projection that matches the engine's camera exactly. */
+const QS_BOOK = {
+  total: 248390.12, today: 1377.42, todayPct: 0.56,
+  assets: [
+    { k: 'USD', name: 'US dollar', value: 118400, d24: 0, ui: '#C9CED6', tint: [0.80, 0.81, 0.83], sub: 'Operating ··4417' },
+    { k: 'USDC', name: 'USD Coin', value: 64250, d24: 0.02, ui: '#86AEFF', tint: [0.52, 0.68, 0.98], sub: '64,250 USDC' },
+    { k: 'BTC', name: 'Bitcoin', value: 48970.31, d24: 2.31, ui: '#F2B04C', tint: [0.98, 0.72, 0.34], sub: '0.5125 BTC at $95,551.82' },
+    { k: 'ETH', name: 'Ether', value: 16769.81, d24: 1.58, ui: '#B7A2FF', tint: [0.70, 0.58, 0.98], sub: '4.402 ETH at $3,809.59' }
+  ],
+  /* Worst case from the Instrument Panel: BTC −50%, ETH −60%, stablecoins hold. */
+  shock: { BTC: 0.5, ETH: 0.6 }
+};
+QS_BOOK.shockLoss = QS_BOOK.assets.reduce((s, a) => s + a.value * (QS_BOOK.shock[a.k] || 0), 0);
+QS_BOOK.shockTotal = QS_BOOK.total - QS_BOOK.shockLoss;
+
+const QS_SCENE = {
+  phone: {
+    camera: { pos: [0, 2.3, 7.4], target: [0, 0.4, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.8, 1.3, 3.6, 1.8], unitR: 0.62, lift: 0.75,
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  },
+  pour: {
+    camera: { pos: [0, 2.6, 8.7], target: [0, 0.32, -0.3], fov: 44 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.4, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.95, 1.3, 3.9, 1.95], unitR: 0.62, lift: 0.75, at: {}
+  },
+  spec: {
+    camera: { pos: [0, 1.25, 4.3], target: [0.05, 0.42, 0], fov: 34 },
+    scene: { wallZ: 2.4, cove: 1.1, light: [0.2, 4.2, 1.8], k: 0.2, exposure: 1.4 },
+    wallRect: [-1.7, 1.15, 3.4, 1.133], unitR: 0.62, lift: 0.55, at: {},
+    pair: [{ x: -0.52, z: 0, r: 0.55, tint: [0.80, 0.81, 0.83] }, { x: 0.6, z: 0.06, r: 0.42, tint: [0.98, 0.72, 0.34] }]
+  },
+  desk: {
+    camera: { pos: [1.45, 2.2, 7.3], target: [1.45, 0.62, -0.3], fov: 34 },
+    scene: { wallZ: 2.6, cove: 1.25, light: [0.3, 4.6, 1.9], k: 0.2, exposure: 1.4 },
+    wallRect: [-2.55, 1.32, 4.6, 1.533], unitR: 0.62, lift: 0.7, align: 'left',
+    at: { USD: [0, 0.15], USDC: [-0.78, -0.62], BTC: [0.8, -0.55], ETH: [0.52, 0.86] }
+  }
+};
+
+function qsRadius(v, unitR) { return unitR * Math.cbrt(Math.max(v, 0) / 118400); }
+function qsSq(r) { return Math.min(0.9, Math.max(0.7, 0.94 - 0.28 * r)); }
+function qsDrops(S, opt) {
+  opt = opt || {};
+  return QS_BOOK.assets.map((a) => {
+    const f = opt.shocked ? 1 - (QS_BOOK.shock[a.k] || 0) : 1;
+    return { x: S.at[a.k][0], z: S.at[a.k][1], r: qsRadius(a.value * f, S.unitR), tint: a.tint,
+      lift: opt.lift === a.k ? S.lift : 0, sel: opt.lift === a.k, spike: opt.shocked && QS_BOOK.shock[a.k] ? 1 : 0 };
+  });
+}
+function qsProject(S, p, w, h) {
+  const c = S.camera, sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const nz = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const f = nz(sub(c.target, c.pos)), r = nz([f[1] * 0 - f[2] * 1, f[2] * 0 - f[0] * 0, f[0] * 1 - f[1] * 0]), u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+  const tn = Math.tan(c.fov * Math.PI / 360), d = sub(p, c.pos), z = dot(d, f), asp = w / h;
+  return { x: (dot(d, r) / (z * tn * asp) + 1) / 2 * w, y: (1 - dot(d, u) / (z * tn)) / 2 * h, s: h / 2 / (z * tn) };
+}
+/* Screen circle for a resting (or lifted) droplet: centre and radius in CSS px. */
+function qsDropScreen(S, k, w, h, lifted, shocked) {
+  const a = QS_BOOK.assets.find((x) => x.k === k), f = shocked ? 1 - (QS_BOOK.shock[k] || 0) : 1;
+  const r = qsRadius(a.value * f, S.unitR), sq = lifted ? 0.97 : qsSq(r), y = r * sq + (lifted ? S.lift : 0);
+  const c = qsProject(S, [S.at[k][0], y, S.at[k][1]], w, h);
+  return { x: c.x, y: c.y, r: r * c.s, ry: r * sq * c.s };
+}
+function qsMoney(v, dp) { dp = dp == null ? 2 : dp; return (v < 0 ? '−$' : '$') + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+function qsSplit(v) { const w = Math.floor(v + 1e-9); return { whole: '$' + w.toLocaleString('en-US'), cents: '.' + String(Math.round((v - w) * 100)).padStart(2, '0') }; }
+function qsWall(v, label) { const s = qsSplit(v); return { big: s.whole, small: s.cents, label: label }; }
+/* Pour (send): payees, guardrails, and where the three bodies of metal sit on the floor. */
+const QS_PAY = {
+  balance: 118400, limit: 50000, from: 'Operating ··4417',
+  payees: [
+    { id: 'pf', name: 'Pioneer Fund', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'qa', name: 'Qubit Agents', verified: true, note: 'Verified, arrives instantly' },
+    { id: 'nl', name: 'Northline Labs', verified: false, note: 'Not verified yet' }
+  ],
+  src: [-0.78, 0.02], vessel: [0.98, -0.3], vesselR: 0.4
+};
+function qsPourCheck(amount, payee) {
+  if (!payee.verified) return { ok: false, why: payee.name + ' is not verified yet. Verify them before pouring.' };
+  if (!(amount > 0)) return { ok: false, why: 'Measure an amount to pour.' };
+  if (amount > QS_PAY.balance) return { ok: false, why: 'More than Operating holds (' + qsMoney(QS_PAY.balance) + ').' };
+  if (amount > QS_PAY.limit) return { ok: false, why: 'Over today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. A co-signer has to approve this.' };
+  return { ok: true, why: 'Within today’s ' + qsMoney(QS_PAY.limit, 0) + ' limit. ' + payee.name + ' is verified.' };
+}
+/* Source pool, measured droplet (drawn out of the source), and what has arrived in the vessel. */
+function qsPourDrops(S, amount, received, mx) {
+  const a = Math.max(0, Math.min(amount, QS_PAY.balance));
+  const rs = qsRadius(QS_PAY.balance - a - received, S.unitR), rm = a > 0 ? qsRadius(a, S.unitR) : 0, rv = received > 0 ? qsRadius(received, S.unitR) : 0;
+  const restX = QS_PAY.src[0] + rs + rm - 0.05;
+  return [
+    { x: QS_PAY.src[0], z: QS_PAY.src[1], r: rs, tint: QS_BOOK.assets[0].tint },
+    { x: mx != null ? mx : restX, z: 0.32, r: rm, tint: [0.84, 0.85, 0.87] },
+    { x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: rv, tint: [0.84, 0.85, 0.87] }
+  ];
+}
+const QP_W = 402, QP_H = 874, QP_S = QS_SCENE.pour, QP_HOLD = 1400;
+const QP_CHECK = 'M5 12.5l4.2 4.2L19 7', QP_DOT = 'M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z', QP_WARN = 'M12 8v5M12 16.5v.1M10.3 3.9 2.6 17.2A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z';
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {}, P = this.props;
+    if (!this._h) {
+      this._pickP = QS_PAY.payees.map((p, i) => () => this.setState({ payee: i }));
+      this._quick = [5000, 10000, 25000].map((v) => () => this._setAmt(v));
+      this._setAmt = (v) => { v = Math.max(0, Math.round(v * 100) / 100); this.setState({ amount: v, amountText: null }); };
+      this._amt = () => { const s = this.state || {}; return s.amount != null ? s.amount : (P.amount != null ? Number(P.amount) : 25000); };
+      this._payee = () => { const s = this.state || {}; if (s.payee != null) return QS_PAY.payees[s.payee]; return QS_PAY.payees.find((p) => p.name === this.props.payee) || QS_PAY.payees[0]; };
+      this._check = () => qsPourCheck(this._amt(), this._payee());
+      const reduce = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      this._pour = () => {
+        if (!this._check().ok || (this.state || {}).phase) return;
+        const amt = this._amt(), to = this._payee().name;
+        this.setState({ phase: 'pouring', poured: amt, pouredTo: to, hold: 0 });
+        if (this._core) {
+          this._core.set({ drops: [null, { x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], lift: 0.42 }], rings: [{ x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: QS_PAY.vesselR, glow: 1.6 }] });
+        }
+        const T = reduce() ? [0, 0, 0] : [650, 900, 1500];
+        this._t1 = setTimeout(() => { if (this._core) this._core.set({ drops: [null, { lift: 0 }] }); }, T[0]);
+        this._t2 = setTimeout(() => {
+          if (this._core) { const d = qsPourDrops(QP_S, 0, amt); this._core.set({ drops: [{ r: d[0].r }, { r: 0 }, { r: d[2].r }] }); }
+        }, T[1]);
+        this._t3 = setTimeout(() => this.setState({ phase: 'done' }), T[2]);
+      };
+      this._holdStart = () => {
+        if (!this._check().ok || (this.state || {}).phase || this._raf) return;
+        if (reduce()) { this._pour(); return; }
+        const t0 = performance.now();
+        const step = (now) => { const u = Math.min(1, (now - t0) / QP_HOLD); this.setState({ hold: u }); if (u < 1) this._raf = requestAnimationFrame(step); else { this._raf = 0; this._pour(); } };
+        this._raf = requestAnimationFrame(step);
+      };
+      this._holdStop = () => { if (this._raf) { cancelAnimationFrame(this._raf); this._raf = 0; this.setState({ hold: 0 }); } };
+      this._h = {
+        coreRef: (el) => {
+          if (el === this._cv) return;
+          if (this._core) { this._core.destroy(); this._core = null; }
+          this._cv = el;
+          if (el && window.Quicksilver && this.props.liveCore !== false) {
+            this._key = '';
+            this._core = window.Quicksilver.mount(el, {
+              camera: QP_S.camera, scene: QP_S.scene, maxDpr: 2,
+              wall: Object.assign({ rect: QP_S.wallRect, texW: 2048 }, this._wall()),
+              drops: qsPourDrops(QP_S, Math.min(this._amt(), QS_PAY.balance), 0),
+              rings: [{ x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: QS_PAY.vesselR, glow: 0.7 }],
+              onReady: () => this.setState({ coreOn: true })
+            });
+          }
+        },
+        typeAmount: (e) => { const raw = e.target.value, v = parseFloat(raw.replace(/[^0-9.]/g, '')); this.setState({ amountText: raw, amount: isFinite(v) ? Math.round(v * 100) / 100 : 0 }); },
+        normalize: () => this.setState({ amountText: null }),
+        slide: (e) => this._setAmt(Number(e.target.value)),
+        holdDown: (e) => { if (e.button != null && e.button !== 0) return; this._viaPointer = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) { /* best effort */ } this._holdStart(); },
+        holdUp: () => { if (this._viaPointer) { this._viaPointer = false; this._holdStop(); } },
+        holdKey: (e) => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); this._holdStart(); } },
+        holdKeyUp: (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); this._holdStop(); } },
+        noMenu: (e) => e.preventDefault(),
+        dragDown: (e) => {
+          if ((this.state || {}).phase || !(this._amt() > 0)) return;
+          this._drag = { x0: e.clientX, mx0: qsPourDrops(QP_S, this._amt(), 0)[1].x };
+          try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) { /* best effort */ }
+          this.setState({ dragging: true });
+          if (this._core) this._core.set({ drops: [null, { lift: 0.22 }] });
+        },
+        dragMove: (e) => {
+          if (!this._drag) return;
+          const pxPerUnit = 118, mx = Math.max(this._drag.mx0, Math.min(QS_PAY.vessel[0], this._drag.mx0 + (e.clientX - this._drag.x0) / pxPerUnit));
+          const near = mx > QS_PAY.vessel[0] - 0.35;
+          this._dragX = mx;
+          if (this._core) this._core.set({ drops: [null, { x: mx, z: 0.32 + (QS_PAY.vessel[1] - 0.32) * (mx - this._drag.mx0) / (QS_PAY.vessel[0] - this._drag.mx0) }], rings: [{ x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: QS_PAY.vesselR, glow: near ? 1.6 : 0.7 }] });
+          if (near !== !!(this.state || {}).near) this.setState({ near: near });
+        },
+        dragUp: () => {
+          if (!this._drag) return;
+          const near = this._dragX != null && this._dragX > QS_PAY.vessel[0] - 0.35;
+          this._drag = null; this._dragX = null; this.setState({ dragging: false, near: false });
+          if (near && this._check().ok) { this._pour(); return; }
+          if (this._core) { const d = qsPourDrops(QP_S, this._amt(), 0); this._core.set({ drops: [null, { x: d[1].x, z: d[1].z, lift: 0 }], rings: [{ x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: QS_PAY.vesselR, glow: 0.7 }] }); }
+          if (near && !this._check().ok) this.setState({ bounced: true });
+        },
+        dragCancel: () => { this._drag = null; this._dragX = null; this.setState({ dragging: false, near: false }); if (this._core) { const d = qsPourDrops(QP_S, this._amt(), 0); this._core.set({ drops: [null, { x: d[1].x, z: d[1].z, lift: 0 }] }); } },
+        dragKey: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this._pour(); } },
+        again: () => {
+          this.setState({ phase: null, poured: null, hold: 0, bounced: false });
+          if (this._core) { this._key = ''; this._core.set({ drops: qsPourDrops(QP_S, this._amt(), 0).map((d) => Object.assign(d, { lift: 0 })), rings: [{ x: QS_PAY.vessel[0], z: QS_PAY.vessel[1], r: QS_PAY.vesselR, glow: 0.7 }] }); }
+        }
+      };
+      this._wall = () => {
+        const s = this.state || {};
+        if (s.phase) return qsWall(s.poured, s.phase === 'done' ? 'Arrived at ' + s.pouredTo : 'Pouring to ' + s.pouredTo);
+        return qsWall(this._amt(), 'Pour to ' + this._payee().name);
+      };
+    }
+    const amount = this._amt(), payee = this._payee(), chk = this._check(), phase = st.phase || null;
+    if (this._core && !phase) {
+      const key = amount + '|' + payee.id;
+      if (key !== this._key) {
+        this._key = key;
+        const now = performance.now();
+        const push = () => { this._wallAt = performance.now(); if (this._core) this._core.set({ drops: qsPourDrops(QP_S, Math.min(this._amt(), QS_PAY.balance), 0), wall: this._wall() }); };
+        if (this._wallTimer) clearTimeout(this._wallTimer);
+        if (!this._wallAt || now - this._wallAt > 70) push(); else this._wallTimer = setTimeout(push, 70);
+      }
+    }
+    if (this._core && phase && this._phaseKey !== phase) { this._phaseKey = phase; this._core.set({ wall: this._wall() }); }
+    if (!phase) this._phaseKey = null;
+    const coreOn = !!st.coreOn && P.liveCore !== false;
+    const live = phase ? qsPourDrops(QP_S, 0, st.poured) : qsPourDrops(QP_S, Math.min(amount, QS_PAY.balance), 0);
+    const sp = (d) => { const c = qsProject(QP_S, [d.x, d.r * qsSq(d.r), d.z], QP_W, QP_H); return { x: c.x, y: c.y, r: d.r * c.s, ry: d.r * qsSq(d.r) * c.s }; };
+    const src = sp(live[0]), meas = sp(live[1]);
+    const vb = qsProject(QP_S, [QS_PAY.vessel[0], 0, QS_PAY.vessel[1]], QP_W, QP_H);
+    const after = QS_PAY.balance - (phase ? st.poured : Math.min(amount, QS_PAY.balance));
+    const labels = [
+      { name: 'Operating ··4417', sub: qsMoney(after) + (phase ? '' : ' after'), subInk: '#9AA0AA', x: src.x.toFixed(1), y: (src.y + src.ry + 10).toFixed(1) },
+      { name: phase ? st.pouredTo : payee.name, sub: phase === 'done' ? '+' + qsMoney(st.poured) : (payee.verified ? 'Verified' : 'Not verified'), subInk: payee.verified || phase ? '#8FE3B0' : '#FFB39E', x: vb.x.toFixed(1), y: (vb.y + 26).toFixed(1) }
+    ];
+    const md = Math.max(56, meas.r * 2.2);
+    const amtText = st.amountText != null ? st.amountText : '$' + amount.toLocaleString('en-US', { minimumFractionDigits: amount % 1 ? 2 : 0, maximumFractionDigits: 2 });
+    const rail = Math.max(0, Math.min(50000, amount));
+    const holdU = st.hold || 0;
+    return Object.assign({}, this._h, {
+      coreOp: coreOn ? 1 : 0, headerNote: 'Daily limit ' + qsMoney(QS_PAY.limit, 0),
+      srStatus: phase === 'done' ? 'Poured ' + qsMoney(st.poured) + ' to ' + st.pouredTo + '. Operating now ' + qsMoney(after) + '.' : phase === 'pouring' ? 'Pouring ' + qsMoney(st.poured) + ' to ' + st.pouredTo + '.' : (st.bounced && !chk.ok ? chk.why : ''),
+      labels: labels,
+      dragOn: !phase && chk.ok, drag: { x: (meas.x - md / 2).toFixed(1), y: (meas.y - md / 2).toFixed(1), d: md.toFixed(1) },
+      dragAria: 'Measured droplet, ' + qsMoney(amount) + '. Drag it into ' + payee.name + ', or press Enter to pour.',
+      hint: { x: ((meas.x + vb.x) / 2).toFixed(1), y: (Math.min(meas.y - meas.ry, vb.y - 60) - 40).toFixed(1), op: st.dragging && !st.near ? 0 : 1, text: st.near ? 'Let go to pour' : 'Drag into ' + payee.name },
+      panelLabel: phase === 'done' ? 'Pour complete' : 'Pour details', formOn: phase !== 'done', doneOn: phase === 'done',
+      payees: QS_PAY.payees.map((p, i) => ({ name: p.name, on: p.id === payee.id, pick: this._pickP[i], mark: p.verified ? QP_CHECK : QP_DOT, markInk: p.id === payee.id ? '#15171B' : (p.verified ? '#8FE3B0' : '#FFB39E'), aria: p.name + ', ' + p.note })),
+      amountText: amtText,
+      quick: [5000, 10000, 25000].map((v, i) => ({ label: '$' + v / 1000 + 'K', pick: this._quick[i], aria: 'Pour ' + qsMoney(v, 0) })),
+      railVal: rail, railFill: (rail / 500).toFixed(1), railText: qsMoney(amount),
+      why: chk.why, whyInk: chk.ok ? '#B8C0CA' : '#FFB39E', whyIcon: chk.ok ? QP_CHECK : QP_WARN,
+      pourOff: !chk.ok || !!phase, pourText: phase === 'pouring' ? 'Pouring…' : holdU > 0 ? 'Keep holding' : 'Hold to pour ' + qsMoney(amount, amount % 1 ? 2 : 0),
+      pourAria: chk.ok ? 'Hold to pour ' + qsMoney(amount) + ' to ' + payee.name + '. Takes 1.4 seconds; with a keyboard, hold Space.' : 'Pour unavailable. ' + chk.why,
+      holdPct: (holdU * 100).toFixed(1),
+      doneTo: st.pouredTo || '', doneWhole: qsSplit(st.poured || 0).whole, doneCents: qsSplit(st.poured || 0).cents, doneLeft: qsMoney(after)
+    });
+  }
+  componentWillUnmount() { if (this._core) this._core.destroy(); if (this._raf) cancelAnimationFrame(this._raf); [this._t1, this._t2, this._t3, this._wallTimer].forEach((t) => t && clearTimeout(t)); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZEN Arcology — Model kit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+__AR_CSS__
+.mk-flipA{animation:mk-fa .46s cubic-bezier(.3,.7,.3,1) both}
+.mk-flipB{animation:mk-fb .46s cubic-bezier(.3,.7,.3,1) both}
+@keyframes mk-fa{0%{transform:perspective(160px) rotateX(-88deg);filter:brightness(.55)}100%{transform:perspective(160px) rotateX(0);filter:brightness(1)}}
+@keyframes mk-fb{0%{transform:perspective(160px) rotateX(-88deg);filter:brightness(.55)}100%{transform:perspective(160px) rotateX(0);filter:brightness(1)}}
+.mk-layer{transition:background .2s ease,box-shadow .2s ease}
+.mk-layer:hover{background:rgba(255,255,255,.72)}
+.mk-play{height:32px;padding:0 14px;border-radius:16px;font-size:12.5px;font-weight:700;background:#1E2A38;color:#FFFFFF}
+.mk-play:hover{background:#2C3B50}
+.mk-play:disabled{opacity:.45;cursor:default}
+@media (prefers-reduced-motion:reduce){.mk-flipA,.mk-flipB{animation:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 1440px; height: 900px; overflow: hidden; background: linear-gradient(160deg, #D3E2EF 0%, #E6EDF4 38%, #F2F5F8 70%, #E8EDF2 100%); color: #1E2A38">
+
+<svg width="1440" height="900" viewBox="0 0 1440 900" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs>
+<pattern id="mk-grid" width="32" height="16" patternUnits="userSpaceOnUse" patternTransform="translate(10 6)"><path d="M0 0L32 16M0 16L32 0" stroke="#1E2A38" stroke-opacity=".055" stroke-width="1" fill="none"></path></pattern>
+<linearGradient id="mk-fade" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity="1"></stop><stop offset=".78" stop-color="#FFFFFF" stop-opacity="1"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient>
+<mask id="mk-fade-m"><rect x="0" y="0" width="790" height="900" fill="url(#mk-fade)"></rect></mask>
+</defs>
+<rect x="0" y="80" width="790" height="820" fill="url(#mk-grid)" mask="url(#mk-fade-m)"></rect>
+</svg>
+
+<div style="position: absolute; left: 0; top: 0; width: 790px; height: 900px; pointer-events: none; transform: translate(0px, {{lift}}px) scale({{sc}}); transform-origin: 330px 731px">
+<svg width="790" height="900" viewBox="0 0 790 900" aria-hidden="true" style="position: absolute; left: 0; top: 0; overflow: visible">
+
+<defs><clipPath id="mk-clip"><path d="{{clip}}"></path></clipPath></defs>
+<g opacity="{{dropOp}}"><sc-for list="{{drops}}" as="dl" hint-placeholder-count="4"><path d="{{dl.d}}" stroke="#7D8A9C" stroke-width="1" stroke-dasharray="2 4" fill="none"></path></sc-for></g>
+
+<g transform="translate(0 0)" opacity="{{op0}}" style="transition: opacity .3s ease">
+<sc-for list="{{ground}}" as="g" hint-placeholder-count="8"><path d="{{g.d}}" fill="{{g.fill}}"></path></sc-for>
+</g>
+
+<g transform="translate(0 {{dy1}})" opacity="{{op1}}" style="transition: opacity .3s ease">
+<path d="{{clip}}" fill="#FFFFFF" fill-opacity="{{ghostFill}}" stroke="#7D8A9C" stroke-opacity="{{ghostLine}}" stroke-width="1" stroke-dasharray="5 4"></path>
+<g clip-path="url(#mk-clip)"><sc-for list="{{shadows}}" as="s" hint-placeholder-count="20"><path d="{{s.d}}" fill="rgba(30,46,70,0.17)"></path></sc-for></g>
+<sc-for list="{{items}}" as="it" hint-placeholder-count="60"><path d="{{it.d}}" fill="{{it.fill}}" opacity="{{it.op}}"></path></sc-for>
+<g opacity="{{dimOp}}"><sc-for list="{{dims}}" as="dm" hint-placeholder-count="2"><path d="{{dm.d}}" stroke="#1E2A38" stroke-width="1.2" fill="none" stroke-linecap="round"></path></sc-for></g>
+</g>
+
+<g transform="translate(0 {{dy2}})" opacity="{{op2}}" style="transition: opacity .3s ease">
+<path d="{{clip}}" fill="#FFFFFF" fill-opacity="{{ghostFill}}" stroke="#7D8A9C" stroke-opacity="{{ghostLine}}" stroke-width="1" stroke-dasharray="5 4"></path>
+<sc-for list="{{front}}" as="fr" hint-placeholder-count="12"><path d="{{fr.d}}" fill="none" stroke="{{fr.stroke}}" stroke-width="{{fr.w}}" stroke-linecap="round" stroke-linejoin="round"></path></sc-for>
+<sc-for list="{{stations}}" as="st" hint-placeholder-count="2"><rect x="{{st.x0}}" y="{{st.y0}}" width="20" height="7" rx="3.5" fill="#FFFFFF" stroke="#F2C230" stroke-width="1.6"></rect></sc-for>
+</g>
+
+<g transform="translate(0 {{dy3}})" opacity="{{op3}}" style="transition: opacity .3s ease">
+<path d="{{clip}}" fill="#111D40" fill-opacity=".93" stroke="#2A3A6A" stroke-width="1"></path>
+<sc-for list="{{nightLights}}" as="l" hint-placeholder-count="20"><circle cx="{{l.x}}" cy="{{l.y}}" r="2.2" fill="rgba(255,214,102,0.95)" style="filter: drop-shadow(0 0 3px rgba(255,214,102,.9))"></circle></sc-for>
+<sc-for list="{{nightWin}}" as="w" hint-placeholder-count="40"><path d="{{w.d}}" fill="{{w.fill}}" style="filter: drop-shadow(0 0 2.5px {{w.fill}})"></path></sc-for>
+</g>
+
+<g opacity="{{leadOp}}"><sc-for list="{{leads}}" as="ld" hint-placeholder-count="4"><path d="{{ld.d}}" stroke="#1E2A38" stroke-opacity="{{ld.op}}" stroke-width="1" fill="none"></path><circle cx="{{ld.cx}}" cy="{{ld.cy}}" r="3" fill="#F2C230" stroke="#1E2A38" stroke-width="1"></circle></sc-for></g>
+</svg>
+
+<div aria-hidden="true" style="position: absolute; left: 0; top: {{dy2}}px; width: 790px; height: 900px; pointer-events: none; opacity: {{op2}}">
+<div class="ar-train" style="offset-path: path('{{beam}}')">
+<svg width="34" height="10" viewBox="0 0 30 9" style="display: block; transform: translate(-17px, -8px)"><rect x=".5" y=".5" width="29" height="8" rx="4" fill="#FFFFFF" stroke="#1E2A38" stroke-opacity=".35"></rect><rect x="3" y="2.4" width="20" height="2.2" rx="1.1" fill="#9EB2C8"></rect><rect x="3" y="6" width="24" height="1.1" fill="#F2C230"></rect><circle cx="27" cy="3.6" r="1.3" fill="#F2C230"></circle></svg>
+</div>
+</div>
+
+<sc-for list="{{dimLabels}}" as="dt" hint-placeholder-count="2">
+<span aria-hidden="true" class="ar-tnum" style="position: absolute; left: {{dt.x}}px; top: {{dt.y}}px; transform: {{dt.tf}}; padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,.92); box-shadow: 0 0 0 1px rgba(30,42,56,.12); font-size: 12px; font-weight: 700; white-space: nowrap; opacity: {{dimOp}}">{{dt.text}}</span>
+</sc-for>
+</div>
+
+<header style="position: absolute; left: 32px; right: 32px; top: 26px; height: 48px; display: flex; align-items: center; gap: 28px">
+<a href="Arcology-Desktop.dc.html" aria-label="ZEN Arcology City Hall" style="display: flex; align-items: center; gap: 12px">
+<svg width="30" height="26" viewBox="0 0 100 86" aria-hidden="true"><path fill="#1E2A38" fill-rule="evenodd" d="M0 31L12 31L22 21L10 21L10 9L44 9L0 53L0 75L5 75L10 70L10 57L58 9L77 9L0 86L100 86L100 55L88 55L78 65L90 65L90 77L56 77L100 33L100 11L95 11L90 16L90 29L42 77L23 77L100 0L0 0Z"></path></svg>
+<span class="ar-d" style="font-size: 27px; font-weight: 800; letter-spacing: .02em">Arcology</span>
+<span style="font-size: 13px; font-weight: 600; color: #4A586B">City Hall</span>
+</a>
+<nav aria-label="Primary" style="display: flex; gap: 6px">
+<a href="Arcology-Desktop.dc.html" style="height: 40px; padding: 0 16px; border-radius: 20px; display: flex; align-items: center; font-size: 14px; font-weight: 600; color: #4A586B">City</a>
+<a href="Arcology-Transit.dc.html" style="height: 40px; padding: 0 16px; border-radius: 20px; display: flex; align-items: center; font-size: 14px; font-weight: 600; color: #4A586B">Transit</a>
+<a href="Meridian-Activity.dc.html" style="height: 40px; padding: 0 16px; border-radius: 20px; display: flex; align-items: center; font-size: 14px; font-weight: 600; color: #4A586B">Ledger</a>
+<a href="Arcology-Model.dc.html" aria-current="page" class="ar-plate" style="height: 40px; padding: 0 16px; border-radius: 20px; display: flex; align-items: center; font-size: 14px; font-weight: 700">Model kit</a>
+<a href="Meridian-Appearance.dc.html" style="height: 40px; padding: 0 16px; border-radius: 20px; display: flex; align-items: center; font-size: 14px; font-weight: 600; color: #4A586B">Themes</a>
+</nav>
+</header>
+
+<section aria-label="About the model" style="position: absolute; left: 40px; top: 98px; width: 470px">
+<h1 class="ar-d" style="margin: 0; font-size: 44px; font-weight: 800; line-height: 1">Model kit</h1>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: #4A586B">How the city is built, and the rules that keep it honest. Every measurement on the model comes from the book of record.</p>
+</section>
+
+<sc-for list="{{layers}}" as="ly" hint-placeholder-count="4">
+<button type="button" onClick="{{ly.pick}}" aria-pressed="{{ly.on}}" aria-label="{{ly.aria}}" class="mk-layer" style="position: absolute; left: 548px; top: {{ly.y}}px; width: 226px; padding: 8px 10px; border-radius: 12px; text-align: left; display: flex; flex-direction: column; gap: 3px; visibility: {{ly.vis}}; opacity: {{leadOp}}; background: {{ly.bg}}; box-shadow: {{ly.ring}}">
+<span style="display: flex; align-items: baseline; gap: 8px"><span class="ar-d" style="font-size: 20px; font-weight: 800; line-height: 1">{{ly.name}}</span><span style="font-size: 12px; font-weight: 600; color: #4A586B">{{ly.count}}</span></span>
+<span style="font-size: 12.5px; line-height: 1.38; color: #3E4C5E">{{ly.desc}}</span>
+</button>
+</sc-for>
+
+
+<div style="position: absolute; left: 40px; top: 836px; display: flex; align-items: center; gap: 14px">
+<button type="button" onClick="{{toggleExplode}}" aria-pressed="{{explodedOn}}" class="ar-plate" style="height: 44px; padding: 0 18px 0 14px; border-radius: 22px; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E2A38" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 21 7.5 12 12 3 7.5Z"></path><path d="M3 12.5 12 17l9-4.5" opacity="{{iconOp}}"></path><path d="M3 17 12 21.5 21 17"></path></svg>
+{{explodeText}}
+</button>
+<span style="font-size: 13px; color: #4A586B">{{explodeNote}}</span>
+</div>
+
+<section class="ar-plate" aria-label="Rules" style="position: absolute; left: 808px; top: 98px; width: 288px; box-sizing: border-box; border-radius: 18px; padding: 16px 18px">
+<h2 class="ar-d" style="margin: 0; font-size: 22px; font-weight: 800">Rules</h2>
+<ul style="margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="5">
+<li style="display: flex; gap: 10px">
+<span aria-hidden="true" style="margin-top: 5px; width: 8px; height: 8px; flex-shrink: 0; transform: rotate(45deg); background: {{r.c}}"></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span class="ar-d" style="font-size: 17px; font-weight: 800; line-height: 1.1">{{r.lead}}</span><span style="font-size: 12.5px; line-height: 1.4; color: #3E4C5E">{{r.body}}</span></span>
+</li>
+</sc-for>
+</ul>
+</section>
+
+<section class="ar-plate" aria-label="Motion" style="position: absolute; left: 808px; top: 520px; width: 288px; box-sizing: border-box; border-radius: 18px; padding: 16px 18px">
+<h2 class="ar-d" style="margin: 0; font-size: 22px; font-weight: 800">Motion</h2>
+<div style="margin-top: 8px; display: flex; flex-direction: column">
+
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid #E1E6EB">
+<svg width="64" height="52" viewBox="0 0 64 52" aria-hidden="true" style="flex-shrink: 0; border-radius: 10px; background: #EEF2F6"><path d="{{mh.g}}" fill="#E1E6EB"></path><path d="{{mh.l}}" fill="#E4E8EC"></path><path d="{{mh.r}}" fill="#C8CFD8"></path><path d="{{mh.t}}" fill="#FCFDFD"></path><path d="{{mh.w}}" fill="#7FB1F2"></path></svg>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13.5px; font-weight: 700">Rebuild</span><span class="ar-tnum" style="font-size: 12px; color: #4A586B">900 ms, towers to a month’s value</span></span>
+<button type="button" class="mk-play" onClick="{{playH}}" aria-label="Play rebuild, 900 milliseconds">Play</button>
+</div>
+
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid #E1E6EB">
+<svg width="64" height="52" viewBox="0 0 64 52" aria-hidden="true" style="flex-shrink: 0; border-radius: 10px; background: {{mn.sky}}"><circle cx="12" cy="11" r="1.2" fill="#FFFFFF" opacity="{{mn.star}}"></circle><circle cx="52" cy="8" r="1" fill="#FFFFFF" opacity="{{mn.star}}"></circle><path d="{{mh0.g}}" fill="{{mn.ground}}"></path><path d="{{mh0.l}}" fill="{{mn.left}}"></path><path d="{{mh0.r}}" fill="{{mn.right}}"></path><path d="{{mh0.t}}" fill="{{mn.top}}"></path><path d="{{mh0.w}}" fill="{{mn.win}}"></path></svg>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13.5px; font-weight: 700">Day to night</span><span class="ar-tnum" style="font-size: 12px; color: #4A586B">1100 ms, by way of dusk</span></span>
+<button type="button" class="mk-play" onClick="{{playN}}" aria-label="Play day to night, 1100 milliseconds">Play</button>
+</div>
+
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid #E1E6EB">
+<span aria-hidden="true" class="ar-board" style="width: 64px; height: 52px; flex-shrink: 0; border-radius: 10px; display: flex; align-items: center; justify-content: center"><span class="ar-d" style="display: flex; gap: 2px; font-size: 20px; font-weight: 700"><sc-for list="{{flaps}}" as="c" hint-placeholder-count="3"><span class="ar-flap {{c.cls}}">{{c.ch}}</span></sc-for></span></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13.5px; font-weight: 700">Flap</span><span class="ar-tnum" style="font-size: 12px; color: #4A586B">460 ms, departure board</span></span>
+<button type="button" class="mk-play" onClick="{{playF}}" aria-label="Play flap, 460 milliseconds">Play</button>
+</div>
+
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 0 0; border-top: 1px solid #E1E6EB">
+<svg width="64" height="52" viewBox="0 0 64 52" aria-hidden="true" style="flex-shrink: 0; border-radius: 10px; background: #EEF2F6"><circle cx="32" cy="26" r="17" fill="none" stroke="#D3DAE2" stroke-width="4"></circle><circle cx="32" cy="26" r="17" fill="none" stroke="#F2C230" stroke-width="4" stroke-linecap="round" stroke-dasharray="106.8" stroke-dashoffset="{{holdOff}}" transform="rotate(-90 32 26)"></circle><circle cx="32" cy="26" r="11" fill="{{holdCore}}"></circle><path d="M27.5 26.2l3.2 3.2 6-6.4" stroke="#1E2A38" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="{{holdTick}}"></path></svg>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13.5px; font-weight: 700">Hold to dispatch</span><span class="ar-tnum" style="font-size: 12px; color: #4A586B">1400 ms, linear, no shortcut</span></span>
+<button type="button" class="mk-play" onClick="{{playHold}}" disabled="{{holdBusy}}" aria-label="Play hold to dispatch, 1400 milliseconds">Play</button>
+</div>
+
+</div>
+</section>
+
+<section class="ar-plate" aria-label="Color" style="position: absolute; left: 1112px; top: 98px; width: 296px; box-sizing: border-box; border-radius: 18px; padding: 16px 18px">
+<h2 class="ar-d" style="margin: 0; font-size: 22px; font-weight: 800">Color</h2>
+<div role="list" style="margin-top: 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 10px">
+<sc-for list="{{swatches}}" as="sw" hint-placeholder-count="12">
+<div role="listitem" style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span aria-hidden="true" style="height: 34px; border-radius: 9px; background: {{sw.hex}}; box-shadow: inset 0 0 0 1px rgba(30,42,56,.12)"></span>
+<span style="font-size: 12px; font-weight: 700; line-height: 1.15">{{sw.name}}</span>
+<span style="font-size: 11.5px; line-height: 1.2; color: #4A586B">{{sw.role}}</span>
+</div>
+</sc-for>
+</div>
+<div role="list" aria-label="District lines" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #E1E6EB; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{lines}}" as="ln" hint-placeholder-count="4">
+<div role="listitem" style="display: flex; flex-direction: column; gap: 4px"><span aria-hidden="true" style="height: 10px; border-radius: 5px; background: {{ln.hex}}"></span><span style="font-size: 12px; font-weight: 700">{{ln.name}}</span><span class="ar-tnum" style="font-size: 11px; color: #4A586B">{{ln.hex}}</span></div>
+</sc-for>
+</div>
+</section>
+
+<section class="ar-plate" aria-label="Type" style="position: absolute; left: 1112px; top: 488px; width: 296px; box-sizing: border-box; border-radius: 18px; padding: 16px 18px">
+<h2 class="ar-d" style="margin: 0; font-size: 22px; font-weight: 800">Type</h2>
+<div style="margin-top: 6px; padding-bottom: 10px; border-bottom: 1px solid #E1E6EB">
+<span class="ar-d ar-num" style="display: block; font-size: 46px; font-weight: 800; line-height: 1">$248,390<span style="font-size: 22px; color: #4A586B">.12</span></span>
+<span style="display: block; margin-top: 4px; font-size: 12px; color: #4A586B">Big Shoulders Display, for numbers, signs and stations</span>
+</div>
+<div style="margin-top: 10px">
+<span style="display: block; font-size: 17px; font-weight: 600">Pioneer Fund arrives instantly.</span>
+<span style="display: block; margin-top: 4px; font-size: 12px; color: #4A586B">Hanken Grotesk, for everything you read</span>
+</div>
+</section>
+
+<section class="ar-plate" aria-label="Pictograms" style="position: absolute; left: 1112px; top: 712px; width: 296px; box-sizing: border-box; border-radius: 18px; padding: 14px 18px">
+<h2 class="ar-d" style="margin: 0; font-size: 22px; font-weight: 800">Pictograms</h2>
+<div role="list" style="margin-top: 8px; display: flex; align-items: flex-end; justify-content: space-between">
+<sc-for list="{{pics}}" as="pc" hint-placeholder-count="4">
+<span role="listitem" aria-label="{{pc.aria}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><span aria-hidden="true" class="ar-d" style="width: 28px; height: 28px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: {{pc.c}}; color: #FFFFFF; font-size: 15px; font-weight: 800">{{pc.g}}</span><span aria-hidden="true" style="font-size: 11.5px; font-weight: 600; color: #4A586B">{{pc.name}}</span></span>
+</sc-for>
+<span role="listitem" aria-label="Station" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><svg width="34" height="28" viewBox="0 0 34 28" aria-hidden="true"><rect x="3" y="10" width="28" height="9" rx="4.5" fill="#FFFFFF" stroke="#F2C230" stroke-width="2"></rect></svg><span aria-hidden="true" style="font-size: 11.5px; font-weight: 600; color: #4A586B">Station</span></span>
+<span role="listitem" aria-label="Train" style="display: flex; flex-direction: column; align-items: center; gap: 4px"><svg width="40" height="28" viewBox="0 0 30 21" aria-hidden="true"><g transform="translate(0 6)"><rect x=".5" y=".5" width="29" height="8" rx="4" fill="#FFFFFF" stroke="#1E2A38" stroke-opacity=".45"></rect><rect x="3" y="2.4" width="20" height="2.2" rx="1.1" fill="#9EB2C8"></rect><rect x="3" y="6" width="24" height="1.1" fill="#F2C230"></rect><circle cx="27" cy="3.6" r="1.3" fill="#F2C230"></circle></g></svg><span aria-hidden="true" style="font-size: 11.5px; font-weight: 600; color: #4A586B">Train</span></span>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"exploded":{"editor":"boolean","default":true,"section":"Model"},"$preview":{"width":1440,"height":900}}'>
+__AR_ENGINE__
+const MK = { ox: 330, oy: 662, tw: 32, N: 10, gap: 118 };
+const MK_OPTS = { ox: MK.ox, oy: MK.oy, tw: MK.tw, values: AR_BOOK.values, f: 1, hScale: 112 / 118400, plinth: 12 };
+const MK_DAY = AR.build(Object.assign({ t: 0 }, MK_OPTS));
+const MK_NIGHT = AR.build(Object.assign({ t: 1 }, MK_OPTS));
+const MK_PX = Math.round(118400 / 112);
+const MK_LAYERS = [
+  { name: 'Foundation', count: 'Proof', desc: 'Timber plinth, drawn from the latest attestation. No proof, no plinth.' },
+  { name: 'Districts', count: '4 assets, 13 towers', desc: 'One quadrant per asset. The tallest tower is the asset’s value.' },
+  { name: 'Transit', count: '2 stations', desc: 'Every payment rides the elevated ZEN line, station to station.' },
+  { name: 'Lights', count: 'After dark', desc: 'Windows glow in their asset’s color. Street lights trace both avenues.' }
+];
+const MK_RULES = [
+  { lead: 'Height is money', body: 'Each district’s tallest tower measures its asset’s value. Here, 1 px is $' + MK_PX.toLocaleString('en-US') + '.', c: '#F2C230' },
+  { lead: 'Districts stay put', body: 'USDC back, USD right, BTC left, ETH front, whatever the market does.', c: '#3D8BFF' },
+  { lead: 'Proof holds it up', body: 'The plinth stands on the latest attestation: 100.0% backed.', c: '#D7C095' },
+  { lead: 'Money moves by train', body: 'Transfers ride the line and clear every station’s check.', c: '#5E6B7D' },
+  { lead: 'Night shows color', body: 'After dark, windows light in their asset’s color.', c: '#8C6CF2' }
+];
+const MK_SW = [
+  { name: 'Model white', role: 'Tower tops', hex: '#FCFDFD' }, { name: 'Lit face', role: 'Facing the sun', hex: '#E4E8EC' }, { name: 'Shade', role: 'Away from it', hex: '#C8CFD8' },
+  { name: 'Timber', role: 'Foundation', hex: '#E7D5AF' }, { name: 'Line yellow', role: 'Signals, focus', hex: '#F2C230' }, { name: 'Board', role: 'Departures', hex: '#141A26' },
+  { name: 'Dusk', role: 'Evening sky', hex: '#F0CDB5' }, { name: 'Night', role: 'Night sky', hex: '#111D40' }, { name: 'Ink', role: 'Text', hex: '#1E2A38' }
+];
+const MK_FLAP = ['ZEN', 'BTC', 'ETH', 'USD'];
+function mkMini(h) {
+  const P = (gx, gy, z) => [32 + (gx - gy) * 10, 30 + (gx + gy) * 5 - z];
+  const poly = (pts) => 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') + ' Z';
+  const x = 0.55, y = 0.55, w = 0.9, d = 0.9;
+  const A = [x, y], B = [x + w, y], C = [x + w, y + d], D = [x, y + d], t = (q, z) => P(q[0], q[1], z);
+  let win = '';
+  for (let z = 4; z < h - 3; z += 4.5) { const z2 = Math.min(z + 1.6, h - 2); win += poly([t([x + w * 0.15, y + d], z), t([x + w * 0.85, y + d], z), t([x + w * 0.85, y + d], z2), t([x + w * 0.15, y + d], z2)]) + ' ' + poly([t([x + w, y + d * 0.15], z), t([x + w, y + d * 0.85], z), t([x + w, y + d * 0.85], z2), t([x + w, y + d * 0.15], z2)]) + ' '; }
+  return { g: poly([P(0, 0, 0), P(2, 0, 0), P(2, 2, 0), P(0, 2, 0)]), t: poly([t(A, h), t(B, h), t(C, h), t(D, h)]), l: poly([t(D, 0), t(C, 0), t(C, h), t(D, h)]), r: poly([t(B, 0), t(C, 0), t(C, h), t(B, h)]), w: win || 'M0 0' };
+}
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    if (!this._h) {
+      this._pickL = MK_LAYERS.map((l, i) => () => this.setState({ sel: (this.state || {}).sel === i ? null : i }));
+      this._h = {
+        toggleExplode: () => { const cur = (this.state || {}).eT != null ? this.state.eT : (this.props.exploded === false ? 0 : 1); const to = cur ? 0 : 1; this.setState({ eT: to, sel: null }); arTween(this, 'e', to, 900, cur); },
+        playH: () => { const cur = (this.state || {}).dhT != null ? this.state.dhT : 1; const to = cur === 1 ? 0.45 : 1; this.setState({ dhT: to }); arTween(this, 'dh', to, 900, cur); },
+        playN: () => { const cur = (this.state || {}).dnT != null ? this.state.dnT : 0; const to = cur ? 0 : 1; this.setState({ dnT: to }); arTween(this, 'dn', to, 1100, cur); },
+        playF: () => { const s = this.state || {}; this.setState({ fw: ((s.fw || 0) + 1) % MK_FLAP.length, fp: (s.fp || 0) + 1 }); },
+        playHold: () => {
+          if ((this.state || {}).holdBusy) return;
+          const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const done = () => { this.setState({ hp: 1, held: true }); this._holdTo = setTimeout(() => this.setState({ hp: 0, held: false, holdBusy: false }), 900); };
+          this.setState({ holdBusy: true, held: false, hp: 0 });
+          if (reduce) { done(); return; }
+          const t0 = performance.now();
+          const step = (now) => { const u = Math.min(1, (now - t0) / 1400); if (u < 1) { this.setState({ hp: u }); this._holdRaf = requestAnimationFrame(step); } else done(); };
+          this._holdRaf = requestAnimationFrame(step);
+        }
+      };
+    }
+    const e = st.e != null ? st.e : (this.props.exploded === false ? 0 : 1);
+    const sel = st.sel != null && e > 0.5 ? st.sel : null;
+    const dys = [0, -MK.gap * e, -2 * MK.gap * e, -3 * MK.gap * e];
+    const opL = (i) => (sel == null || sel === i ? 1 : 0.2);
+    const half = MK.N * MK.tw / 2, q = MK.N * MK.tw / 4;
+    const V = { back: [MK.ox, MK.oy], right: [MK.ox + half, MK.oy + q], front: [MK.ox, MK.oy + 2 * q], left: [MK.ox - half, MK.oy + q] };
+    const drops = ['left', 'front', 'right', 'back'].map((k) => ({ d: 'M' + V[k][0] + ' ' + (V[k][1] + dys[3]).toFixed(1) + ' L' + V[k][0] + ' ' + V[k][1] }));
+    const leads = MK_MAYBE_LEADS(dys, V, sel);
+    const layers = MK_LAYERS.map((l, i) => ({
+      name: l.name, count: l.count, desc: l.desc, pick: this._pickL[i], on: sel === i,
+      aria: l.name + ' layer. ' + l.desc + (sel === i ? ' Showing this layer alone; press to show all.' : ' Press to isolate.'),
+      y: (V.right[1] + dys[i] - 30).toFixed(1), vis: e > 0.45 ? 'visible' : 'hidden',
+      bg: sel === i ? '#FFFFFF' : 'transparent', ring: sel === i ? '0 0 0 2px #F2C230' : 'none'
+    }));
+    const usd = MK_DAY.apex.USD, btc = MK_DAY.apex.BTC;
+    const ux = usd.x + 32 + 9, bx = btc.x - 25.6 - 9;
+    const dimPath = (x, y0, y1) => 'M' + x.toFixed(1) + ' ' + y0.toFixed(1) + ' L' + x.toFixed(1) + ' ' + y1.toFixed(1) + ' M' + (x - 4).toFixed(1) + ' ' + y0.toFixed(1) + ' L' + (x + 4).toFixed(1) + ' ' + y0.toFixed(1) + ' M' + (x - 4).toFixed(1) + ' ' + y1.toFixed(1) + ' L' + (x + 4).toFixed(1) + ' ' + y1.toFixed(1);
+    const dims = [{ d: dimPath(ux, usd.y, usd.y + usd.h) }, { d: dimPath(bx, btc.y, btc.y + btc.h) }];
+    const dimLabels = [
+      { x: (ux + 7).toFixed(1), y: (usd.y + usd.h / 2 + dys[1]).toFixed(1), tf: 'translate(0, -50%)', text: arK(AR_BOOK.values.USD) },
+      { x: (bx - 7).toFixed(1), y: (btc.y + btc.h / 2 + dys[1]).toFixed(1), tf: 'translate(-100%, -50%)', text: arK(AR_BOOK.values.BTC) }
+    ];
+    const ea = Math.max(0, Math.min(1, (0.45 - e) / 0.45)), es = ea * ea * (3 - 2 * ea);
+    const dh = st.dh != null ? st.dh : 1, dn = st.dn != null ? st.dn : 0;
+    const m3 = (a, b, c, u) => (u <= 0.5 ? AR.mix(a, b, u * 2) : AR.mix(b, c, (u - 0.5) * 2));
+    const fw = st.fw || 0, fp = st.fp || 0, hp = st.hp || 0;
+    return Object.assign({}, this._h, {
+      clip: MK_DAY.clip, ground: MK_DAY.ground, shadows: MK_DAY.shadows, items: MK_DAY.items.map((it) => ({ d: it.d, fill: it.fill, op: it.op || '1' })),
+      front: MK_DAY.front, stations: MK_DAY.stations.map((s) => ({ x0: (s.x - 10).toFixed(1), y0: (s.y - 5).toFixed(1) })), beam: MK_DAY.beam,
+      nightWin: MK_NIGHT.items.filter((it) => it.win).map((it) => ({ d: it.d, fill: it.fill })), nightLights: MK_NIGHT.lights,
+      dy1: dys[1].toFixed(1), dy2: dys[2].toFixed(1), dy3: dys[3].toFixed(1),
+      op0: opL(0), op1: opL(1), op2: opL(2), op3: (opL(3) * Math.max(0, Math.min(1, (e - 0.15) / 0.6))).toFixed(2),
+      ghostFill: (0.34 * e).toFixed(3), ghostLine: (0.85 * e).toFixed(3), dropOp: (0.7 * e).toFixed(2), leadOp: Math.max(0, (e - 0.45) / 0.55).toFixed(2), leads: leads,
+      dimOp: (sel == null || sel === 1 ? Math.max(0, (e - 0.45) / 0.55) : 0).toFixed(2), dims: dims, dimLabels: dimLabels, drops: drops,
+      layers: layers, sc: (1 + 0.32 * es).toFixed(4), lift: (-250 * es).toFixed(1), explodedOn: (st.eT != null ? st.eT : (this.props.exploded === false ? 0 : 1)) === 1,
+      explodeText: (st.eT != null ? st.eT : (this.props.exploded === false ? 0 : 1)) ? 'Assemble the model' : 'Explode the model',
+      explodeNote: (st.eT != null ? st.eT : (this.props.exploded === false ? 0 : 1)) ? 'Four layers, one model. Choose a layer to isolate it.' : 'Assembled, the four layers are the city on City Hall.',
+      iconOp: e > 0.5 ? 1 : 0.25,
+      rules: MK_RULES, swatches: MK_SW, lines: Object.keys(AR.ASSET).map((k) => ({ name: AR.ASSET[k].name, hex: AR.ASSET[k].line })),
+      pics: Object.keys(AR.ASSET).map((k) => ({ g: AR.ASSET[k].glyph, c: AR.ASSET[k].line, name: AR.ASSET[k].name, aria: AR.ASSET[k].name + ' district roundel' })),
+      mh: mkMini(8 + 30 * dh), mh0: mkMini(28),
+      mn: { sky: m3('#DCE8F2', '#F0CDB5', '#111D40', dn), star: Math.max(0, (dn - 0.5) * 2).toFixed(2), ground: m3('#E1E6EB', '#EAD4C5', '#161D2E', dn), top: m3('#FCFDFD', '#FBE4D2', '#2C364B', dn), left: m3('#E4E8EC', '#EAC8B4', '#1E2639', dn), right: m3('#C8CFD8', '#A99CB2', '#151B2B', dn), win: AR.mix('#7FB1F2', '#5CA8FF', dn) },
+      flaps: MK_FLAP[fw].split('').map((ch) => ({ ch: ch, cls: fp ? (fp % 2 ? 'mk-flipA' : 'mk-flipB') : '' })),
+      holdOff: (106.8 * (1 - hp)).toFixed(1), holdCore: st.held ? '#F2C230' : '#FFFFFF', holdTick: st.held ? 1 : 0, holdBusy: !!st.holdBusy
+    });
+  }
+  componentWillUnmount() { ['_tw_e', '_tw_dh', '_tw_dn', '_holdRaf'].forEach((k) => { if (this[k]) cancelAnimationFrame(this[k]); }); if (this._holdTo) clearTimeout(this._holdTo); }
+}
+function MK_MAYBE_LEADS(dys, V, sel) {
+  return dys.map((dy, i) => {
+    const x0 = V.right[0] + 6, y = V.right[1] + dy;
+    return { d: 'M' + x0 + ' ' + y.toFixed(1) + ' L540 ' + y.toFixed(1), cx: V.right[0], cy: y.toFixed(1), op: sel == null || sel === i ? 0.7 : 0.25 };
+  });
+}
+</script>
+</body>
+</html>
